@@ -2,9 +2,582 @@ Sections:
 	.init       type:code align:4
 	.text       type:code align:16
 	.ctors      type:rodata align:1
+	.dtors      type:rodata align:1
 	.rodata     type:rodata align:8
 	.data       type:data align:32
 	.bss        type:bss align:32
 	.sdata      type:data align:8
 	.sbss       type:bss align:8
 	.sdata2     type:rodata align:8
+
+prodg_fixes.cpp:
+	.ctors      start:0x803B3FA0 end:0x803B3FA4 skip
+	.dtors      start:0x803B4080 end:0x803B4084 skip
+
+main/BASIC_Interpret.cpp:
+	.text       start:0x800034A0 end:0x80005134
+
+main/SETrigger_Default.cpp:
+	.text       start:0x80005134 end:0x80005A10
+
+main/StartPoint.cpp:
+	.text       start:0x80005A10 end:0x800060A8
+
+main/Trigger_Special.cpp:
+	.text       start:0x800060A8 end:0x8000810C
+
+main/XSEItem_Default.cpp:
+	.text       start:0x8000810C end:0x80008164
+
+main/Player_BallGadget.cpp:
+	.text       start:0x80008164 end:0x800127E0
+
+main/Player_Ember.cpp:
+	.text       start:0x800127E0 end:0x80012900
+
+main/Player_Flame.cpp:
+	.text       start:0x80012900 end:0x80012A20
+
+main/Player_Sparx.cpp:
+	.text       start:0x80012A20 end:0x8001F630
+
+main/PreBlinky.cpp:
+	.text       start:0x8001F630 end:0x80030608
+	.ctors      start:0x803B3FA4 end:0x803B3FA8
+
+main/PreBosses.cpp:
+	.text       start:0x80030608 end:0x80046510
+	.ctors      start:0x803B3FA8 end:0x803B3FAC
+
+main/PreHunter.cpp:
+	.text       start:0x80046510 end:0x80057FB4
+
+main/PrePlayer.cpp:
+	.text       start:0x80057FB4 end:0x80067238
+
+main/PreSpyro.cpp:
+	.text       start:0x80067238 end:0x8007AF4C
+	.ctors      start:0x803B3FAC end:0x803B3FB0
+
+main/PreSgtBird.cpp:
+	.text       start:0x8007AF4C end:0x80085A3C
+
+main/PreSpyro_tail.cpp:
+	.text       start:0x80085A3C end:0x800B8B50
+
+main/PreSXEItemHandler.cpp:
+	.text       start:0x800B8B50 end:0x801A58F0
+	.ctors      start:0x803B3FB0 end:0x803B3FC4
+
+main/PreGUI.cpp:
+	.text       start:0x801A58F0 end:0x801CE568
+	.ctors      start:0x803B3FC4 end:0x803B3FC8
+
+main/PreSE.cpp:
+	.text       start:0x801CE568 end:0x80200760
+	.ctors      start:0x803B3FC8 end:0x803B3FCC
+
+main/PreMiniGames.cpp:
+	.text       start:0x80200760 end:0x8021CC28
+	.ctors      start:0x803B3FCC end:0x803B3FD0
+
+main/PrePanel.cpp:
+	.text       start:0x8021CC28 end:0x80232C6C
+	.ctors      start:0x803B3FD0 end:0x803B3FD4
+
+main/PreLevels.cpp:
+	.text       start:0x80232C6C end:0x8024BECC
+	.ctors      start:0x803B3FD4 end:0x803B3FD8
+
+main/PreSupport.cpp:
+	.text       start:0x8024BECC end:0x802537B8
+	.ctors      start:0x803B3FD8 end:0x803B3FDC
+
+sn/SNDebug.cpp:
+	.text       start:0x802537B8 end:0x8025657C
+
+sn/PCSerial.c:
+	.text       start:0x8025657C end:0x80256D44
+
+sn/SNInitEXI2TCHandler.c:
+	.text       start:0x80256D44 end:0x8025728C
+
+sn/SNDVDEmu.c:
+	.text       start:0x8025728C end:0x802573E4
+
+math/acosf.c:
+	.text       start:0x802573E4 end:0x80257630
+
+math/asinf.c:
+	.text       start:0x80257630 end:0x8025785C
+
+math/atan2f.c:
+	.text       start:0x8025785C end:0x80257A7C
+
+math/fmodf.c:
+	.text       start:0x80257A7C end:0x80257C44
+
+math/powf.c:
+	.text       start:0x80257C44 end:0x80258338
+
+math/sqrtf.c:
+	.text       start:0x80258338 end:0x80258430
+
+math/atanf.c:
+	.text       start:0x80258430 end:0x80258640
+
+math/ceilf.c:
+	.text       start:0x80258640 end:0x80258704
+
+math/cosf.c:
+	.text       start:0x80258704 end:0x802587E0
+
+math/fabsf.c:
+	.text       start:0x802587E0 end:0x80258804
+
+math/floorf.c:
+	.text       start:0x80258804 end:0x802588CC
+
+math/sinf.c:
+	.text       start:0x802588CC end:0x802589A8
+
+math/tanf.c:
+	.text       start:0x802589A8 end:0x80258A28
+
+math/scalbnf.c:
+	.text       start:0x80258A28 end:0x80258B44
+
+math/kernel_cosf.c:
+	.text       start:0x80258B44 end:0x80258C30
+
+math/kernel_sinf.c:
+	.text       start:0x80258C30 end:0x80258CDC
+
+math/kernel_tanf.c:
+	.text       start:0x80258CDC end:0x80258EF0
+
+math/rem_pio2f.c:
+	.text       start:0x80258EF0 end:0x80259240
+
+math/copysignf.c:
+	.text       start:0x80259240 end:0x80259274
+
+math/kernel_rem_pio2f.c:
+	.text       start:0x80259274 end:0x80259AF8
+
+string/sprintf.c:
+	.text       start:0x80259AF8 end:0x80259C2C
+
+stdlib/atexit.c:
+	.text       start:0x80259C2C end:0x80259CC4
+
+stdlib/malloc.c:
+	.text       start:0x80259CC4 end:0x80259D00
+
+string/memcpy.c:
+	.text       start:0x80259D00 end:0x80259DA4
+
+string/memmove.c:
+	.text       start:0x80259DA4 end:0x80259E90
+
+string/memset.c:
+	.text       start:0x80259E90 end:0x80259F24
+
+string/strcasecmp.c:
+	.text       start:0x80259F24 end:0x80259FA0
+
+string/strcmp.c:
+	.text       start:0x80259FA0 end:0x8025A048
+
+string/strcpy.c:
+	.text       start:0x8025A048 end:0x8025A0CC
+
+string/strlen.c:
+	.text       start:0x8025A0CC end:0x8025A138
+
+string/strncpy.c:
+	.text       start:0x8025A138 end:0x8025A204
+
+stdlib/itoa.c:
+	.text       start:0x8025A204 end:0x8025A950
+
+stdlib/vfprintf.c:
+	.text       start:0x8025A950 end:0x8025DAF4
+
+string/tolower.c:
+	.text       start:0x8025DAF4 end:0x8025DB2C
+
+string/toupper.c:
+	.text       start:0x8025DB2C end:0x8025DB5C
+
+stdlib/locale.c:
+	.text       start:0x8025DB5C end:0x8025E470
+
+stdlib/mbtowc.c:
+	.text       start:0x8025E470 end:0x8025E78C
+
+string/memchr.c:
+	.text       start:0x8025E78C end:0x8025E84C
+
+gcc/ashldi3.c:
+	.text       start:0x8025E84C end:0x8025E88C
+
+gcc/ashrdi3.c:
+	.text       start:0x8025E88C end:0x8025E8CC
+
+gcc/divdi3.c:
+	.text       start:0x8025E8CC end:0x8025EE48
+
+gcc/lshrdi3.c:
+	.text       start:0x8025EE48 end:0x8025EE88
+
+gcc/moddi3.c:
+	.text       start:0x8025EE88 end:0x8025F3BC
+
+gcc/pure_virtual.cpp:
+	.text       start:0x8025F3BC end:0x8025F3DC
+
+gcc/udivdi3.c:
+	.text       start:0x8025F3DC end:0x8025F8C0
+
+gcc/umoddi3.c:
+	.text       start:0x8025F8C0 end:0x8025FD58
+
+gcc/terminate.cpp:
+	.text       start:0x8025FD58 end:0x8025FD94
+
+ppc/PPCArch.c:
+	.text       start:0x8025FD94 end:0x8025FED4
+
+os/OSFPRInit.c:
+	.text       start:0x8025FED4 end:0x80260060
+
+os/OSInit.c:
+	.text       start:0x80260060 end:0x802607E8
+
+os/OSError.c:
+	.text       start:0x80260960 end:0x80260974
+
+os/OSVersion.c:
+	.text       start:0x80260974 end:0x802609A0
+
+os/OSAlarm.c:
+	.text       start:0x802609A0 end:0x802610FC
+
+os/OSArena.c:
+	.text       start:0x802610FC end:0x80261148
+
+os/OSAudioSystem.c:
+	.text       start:0x80261148 end:0x802613DC
+
+os/OSCache.c:
+	.text       start:0x802613DC end:0x80261908
+
+os/OSContext.c:
+	.text       start:0x80261908 end:0x8026226C
+
+os/OSReport.c:
+	.text       start:0x8026226C end:0x80262418
+
+os/OSError2.c:
+	.text       start:0x80262418 end:0x80262630
+
+os/OSException.c:
+	.text       start:0x80262630 end:0x80262B54
+
+os/OSExec.c:
+	.text       start:0x80262B54 end:0x802630DC
+
+os/OSBootDol.c:
+	.text       start:0x802630DC end:0x80263278
+
+os/OSInterrupt.c:
+	.text       start:0x80263278 end:0x80263640
+
+os/OSInterrupt2.c:
+	.text       start:0x80263640 end:0x80263AE4
+
+os/OSLink.c:
+	.text       start:0x80263AE4 end:0x80263CBC
+
+os/OSMemory.c:
+	.text       start:0x80263CBC end:0x80263DD4
+
+os/OSReset.c:
+	.text       start:0x80263DD4 end:0x80264E8C
+
+os/OSRTC.c:
+	.text       start:0x80264E8C end:0x802654BC
+
+os/OSSystemCall.c:
+	.text       start:0x802654BC end:0x80265524
+
+os/OSThread.c:
+	.text       start:0x80265524 end:0x80266880
+
+os/OSTime.c:
+	.text       start:0x80266880 end:0x80266CA4
+
+os/__start.c:
+	.text       start:0x80266CA4 end:0x80266DAC
+
+os/OSMutex.c:
+	.text       start:0x80266DAC end:0x802670EC
+
+exi/EXIBios.c:
+	.text       start:0x802670EC end:0x80268624
+
+exi/EXIGetID.c:
+	.text       start:0x80268624 end:0x80268B60
+
+exi/EXIBarnacle.c:
+	.text       start:0x80268B60 end:0x80268D1C
+
+exi/EXIUart.c:
+	.text       start:0x80268D1C end:0x80268FA8
+
+si/SIBios.c:
+	.text       start:0x80268FA8 end:0x8026A7A0
+
+db/db.c:
+	.text       start:0x8026A7A0 end:0x8026A88C
+
+mtx/vec.c:
+	.text       start:0x8026A88C end:0x8026ACAC
+
+dvd/dvdFs.c:
+	.text       start:0x8026ACAC end:0x8026B3DC
+
+dvd/dvd.c:
+	.text       start:0x8026B3DC end:0x8026CED8
+
+dvd/dvd2.c:
+	.text       start:0x8026CED8 end:0x8026F288
+
+vi/vi.c:
+	.text       start:0x8026F288 end:0x80271694
+
+pad/Pad.c:
+	.text       start:0x80271694 end:0x80272764
+
+ai/ai.c:
+	.text       start:0x80272764 end:0x80273048
+
+sn/EXI2.c:
+	.text       start:0x80273048 end:0x80273070
+
+db/DBComm.c:
+	.text       start:0x80273070 end:0x80273AF0
+
+sn/EXAnimCache.cpp:
+	.text       start:0x80273AF0 end:0x80274A88
+	.ctors      start:0x803B3FDC end:0x803B3FE0
+
+enginex/EXEngine.cpp:
+	.text       start:0x80274A88 end:0x80353188
+	.ctors      start:0x803B3FE0 end:0x803B4060
+
+enginex/gc/GCDisplay2.cpp:
+	.text       start:0x80353188 end:0x80356CF4
+	.ctors      start:0x803B4060 end:0x803B4068
+
+enginex/EXAudioMemory.cpp:
+	.text       start:0x80356CF4 end:0x80357634
+
+sn/SNSerial.c:
+	.text       start:0x80357634 end:0x80357700
+
+math/pow.c:
+	.text       start:0x80357700 end:0x80357ED0
+
+math/sqrt.c:
+	.text       start:0x80357ED0 end:0x803580E4
+
+math/fabs.c:
+	.text       start:0x803580E4 end:0x80358120
+
+math/sin.c:
+	.text       start:0x80358120 end:0x80358200
+
+math/scalbn.c:
+	.text       start:0x80358200 end:0x80358354
+
+math/kernel_cos.c:
+	.text       start:0x80358354 end:0x80358448
+
+math/kernel_sin.c:
+	.text       start:0x80358448 end:0x803584F4
+
+math/ieee754_rem_pio2.c:
+	.text       start:0x803584F4 end:0x80358858
+
+math/copysign.c:
+	.text       start:0x80358858 end:0x803588A8
+
+math/kernel_rem_pio2.c:
+	.text       start:0x803588A8 end:0x80359130
+
+math/floor.c:
+	.text       start:0x80359130 end:0x8035928C
+
+string/tolower2.c:
+	.text       start:0x8035928C end:0x803592A8
+
+stdlib/printf.c:
+	.text       start:0x803592A8 end:0x80359388
+
+stdlib/qsort.c:
+	.text       start:0x80359388 end:0x80359D14
+
+string/memcmp.c:
+	.text       start:0x80359D14 end:0x80359DA4
+
+string/strcat.c:
+	.text       start:0x80359DA4 end:0x80359E34
+
+string/strncat.c:
+	.text       start:0x80359E34 end:0x80359EE0
+
+string/strncmp.c:
+	.text       start:0x80359EE0 end:0x80359FC0
+
+string/strstr.c:
+	.text       start:0x80359FC0 end:0x8035A028
+
+gcc/do_global_ctors.c:
+	.text       start:0x8035A028 end:0x8035A0B8
+
+gcc/main.c:
+	.text       start:0x8035A0B8 end:0x8035A0F0
+
+gcc/cmpdi2.c:
+	.text       start:0x8035A0F0 end:0x8035A12C
+
+gcc/floatdidf.c:
+	.text       start:0x8035A12C end:0x8035A188
+
+gcc/floatdisf.c:
+	.text       start:0x8035A188 end:0x8035A238
+
+gcc/ucmpdi2.c:
+	.text       start:0x8035A238 end:0x8035A320
+
+os/OSAlloc.c:
+	.text       start:0x8035A320 end:0x8035A894
+
+os/OSFont.c:
+	.text       start:0x8035A894 end:0x8035AFB0
+
+mtx/mtx.c:
+	.text       start:0x8035AFB0 end:0x8035B88C
+
+ar/ar.c:
+	.text       start:0x8035B88C end:0x8035D39C
+
+ar/arq.c:
+	.text       start:0x8035D39C end:0x8035D738
+
+ax/AX.c:
+	.text       start:0x8035D738 end:0x80360578
+
+ax/AXVPB.c:
+	.text       start:0x80360578 end:0x8036091C
+
+ax/AXOut.c:
+	.text       start:0x8036091C end:0x80361460
+
+mix/MIXInit.c:
+	.text       start:0x80361460 end:0x803623B0
+
+mix/mix.c:
+	.text       start:0x803623B0 end:0x80363574
+
+dsp/dsp.c:
+	.text       start:0x80363574 end:0x803640D8
+
+card/CARDBios.c:
+	.text       start:0x803640D8 end:0x80364F18
+
+card/CARDInit.c:
+	.text       start:0x80364F18 end:0x80365004
+
+card/CARDBlock.c:
+	.text       start:0x80365004 end:0x803662DC
+
+card/CARDCheck.c:
+	.text       start:0x803662DC end:0x80366EC4
+
+card/CARDMount.c:
+	.text       start:0x80366EC4 end:0x80367428
+
+card/CARDFormat.c:
+	.text       start:0x80367428 end:0x80367AC8
+
+card/CARDOpen.c:
+	.text       start:0x80367AC8 end:0x803686EC
+
+card/CARDRead.c:
+	.text       start:0x803686EC end:0x80368A50
+
+card/CARDWrite.c:
+	.text       start:0x80368A50 end:0x80368C08
+
+card/CARDDelete.c:
+	.text       start:0x80368C08 end:0x80368F10
+
+card/CARDStat.c:
+	.text       start:0x80368F10 end:0x8036950C
+
+card/CARDUnlock.c:
+	.text       start:0x8036950C end:0x8036A928
+
+gx/GXInit.c:
+	.text       start:0x8036A928 end:0x8036B0C0
+
+gx/GXFifo.c:
+	.text       start:0x8036B0C0 end:0x8036C028
+
+gx/GXAttr.c:
+	.text       start:0x8036C028 end:0x8036D424
+
+gx/GXTexCoord.c:
+	.text       start:0x8036D424 end:0x8036D774
+
+gx/GXMisc.c:
+	.text       start:0x8036D774 end:0x8036E11C
+
+gx/GXFrameBuf.c:
+	.text       start:0x8036E11C end:0x8036EDFC
+
+gx/GXLight.c:
+	.text       start:0x8036EDFC end:0x8036F334
+
+gx/GXTexture.c:
+	.text       start:0x8036F334 end:0x8037002C
+
+gx/GXTev.c:
+	.text       start:0x8037002C end:0x80371604
+
+gx/GXPixel.c:
+	.text       start:0x80371604 end:0x80371C08
+
+gx/GXPerf.c:
+	.text       start:0x80371C08 end:0x80372608
+
+gd/GDBase.c:
+	.text       start:0x80372608 end:0x803737C4
+
+gx/GXExtra.c:
+	.text       start:0x803737C4 end:0x80377F70
+
+hvqm/HVQM4Decode.c:
+	.text       start:0x80377F70 end:0x80379720
+
+ppc/savegpr.s:
+	.text       start:0x80379720 end:0x803797B8
+
+enginex/EXTemplates.cpp:
+	.text       start:0x803797B8 end:0x80379F00
+
+main/SETrigger_ctors.cpp:
+	.text       start:0x80379F00 end:0x8037A7FC

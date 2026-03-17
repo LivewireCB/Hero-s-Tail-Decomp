@@ -1,9 +1,11 @@
 # See config.example.yml for documentation.
 object_base: orig/G5SE7D
 object: sys/main.dol
-# hash: 3e7811204724c45fcd432e782f9769599ab388b9
+# hash: fe1d81dfe0f26a25ebbcc0e4d803f6bdc31dcfb5
 symbols: config/G5SE7D/symbols.txt
 splits: config/G5SE7D/splits.txt
 # Change this to match the linker version.
 # See config.example.yml for a list.
 # mw_comment_version: 11
+
+# we target the elf2dol build

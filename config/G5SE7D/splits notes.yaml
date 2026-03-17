@@ -30,3 +30,44 @@ Full section boundaries for elf2dol
   - delete OSDefaultExceptionHandler
   - delete __OSEVStart
   -deleted fn_80260DDC = .text:0x80260DDC; // type:function size:0x320 scope:global
+
+	- double check fn_80131FB4
+	- review weirdness at fn_80254DA4
+	- everything surrounding proviewtty needs adjusted (lots of missing symbols)
+
+
+SPLIT SECTIONS FOR MAIN.DOL
+  Sections:
+	.init       type:code align:4
+	.text       type:code align:16
+	.ctors      type:rodata align:1
+	.rodata     type:rodata align:8
+	.data       type:data align:32
+	.bss        type:bss align:32
+	.sdata      type:data align:8
+	.sbss       type:bss align:8
+	.sdata2     type:rodata align:8
+
+  SPLIT SECTIONS FOR ELF2DOL.DOL
+  Sections:
+	.init       type:code align:4
+	.text       type:code align:16
+	.ctors      type:rodata align:1
+  .dtors      type:rodata align:1
+	.rodata     type:rodata align:8
+	.data       type:data align:32
+	.bss        type:bss align:32
+	.sdata      type:data align:8
+	.sbss       type:bss align:8
+	.sdata2     type:rodata align:8
+
+	
+main/__start.cpp:
+	.init        start:0x80003100 end:0x8000348C
+	.ctors       start:0x803B3FA0 end:0x803B4068
+	.dtors       start:0x803B4080 end:0x803B4088
+
+	
+prodg_fixes.cpp:
+    .ctors      start:0x803B3FA0 end:0x803B3FA4 skip
+    .dtors     start:0x803B4080 end:0x803B4084 skip

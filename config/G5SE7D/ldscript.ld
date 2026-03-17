@@ -1,8 +1,8 @@
 ENTRY(__start) 
 PROVIDE (__stack = 0);
 /* For some reason these two aren't emitted automatically */
-/* PROVIDE (_ctors = 0x804528D0); */
-/* PROVIDE (_dtors = 0x804528D8); */
+PROVIDE (_ctors = 0x803FC418);
+PROVIDE (_dtors = 0x803FC420);
 SECTIONS
 {
 	.comment :{ *(.comment)}
@@ -14,11 +14,6 @@ SECTIONS
 		*(.text)
 		*(.gnu.warning)
 		*(.gnu.linkonce.t*)
-	} =0
-    . =  ALIGN(8);
-	.over      :
-	{
-		*(.over)
 	} =0
 	. =  ALIGN(16);
 	.ctors	  : 
