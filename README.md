@@ -45,12 +45,6 @@ When running under WSL, [objdiff](#diffing) is unable to get filesystem notifica
   git clone https://github.com/LivewireCB/Hero-s-Tail-Decomp.git
   ```
 
-- Extract `Spyro.ELF`, copy it into `orig/G5SE7D`, and convert it into a DOL using the following command:
-
-  ```sh
-    ./build/tools/dtk elf2dol ./orig/G5SE7D/Spyro.ELF ./orig/G5SE7D/sys/main.dol
-  ```
-
 - Configure:
 
   ```sh
@@ -61,6 +55,12 @@ When running under WSL, [objdiff](#diffing) is unable to get filesystem notifica
 
   ```sh
   ninja
+  ```
+
+- Extract `Spyro.ELF`, copy it into `orig/G5SE7D`, and convert it into a DOL using the following command:
+
+  ```sh
+    ./build/tools/dtk elf2dol ./orig/G5SE7D/Spyro.ELF ./orig/G5SE7D/sys/main.dol
   ```
 
 # Diffing
