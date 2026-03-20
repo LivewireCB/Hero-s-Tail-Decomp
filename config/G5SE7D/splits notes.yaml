@@ -1,73 +1,47 @@
+y
 
-I deleted .sdata2 from sections. Have no clue whats causing the error atm
+		
+main/SETrigger_ctors.cpp:
+	.text       start:0x80379F00 end:0x8037A7FC
 
-rnadom.cpp:
-	.init       start:0x80003100 end:0x800034A0
-	.text       start:0x800034A0 end:0x803B3FA0
-	.ctors      start:0x803B3FA0 end:0x803B4080
-	.dtors      start:0x803B4080 end:0x803B48C0
-	.rodata      start:0x803DDC40 end:0x80449D60
-	.data      start:0x80449D60 end:0x804CB318
-	.bss      start:0x804CB320 end:0x804CC440
-	.sdata      start:0x804CC440 end:0x804CCF10
-	.sbss      start:0x804CCF20 end:0x804CDC80
-
-Full section boundaries for elf2dol
-  source.cpp:
-	.init       start:0x80003100 end:0x800034A0
-	.text       start:0x800034A0 end:0x803B3FA0
-	.ctors      start:0x803B3FA0 end:0x803B4080
-	.dtors      start:0x803B4080 end:0x803B40A0
-	.rodata     start:0x803B40A0 end:0x803DDC40
-	.data       start:0x803DDC40 end:0x80449D60
-	.bss        start:0x80449D60 end:0x804CB318
-	.sdata      start:0x804CB320 end:0x804CC440
-	.sbss       start:0x804CC440 end:0x804CCF10
-	.sdata2     start:0x804CCF20 end:0x804CDC80
-
-  
-- symbols fixes:
-  - delete OSDefaultExceptionHandler
-  - delete __OSEVStart
-  -deleted fn_80260DDC = .text:0x80260DDC; // type:function size:0x320 scope:global
-
-	- double check fn_80131FB4
-	- review weirdness at fn_80254DA4
-	- everything surrounding proviewtty needs adjusted (lots of missing symbols)
+Weird split ranges that havent been resolved yet.
+	0x80379f00 - 0x8037abac // seems to be a lot of functions from random files??? Maybe weak from something?
+	XSEItem_Default has one function in it? The current theory is the rest is ctors and dtors
 
 
-SPLIT SECTIONS FOR MAIN.DOL
-  Sections:
-	.init       type:code align:4
-	.text       type:code align:16
-	.ctors      type:rodata align:1
-	.rodata     type:rodata align:8
-	.data       type:data align:32
-	.bss        type:bss align:32
-	.sdata      type:data align:8
-	.sbss       type:bss align:8
-	.sdata2     type:rodata align:8
+EngineX\EXWndDebug.cpp:
 
-  SPLIT SECTIONS FOR ELF2DOL.DOL
-  Sections:
-	.init       type:code align:4
-	.text       type:code align:16
-	.ctors      type:rodata align:1
-  .dtors      type:rodata align:1
-	.rodata     type:rodata align:8
-	.data       type:data align:32
-	.bss        type:bss align:32
-	.sdata      type:data align:8
-	.sbss       type:bss align:8
-	.sdata2     type:rodata align:8
+EngineX\EXWndSprite.cpp:
 
-	
-main/__start.cpp:
-	.init        start:0x80003100 end:0x8000348C
-	.ctors       start:0x803B3FA0 end:0x803B4068
-	.dtors       start:0x803B4080 end:0x803B4088
+EngineX\EXWndText.cpp:
 
-	
-prodg_fixes.cpp:
-    .ctors      start:0x803B3FA0 end:0x803B3FA4 skip
-    .dtors     start:0x803B4080 end:0x803B4084 skip
+EngineX\EXWString.cpp:
+
+EngineX\EXPhysicsSphere.cpp:
+
+EngineX\EXPhysicsSoft.cpp:
+
+EngineX\GC\EngineX.cpp:
+
+EngineX\EXArray.cpp:
+
+EngineX\EXDbgfont.cpp:
+
+EngineX\EXEffectsSys.cpp:
+
+EngineX\EXGeoGrabpoint.cpp:
+
+EngineX\EXGeoInstance.cpp:
+
+EngineX\EXGeoTexture.cpp:
+
+
+EngineX\EXItemAnimator_Camera.cpp:
+
+EngineX\EXItemAnimator_Collision.cpp:
+
+EngineX\EXRect.cpp:
+
+EngineX\GC\GCGeoEntity_Instance.cpp:
+
+EngineX\GC\GCGeoTexture.cpp:

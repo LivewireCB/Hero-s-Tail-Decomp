@@ -14,83 +14,99 @@ prodg_fixes.cpp:
 	.ctors      start:0x803B3FA0 end:0x803B3FA4 skip
 	.dtors      start:0x803B4080 end:0x803B4084 skip
 
-main/BASIC_Interpret.cpp:
-	.text       start:0x800034A0 end:0x80005134
+Spyro\Code\BASIC_System\BASIC_Interpret.cpp:
+	.text       start:0x800034A0 end:0x800039FC
 
-main/SETrigger_Default.cpp:
+Spyro\Code\BASIC_System\BASIC_InterpretInterfaceLayer.cpp:
+	.text       start:0x800039FC end:0x80003A14
+
+Spyro\Code\BASIC_System\BASIC_InterpretPrivate.cpp:
+	.text       start:0x80003A14 end:0x80005134
+
+Spyro\Code\SETrigger\SETrigger_Default.cpp:
 	.text       start:0x80005134 end:0x80005A10
 
-main/StartPoint.cpp:
+Spyro\Code\SETrigger\StartPoint.cpp:
 	.text       start:0x80005A10 end:0x800060A8
 
-main/Trigger_Special.cpp:
+Spyro\Code\SETrigger\Trigger_Special.cpp:
 	.text       start:0x800060A8 end:0x8000810C
 
-main/XSEItem_Default.cpp:
+Spyro\Code\XSEItem\XSEItem_Default.cpp:
 	.text       start:0x8000810C end:0x80008164
 
-main/Player_BallGadget.cpp:
+Spyro\Code\XSEItemHandler\Player\BallGadget\Player_BallGadget.cpp:
 	.text       start:0x80008164 end:0x800127E0
 
-main/Player_Ember.cpp:
+Spyro\Code\XSEItemHandler\Player\Ember\Player_Ember.cpp:
 	.text       start:0x800127E0 end:0x80012900
 
-main/Player_Flame.cpp:
+Spyro\Code\XSEItemHandler\Player\Flame\Player_Flame.cpp:
 	.text       start:0x80012900 end:0x80012A20
 
-main/Player_Sparx.cpp:
+Spyro\Code\XSEItemHandler\Player\Sparx\Player_Sparx.cpp:
 	.text       start:0x80012A20 end:0x8001F630
 
-main/PreBlinky.cpp:
+Spyro\Code\XSEItemHandler\Player\Blinky\PreBlinky.cpp:
 	.text       start:0x8001F630 end:0x80030608
 	.ctors      start:0x803B3FA4 end:0x803B3FA8
 
-main/PreBosses.cpp:
+Spyro\Code\XSEItemHandler\Bosses\PreBosses.cpp:
 	.text       start:0x80030608 end:0x80046510
 	.ctors      start:0x803B3FA8 end:0x803B3FAC
 
-main/PreHunter.cpp:
+Spyro\Code\XSEItemHandler\Player\Hunter\PreHunter.cpp:
 	.text       start:0x80046510 end:0x80057FB4
 
-main/PrePlayer.cpp:
-	.text       start:0x80057FB4 end:0x80067238
-
-main/PreSpyro.cpp:
-	.text       start:0x80067238 end:0x8007AF4C
+Spyro\Code\XSEItemHandler\Player\PrePlayer.cpp:
+	.text       start:0x80057FB4 end:0x8007AF4C
 	.ctors      start:0x803B3FAC end:0x803B3FB0
 
-main/PreSgtBird.cpp:
+Spyro\Code\XSEItemHandler\Player\SgtBird\PreSgtBird.cpp:
 	.text       start:0x8007AF4C end:0x80085A3C
 
-main/PreSpyro_tail.cpp:
-	.text       start:0x80085A3C end:0x800B8B50
+Spyro\Code\XSEItemHandler\Player\Spyro\PreSpyro.cpp:
+	.text       start:0x80085A3C end:0x800B8C38
+	.ctors      start:0x803B3FB0 end:0x803B3FB4
 
-main/PreSXEItemHandler.cpp:
-	.text       start:0x800B8B50 end:0x801A58F0
-	.ctors      start:0x803B3FB0 end:0x803B3FC4
+Spyro\Code\XSEItemHandler\PreSXEItemHandler.cpp:
+	.text       start:0x800B8C38 end:0x8010A868
+	.ctors      start:0x803B3FB4 end:0x803B3FB8
 
-main/PreGUI.cpp:
-	.text       start:0x801A58F0 end:0x801CE568
+Spyro\Code\Camera\PreCamera.cpp:
+	.text       start:0x8010A868 end:0x8012BAC4
+	.ctors      start:0x803B3FB8 end:0x803B3FBC
+
+Spyro\Code\PreCode.cpp:
+	.text       start:0x8012BAC4 end:0x8013D104
+	.ctors      start:0x803B3FBC end:0x803B3FC0
+
+Spyro\Code\Generic\PreGeneric.cpp:
+	.text       start:0x8013D104 end:0x801A586C
+	.ctors      start:0x803B3FC0 end:0x803B3FC4
+
+Spyro\Code\GUI\PreGUI.cpp:
+	.text       start:0x801A586C end:0x801B9A60
 	.ctors      start:0x803B3FC4 end:0x803B3FC8
 
-main/PreSE.cpp:
-	.text       start:0x801CE568 end:0x80200760
+Spyro\Code\Levels\PreLevels.cpp:
+	.text       start:0x801B9A60 end:0x80200760
 	.ctors      start:0x803B3FC8 end:0x803B3FCC
 
-main/PreMiniGames.cpp:
+Spyro\Code\Levels\MiniGames\PreMiniGames.cpp:
 	.text       start:0x80200760 end:0x8021CC28
 	.ctors      start:0x803B3FCC end:0x803B3FD0
 
-main/PrePanel.cpp:
-	.text       start:0x8021CC28 end:0x80232C6C
+Spyro\Code\Panel\PrePanel.cpp:
+	.text       start:0x8021CC28 end:0x8022C0DC
 	.ctors      start:0x803B3FD0 end:0x803B3FD4
 
-main/PreLevels.cpp:
-	.text       start:0x80232C6C end:0x8024BECC
+Spyro\Code\SE\PreSE.cpp:
+	.text       start:0x8022C0DC end:0x802449DC
 	.ctors      start:0x803B3FD4 end:0x803B3FD8
 
-main/PreSupport.cpp:
-	.text       start:0x8024BECC end:0x802537B8
+Spyro\Code\Support\PreSupport.cpp:
+	.text       start:0x802449DC end:0x802537B8
 	.ctors      start:0x803B3FD8 end:0x803B3FDC
 
 sn/SNDebug.cpp:
@@ -249,140 +265,368 @@ gcc/terminate.cpp:
 ppc/PPCArch.c:
 	.text       start:0x8025FD94 end:0x8025FED4
 
-os/OSFPRInit.c:
+dolphin/os/OSFPRInit.c:
 	.text       start:0x8025FED4 end:0x80260060
 
-os/OSInit.c:
+dolphin/os/OSInit.c:
 	.text       start:0x80260060 end:0x802607E8
 
-os/OSError.c:
+dolphin/os/OSError.c:
 	.text       start:0x80260960 end:0x80260974
 
-os/OSVersion.c:
+dolphin/os/OSVersion.c:
 	.text       start:0x80260974 end:0x802609A0
 
-os/OSAlarm.c:
+dolphin/os/OSAlarm.c:
 	.text       start:0x802609A0 end:0x802610FC
 
-os/OSArena.c:
+dolphin/os/OSArena.c:
 	.text       start:0x802610FC end:0x80261148
 
-os/OSAudioSystem.c:
+dolphin/os/OSAudioSystem.c:
 	.text       start:0x80261148 end:0x802613DC
 
-os/OSCache.c:
+dolphin/os/OSCache.c:
 	.text       start:0x802613DC end:0x80261908
 
-os/OSContext.c:
+dolphin/os/OSContext.c:
 	.text       start:0x80261908 end:0x8026226C
 
-os/OSReport.c:
+dolphin/os/OSReport.c:
 	.text       start:0x8026226C end:0x80262418
 
-os/OSError2.c:
+dolphin/os/OSError2.c:
 	.text       start:0x80262418 end:0x80262630
 
-os/OSException.c:
+dolphin/os/OSException.c:
 	.text       start:0x80262630 end:0x80262B54
 
-os/OSExec.c:
+dolphin/os/OSExec.c:
 	.text       start:0x80262B54 end:0x802630DC
 
-os/OSBootDol.c:
+dolphin/os/OSBootDol.c:
 	.text       start:0x802630DC end:0x80263278
 
-os/OSInterrupt.c:
+dolphin/os/OSInterrupt.c:
 	.text       start:0x80263278 end:0x80263640
 
-os/OSInterrupt2.c:
+dolphin/os/OSInterrupt2.c:
 	.text       start:0x80263640 end:0x80263AE4
 
-os/OSLink.c:
+dolphin/os/OSLink.c:
 	.text       start:0x80263AE4 end:0x80263CBC
 
-os/OSMemory.c:
+dolphin/os/OSMemory.c:
 	.text       start:0x80263CBC end:0x80263DD4
 
-os/OSReset.c:
+dolphin/os/OSReset.c:
 	.text       start:0x80263DD4 end:0x80264E8C
 
-os/OSRTC.c:
+dolphin/os/OSRTC.c:
 	.text       start:0x80264E8C end:0x802654BC
 
-os/OSSystemCall.c:
+dolphin/os/OSSystemCall.c:
 	.text       start:0x802654BC end:0x80265524
 
-os/OSThread.c:
+dolphin/os/OSThread.c:
 	.text       start:0x80265524 end:0x80266880
 
-os/OSTime.c:
+dolphin/os/OSTime.c:
 	.text       start:0x80266880 end:0x80266CA4
 
-os/__start.c:
+dolphin/os/__start.c:
 	.text       start:0x80266CA4 end:0x80266DAC
 
-os/OSMutex.c:
+dolphin/os/OSMutex.c:
 	.text       start:0x80266DAC end:0x802670EC
 
-exi/EXIBios.c:
+dolphin/exi/EXIBios.c:
 	.text       start:0x802670EC end:0x80268624
 
-exi/EXIGetID.c:
+dolphin/exi/EXIGetID.c:
 	.text       start:0x80268624 end:0x80268B60
 
-exi/EXIBarnacle.c:
+dolphin/exi/EXIBarnacle.c:
 	.text       start:0x80268B60 end:0x80268D1C
 
-exi/EXIUart.c:
+dolphin/exi/EXIUart.c:
 	.text       start:0x80268D1C end:0x80268FA8
 
-si/SIBios.c:
+dolphin/si/SIBios.c:
 	.text       start:0x80268FA8 end:0x8026A7A0
 
-db/db.c:
+dolphin/db/db.c:
 	.text       start:0x8026A7A0 end:0x8026A88C
 
-mtx/vec.c:
+dolphin/mtx/vec.c:
 	.text       start:0x8026A88C end:0x8026ACAC
 
-dvd/dvdFs.c:
+dolphin/dvd/dvdFs.c:
 	.text       start:0x8026ACAC end:0x8026B3DC
 
-dvd/dvd.c:
+dolphin/dvd/dvd.c:
 	.text       start:0x8026B3DC end:0x8026CED8
 
-dvd/dvd2.c:
+dolphin/dvd/dvd2.c:
 	.text       start:0x8026CED8 end:0x8026F288
 
-vi/vi.c:
+dolphin/vi/vi.c:
 	.text       start:0x8026F288 end:0x80271694
 
-pad/Pad.c:
+dolphin/pad/Pad.c:
 	.text       start:0x80271694 end:0x80272764
 
-ai/ai.c:
+dolphin/ai/ai.c:
 	.text       start:0x80272764 end:0x80273048
 
 sn/EXI2.c:
 	.text       start:0x80273048 end:0x80273070
 
-db/DBComm.c:
+unsorted/db/DBComm.c:
 	.text       start:0x80273070 end:0x80273AF0
 
-sn/EXAnimCache.cpp:
+EngineX/EXAnimCache.cpp:
 	.text       start:0x80273AF0 end:0x80274A88
 	.ctors      start:0x803B3FDC end:0x803B3FE0
 
-enginex/EXEngine.cpp:
-	.text       start:0x80274A88 end:0x80353188
-	.ctors      start:0x803B3FE0 end:0x803B4060
+EngineX\EXApp.cpp:
+	.text       start:0x80274A88 end:0x80275488
 
-enginex/gc/GCDisplay2.cpp:
-	.text       start:0x80353188 end:0x80356CF4
-	.ctors      start:0x803B4060 end:0x803B4068
+EngineX\EXBounds.cpp:
+	.text       start:0x80275488 end:0x80275EB0
 
-enginex/EXAudioMemory.cpp:
-	.text       start:0x80356CF4 end:0x80357634
+EngineX\EXCamera.cpp:
+	.text       start:0x80275EB0 end:0x802768A0
+
+EngineX\EXCollision.cpp:
+	.text       start:0x802768A0 end:0x802795F8
+
+EngineX\EXCollisionTypes.cpp:
+	.text       start:0x802795F8 end:0x8027A620
+	.ctors      start:0x803B3FE0 end:0x803B3FE4
+
+EngineX\EXDatum.cpp:
+	.text       start:0x8027A620 end:0x8027B6F0
+
+EngineX\EXDebugTree.cpp:
+	.text       start:0x8027B6F0 end:0x8027C388
+
+EngineX\EXDebugWnd.cpp:
+	.text       start:0x8027C388 end:0x8027E334
+
+EngineX\EXDebugTreeWnd.cpp:
+	.text       start:0x8027E334 end:0x8027FC58
+
+EngineX\EXDisplay.cpp:
+	.text       start:0x8027FC58 end:0x80280C18
+	.ctors      start:0x803B3FE4 end:0x803B3FE8
+
+EngineX\EXDistance.cpp:
+	.text       start:0x80280C18 end:0x80287458
+
+EngineX\EXFile.cpp:
+	.text       start:0x80287458 end:0x80287A8C
+
+EngineX\EXFileSys.cpp:
+	.text       start:0x80287A8C end:0x8028949C
+	.ctors      start:0x803B3FE8 end:0x803B3FEC
+
+EngineX\EXGamepad.cpp:
+	.text       start:0x8028949C end:0x80289744
+
+EngineX\EXGeoAnim.cpp:
+	.text       start:0x80289744 end:0x8028B370
+
+EngineX\EXGeoCommon.cpp:
+	.text       start:0x8028B370 end:0x8028C098
+	.ctors      start:0x803B3FEC end:0x803B3FF0
+
+EngineX\EXGeoEntity.cpp:
+	.text       start:0x8028C098 end:0x8028DC04
+	.ctors      start:0x803B3FF0 end:0x803B3FF4
+
+EngineX\EXGeoEntity_NavMesh.cpp:
+	.text       start:0x8028DC04 end:0x8028ECEC
+	.ctors      start:0x803B3FF4 end:0x803B3FF8
+
+EngineX\EXGeoFace.cpp:
+	.text       start:0x8028ECEC end:0x8028ED88
+
+EngineX\EXGeoFile.cpp:
+	.text       start:0x8028ED88 end:0x802924F8
+	.ctors      start:0x803B3FF8 end:0x803B3FFC
+
+EngineX\EXGeoMap.cpp:
+	.text       start:0x802924F8 end:0x8029659C
+
+EngineX\EXGeoParticle.cpp:
+	.text       start:0x8029659C end:0x802965BC
+
+EngineX\EXGeoScript.cpp:
+	.text       start:0x802965BC end:0x802965D0
+
+EngineX\EXGeoSpreadSheet.cpp:
+	.text       start:0x802965D0 end:0x80296618
+
+EngineX\EXGeoViewer.cpp:
+	.text       start:0x80296618 end:0x8029E3E4
+
+EngineX\EXHashcode.cpp:
+	.text       start:0x8029E3E4 end:0x8029E3EC
+
+EngineX\EXIntersection.cpp:
+	.text       start:0x8029E3EC end:0x8029F008
+
+EngineX\EXItem.cpp:
+	.text       start:0x8029F008 end:0x802A168C
+
+EngineX\EXItemAnimator.cpp:
+	.text       start:0x802A168C end:0x802A245C
+	.ctors      start:0x803B3FFC end:0x803B4000
+
+EngineX\EXItemAnimator_Anim.cpp:
+	.text       start:0x802A245C end:0x802A8F10
+
+EngineX\EXItemAnimator_AnimModifier.cpp:
+	.text       start:0x802A8F10 end:0x802A9834
+
+EngineX\EXItemAnimator_DynLight.cpp:
+	.text       start:0x802A9834 end:0x802A9E04
+
+EngineX\EXItemAnimator_Entity.cpp:
+	.text       start:0x802A9E04 end:0x802AB220
+
+EngineX\EXItemAnimator_Map.cpp:
+	.text       start:0x802AB220 end:0x802AE8A0
+
+EngineX\EXItemAnimator_Particle.cpp:
+	.text       start:0x802AE8A0 end:0x802AEC1C
+
+EngineX\EXItemAnimator_Script.cpp:
+	.text       start:0x802AEC1C end:0x802B2504
+
+EngineX\EXItemAnimator_ScriptControllers.cpp:
+	.text       start:0x802B2504 end:0x802B3924
+
+EngineX\EXItemAnimator_Sound.cpp:
+	.text       start:0x802B3924 end:0x802B3D80
+
+EngineX\EXItemCtrl.cpp:
+	.text       start:0x802B3D80 end:0x802B4BDC
+	.ctors      start:0x803B4000 end:0x803B4004
+
+EngineX\EXItemCtrl_Anim.cpp:
+	.text       start:0x802B4BDC end:0x802B9378
+	.ctors      start:0x803B4004 end:0x803B4008
+
+EngineX\EXItemCtrl_AnimModifier.cpp:
+	.text       start:0x802B9378 end:0x802B9C50
+
+EngineX\EXItemEnv.cpp:
+	.text       start:0x802B9C50 end:0x802BFF14
+	.ctors      start:0x803B4008 end:0x803B400C
+
+EngineX\EXItemHandler.cpp:
+	.text       start:0x802BFF14 end:0x802BFFA8
+
+EngineX\EXItemPhysics.cpp:
+	.text       start:0x802BFFA8 end:0x802C0208
+
+EngineX\EXItemRender.cpp:
+	.text       start:0x802C0208 end:0x802C0284
+
+EngineX\EXItemRender_Anim.cpp:
+	.text       start:0x802C0284 end:0x802C5914
+
+EngineX\EXItemRender_Entity.cpp:
+	.text       start:0x802C5914 end:0x802C5F00
+
+EngineX\EXLightManager.cpp:
+	.text       start:0x802C5F00 end:0x802C69D0
+
+EngineX\EXLine.cpp:
+	.text       start:0x802C69D0 end:0x802C6E88
+
+EngineX\EXList.cpp:
+	.text       start:0x802C6E88 end:0x802C737C
+
+EngineX\EXMalloc.cpp:
+	.text       start:0x802C737C end:0x802C933C
+	.ctors      start:0x803B400C end:0x803B4010
+
+EngineX\EXMaths.cpp:
+	.text       start:0x802C933C end:0x802C95AC
+
+EngineX\EXMatrix.cpp:
+	.text       start:0x802C95AC end:0x802CA2EC
+
+EngineX\EXMemCard.cpp:
+	.text       start:0x802CA2EC end:0x802CAF50
+	.ctors      start:0x803B4010 end:0x803B4014
+
+EngineX\EXMemoryManager.cpp:
+	.text       start:0x802CAF50 end:0x802CB200
+
+EngineX\EXMenu.cpp:
+	.text       start:0x802CB200 end:0x802CC8EC
+	.ctors      start:0x803B4014 end:0x803B4018
+
+EngineX\EXParticle.cpp:
+	.text       start:0x802CC8EC end:0x802D22DC
+	.ctors      start:0x803B4018 end:0x803B401C
+
+EngineX\EXParticleEmitter.cpp:
+	.text       start:0x802D22DC end:0x802F5088
+	.ctors      start:0x803B401C end:0x803B4020
+
+EngineX\EXRand.cpp:
+	.text       start:0x802F5088 end:0x802F518C
+	.ctors      start:0x803B4020 end:0x803B4024
+
+EngineX\EXRenderEnv.cpp:
+	.text       start:0x802F518C end:0x802F6030
+	.ctors      start:0x803B4024 end:0x803B4028
+
+EngineX\EXResourceWnd.cpp:
+	.text       start:0x802F6030 end:0x802F89BC
+
+EngineX\EXScratchPad.cpp:
+	.text       start:0x802F89BC end:0x802F8A94
+	.ctors      start:0x803B4028 end:0x803B402C
+
+EngineX\EXSoundManager.cpp:
+	.text       start:0x802F8A94 end:0x802FB734
+	.ctors      start:0x803B402C end:0x803B4030
+
+EngineX\EXStateSaver.cpp:
+	.text       start:0x802FB734 end:0x802FB930
+	.ctors      start:0x803B4030 end:0x803B4034
+
+EngineX\EXStats.cpp:
+	.text       start:0x802FB930 end:0x802FBDDC
+	.ctors      start:0x803B4034 end:0x803B4038
+
+EngineX\EXStdFuncs.cpp:
+	.text       start:0x802FBDDC end:0x802FCB1C
+
+EngineX\EXString.cpp:
+	.text       start:0x802FCB1C end:0x802FE250
+
+EngineX\EXSwoosh.cpp:
+	.text       start:0x802FE250 end:0x802FFDDC
+	.ctors      start:0x803B4038 end:0x803B403C
+
+EngineX\EXTexture.cpp:
+	.text       start:0x802FFDDC end:0x80300664
+
+EngineX\EXVector.cpp:
+	.text       start:0x80300664 end:0x80300C6C
+
+EngineX\EXWatcher.cpp:
+	.text       start:0x80300C6C end:0x8030123C
+
+EngineX\EXWnd.cpp:
+	.text       start:0x8030123C end:0x8030336C
 
 sn/SNSerial.c:
 	.text       start:0x80357634 end:0x80357700
@@ -462,112 +706,112 @@ gcc/floatdisf.c:
 gcc/ucmpdi2.c:
 	.text       start:0x8035A238 end:0x8035A320
 
-os/OSAlloc.c:
+dolphin/os/OSAlloc.c:
 	.text       start:0x8035A320 end:0x8035A894
 
-os/OSFont.c:
+dolphin/os/OSFont.c:
 	.text       start:0x8035A894 end:0x8035AFB0
 
-mtx/mtx.c:
+dolphin/mtx/mtx.c:
 	.text       start:0x8035AFB0 end:0x8035B88C
 
-ar/ar.c:
+dolphin/ar/ar.c:
 	.text       start:0x8035B88C end:0x8035D39C
 
-ar/arq.c:
+dolphin/ar/arq.c:
 	.text       start:0x8035D39C end:0x8035D738
 
-ax/AX.c:
+dolphin/ax/AX.c:
 	.text       start:0x8035D738 end:0x80360578
 
-ax/AXVPB.c:
+dolphin/ax/AXVPB.c:
 	.text       start:0x80360578 end:0x8036091C
 
-ax/AXOut.c:
+dolphin/ax/AXOut.c:
 	.text       start:0x8036091C end:0x80361460
 
-mix/MIXInit.c:
+dolphin/mix/MIXInit.c:
 	.text       start:0x80361460 end:0x803623B0
 
-mix/mix.c:
+dolphin/mix/mix.c:
 	.text       start:0x803623B0 end:0x80363574
 
-dsp/dsp.c:
+dolphin/dsp/dsp.c:
 	.text       start:0x80363574 end:0x803640D8
 
-card/CARDBios.c:
+dolphin/card/CARDBios.c:
 	.text       start:0x803640D8 end:0x80364F18
 
-card/CARDInit.c:
+dolphin/card/CARDInit.c:
 	.text       start:0x80364F18 end:0x80365004
 
-card/CARDBlock.c:
+dolphin/card/CARDBlock.c:
 	.text       start:0x80365004 end:0x803662DC
 
-card/CARDCheck.c:
+dolphin/card/CARDCheck.c:
 	.text       start:0x803662DC end:0x80366EC4
 
-card/CARDMount.c:
+dolphin/card/CARDMount.c:
 	.text       start:0x80366EC4 end:0x80367428
 
-card/CARDFormat.c:
+dolphin/card/CARDFormat.c:
 	.text       start:0x80367428 end:0x80367AC8
 
-card/CARDOpen.c:
+dolphin/card/CARDOpen.c:
 	.text       start:0x80367AC8 end:0x803686EC
 
-card/CARDRead.c:
+dolphin/card/CARDRead.c:
 	.text       start:0x803686EC end:0x80368A50
 
-card/CARDWrite.c:
+dolphin/card/CARDWrite.c:
 	.text       start:0x80368A50 end:0x80368C08
 
-card/CARDDelete.c:
+dolphin/card/CARDDelete.c:
 	.text       start:0x80368C08 end:0x80368F10
 
-card/CARDStat.c:
+dolphin/card/CARDStat.c:
 	.text       start:0x80368F10 end:0x8036950C
 
-card/CARDUnlock.c:
+dolphin/card/CARDUnlock.c:
 	.text       start:0x8036950C end:0x8036A928
 
-gx/GXInit.c:
+dolphin/gx/GXInit.c:
 	.text       start:0x8036A928 end:0x8036B0C0
 
-gx/GXFifo.c:
+dolphin/gx/GXFifo.c:
 	.text       start:0x8036B0C0 end:0x8036C028
 
-gx/GXAttr.c:
+dolphin/gx/GXAttr.c:
 	.text       start:0x8036C028 end:0x8036D424
 
-gx/GXTexCoord.c:
+dolphin/gx/GXTexCoord.c:
 	.text       start:0x8036D424 end:0x8036D774
 
-gx/GXMisc.c:
+dolphin/gx/GXMisc.c:
 	.text       start:0x8036D774 end:0x8036E11C
 
-gx/GXFrameBuf.c:
+dolphin/gx/GXFrameBuf.c:
 	.text       start:0x8036E11C end:0x8036EDFC
 
-gx/GXLight.c:
+dolphin/gx/GXLight.c:
 	.text       start:0x8036EDFC end:0x8036F334
 
-gx/GXTexture.c:
+dolphin/gx/GXTexture.c:
 	.text       start:0x8036F334 end:0x8037002C
 
-gx/GXTev.c:
+dolphin/gx/GXTev.c:
 	.text       start:0x8037002C end:0x80371604
 
-gx/GXPixel.c:
+dolphin/gx/GXPixel.c:
 	.text       start:0x80371604 end:0x80371C08
 
-gx/GXPerf.c:
+dolphin/gx/GXPerf.c:
 	.text       start:0x80371C08 end:0x80372608
 
-gd/GDBase.c:
+dolphin/gd/GDBase.c:
 	.text       start:0x80372608 end:0x803737C4
 
-gx/GXExtra.c:
+dolphin/gx/GXExtra.c:
 	.text       start:0x803737C4 end:0x80377F70
 
 hvqm/HVQM4Decode.c:
@@ -576,8 +820,8 @@ hvqm/HVQM4Decode.c:
 ppc/savegpr.s:
 	.text       start:0x80379720 end:0x803797B8
 
-enginex/EXTemplates.cpp:
+EngineX/EXTemplates.cpp:
 	.text       start:0x803797B8 end:0x80379F00
 
-main/SETrigger_ctors.cpp:
-	.text       start:0x80379F00 end:0x8037A7FC
+Spyro\Code\SETrigger\TriggerList.cpp:
+	.text       start:0x8037ABAC end:0x8037AE60
