@@ -31,8 +31,6 @@ from tools.project import (
 DEFAULT_VERSION = 0
 VERSIONS = [
     "G5SE7D",  # 0
-    "EUROPEGERMILESTONE",  # 1
-    "SLES-53558-A124",  # 2
 ]
 
 parser = argparse.ArgumentParser()
@@ -223,7 +221,6 @@ if config.platform == Platform.GC_WII:
         "-fp_contract on",
         "-str reuse",
         "-i include",
-        "-i src/Speed/GameCube/bWare/GameCube/dolphinsdk/include",
         f"-i build/{config.version}/include",
         "-multibyte",
         f"-DVERSION={version_num}",
@@ -238,11 +235,7 @@ if config.platform == Platform.GC_WII:
         # "-Wreturn-type", # enable at some point
         "-Wno-ctor-dtor-privacy",  # because of AttribSys for example
         "-Woverloaded-virtual",
-        "-I src/Speed/Indep/Libs/Support/stlgc",
-        "-I src/Speed/GameCube/Libs/stl/STLport-4.5/stlport",
-        "-I src/Speed/GameCube/bWare/GameCube/bWare/GameCube/SN/include",
         "-I include",
-        "-I src/Speed/GameCube/bWare/GameCube/dolphinsdk/include",
         "-I src/Packages",
         "-I ./",
         "-I src",
@@ -321,6 +314,7 @@ if config.platform == Platform.GC_WII:
     def DolphinLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
         return {
             "lib": lib_name,
+            "src_dir": "src",
             "toolchain_version": "GC/1.2.5n",
             "cflags": cflags_dolphin,
             "progress_category": "sdk",
@@ -433,13 +427,79 @@ if config.platform == Platform.GC_WII:
             {
                 "lib": "libsn",
                 "toolchain_version": config.linker_version,
-                "cflags": cflags_runtime,
+                "cflags": cflags_base_prodg,
                 "host": False,
                 "progress_category": "libs",  # str | List[str]
                 "objects": [
-                    Object(NonMatching, "LibSN/prodg_fixes.cpp"),
+                    Object(NonMatching, "prodg_fixes.cpp"),
                 ],
             },
+            {
+                "lib": "Spyro",
+                "src_dir": "src",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_game,
+                "host": False,
+                "progress_category": "game",  # str | List[str]
+                "objects": [
+                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_Interpret.cpp"),
+                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_InterpretInterfaceLayer.cpp"),
+                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_InterpretPrivate.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/SETrigger_Default.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/StartPoint.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/Trigger_Special.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItem/XSEItem_Default.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/BallGadget/Player_BallGadget.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Ember/Player_Ember.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Flame/Player_Flame.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Sparx/Player_Sparx.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Blinky/PreBlinky.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Bosses/PreBosses.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Hunter/PreHunter.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/PrePlayer.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/SgtBird/PreSgtBird.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Spyro/PreSpyro.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/PreSXEItemHandler.cpp"),
+                    Object(NonMatching, "Spyro/Code/Camera/PreCamera.cpp"),
+                    Object(NonMatching, "Spyro/Code/PreCode.cpp"),
+                    Object(NonMatching, "Spyro/Code/Generic/PreGeneric.cpp"),
+                    Object(NonMatching, "Spyro/Code/GUI/PreGUI.cpp"),
+                    Object(NonMatching, "Spyro/Code/Levels/PreLevels.cpp"),
+                    Object(NonMatching, "Spyro/Code/Levels/MiniGames/PreMiniGames.cpp"),
+                    Object(NonMatching, "Spyro/Code/Panel/PrePanel.cpp"),
+                    Object(NonMatching, "Spyro/Code/SE/PreSE.cpp"),
+                    Object(NonMatching, "Spyro/Code/Support/PreSupport.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/TriggerList.cpp"),
+                ],
+            },
+            {
+                "lib": "EngineX",
+                "src_dir": "src",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_game,
+                "host": False,
+                "progress_category": "engX",  # str | List[str]
+                "objects": [
+                    Object(NonMatching, "EngineX/EXAnimCache.cpp"),
+                ],
+            },
+            {
+                "lib": "stdlib",
+                "src_dir": "src",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_game,
+                "host": False,
+                "progress_category": "libc",  # str | List[str]
+                "objects": [
+                    Object(NonMatching, "stdlib/itoa.c"),
+                ],
+            },
+            DolphinLib(
+                "ar",
+                [
+                    Object(NonMatching, "dolphin/ar/ar.c"),
+                ],
+            ),
         ]
     )
 
@@ -465,6 +525,7 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
 # Adjust as desired for your project
 config.progress_categories = [
     ProgressCategory("game", "Game Code"),
+    ProgressCategory("engX", "EngineX code"),
     ProgressCategory("sdk", "SDK Code"),
     ProgressCategory("libc", "STD Code"),
     ProgressCategory("libs", "Library Code"),
