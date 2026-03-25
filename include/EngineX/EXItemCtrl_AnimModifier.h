@@ -1,0 +1,6 @@
+#ifndef EXITEMCTRL_ANIMMODIFIER_H
+#define EXITEMCTRL_ANIMMODIFIER_H
+
+#include "types.h"
+
+#endif // EXITEMCTRL_ANIMMODIFIER_H

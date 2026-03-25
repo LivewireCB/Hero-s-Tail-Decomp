@@ -1,0 +1,6 @@
+#ifndef EXITEMRENDER_ENTITY_H
+#define EXITEMRENDER_ENTITY_H
+
+#include "types.h"
+
+#endif // EXITEMRENDER_ENTITY_H

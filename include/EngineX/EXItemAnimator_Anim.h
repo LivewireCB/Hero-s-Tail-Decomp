@@ -1,0 +1,6 @@
+#ifndef EXITEMANIMATOR_ANIM_H
+#define EXITEMANIMATOR_ANIM_H
+
+#include "types.h"
+
+#endif // EXITEMANIMATOR_ANIM_H

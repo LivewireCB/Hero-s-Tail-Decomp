@@ -1,0 +1,6 @@
+#ifndef BASIC_INTERPRET_PRIVATE_H
+#define BASIC_INTERPRET_PRIVATE_H
+
+#include "types.h"
+
+#endif // BASIC_INTERPRET_PRIVATE_H

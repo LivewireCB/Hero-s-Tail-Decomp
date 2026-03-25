@@ -26,6 +26,8 @@ EngineX\EXPhysicsSphere.cpp:
 
 EngineX\EXPhysicsSoft.cpp:
 
+EXPhysics6D.cpp:
+
 EngineX\EXArray.cpp:
 
 EngineX\EXDbgfont.cpp:

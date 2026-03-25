@@ -1,0 +1,6 @@
+#ifndef EXITEMANIMATOR_ENTITY_H
+#define EXITEMANIMATOR_ENTITY_H
+
+#include "types.h"
+
+#endif // EXITEMANIMATOR_ENTITY_H

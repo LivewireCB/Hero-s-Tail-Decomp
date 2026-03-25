@@ -1,0 +1,6 @@
+#ifndef EXITEMANIMATOR_CAMERA_H
+#define EXITEMANIMATOR_CAMERA_H
+
+#include "types.h"
+
+#endif // EXITEMANIMATOR_CAMERA_H

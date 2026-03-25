@@ -1,0 +1,6 @@
+#ifndef EXITEMANIMATOR_PARTICLE_H
+#define EXITEMANIMATOR_PARTICLE_H
+
+#include "types.h"
+
+#endif // EXITEMANIMATOR_PARTICLE_H

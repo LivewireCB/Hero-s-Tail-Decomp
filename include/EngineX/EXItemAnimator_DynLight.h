@@ -1,0 +1,6 @@
+#ifndef EXITEMANIMATOR_DYNLIGHT_H
+#define EXITEMANIMATOR_DYNLIGHT_H
+
+#include "types.h"
+
+#endif // EXITEMANIMATOR_DYNLIGHT_H

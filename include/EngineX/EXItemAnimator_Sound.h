@@ -1,0 +1,6 @@
+#ifndef EXITEMANIMATOR_SOUND_H
+#define EXITEMANIMATOR_SOUND_H
+
+#include "types.h"
+
+#endif // EXITEMANIMATOR_SOUND_H

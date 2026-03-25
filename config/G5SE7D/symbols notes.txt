@@ -1,0 +1,234 @@
+splits
+
+- Use the main.dol with the symbol mapped loaded into it
+  If you don,t your asking for pain
+
+These are ALL probably wrong. The ones marked it are surely wrong, but theres a chance not.
+
+.rodata
+
+Im fairly certain these are all split wrong lol
+
+0x803B48C0 - 0x803B4A8C // SETrigger_Default
+0x803B4A8C - 0x803B4ED0 // SETrigger_Startpoint or just Startpoint
+0x803B4ED0 - 0x803B5214 // Trigger_Special
+0x803B5214 - 0x803B56A4 // ??? currently unsplit ???
+0x803B56A4 - 0x803B5AEC // ball gadget
+0x803B5AEC - 0x803B5D30 // ??? currently unsplit, dunno what it is yet ???
+0x803B5D30 - 0x803B5FC0 // ember
+0x803B5FC0 - 0x803B6250 // flame
+0x803B6250 - 0x803B6A38 // sparx
+0x803B6A38 - 0x803B73A8 // blinky
+0x803B73A8 - 0x803B7F88 // Bosses
+0x803B7F88 - 0x803B88F0 // hunter
+0x803B88F0 - 0x803B9F50 // player
+0x803B9F50 - 0x803BA720 // sgtbird
+0x803BA720 - 0x803BBE20 // spyro
+0x803BBE20 - 0x803BEE80 // PreSXEItemHandler
+0x803BEE80 - 0x803BFF68 // PreCamera possibly wrong
+0x803BFF68 - 0x803C1298 // PreCode possibly wrong
+0x803C1298 - 0x803C6BA8 // PreGeneric
+0x803C6BA8 - 0x803C7AB0 // PreGUI
+0x803C7AB0 - 0x803BC4F0 // PreLevels
+0x803BC4F0 - 0x803BDDA0 // PreMinigame
+0x803BDDA0 - 0x803CE4B8 // PrePanel
+0x803CE4B8 - 0x803CF458 // PreSE
+0x803CF458 - 0x803CF930 // PreSupport
+
+0x803CF930 - 0x803CF938 // SNDEBUG
+0x803CF938 - 0x803CF950 // SNInitEXI2TCHandler
+0x803CF950 - 0x803CFB50 // Malloc.c
+0x803CFB50 - 0x803cfb90 // itoa.c
+0x803cfb90 - 0x803cfc8d // vfprintf
+0x803cfc8d - 0x803cfd90 // to upper or something like that
+0x803cfd90 - 0x803cfde8 // string/locale.c
+0x803cfde8 - 0x803cfecc // stdlib/locale.c
+0x803cfecc - 0x803cff70 // mbtowc
+
+0x803cff70 - 0x803d016c // EXAnimCache
+0x803d016c - 0x803d01b0 // ExApp
+0x803d01b0 - 0x803d01d4 // ExBounds
+0x803d01d4 - 0x803d04ac // ExCamera
+0x803d04ac - 0x803d0514 // ExCollsion
+0x803d0514 - 0x803d0558 // ExCollsionTypes
+0x803d0558 - 0x803d0584 // ExDatum
+0x803d0584 - 0x803d0594 // ExDebugTree
+0x803d0594 - 0x803d07e4 // ExDebugWnd
+0x803d07e4 - 0x803d08e0 // ExDebugTreeWnd
+0x803d08e0 - 0x803d0ad4 // ExDisplay
+0x803d0ad4 - 0x803d0b60 // ExDistance
+0x803d0b60 - 0x803d0be0 // ExFile
+0x803d0be0 - 0x803d0c5c // ExFileSys
+0x803d0c5c - 0x803d0c64 // ExGamepad
+0x803d0c64 - 0x803d0d5c // ExGeoAnim
+0x803d0d5c - 0x803d0d98 // ExGeoCommon
+0x803d0d98 - 0x803d106c // ExGeoEntity // Things are fucky here
+0x803d106c - 0x803d10d0 // ExGeoEntity_NavMesh // Things are fucky here
+0x803d10d0 - 0x803d11ec // ExGeoFile
+0x803d11ec - 0x803d1498 // ExGeoMap
+0x803d1498 - 0x803d229c // ExGeoViewer
+0x803d229c - 0x803d22f8 // ExIntersection
+0x803d22f8 - 0x803d245c // ExItem
+0x803d245c - 0x803d2600 // ExItemAnimator
+0x803d2600 - 0x803d27cc // ExitemAnimator_Anim
+0x803d27cc - 0x803d2984 // ExitemAnimator_AnimModifier
+0x803d2984 - 0x803d2adc // ExItemAnimator_DynLight
+0x803d2adc - 0x803d2bd4 // ExItemAnimator_Entity
+0x803d2bd4 - 0x803d2d7c // ExItemAnimator_Map
+0x803d2d7c - 0x803d2f14 // ExItemAnimator_Particle
+0x803d2f14 - 0x803d30d8 // ExItemAnimator_Script
+0x803d30d8 - 0x803d3184 // ExItemAnimator_ScriptControllers
+0x803d3184 - 0x803d3340 // ExItemAnimator_Sound
+0x803d3340 - 0x803d3514 // ExItemCtrl
+0x803d3514 - 0x803d37f8 // ExItemCtrl_Anim
+0x803d37f8 - 0x803d39c0 // ExItemCtrl_AnimModifier
+0x803d39c0 - 0x803d3b94 // ExItemEnv
+0x803d3b94 - 0x803d3c98 // ExItemHandler
+0x803d3c98 - 0x803d3dcc // ExItemPhysics
+0x803d3dcc - 0x803d3ed8 // ExItemRender
+0x803d3ed8 - 0x803d4014 // ExItemRender_Anim
+0x803d4014 - 0x803d4048 // ExItemRender_Entity
+0x803d4048 - 0x803d4098 // ExLightManager
+0x803d4098 - 0x803d40b0 // ExLine
+0x803d40b0 - 0x803d4170 // ExMalloc
+0x803d4170 - 0x803d45a8 // ExMaths
+0x803d45a8 - 0x803d467c // ExMatrix
+0x803d467c - 0x803d48b8 // ExMemcard
+0x803d48b8 - 0x803d49bc // ExMenu
+0x803d49bc - 0x803d4c54 // ExParticle
+0x803d4c54 - 0x803d5948 // ExParticleEmitter
+0x803d5948 - 0x803d595c // ExRand
+0x803d595c - 0x803d59e8 // ExRenderEnv
+0x803d59e8 - 0x803d5f08 // ExResourceWnd
+0x803d5f08 - 0x803d6030 // ExSoundManager
+0x803d6030 - 0x803d6048 // ExStateSaver
+0x803d6048 - 0x803d60dc // ExStats
+0x803d60dc - 0x803d61ac // ExStdFuncs
+0x803d61ac - 0x803d62a4 // ExString
+0x803d62a4 - 0x803d6344 // ExSwoosh
+0x803d6344 - 0x803d63b8 // ExTexture
+0x803d63b8 - 0x803d63e0 // ExVector
+0x803d63e0 - 0x803d6504 // ExWatcher
+0x803d6504 - 0x803d6600 // ExWnd
+0x803d6600 - 0x803d6610 // ExWString
+0x803d6610 - 0x803dcffc // ??? EngineX.cpp ??? (unsplit atm)
+0x803dcffc - 0x803dd170 // ExGeoGrabpoint
+0x803dd170 - 0x803dd2e8 // ExItemAnimator_Camera
+0x803dd2e8 - 0x803dd314 // ExItemAnimator_Collision (NOT CORRECT) SHOULD BE 803dd318
+0x803dd314 - 0x803e3ce0 // EngineX2
+
+NOTE FOR RODATA. I BELIEVE THAT I FUCKED ALL OF THESE UP.
+IT SEEMS THAT THE SECTIONS LIKE THIS:
+
+        803dd208 45 58 50        ds         "EXPlacementItem"
+                 6c 61 63 
+                 65 6d 65 
+
+ACTUALLY START A NEW SPLIT. FUCK ME
+
+Stopping here for the rodata section
+
+.data
+
+0x803ddc40 - 0x803e1ed0 // PreSXEItemHandler
+0x803e1ed0 - 0x803e214c // PreBosses
+0x803e214c - 0x803e21dc // PrePlayer
+0x803e21dc - 0x803e2204 // PreSpyro
+0x803e2204 - 0x803e2240 // PreSXEItemHandler
+0x803e2240 - 0x803e2528 // PreCode
+0x803e2528 - 0x803e25bc // PreGeneric
+0x803e25bc - 0x803e2eb4 // PreGUI
+0x803e2eb4 - 0x803e32cc // PreLevels
+0x803e32cc - 0x803e36a4 // PreMinigames
+0x803e36a4 - 0x803e3893 // PrePanel
+0x803e3893 - 0x803e3ce0 // PreSE
+0x803e3ce0 - 0x803e6e24 // SDK stuff
+0x803e6e24 - 0x803e6e54 // ExFileSys
+0x803e6e54 - 0x803e6ea0 // ExGeoViewer
+0x803e6ea0 - 0x803e6edc // ExItemAnimator
+0x803e6edc - 0x803e6f14 // ExMalloc
+0x803e6f14 - 0x803e6f20 // ExSoundManager
+0x803e6f20 - 0x803e70c0 // EngineX
+0x803e70c0 - 0x803e7120 // ExGeoViewer
+0x803e7120 - 0x803fc410 // EngineX
+0x803fc410 - 0x00000000 // dunno yet
+
+TODO: complete these
+
+.bss
+
+0x80449d60 - 0x80449d64 // __start
+0x80449d64 - 0x80449d90 // Player_Sparx
+0x80449d90 - 0x80449dc0 // PreBlinky
+0x80449dc0 - 0x80449e48 // PreBosses
+0x80449e48 - 0x80449e68 // PreHunter
+0x80449e68 - 0x80449eb0 // PrePlayer
+0x80449eb0 - 0x80449ed0 // PreSgtBird
+0x80449ed0 - 0x8044a1e0 // PreSpyro
+0x8044a1e0 - 0x8044a208 // PreSXEItemHandler
+0x8044a208 - 0x8044a2a8 // PreCamera
+0x8044a2a8 - 0x80456d28 // PreCode
+0x80456d28 - 0x804598f8 // PreGeneric
+0x804598f8 - 0x80459ff0 // PreGUI
+0x80459ff0 - 0x8045e8b8 // PreLevels
+0x8045e8b8 - 0x80460508 // PreMiniGames
+0x80460508 - 0x8046ed90 // PrePanel
+0x8046ed90 - 0x8046f6e8 // PreSE
+0x8046f6e8 - 0x80470840 // PreSupport
+
+0x80470840 - 0x804790a0 // SNDebug
+0x804790a0 - 0x804790e0 // PCSerial
+0x804790e0 - 0x8047913f // SNDVDEmu
+0x8047913f - 0x80479264 // itoa
+0x80479264 - 0x80479300 // vfprintf
+0x80479300 - 0x80479370 // OSInit
+0x80479370 - 0x804793b0 // OSError
+0x804793b0 - 0x804793c0 // OSException
+0x804793c0 - 0x804793f0 // OSReset
+0x804793f0 - 0x80479418 // OSRTC
+0x80479418 - 0x80479e10 // OSThread
+0x80479e10 - 0x80479ed0 // EXIBios
+0x80479ed0 - 0x8047a0e4 // SIBios
+0x8047a0e4 - 0x8047a2d8 // dvd
+0x8047a2d8 - 0x8047a460 // Pad
+
+0x8047a460 - 0x8047a520 // ExAnimCache
+0x8047a520 - 0x80480000 // EXCollision
+0x80480000 - 0x80484520 // ExDebugTreeWnd
+0x80484520 - 0x80485920 // ExCollision again???
+0x80485920 - 0x80485940 // ExGeoCommon
+0x80485940 - 0x80485950 // ExGeoEntity
+0x80485950 - 0x80485978 // ExGeoFile
+0x80485978 - 0x80485988 // ExGeoMap
+0x80485988 - 0x804859b8 // ExItem
+0x804859b8 - 0x804859cc // ExItemAnimator
+0x804859cc - 0x804859f4 // ExItemAnimator_Anim
+0x804859f4 - 0x80485a14 // ExItemCtrl
+0x80485a14 - 0x80485a28 // ExItemCtrl_Anim
+0x80485a28 - 0x80485a38 // ExItemEnv
+0x80485a38 - 0x80485b40 // ExMalloc
+0x80485b40 - 0x80485b48 // ExResourceWnd
+0x80485b48 - 0x804ae3a0 // ExEngine (The BIG one)
+0x804ae3a0 - 0x804ae680 // gcc/main
+0x804ae680 - 0x804c7d60 // dsdk/ax
+0x804c7d60 - 0x804c9560 // mix // why are there 2 t4xst secions for mix? needs fixed
+0x804c9560 - 0x804cade8 // Card // gd might be in this too
+0x804cade8 - 0x804cadf8 // HVQM
+0x804cadf8 - 0xcc006c3f // I honestly dont even fucking know.
+It kind of looks like TU's have multiple .bss  sections i guess
+end split probably aint even right
+
+.sdata
+
+Restart this? looks like the release_globals files actually says where this stuff came from or rather, where it should come from.
+
+0x804cb320 - 0x804cb324 // SeTrigger_Default
+0x804cb324 - 0x804cb328 // TriggerSpecial
+0x804cb328 - 0x804cb348 // BallGadget
+0x804cb348 - 0x804cb354 // Player_Sparx
+0x804cb354 - 0x804cb35c // PreBosses
+0x804cb35c - 0x00000000 // PrePlayer
+
+.sdata2
+
+.sbss

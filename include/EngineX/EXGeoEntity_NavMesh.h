@@ -1,0 +1,6 @@
+#ifndef EXGEOENTITY_NAVMESH_H
+#define EXGEOENTITY_NAVMESH_H
+
+#include "types.h"
+
+#endif // EXGEOENTITY_NAVMESH_H

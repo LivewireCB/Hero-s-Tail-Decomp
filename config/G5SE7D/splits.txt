@@ -25,98 +25,133 @@ Spyro/Code/BASIC_System/BASIC_InterpretPrivate.cpp:
 
 Spyro/Code/SETrigger/SETrigger_Default.cpp:
 	.text       start:0x80005134 end:0x80005A10
+	.rodata     start:0x803B48C0 end:0x803B4A8C
 
 Spyro/Code/SETrigger/StartPoint.cpp:
 	.text       start:0x80005A10 end:0x800060A8
+	.rodata     start:0x803B4A8C end:0x803B4ED0
 
 Spyro/Code/SETrigger/Trigger_Special.cpp:
 	.text       start:0x800060A8 end:0x8000810C
+	.rodata     start:0x803B4ED0 end:0x803B5214
 
 Spyro/Code/XSEItem/XSEItem_Default.cpp:
 	.text       start:0x8000810C end:0x80008164
 
 Spyro/Code/XSEItemHandler/Player/BallGadget/Player_BallGadget.cpp:
 	.text       start:0x80008164 end:0x800127E0
+	.rodata     start:0x803B56A4 end:0x803B5AEC
 
 Spyro/Code/XSEItemHandler/Player/Ember/Player_Ember.cpp:
 	.text       start:0x800127E0 end:0x80012900
+	.rodata     start:0x803B5D30 end:0x803B5FC0
 
 Spyro/Code/XSEItemHandler/Player/Flame/Player_Flame.cpp:
 	.text       start:0x80012900 end:0x80012A20
+	.rodata     start:0x803B5FC0 end:0x803B6250
 
 Spyro/Code/XSEItemHandler/Player/Sparx/Player_Sparx.cpp:
 	.text       start:0x80012A20 end:0x8001F630
+	.rodata     start:0x803B6250 end:0x803B6A38
 
 Spyro/Code/XSEItemHandler/Player/Blinky/PreBlinky.cpp:
 	.text       start:0x8001F630 end:0x80030608
 	.ctors      start:0x803B3FA4 end:0x803B3FA8
+	.rodata     start:0x803B6A38 end:0x803B73A8
 
 Spyro/Code/XSEItemHandler/Bosses/PreBosses.cpp:
 	.text       start:0x80030608 end:0x80046510
 	.ctors      start:0x803B3FA8 end:0x803B3FAC
+	.rodata     start:0x803B73A8 end:0x803B7F88
+	.data       start:0x803E1ED0 end:0x803E214C
 
 Spyro/Code/XSEItemHandler/Player/Hunter/PreHunter.cpp:
 	.text       start:0x80046510 end:0x80057FB4
+	.rodata     start:0x803B7F88 end:0x803B88F0
 
 Spyro/Code/XSEItemHandler/Player/PrePlayer.cpp:
 	.text       start:0x80057FB4 end:0x8007AF4C
 	.ctors      start:0x803B3FAC end:0x803B3FB0
+	.rodata     start:0x803B88F0 end:0x803B9F50
+	.data       start:0x803E214C end:0x803E21DC
 
 Spyro/Code/XSEItemHandler/Player/SgtBird/PreSgtBird.cpp:
 	.text       start:0x8007AF4C end:0x80085A3C
+	.rodata     start:0x803B9F50 end:0x803BA720
 
 Spyro/Code/XSEItemHandler/Player/Spyro/PreSpyro.cpp:
 	.text       start:0x80085A3C end:0x800B8C38
 	.ctors      start:0x803B3FB0 end:0x803B3FB4
+	.rodata     start:0x803BA720 end:0x803BBE20
+	.data       start:0x803E21DC end:0x803E2204
 
 Spyro/Code/XSEItemHandler/PreSXEItemHandler.cpp:
 	.text       start:0x800B8C38 end:0x8010A868
 	.ctors      start:0x803B3FB4 end:0x803B3FB8
+	.rodata     start:0x803BBE20 end:0x803BEE80
 
 Spyro/Code/Camera/PreCamera.cpp:
 	.text       start:0x8010A868 end:0x8012BAC4
 	.ctors      start:0x803B3FB8 end:0x803B3FBC
+	.rodata     start:0x803BEE80 end:0x803BFF68
 
 Spyro/Code/PreCode.cpp:
 	.text       start:0x8012BAC4 end:0x8013D104
 	.ctors      start:0x803B3FBC end:0x803B3FC0
+	.rodata     start:0x803BFF68 end:0x803C1298
+	.data       start:0x803E2240 end:0x803E2528
 
 Spyro/Code/Generic/PreGeneric.cpp:
 	.text       start:0x8013D104 end:0x801A586C
 	.ctors      start:0x803B3FC0 end:0x803B3FC4
+	.rodata     start:0x803C1298 end:0x803C6BA8
+	.data       start:0x803E2528 end:0x803E25BC
 
 Spyro/Code/GUI/PreGUI.cpp:
 	.text       start:0x801A586C end:0x801B9A60
 	.ctors      start:0x803B3FC4 end:0x803B3FC8
+	.rodata     start:0x803C6BA8 end:0x803C7AB0
+	.data       start:0x803E25BC end:0x803E2EB4
 
 Spyro/Code/Levels/PreLevels.cpp:
 	.text       start:0x801B9A60 end:0x80200760
 	.ctors      start:0x803B3FC8 end:0x803B3FCC
+	.rodata     start:0x803C7AB0 end:0x803CC4F0
+	.data       start:0x803E2EB4 end:0x803E32CC
 
 Spyro/Code/Levels/MiniGames/PreMiniGames.cpp:
 	.text       start:0x80200760 end:0x8021CC28
 	.ctors      start:0x803B3FCC end:0x803B3FD0
+	.rodata     start:0x803CC4F0 end:0x803CDDA0
+	.data       start:0x803E32CC end:0x803E36A4
 
 Spyro/Code/Panel/PrePanel.cpp:
 	.text       start:0x8021CC28 end:0x8022C0DC
 	.ctors      start:0x803B3FD0 end:0x803B3FD4
+	.rodata     start:0x803CDDA0 end:0x803CE4B8
+	.data       start:0x803E36A4 end:0x803E3994
 
 Spyro/Code/SE/PreSE.cpp:
 	.text       start:0x8022C0DC end:0x802449DC
 	.ctors      start:0x803B3FD4 end:0x803B3FD8
+	.rodata     start:0x803CE4B8 end:0x803CF458
+	.data       start:0x803E3994 end:0x803E3CE0
 
 Spyro/Code/Support/PreSupport.cpp:
 	.text       start:0x802449DC end:0x802537B8
 	.ctors      start:0x803B3FD8 end:0x803B3FDC
+	.rodata     start:0x803CF458 end:0x803CF930
 
 sn/SNDebug.cpp:
 	.text       start:0x802537B8 end:0x8025657C
+	.rodata     start:0x803CF930 end:0x803CF938
 
 sn/PCSerial.c:
 	.text       start:0x8025657C end:0x80256D44
 
 sn/SNInitEXI2TCHandler.c:
 	.text       start:0x80256D44 end:0x8025728C
+	.rodata     start:0x803CF938 end:0x803CF950
 
 sn/SNDVDEmu.c:
 	.text       start:0x8025728C end:0x802573E4
@@ -189,6 +224,7 @@ stdlib/atexit.c:
 
 stdlib/malloc.c:
 	.text       start:0x80259CC4 end:0x80259D00
+	.rodata     start:0x803CF950 end:0x803CFB50
 
 string/memcpy.c:
 	.text       start:0x80259D00 end:0x80259DA4
@@ -216,6 +252,7 @@ string/strncpy.c:
 
 stdlib/itoa.c:
 	.text       start:0x8025A204 end:0x8025A950
+	.rodata     start:0x803CFB50 end:0x803CFB90
 
 stdlib/vfprintf.c:
 	.text       start:0x8025A950 end:0x8025DAF4
@@ -231,6 +268,7 @@ stdlib/locale.c:
 
 stdlib/mbtowc.c:
 	.text       start:0x8025E470 end:0x8025E78C
+	.rodata     start:0x803CFECC end:0x803CFF70
 
 string/memchr.c:
 	.text       start:0x8025E78C end:0x8025E84C
@@ -365,10 +403,7 @@ dolphin/dvd/dvdFs.c:
 	.text       start:0x8026ACAC end:0x8026B3DC
 
 dolphin/dvd/dvd.c:
-	.text       start:0x8026B3DC end:0x8026CED8
-
-dolphin/dvd/dvd2.c:
-	.text       start:0x8026CED8 end:0x8026F288
+	.text       start:0x8026B3DC end:0x8026F288
 
 dolphin/vi/vi.c:
 	.text       start:0x8026F288 end:0x80271694
@@ -388,66 +423,85 @@ unsorted/db/DBComm.c:
 EngineX/EXAnimCache.cpp:
 	.text       start:0x80273AF0 end:0x80274A88
 	.ctors      start:0x803B3FDC end:0x803B3FE0
+	.rodata     start:0x803CFF70 end:0x803D016C
 
 EngineX/EXApp.cpp:
 	.text       start:0x80274A88 end:0x80275488
+	.rodata     start:0x803D016C end:0x803D01B0
 
 EngineX/EXBounds.cpp:
 	.text       start:0x80275488 end:0x80275EB0
+	.rodata     start:0x803D01B0 end:0x803D01D4
 
 EngineX/EXCamera.cpp:
 	.text       start:0x80275EB0 end:0x802768A0
+	.rodata     start:0x803D01D4 end:0x803D04AC
 
 EngineX/EXCollision.cpp:
 	.text       start:0x802768A0 end:0x802795F8
+	.rodata     start:0x803D04AC end:0x803D0514
 
 EngineX/EXCollisionTypes.cpp:
 	.text       start:0x802795F8 end:0x8027A620
 	.ctors      start:0x803B3FE0 end:0x803B3FE4
+	.rodata     start:0x803D0514 end:0x803D0558
 
 EngineX/EXDatum.cpp:
 	.text       start:0x8027A620 end:0x8027B6F0
+	.rodata     start:0x803D0558 end:0x803D0584
 
 EngineX/EXDebugTree.cpp:
 	.text       start:0x8027B6F0 end:0x8027C388
+	.rodata     start:0x803D0584 end:0x803D0594
 
 EngineX/EXDebugWnd.cpp:
 	.text       start:0x8027C388 end:0x8027E334
+	.rodata     start:0x803D0594 end:0x803D07E4
 
 EngineX/EXDebugTreeWnd.cpp:
 	.text       start:0x8027E334 end:0x8027FC58
+	.rodata     start:0x803D07E4 end:0x803D08E0
 
 EngineX/EXDisplay.cpp:
 	.text       start:0x8027FC58 end:0x80280C18
 	.ctors      start:0x803B3FE4 end:0x803B3FE8
+	.rodata     start:0x803D08E0 end:0x803D0AD4
 
 EngineX/EXDistance.cpp:
 	.text       start:0x80280C18 end:0x80287458
+	.rodata     start:0x803D0AD4 end:0x803D0B60
 
 EngineX/EXFile.cpp:
 	.text       start:0x80287458 end:0x80287A8C
+	.rodata     start:0x803D0B60 end:0x803D0BE0
 
 EngineX/EXFileSys.cpp:
 	.text       start:0x80287A8C end:0x8028949C
 	.ctors      start:0x803B3FE8 end:0x803B3FEC
+	.rodata     start:0x803D0BE0 end:0x803D0C5C
 
 EngineX/EXGamepad.cpp:
 	.text       start:0x8028949C end:0x80289744
+	.rodata     start:0x803D0C5C end:0x803D0C64
 
 EngineX/EXGeoAnim.cpp:
 	.text       start:0x80289744 end:0x8028B370
+	.rodata     start:0x803D0C64 end:0x803D0D5C
 
 EngineX/EXGeoCommon.cpp:
 	.text       start:0x8028B370 end:0x8028C098
 	.ctors      start:0x803B3FEC end:0x803B3FF0
+	.rodata     start:0x803D0D5C end:0x803D0D98
 
 EngineX/EXGeoEntity.cpp:
 	.text       start:0x8028C098 end:0x8028DC04
 	.ctors      start:0x803B3FF0 end:0x803B3FF4
+	.rodata     start:0x803D0D98 end:0x803D106C
 
 EngineX/EXGeoEntity_NavMesh.cpp:
 	.text       start:0x8028DC04 end:0x8028ECEC
 	.ctors      start:0x803B3FF4 end:0x803B3FF8
+	.rodata     start:0x803D106C end:0x803D10D0
 
 EngineX/EXGeoFace.cpp:
 	.text       start:0x8028ECEC end:0x8028ED88
@@ -455,9 +509,11 @@ EngineX/EXGeoFace.cpp:
 EngineX/EXGeoFile.cpp:
 	.text       start:0x8028ED88 end:0x802924F8
 	.ctors      start:0x803B3FF8 end:0x803B3FFC
+	.rodata     start:0x803D10D0 end:0x803D11EC
 
 EngineX/EXGeoMap.cpp:
 	.text       start:0x802924F8 end:0x8029659C
+	.rodata     start:0x803D11EC end:0x803D1498
 
 EngineX/EXGeoParticle.cpp:
 	.text       start:0x8029659C end:0x802965BC
@@ -470,82 +526,106 @@ EngineX/EXGeoSpreadSheet.cpp:
 
 EngineX/EXGeoViewer.cpp:
 	.text       start:0x80296618 end:0x8029E3E4
+	.rodata     start:0x803D1498 end:0x803D229C
 
 EngineX/EXHashcode.cpp:
 	.text       start:0x8029E3E4 end:0x8029E3EC
 
 EngineX/EXIntersection.cpp:
 	.text       start:0x8029E3EC end:0x8029F008
+	.rodata     start:0x803D229C end:0x803D22F8
 
 EngineX/EXItem.cpp:
 	.text       start:0x8029F008 end:0x802A168C
+	.rodata     start:0x803D22F8 end:0x803D245C
 
 EngineX/EXItemAnimator.cpp:
 	.text       start:0x802A168C end:0x802A245C
 	.ctors      start:0x803B3FFC end:0x803B4000
+	.rodata     start:0x803D245C end:0x803D2600
 
 EngineX/EXItemAnimator_Anim.cpp:
 	.text       start:0x802A245C end:0x802A8F10
+	.rodata     start:0x803D2600 end:0x803D27CC
 
 EngineX/EXItemAnimator_AnimModifier.cpp:
 	.text       start:0x802A8F10 end:0x802A9834
+	.rodata     start:0x803D27CC end:0x803D2984
 
 EngineX/EXItemAnimator_DynLight.cpp:
 	.text       start:0x802A9834 end:0x802A9E04
+	.rodata     start:0x803D2984 end:0x803D2ADC
 
 EngineX/EXItemAnimator_Entity.cpp:
 	.text       start:0x802A9E04 end:0x802AB220
+	.rodata     start:0x803D2ADC end:0x803D2BD4
 
 EngineX/EXItemAnimator_Map.cpp:
 	.text       start:0x802AB220 end:0x802AE8A0
+	.rodata     start:0x803D2BD4 end:0x803D2D7C
 
 EngineX/EXItemAnimator_Particle.cpp:
 	.text       start:0x802AE8A0 end:0x802AEC1C
+	.rodata     start:0x803D2D7C end:0x803D2F14
 
 EngineX/EXItemAnimator_Script.cpp:
 	.text       start:0x802AEC1C end:0x802B2504
+	.rodata     start:0x803D2F14 end:0x803D30D8
 
 EngineX/EXItemAnimator_ScriptControllers.cpp:
 	.text       start:0x802B2504 end:0x802B3924
+	.rodata     start:0x803D30D8 end:0x803D3184
 
 EngineX/EXItemAnimator_Sound.cpp:
 	.text       start:0x802B3924 end:0x802B3D80
+	.rodata     start:0x803D3184 end:0x803D3340
 
 EngineX/EXItemCtrl.cpp:
 	.text       start:0x802B3D80 end:0x802B4BDC
 	.ctors      start:0x803B4000 end:0x803B4004
+	.rodata     start:0x803D3340 end:0x803D3514
 
 EngineX/EXItemCtrl_Anim.cpp:
 	.text       start:0x802B4BDC end:0x802B9378
 	.ctors      start:0x803B4004 end:0x803B4008
+	.rodata     start:0x803D3514 end:0x803D37F8
 
 EngineX/EXItemCtrl_AnimModifier.cpp:
 	.text       start:0x802B9378 end:0x802B9C50
+	.rodata     start:0x803D37F8 end:0x803D39C0
 
 EngineX/EXItemEnv.cpp:
 	.text       start:0x802B9C50 end:0x802BFF14
 	.ctors      start:0x803B4008 end:0x803B400C
+	.rodata     start:0x803D39C0 end:0x803D3B94
 
 EngineX/EXItemHandler.cpp:
 	.text       start:0x802BFF14 end:0x802BFFA8
+	.rodata     start:0x803D3B94 end:0x803D3C98
 
 EngineX/EXItemPhysics.cpp:
 	.text       start:0x802BFFA8 end:0x802C0208
+	.rodata     start:0x803D3C98 end:0x803D3DCC
 
 EngineX/EXItemRender.cpp:
 	.text       start:0x802C0208 end:0x802C0284
+	.rodata     start:0x803D3DCC end:0x803D3ED8
 
 EngineX/EXItemRender_Anim.cpp:
 	.text       start:0x802C0284 end:0x802C5914
+	.rodata     start:0x803D3ED8 end:0x803D4014
 
 EngineX/EXItemRender_Entity.cpp:
 	.text       start:0x802C5914 end:0x802C5F00
+	.rodata     start:0x803D4014 end:0x803D4048
 
 EngineX/EXLightManager.cpp:
 	.text       start:0x802C5F00 end:0x802C69D0
+	.rodata     start:0x803D4048 end:0x803D4098
 
 EngineX/EXLine.cpp:
 	.text       start:0x802C69D0 end:0x802C6E88
+	.rodata     start:0x803D4098 end:0x803D40B0
 
 EngineX/EXList.cpp:
 	.text       start:0x802C6E88 end:0x802C737C
@@ -553,16 +633,21 @@ EngineX/EXList.cpp:
 EngineX/EXMalloc.cpp:
 	.text       start:0x802C737C end:0x802C933C
 	.ctors      start:0x803B400C end:0x803B4010
+	.rodata     start:0x803D40B0 end:0x803D4170
+	.data       start:0x803E6EDC end:0x803E6F14
 
 EngineX/EXMaths.cpp:
 	.text       start:0x802C933C end:0x802C95AC
+	.rodata     start:0x803D4170 end:0x803D45A8
 
 EngineX/EXMatrix.cpp:
 	.text       start:0x802C95AC end:0x802CA2EC
+	.rodata     start:0x803D45A8 end:0x803D467C
 
 EngineX/EXMemCard.cpp:
 	.text       start:0x802CA2EC end:0x802CAF50
 	.ctors      start:0x803B4010 end:0x803B4014
+	.rodata     start:0x803D467C end:0x803D48B8
 
 EngineX/EXMemoryManager.cpp:
 	.text       start:0x802CAF50 end:0x802CB200
@@ -570,25 +655,31 @@ EngineX/EXMemoryManager.cpp:
 EngineX/EXMenu.cpp:
 	.text       start:0x802CB200 end:0x802CC8EC
 	.ctors      start:0x803B4014 end:0x803B4018
+	.rodata     start:0x803D48B8 end:0x803D49BC
 
 EngineX/EXParticle.cpp:
 	.text       start:0x802CC8EC end:0x802D22DC
 	.ctors      start:0x803B4018 end:0x803B401C
+	.rodata     start:0x803D49BC end:0x803D4C54
 
 EngineX/EXParticleEmitter.cpp:
 	.text       start:0x802D22DC end:0x802F5088
 	.ctors      start:0x803B401C end:0x803B4020
+	.rodata     start:0x803D4C54 end:0x803D5948
 
 EngineX/EXRand.cpp:
 	.text       start:0x802F5088 end:0x802F518C
 	.ctors      start:0x803B4020 end:0x803B4024
+	.rodata     start:0x803D5948 end:0x803D595C
 
 EngineX/EXRenderEnv.cpp:
 	.text       start:0x802F518C end:0x802F6030
 	.ctors      start:0x803B4024 end:0x803B4028
+	.rodata     start:0x803D595C end:0x803D59E8
 
 EngineX/EXResourceWnd.cpp:
 	.text       start:0x802F6030 end:0x802F89BC
+	.rodata     start:0x803D59E8 end:0x803D5F08
 
 EngineX/EXScratchPad.cpp:
 	.text       start:0x802F89BC end:0x802F8A94
@@ -597,46 +688,60 @@ EngineX/EXScratchPad.cpp:
 EngineX/EXSoundManager.cpp:
 	.text       start:0x802F8A94 end:0x802FB734
 	.ctors      start:0x803B402C end:0x803B4030
+	.rodata     start:0x803D5F08 end:0x803D6030
+	.data       start:0x803E6F14 end:0x803E6F20
 
 EngineX/EXStateSaver.cpp:
 	.text       start:0x802FB734 end:0x802FB930
 	.ctors      start:0x803B4030 end:0x803B4034
+	.rodata     start:0x803D6030 end:0x803D6048
 
 EngineX/EXStats.cpp:
 	.text       start:0x802FB930 end:0x802FBDDC
 	.ctors      start:0x803B4034 end:0x803B4038
+	.rodata     start:0x803D6048 end:0x803D60DC
 
 EngineX/EXStdFuncs.cpp:
 	.text       start:0x802FBDDC end:0x802FCB1C
+	.rodata     start:0x803D60DC end:0x803D61AC
 
 EngineX/EXString.cpp:
 	.text       start:0x802FCB1C end:0x802FE250
+	.rodata     start:0x803D61AC end:0x803D62A4
 
 EngineX/EXSwoosh.cpp:
 	.text       start:0x802FE250 end:0x802FFDDC
 	.ctors      start:0x803B4038 end:0x803B403C
+	.rodata     start:0x803D62A4 end:0x803D6344
 
 EngineX/EXTexture.cpp:
 	.text       start:0x802FFDDC end:0x80300664
+	.rodata     start:0x803D6344 end:0x803D63B8
 
 EngineX/EXVector.cpp:
 	.text       start:0x80300664 end:0x80300C6C
+	.rodata     start:0x803D63B8 end:0x803D63E0
 
 EngineX/EXWatcher.cpp:
 	.text       start:0x80300C6C end:0x8030123C
+	.rodata     start:0x803D63E0 end:0x803D6504
 
 EngineX/EXWnd.cpp:
 	.text       start:0x8030123C end:0x8030336C
+	.rodata     start:0x803D6504 end:0x803D6600
 
 EngineX/EXWString.cpp:
 	.text       start:0x8030336C end:0x80304464
+	.rodata     start:0x803D6600 end:0x803D6610
 
 EngineX/GC/EngineX.cpp:
 	.text       start:0x80304464 end:0x8034B0F0
 	.ctors      start:0x803B403C end:0x803B4060
+	.rodata     start:0x803D6610 end:0x803DCFFC
 
 EngineX/EXGeoGrabpoint.cpp:
 	.text       start:0x8034B0F0 end:0x8034DA7C
+	.rodata     start:0x803DCFFC end:0x803DD170
 
 EngineX/EXGeoInstance.cpp:
 	.text       start:0x8034DA7C end:0x8034DD6C
@@ -646,9 +751,11 @@ EngineX/EXGeoTexture.cpp:
 
 EngineX/EXItemAnimator_Camera.cpp:
 	.text       start:0x8034DDE0 end:0x8034DF98
+	.rodata     start:0x803DD170 end:0x803DD2E8
 
 EngineX/EXItemAnimator_Collision.cpp:
 	.text       start:0x8034DF98 end:0x8034E220
+	.rodata     start:0x803DD2E8 end:0x803DD314
 
 EngineX/EXRect.cpp:
 	.text       start:0x8034E220 end:0x8034E344
