@@ -1,9 +1,116 @@
 splits
 
 - Use the main.dol with the symbol mapped loaded into it
-  If you don,t your asking for pain
+  If you don't your asking for pain
 
 These are ALL probably wrong. The ones marked it are surely wrong, but theres a chance not.
+
+the entire .init section is not split i guess. Somehow missed it
+
+.text notes
+
+dolphin/os/:
+	.text       start:0x00000000 end:0x00000000
+
+0x8025fed4 - 0x802609a0 // OS.c
+0x802609a0 - 0x802610fc // OSAlarm
+0x802610fc - 0x80261148 // OSArena
+0x80261148 - 0x802613dc // OSAudioSystem
+0x802613dc - 0x802619fc // OSCache
+0x802619fc - 0x8026226c // OSContext
+0x8026226c - 0x80262918 // OSReport
+0x80262918 - 0x80263278 // OSExec
+0x80263278 - 0x80263ae4 // OSInterrupt
+0x80263ae4 - 0x80263b08 // OSLink
+0x80263b08 - 0x80263dd4 // OSMemory
+0x80263dd4 - 0x80263e58 // OSReboot
+0x80263e58 - 0x802642dc // OSReset
+0x802642dc - 0x802646c8 // OSResetSW
+0x802646c8 - 0x8026549c // OSRtc
+0x8026549c - 0x80265524 // OSSync
+0x80265524 - 0x80266880 // OSThread
+0x80266880 - 0x80266ca4 // OSTime 
+0x80266ca4 - 0x80266dac // __ppc_eabi_init
+0x80266dac - 0x80266ff8 // OSMutex
+0x80266ff8 - 0x80268b60 // EXIBios
+0x80268b60 - 0x80268fa8 // EXIUart
+0x80268fa8 - 0x8026a698 // SIBios
+0x8026a698 - 0x8026a7a0 // SISamplingRate
+0x8026a7a0 - 0x8026a88c // DB
+0x8026a88c - 0x8026abc4 // mtx44.c
+0x8026abc4 - 0x8026acac // mtx/vec.c
+0x8026acac - 0x8026b3dc // dvdFs
+0x8026b3dc - 0x8026da20 // dvd
+0x8026da20 - 0x8026dc18 // dvdqueue
+0x8026dc18 - 0x8026ddb0 // dvderror
+0x8026ddb0 - 0x8026df28 // dvdidutils
+0x8026df28 - 0x8026e030 // dvdFatal
+0x8026e030 - 0x8026e198 // fstload
+0x8026e198 - 0x8026f288 // dvdlow
+0x8026f288 - 0x80270e1c // vi
+0x80270e1c - 0x80272764 // Pad
+0x80272764 - 0x80273048 // ai
+0x80273048 - 0x80273070 // AmcExi2Stubs
+0x80273070 - 0x80273af0 // odemustubs
+
+*ExEngine stuff*
+
+dolphin/os/:
+	.text       start:0x00000000 end:0x00000000
+
+0x8035a274 - 0x8035a584 // OSAlloc
+0x8035a584 - 0x8035afb0 // OSFont
+0x8035afb0 - 0x8035b6d0 // mtx.c
+0x8035b6d0 - 0x8035b88c // mtxvec.c
+0x8035b88c - 0x8035d39c // ar
+0x8035d39c - 0x8035d738 // arq
+0x8035d738 - 0x8035d7dc // ax
+0x8035d7dc - 0x8035dca4 // AxAlloc
+0x8035dca4 - 0x8035e138 // AxAux
+0x8035e138 - 0x8035e868 // AXCL
+0x8035e868 - 0x8035f074 // AXOut
+0x8035f074 - 0x8035f53c // AXSPB
+0x8035f53c - 0x8036091c // AXVPB
+0x8036091c - 0x80360964 // AXProf
+0x80360964 - 0x803613a4 // axfx/reverb_std
+0x803613a4 - 0x80363574 // mix
+0x80363574 - 0x80363804 // dsp
+0x80363804 - 0x80363854 // dsp_debug
+0x80363854 - 0x803640d8 // dsp_task
+0x803640d8 - 0x803652f0 // CARDBios
+0x803652f0 - 0x803656f4 // CARDBlock
+0x803656f4 - 0x80365958 // CARDDir
+0x80365958 - 0x8036686c // CARDCheck
+0x8036686c - 0x80367428 // CARDMount
+0x80367428 - 0x80367ac8 // CARDFormat
+0x80367ac8 - 0x803681e4 // CARDOpen
+0x803681e4 - 0x80368404 // CARDCreate
+0x80368404 - 0x80368a50 // CARDRead
+0x80368a50 - 0x80368c08 // CARDWrite
+0x80368c08 - 0x80368d18 // CARDDelete
+0x80368d18 - 0x80369198 // CARDStat
+0x80369198 - 0x8036a4d4 // CARDUnlock
+0x8036a4d4 - 0x8036a928 // CARDRdwr
+0x8036a928 - 0x8036bb2c // GXInit
+0x8036bb2c - 0x8036c2d0 // GXFifo
+0x8036c2d0 - 0x8036d6e0 // GXAttr
+0x8036d6e0 - 0x8036dde0 // GXMisc
+0x8036dde0 - 0x8036e11c // GXGeometry
+0x8036e11c - 0x8036edfc // GXFrameBuf
+0x8036edfc - 0x8036f398 // GXLight
+0x8036f398 - 0x80370380 // GXTexture
+0x80370380 - 0x80370858 // GXBump
+0x80370858 - 0x80370fbc // GXTev
+0x80370fbc - 0x80371604 // GXPixel
+0x80371604 - 0x80371674 // GXDisplayList
+0x80371674 - 0x80371c08 // GXTransform
+0x80371c08 - 0x80372608 // GXPerf
+0x80372608 - 0x80372774 // GDBase
+0x80372774 - 0x803737c4 // GDGeometry
+0x803737c4 - 0x80379720 // HVQM
+0x80379720 - 0x803797b8 // GPR shit
+
+Object(NonMatching, ""),
 
 .rodata
 
@@ -181,7 +288,7 @@ TODO: complete these
 0x804790e0 - 0x8047913f // SNDVDEmu
 0x8047913f - 0x80479264 // itoa
 0x80479264 - 0x80479300 // vfprintf
-0x80479300 - 0x80479370 // OSInit
+0x80479300 - 0x80479370 // os.c
 0x80479370 - 0x804793b0 // OSError
 0x804793b0 - 0x804793c0 // OSException
 0x804793c0 - 0x804793f0 // OSReset
@@ -189,13 +296,13 @@ TODO: complete these
 0x80479418 - 0x80479e10 // OSThread
 0x80479e10 - 0x80479ed0 // EXIBios
 0x80479ed0 - 0x8047a0e4 // SIBios
-0x8047a0e4 - 0x8047a2d8 // dvd
+0x8047a0e4 - 0x8047a2d8 // dvd  // I apparently combined all of dvd into this one split, when there are multiple TU's worth here
 0x8047a2d8 - 0x8047a460 // Pad
 
+.bss        start:0x00000000 end:0x00000000
+
 0x8047a460 - 0x8047a520 // ExAnimCache
-0x8047a520 - 0x80480000 // EXCollision
-0x80480000 - 0x80484520 // ExDebugTreeWnd
-0x80484520 - 0x80485920 // ExCollision again???
+0x8047a520 - 0x80485920 // EXCollision
 0x80485920 - 0x80485940 // ExGeoCommon
 0x80485940 - 0x80485950 // ExGeoEntity
 0x80485950 - 0x80485978 // ExGeoFile
@@ -206,22 +313,27 @@ TODO: complete these
 0x804859f4 - 0x80485a14 // ExItemCtrl
 0x80485a14 - 0x80485a28 // ExItemCtrl_Anim
 0x80485a28 - 0x80485a38 // ExItemEnv
-0x80485a38 - 0x80485b40 // ExMalloc
-0x80485b40 - 0x80485b48 // ExResourceWnd
+0x80485a38 - 0x80485b48 // ExMalloc
 0x80485b48 - 0x804ae3a0 // ExEngine (The BIG one)
 0x804ae3a0 - 0x804ae680 // gcc/main
-0x804ae680 - 0x804c7d60 // dsdk/ax
-0x804c7d60 - 0x804c9560 // mix // why are there 2 t4xst secions for mix? needs fixed
-0x804c9560 - 0x804cade8 // Card // gd might be in this too
+0x804ae680 - 0x804c7d60 // dsdk/ax // i probably combined all of this into one file again
+0x804c7d60 - 0x804c9560 // mix
+0x804c9560 - 0x804cade8 // Card // i definitely combined all of these lol // also gd is included here when it shouldn't be
 0x804cade8 - 0x804cadf8 // HVQM
 0x804cadf8 - 0xcc006c3f // I honestly dont even fucking know.
 It kind of looks like TU's have multiple .bss  sections i guess
 end split probably aint even right
 
+Also, when adding these splits into the splits.txt, the analyzer pointed
+out that some of these are wrong. If you come back to this, use the 
+addresses in the splits.txt file now (clearly this doesnt apply to enginex and below)
+
 .sdata
 
 Restart this? looks like the release_globals files actually says where this stuff came from or rather, 
 where it should come from.
+
+.sdata      start:0x00000000 end:0x00000000
 
 0x804cb320 - 0x804cb324 // SeTrigger_Default
 0x804cb324 - 0x804cb328 // TriggerSpecial
@@ -253,6 +365,8 @@ where it should come from.
 
 .sdata2
 
+.sdata2     start:0x00000000 end:0x00000000
+
 0x804ccf20 - 0x804ccf24 // TriggerList.cpp
 0x804ccf24 - 0x804ccf30 // PreBosses
 0x804ccf30 - 0x804ccf50 // PreLevels
@@ -276,6 +390,9 @@ MOSTLY DONE ALREADY
 0x804cc4d4 - 0x804cc4e0 // PreLevels
 0x804cc4e0 - 0x804cc4ec // PreMiniGames
 0x804cc4ec - 0x804cc4f4 // PrePanel
+
+.sbss       start:0x00000000 end:0x00000000
+
 0x804cc4f4 - 0x804cc534 // PreSE
 0x804cc534 - 0x804cc550 // PreSupport
 0x804cc550 - 0x804cc7f8 // SDK shit

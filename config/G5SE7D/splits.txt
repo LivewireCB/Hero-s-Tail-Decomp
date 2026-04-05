@@ -53,101 +53,137 @@ Spyro/Code/XSEItemHandler/Player/Flame/Player_Flame.cpp:
 Spyro/Code/XSEItemHandler/Player/Sparx/Player_Sparx.cpp:
 	.text       start:0x80012A20 end:0x8001F630
 	.rodata     start:0x803B6250 end:0x803B6A38
+	.bss        start:0x80449D60 end:0x80449D90
+	.sbss       start:0x804CC440 end:0x804CC44C
 
 Spyro/Code/XSEItemHandler/Player/Blinky/PreBlinky.cpp:
 	.text       start:0x8001F630 end:0x80030608
 	.ctors      start:0x803B3FA4 end:0x803B3FA8
 	.rodata     start:0x803B6A38 end:0x803B73A8
+	.bss        start:0x80449D90 end:0x80449DC0
+	.sbss       start:0x804CC44C end:0x804CC454
 
 Spyro/Code/XSEItemHandler/Bosses/PreBosses.cpp:
 	.text       start:0x80030608 end:0x80046510
 	.ctors      start:0x803B3FA8 end:0x803B3FAC
 	.rodata     start:0x803B73A8 end:0x803B7F88
 	.data       start:0x803E1ED0 end:0x803E214C
+	.bss        start:0x80449DC0 end:0x80449E48
+	.sdata2     start:0x804CCF24 end:0x804CCF30
 
 Spyro/Code/XSEItemHandler/Player/Hunter/PreHunter.cpp:
 	.text       start:0x80046510 end:0x80057FB4
 	.rodata     start:0x803B7F88 end:0x803B88F0
+	.bss        start:0x80449E48 end:0x80449E68
+	.sbss       start:0x804CC454 end:0x804CC45C
 
 Spyro/Code/XSEItemHandler/Player/PrePlayer.cpp:
 	.text       start:0x80057FB4 end:0x8007AF4C
 	.ctors      start:0x803B3FAC end:0x803B3FB0
 	.rodata     start:0x803B88F0 end:0x803B9F50
 	.data       start:0x803E214C end:0x803E21DC
+	.bss        start:0x80449E68 end:0x80449EB0
+	.sbss       start:0x804CC45C end:0x804CC46C
 
 Spyro/Code/XSEItemHandler/Player/SgtBird/PreSgtBird.cpp:
 	.text       start:0x8007AF4C end:0x80085A3C
 	.rodata     start:0x803B9F50 end:0x803BA720
+	.bss        start:0x80449EB0 end:0x80449ED0
+	.sbss       start:0x804CC46C end:0x804CC474
 
 Spyro/Code/XSEItemHandler/Player/Spyro/PreSpyro.cpp:
 	.text       start:0x80085A3C end:0x800B8C38
 	.ctors      start:0x803B3FB0 end:0x803B3FB4
 	.rodata     start:0x803BA720 end:0x803BBE20
 	.data       start:0x803E21DC end:0x803E2204
+	.bss        start:0x80449ED0 end:0x8044A1E0
+	.sbss       start:0x804CC474 end:0x804CC49C
 
 Spyro/Code/XSEItemHandler/PreSXEItemHandler.cpp:
 	.text       start:0x800B8C38 end:0x8010A868
 	.ctors      start:0x803B3FB4 end:0x803B3FB8
 	.rodata     start:0x803BBE20 end:0x803BEE80
+	.bss        start:0x8044A1E0 end:0x8044A208
 
 Spyro/Code/Camera/PreCamera.cpp:
 	.text       start:0x8010A868 end:0x8012BAC4
 	.ctors      start:0x803B3FB8 end:0x803B3FBC
 	.rodata     start:0x803BEE80 end:0x803BFF68
+	.bss        start:0x8044A208 end:0x8044A2A8
+	.sbss       start:0x804CC49C end:0x804CC4A0
 
 Spyro/Code/PreCode.cpp:
 	.text       start:0x8012BAC4 end:0x8013D104
 	.ctors      start:0x803B3FBC end:0x803B3FC0
 	.rodata     start:0x803BFF68 end:0x803C1298
 	.data       start:0x803E2240 end:0x803E2528
+	.bss        start:0x8044A2A8 end:0x80456D28
+	.sbss       start:0x804CC4A0 end:0x804CC4AC
 
 Spyro/Code/Generic/PreGeneric.cpp:
 	.text       start:0x8013D104 end:0x801A586C
 	.ctors      start:0x803B3FC0 end:0x803B3FC4
 	.rodata     start:0x803C1298 end:0x803C6BA8
 	.data       start:0x803E2528 end:0x803E25BC
+	.bss        start:0x80456D28 end:0x804598F8
+	.sbss       start:0x804CC4AC end:0x804CC4B4
 
 Spyro/Code/GUI/PreGUI.cpp:
 	.text       start:0x801A586C end:0x801B9A60
 	.ctors      start:0x803B3FC4 end:0x803B3FC8
 	.rodata     start:0x803C6BA8 end:0x803C7AB0
 	.data       start:0x803E25BC end:0x803E2EB4
+	.bss        start:0x804598F8 end:0x80459FF0
+	.sbss       start:0x804CC4B4 end:0x804CC4D4
 
 Spyro/Code/Levels/PreLevels.cpp:
 	.text       start:0x801B9A60 end:0x80200760
 	.ctors      start:0x803B3FC8 end:0x803B3FCC
 	.rodata     start:0x803C7AB0 end:0x803CC4F0
 	.data       start:0x803E2EB4 end:0x803E32CC
+	.bss        start:0x80459FF0 end:0x8045E8B8
+	.sbss       start:0x804CC4D4 end:0x804CC4E0
+	.sdata2     start:0x804CCF30 end:0x804CCF50
 
 Spyro/Code/Levels/MiniGames/PreMiniGames.cpp:
 	.text       start:0x80200760 end:0x8021CC28
 	.ctors      start:0x803B3FCC end:0x803B3FD0
 	.rodata     start:0x803CC4F0 end:0x803CDDA0
 	.data       start:0x803E32CC end:0x803E36A4
+	.bss        start:0x8045E8B8 end:0x80460508
+	.sbss       start:0x804CC4E0 end:0x804CC4EC
 
 Spyro/Code/Panel/PrePanel.cpp:
 	.text       start:0x8021CC28 end:0x8022C0DC
 	.ctors      start:0x803B3FD0 end:0x803B3FD4
 	.rodata     start:0x803CDDA0 end:0x803CE4B8
 	.data       start:0x803E36A4 end:0x803E3994
+	.bss        start:0x80460508 end:0x8046ED90
+	.sbss       start:0x804CC4EC end:0x804CC4F4
 
 Spyro/Code/SE/PreSE.cpp:
 	.text       start:0x8022C0DC end:0x802449DC
 	.ctors      start:0x803B3FD4 end:0x803B3FD8
 	.rodata     start:0x803CE4B8 end:0x803CF458
 	.data       start:0x803E3994 end:0x803E3CE0
+	.bss        start:0x8046ED90 end:0x8046F6E8
+	.sbss       start:0x804CC4F4 end:0x804CC534
 
 Spyro/Code/Support/PreSupport.cpp:
 	.text       start:0x802449DC end:0x802537B8
 	.ctors      start:0x803B3FD8 end:0x803B3FDC
 	.rodata     start:0x803CF458 end:0x803CF930
+	.bss        start:0x8046F6E8 end:0x80470840
+	.sbss       start:0x804CC534 end:0x804CC550
 
 sn/SNDebug.cpp:
 	.text       start:0x802537B8 end:0x8025657C
 	.rodata     start:0x803CF930 end:0x803CF938
+	.bss        start:0x80470840 end:0x804790A0
 
 sn/PCSerial.c:
 	.text       start:0x8025657C end:0x80256D44
+	.bss        start:0x804790A0 end:0x804790E0
 
 sn/SNInitEXI2TCHandler.c:
 	.text       start:0x80256D44 end:0x8025728C
@@ -155,6 +191,7 @@ sn/SNInitEXI2TCHandler.c:
 
 sn/SNDVDEmu.c:
 	.text       start:0x8025728C end:0x802573E4
+	.bss        start:0x804790E0 end:0x80479140
 
 math/acosf.c:
 	.text       start:0x802573E4 end:0x80257630
@@ -253,9 +290,11 @@ string/strncpy.c:
 stdlib/itoa.c:
 	.text       start:0x8025A204 end:0x8025A950
 	.rodata     start:0x803CFB50 end:0x803CFB90
+	.bss        start:0x80479140 end:0x80479264
 
 stdlib/vfprintf.c:
 	.text       start:0x8025A950 end:0x8025DAF4
+	.bss        start:0x80479264 end:0x80479300
 
 string/tolower.c:
 	.text       start:0x8025DAF4 end:0x8025DB2C
@@ -303,17 +342,9 @@ gcc/terminate.cpp:
 ppc/PPCArch.c:
 	.text       start:0x8025FD94 end:0x8025FED4
 
-dolphin/os/OSFPRInit.c:
-	.text       start:0x8025FED4 end:0x80260060
-
-dolphin/os/OSInit.c:
-	.text       start:0x80260060 end:0x802607E8
-
-dolphin/os/OSError.c:
-	.text       start:0x80260960 end:0x80260974
-
-dolphin/os/OSVersion.c:
-	.text       start:0x80260974 end:0x802609A0
+dolphin/os/OS.c:
+	.text       start:0x8025FED4 end:0x802609A0
+	.bss        start:0x80479300 end:0x80479370
 
 dolphin/os/OSAlarm.c:
 	.text       start:0x802609A0 end:0x802610FC
@@ -325,105 +356,125 @@ dolphin/os/OSAudioSystem.c:
 	.text       start:0x80261148 end:0x802613DC
 
 dolphin/os/OSCache.c:
-	.text       start:0x802613DC end:0x80261908
+	.text       start:0x802613DC end:0x802619FC
 
 dolphin/os/OSContext.c:
-	.text       start:0x80261908 end:0x8026226C
+	.text       start:0x802619FC end:0x8026226C
 
-dolphin/os/OSReport.c:
-	.text       start:0x8026226C end:0x80262418
-
-dolphin/os/OSError2.c:
-	.text       start:0x80262418 end:0x80262630
-
-dolphin/os/OSException.c:
-	.text       start:0x80262630 end:0x80262B54
+dolphin/os/OSError.c:
+	.text       start:0x8026226C end:0x80262918
+	.bss        start:0x80479370 end:0x804793C0
 
 dolphin/os/OSExec.c:
-	.text       start:0x80262B54 end:0x802630DC
-
-dolphin/os/OSBootDol.c:
-	.text       start:0x802630DC end:0x80263278
+	.text       start:0x80262918 end:0x80263278
 
 dolphin/os/OSInterrupt.c:
-	.text       start:0x80263278 end:0x80263640
-
-dolphin/os/OSInterrupt2.c:
-	.text       start:0x80263640 end:0x80263AE4
+	.text       start:0x80263278 end:0x80263AE4
 
 dolphin/os/OSLink.c:
-	.text       start:0x80263AE4 end:0x80263CBC
+	.text       start:0x80263AE4 end:0x80263B08
 
 dolphin/os/OSMemory.c:
-	.text       start:0x80263CBC end:0x80263DD4
+	.text       start:0x80263B08 end:0x80263DD4
+
+dolphin/os/OSReboot.c:
+	.text       start:0x80263DD4 end:0x80263E58
 
 dolphin/os/OSReset.c:
-	.text       start:0x80263DD4 end:0x80264E8C
+	.text       start:0x80263E58 end:0x802642DC
 
-dolphin/os/OSRTC.c:
-	.text       start:0x80264E8C end:0x802654BC
+dolphin/os/OSResetSW.c:
+	.text       start:0x802642DC end:0x802646C8
 
-dolphin/os/OSSystemCall.c:
-	.text       start:0x802654BC end:0x80265524
+dolphin/os/OSRtc.c:
+	.text       start:0x802646C8 end:0x8026549C
+	.bss        start:0x804793C0 end:0x80479418
+
+dolphin/os/OSSync.c:
+	.text       start:0x8026549C end:0x80265524
 
 dolphin/os/OSThread.c:
 	.text       start:0x80265524 end:0x80266880
+	.bss        start:0x80479418 end:0x80479E10
 
 dolphin/os/OSTime.c:
 	.text       start:0x80266880 end:0x80266CA4
 
-dolphin/os/__start.c:
+dolphin/os/__ppc_eabi_init.c:
 	.text       start:0x80266CA4 end:0x80266DAC
 
 dolphin/os/OSMutex.c:
-	.text       start:0x80266DAC end:0x802670EC
+	.text       start:0x80266DAC end:0x80266FF8
 
 dolphin/exi/EXIBios.c:
-	.text       start:0x802670EC end:0x80268624
-
-dolphin/exi/EXIGetID.c:
-	.text       start:0x80268624 end:0x80268B60
-
-dolphin/exi/EXIBarnacle.c:
-	.text       start:0x80268B60 end:0x80268D1C
+	.text       start:0x80266FF8 end:0x80268B60
+	.bss        start:0x80479E10 end:0x80479ED0
 
 dolphin/exi/EXIUart.c:
-	.text       start:0x80268D1C end:0x80268FA8
+	.text       start:0x80268B60 end:0x80268FA8
 
 dolphin/si/SIBios.c:
-	.text       start:0x80268FA8 end:0x8026A7A0
+	.text       start:0x80268FA8 end:0x8026A698
+	.bss        start:0x80479ED0 end:0x8047A0E0
 
-dolphin/db/db.c:
+dolphin/si/SISamplingRate.c:
+	.text       start:0x8026A698 end:0x8026A7A0
+
+dolphin/db/DB.c:
 	.text       start:0x8026A7A0 end:0x8026A88C
 
+dolphin/mtx/mtx44.c:
+	.text       start:0x8026A88C end:0x8026ABC4
+
 dolphin/mtx/vec.c:
-	.text       start:0x8026A88C end:0x8026ACAC
+	.text       start:0x8026ABC4 end:0x8026ACAC
 
 dolphin/dvd/dvdFs.c:
 	.text       start:0x8026ACAC end:0x8026B3DC
 
 dolphin/dvd/dvd.c:
-	.text       start:0x8026B3DC end:0x8026F288
+	.text       start:0x8026B3DC end:0x8026DA20
+	.bss        start:0x8047A0E0 end:0x8047A2D8
+
+dolphin/dvd/dvdqueue.c:
+	.text       start:0x8026DA20 end:0x8026DC18
+
+dolphin/dvd/dvderror.c:
+	.text       start:0x8026DC18 end:0x8026DDB0
+
+dolphin/dvd/dvdidutils.c:
+	.text       start:0x8026DDB0 end:0x8026DF28
+
+dolphin/dvd/dvdFatal.c:
+	.text       start:0x8026DF28 end:0x8026E030
+
+dolphin/dvd/fstload.c:
+	.text       start:0x8026E030 end:0x8026E198
+
+dolphin/dvd/dvdlow.c:
+	.text       start:0x8026E198 end:0x8026F288
 
 dolphin/vi/vi.c:
-	.text       start:0x8026F288 end:0x80271694
+	.text       start:0x8026F288 end:0x80270E1C
 
-dolphin/pad/Pad.c:
-	.text       start:0x80271694 end:0x80272764
+dolphin/pad/pad.c:
+	.text       start:0x80270E1C end:0x80272764
+	.bss        start:0x8047A2D8 end:0x8047A470
 
 dolphin/ai/ai.c:
 	.text       start:0x80272764 end:0x80273048
 
-sn/EXI2.c:
+dolphin/amcstubs/AmcExi2Stubs.c:
 	.text       start:0x80273048 end:0x80273070
 
-unsorted/db/DBComm.c:
+dolphin/odemustubs/odemustubs.c:
 	.text       start:0x80273070 end:0x80273AF0
 
 EngineX/EXAnimCache.cpp:
 	.text       start:0x80273AF0 end:0x80274A88
 	.ctors      start:0x803B3FDC end:0x803B3FE0
 	.rodata     start:0x803CFF70 end:0x803D016C
+	.bss        start:0x8047A470 end:0x8047A520
 
 EngineX/EXApp.cpp:
 	.text       start:0x80274A88 end:0x80275488
@@ -440,6 +491,7 @@ EngineX/EXCamera.cpp:
 EngineX/EXCollision.cpp:
 	.text       start:0x802768A0 end:0x802795F8
 	.rodata     start:0x803D04AC end:0x803D0514
+	.bss        start:0x8047A520 end:0x80485920
 
 EngineX/EXCollisionTypes.cpp:
 	.text       start:0x802795F8 end:0x8027A620
@@ -461,11 +513,13 @@ EngineX/EXDebugWnd.cpp:
 EngineX/EXDebugTreeWnd.cpp:
 	.text       start:0x8027E334 end:0x8027FC58
 	.rodata     start:0x803D07E4 end:0x803D08E0
+	.sbss       start:0x804CC7F8 end:0x804CC810
 
 EngineX/EXDisplay.cpp:
 	.text       start:0x8027FC58 end:0x80280C18
 	.ctors      start:0x803B3FE4 end:0x803B3FE8
 	.rodata     start:0x803D08E0 end:0x803D0AD4
+	.sbss       start:0x804CC810 end:0x804CC820
 
 EngineX/EXDistance.cpp:
 	.text       start:0x80280C18 end:0x80287458
@@ -479,6 +533,7 @@ EngineX/EXFileSys.cpp:
 	.text       start:0x80287A8C end:0x8028949C
 	.ctors      start:0x803B3FE8 end:0x803B3FEC
 	.rodata     start:0x803D0BE0 end:0x803D0C5C
+	.sbss       start:0x804CC820 end:0x804CC828
 
 EngineX/EXGamepad.cpp:
 	.text       start:0x8028949C end:0x80289744
@@ -492,16 +547,21 @@ EngineX/EXGeoCommon.cpp:
 	.text       start:0x8028B370 end:0x8028C098
 	.ctors      start:0x803B3FEC end:0x803B3FF0
 	.rodata     start:0x803D0D5C end:0x803D0D98
+	.bss        start:0x80485920 end:0x80485940
+	.sbss       start:0x804CC828 end:0x804CC838
 
 EngineX/EXGeoEntity.cpp:
 	.text       start:0x8028C098 end:0x8028DC04
 	.ctors      start:0x803B3FF0 end:0x803B3FF4
 	.rodata     start:0x803D0D98 end:0x803D106C
+	.bss        start:0x80485940 end:0x80485950
+	.sbss       start:0x804CC838 end:0x804CC83C
 
 EngineX/EXGeoEntity_NavMesh.cpp:
 	.text       start:0x8028DC04 end:0x8028ECEC
 	.ctors      start:0x803B3FF4 end:0x803B3FF8
 	.rodata     start:0x803D106C end:0x803D10D0
+	.sbss       start:0x804CC83C end:0x804CC84C
 
 EngineX/EXGeoFace.cpp:
 	.text       start:0x8028ECEC end:0x8028ED88
@@ -510,10 +570,12 @@ EngineX/EXGeoFile.cpp:
 	.text       start:0x8028ED88 end:0x802924F8
 	.ctors      start:0x803B3FF8 end:0x803B3FFC
 	.rodata     start:0x803D10D0 end:0x803D11EC
+	.bss        start:0x80485950 end:0x80485978
 
 EngineX/EXGeoMap.cpp:
 	.text       start:0x802924F8 end:0x8029659C
 	.rodata     start:0x803D11EC end:0x803D1498
+	.bss        start:0x80485978 end:0x80485988
 
 EngineX/EXGeoParticle.cpp:
 	.text       start:0x8029659C end:0x802965BC
@@ -538,15 +600,19 @@ EngineX/EXIntersection.cpp:
 EngineX/EXItem.cpp:
 	.text       start:0x8029F008 end:0x802A168C
 	.rodata     start:0x803D22F8 end:0x803D245C
+	.bss        start:0x80485988 end:0x804859B8
+	.sbss       start:0x804CC84C end:0x804CC850
 
 EngineX/EXItemAnimator.cpp:
 	.text       start:0x802A168C end:0x802A245C
 	.ctors      start:0x803B3FFC end:0x803B4000
 	.rodata     start:0x803D245C end:0x803D2600
+	.bss        start:0x804859B8 end:0x804859CC
 
 EngineX/EXItemAnimator_Anim.cpp:
 	.text       start:0x802A245C end:0x802A8F10
 	.rodata     start:0x803D2600 end:0x803D27CC
+	.bss        start:0x804859CC end:0x804859F4
 
 EngineX/EXItemAnimator_AnimModifier.cpp:
 	.text       start:0x802A8F10 end:0x802A9834
@@ -584,11 +650,13 @@ EngineX/EXItemCtrl.cpp:
 	.text       start:0x802B3D80 end:0x802B4BDC
 	.ctors      start:0x803B4000 end:0x803B4004
 	.rodata     start:0x803D3340 end:0x803D3514
+	.bss        start:0x804859F4 end:0x80485A14
 
 EngineX/EXItemCtrl_Anim.cpp:
 	.text       start:0x802B4BDC end:0x802B9378
 	.ctors      start:0x803B4004 end:0x803B4008
 	.rodata     start:0x803D3514 end:0x803D37F8
+	.bss        start:0x80485A14 end:0x80485A28
 
 EngineX/EXItemCtrl_AnimModifier.cpp:
 	.text       start:0x802B9378 end:0x802B9C50
@@ -598,6 +666,7 @@ EngineX/EXItemEnv.cpp:
 	.text       start:0x802B9C50 end:0x802BFF14
 	.ctors      start:0x803B4008 end:0x803B400C
 	.rodata     start:0x803D39C0 end:0x803D3B94
+	.bss        start:0x80485A28 end:0x80485A38
 
 EngineX/EXItemHandler.cpp:
 	.text       start:0x802BFF14 end:0x802BFFA8
@@ -635,6 +704,7 @@ EngineX/EXMalloc.cpp:
 	.ctors      start:0x803B400C end:0x803B4010
 	.rodata     start:0x803D40B0 end:0x803D4170
 	.data       start:0x803E6EDC end:0x803E6F14
+	.bss        start:0x80485A38 end:0x80485B48
 
 EngineX/EXMaths.cpp:
 	.text       start:0x802C933C end:0x802C95AC
@@ -671,19 +741,23 @@ EngineX/EXRand.cpp:
 	.text       start:0x802F5088 end:0x802F518C
 	.ctors      start:0x803B4020 end:0x803B4024
 	.rodata     start:0x803D5948 end:0x803D595C
+	.sbss       start:0x804CC850 end:0x804CC858
 
 EngineX/EXRenderEnv.cpp:
 	.text       start:0x802F518C end:0x802F6030
 	.ctors      start:0x803B4024 end:0x803B4028
 	.rodata     start:0x803D595C end:0x803D59E8
+	.sbss       start:0x804CC858 end:0x804CC85C
 
 EngineX/EXResourceWnd.cpp:
 	.text       start:0x802F6030 end:0x802F89BC
 	.rodata     start:0x803D59E8 end:0x803D5F08
+	.sbss       start:0x804CC85C end:0x804CC860
 
 EngineX/EXScratchPad.cpp:
 	.text       start:0x802F89BC end:0x802F8A94
 	.ctors      start:0x803B4028 end:0x803B402C
+	.sbss       start:0x804CC860 end:0x804CC864
 
 EngineX/EXSoundManager.cpp:
 	.text       start:0x802F8A94 end:0x802FB734
@@ -695,6 +769,7 @@ EngineX/EXStateSaver.cpp:
 	.text       start:0x802FB734 end:0x802FB930
 	.ctors      start:0x803B4030 end:0x803B4034
 	.rodata     start:0x803D6030 end:0x803D6048
+	.sbss       start:0x804CC864 end:0x804CC868
 
 EngineX/EXStats.cpp:
 	.text       start:0x802FB930 end:0x802FBDDC
@@ -840,16 +915,19 @@ gcc/floatdisf.c:
 	.text       start:0x8035A188 end:0x8035A238
 
 gcc/ucmpdi2.c:
-	.text       start:0x8035A238 end:0x8035A320
+	.text       start:0x8035A238 end:0x8035A274
 
 dolphin/os/OSAlloc.c:
-	.text       start:0x8035A320 end:0x8035A894
+	.text       start:0x8035A274 end:0x8035A584
 
 dolphin/os/OSFont.c:
-	.text       start:0x8035A894 end:0x8035AFB0
+	.text       start:0x8035A584 end:0x8035AFB0
 
 dolphin/mtx/mtx.c:
-	.text       start:0x8035AFB0 end:0x8035B88C
+	.text       start:0x8035AFB0 end:0x8035B6D0
+
+dolphin/mtx/mtxvec.c:
+	.text       start:0x8035B6D0 end:0x8035B88C
 
 dolphin/ar/ar.c:
 	.text       start:0x8035B88C end:0x8035D39C
@@ -857,101 +935,137 @@ dolphin/ar/ar.c:
 dolphin/ar/arq.c:
 	.text       start:0x8035D39C end:0x8035D738
 
-dolphin/ax/AX.c:
-	.text       start:0x8035D738 end:0x80360578
+dolphin/ax/ax.c:
+	.text       start:0x8035D738 end:0x8035D7DC
 
-dolphin/ax/AXVPB.c:
-	.text       start:0x80360578 end:0x8036091C
+dolphin/ax/AxAlloc.c:
+	.text       start:0x8035D7DC end:0x8035DCA4
+
+dolphin/ax/AxAux.c:
+	.text       start:0x8035DCA4 end:0x8035E138
+
+dolphin/ax/AXCL.c:
+	.text       start:0x8035E138 end:0x8035E868
 
 dolphin/ax/AXOut.c:
-	.text       start:0x8036091C end:0x80361460
+	.text       start:0x8035E868 end:0x8035F074
 
-dolphin/mix/MIXInit.c:
-	.text       start:0x80361460 end:0x803623B0
+dolphin/ax/AXSPB.c:
+	.text       start:0x8035F074 end:0x8035F53C
+
+dolphin/ax/AXVPB.c:
+	.text       start:0x8035F53C end:0x8036091C
+
+dolphin/ax/AXProf.c:
+	.text       start:0x8036091C end:0x80360964
+
+dolphin/axfx/reverb_std.c:
+	.text       start:0x80360964 end:0x803613A4
 
 dolphin/mix/mix.c:
-	.text       start:0x803623B0 end:0x80363574
+	.text       start:0x803613A4 end:0x80363574
 
 dolphin/dsp/dsp.c:
-	.text       start:0x80363574 end:0x803640D8
+	.text       start:0x80363574 end:0x80363804
+
+dolphin/dsp/dsp_debug.c:
+	.text       start:0x80363804 end:0x80363854
+
+dolphin/dsp/dsp_task.c:
+	.text       start:0x80363854 end:0x803640D8
 
 dolphin/card/CARDBios.c:
-	.text       start:0x803640D8 end:0x80364F18
-
-dolphin/card/CARDInit.c:
-	.text       start:0x80364F18 end:0x80365004
+	.text       start:0x803640D8 end:0x803652F0
 
 dolphin/card/CARDBlock.c:
-	.text       start:0x80365004 end:0x803662DC
+	.text       start:0x803652F0 end:0x803656F4
+
+dolphin/card/CARDDir.c:
+	.text       start:0x803656F4 end:0x80365958
 
 dolphin/card/CARDCheck.c:
-	.text       start:0x803662DC end:0x80366EC4
+	.text       start:0x80365958 end:0x8036686C
 
 dolphin/card/CARDMount.c:
-	.text       start:0x80366EC4 end:0x80367428
+	.text       start:0x8036686C end:0x80367428
 
 dolphin/card/CARDFormat.c:
 	.text       start:0x80367428 end:0x80367AC8
 
 dolphin/card/CARDOpen.c:
-	.text       start:0x80367AC8 end:0x803686EC
+	.text       start:0x80367AC8 end:0x803681E4
+
+dolphin/card/CARDCreate.c:
+	.text       start:0x803681E4 end:0x80368404
 
 dolphin/card/CARDRead.c:
-	.text       start:0x803686EC end:0x80368A50
+	.text       start:0x80368404 end:0x80368A50
 
 dolphin/card/CARDWrite.c:
 	.text       start:0x80368A50 end:0x80368C08
 
 dolphin/card/CARDDelete.c:
-	.text       start:0x80368C08 end:0x80368F10
+	.text       start:0x80368C08 end:0x80368D18
 
 dolphin/card/CARDStat.c:
-	.text       start:0x80368F10 end:0x8036950C
+	.text       start:0x80368D18 end:0x80369198
 
 dolphin/card/CARDUnlock.c:
-	.text       start:0x8036950C end:0x8036A928
+	.text       start:0x80369198 end:0x8036A4D4
+
+dolphin/card/CARDRdwr.c:
+	.text       start:0x8036A4D4 end:0x8036A928
 
 dolphin/gx/GXInit.c:
-	.text       start:0x8036A928 end:0x8036B0C0
+	.text       start:0x8036A928 end:0x8036BB2C
 
 dolphin/gx/GXFifo.c:
-	.text       start:0x8036B0C0 end:0x8036C028
+	.text       start:0x8036BB2C end:0x8036C2D0
 
 dolphin/gx/GXAttr.c:
-	.text       start:0x8036C028 end:0x8036D424
-
-dolphin/gx/GXTexCoord.c:
-	.text       start:0x8036D424 end:0x8036D774
+	.text       start:0x8036C2D0 end:0x8036D6E0
 
 dolphin/gx/GXMisc.c:
-	.text       start:0x8036D774 end:0x8036E11C
+	.text       start:0x8036D6E0 end:0x8036DDE0
+
+dolphin/gx/GXGeometry.c:
+	.text       start:0x8036DDE0 end:0x8036E11C
 
 dolphin/gx/GXFrameBuf.c:
 	.text       start:0x8036E11C end:0x8036EDFC
 
 dolphin/gx/GXLight.c:
-	.text       start:0x8036EDFC end:0x8036F334
+	.text       start:0x8036EDFC end:0x8036F398
 
 dolphin/gx/GXTexture.c:
-	.text       start:0x8036F334 end:0x8037002C
+	.text       start:0x8036F398 end:0x80370380
+
+dolphin/gx/GXBump.c:
+	.text       start:0x80370380 end:0x80370858
 
 dolphin/gx/GXTev.c:
-	.text       start:0x8037002C end:0x80371604
+	.text       start:0x80370858 end:0x80370FBC
 
 dolphin/gx/GXPixel.c:
-	.text       start:0x80371604 end:0x80371C08
+	.text       start:0x80370FBC end:0x80371604
+
+dolphin/gx/GXDisplayList.c:
+	.text       start:0x80371604 end:0x80371674
+
+dolphin/gx/GXTransform.c:
+	.text       start:0x80371674 end:0x80371C08
 
 dolphin/gx/GXPerf.c:
 	.text       start:0x80371C08 end:0x80372608
 
 dolphin/gd/GDBase.c:
-	.text       start:0x80372608 end:0x803737C4
+	.text       start:0x80372608 end:0x80372774
 
-dolphin/gx/GXExtra.c:
-	.text       start:0x803737C4 end:0x80377F70
+dolphin/gd/GDGeometry.c:
+	.text       start:0x80372774 end:0x803737C4
 
 hvqm/HVQM4Decode.c:
-	.text       start:0x80377F70 end:0x80379720
+	.text       start:0x803737C4 end:0x80379720
 
 ppc/savegpr.s:
 	.text       start:0x80379720 end:0x803797B8

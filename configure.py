@@ -221,6 +221,10 @@ if config.platform == Platform.GC_WII:
         "-fp_contract on",
         "-str reuse",
         "-i include",
+        "-i include/libc",
+        "-ir src/dolphin",
+        "-DGEKKO",
+        "-D__GEKKO__",
         f"-i build/{config.version}/include",
         "-multibyte",
         f"-DVERSION={version_num}",
@@ -241,7 +245,7 @@ if config.platform == Platform.GC_WII:
         "-I src",
         "-DEA_PLATFORM_GAMECUBE",
         "-DEA_REGION_AMERICA",
-        "-DGEKKO",
+        "-D__GEKKO__",
         "-D_USE_MATH_DEFINES",
         f"-I build/{config.version}/include",
         f"-DBUILD_VERSION={version_num}",
@@ -317,7 +321,7 @@ if config.platform == Platform.GC_WII:
             "src_dir": "src",
             "toolchain_version": "GC/1.2.5n",
             "cflags": cflags_dolphin,
-            "progress_category": "sdk",
+            "progress_category": "dsdk",
             "objects": objects,
         }
 
@@ -489,9 +493,188 @@ if config.platform == Platform.GC_WII:
                 ],
             },
             DolphinLib(
+                "os",
+                [
+                    Object(NonMatching, "dolphin/os/OS.c"),
+                    Object(NonMatching, "dolphin/os/OSAlarm.c"),
+                    Object(NonMatching, "dolphin/os/OSArena.c"),
+                    Object(NonMatching, "dolphin/os/OSAudioSystem.c"),
+                    Object(NonMatching, "dolphin/os/OSCache.c"),
+                    Object(NonMatching, "dolphin/os/OSContext.c"),
+                    Object(NonMatching, "dolphin/os/OSError.c"),
+                    Object(NonMatching, "dolphin/os/OSExec.c"),
+                    Object(NonMatching, "dolphin/os/OSInterrupt.c"),
+                    Object(NonMatching, "dolphin/os/OSLink.c"),
+                    Object(NonMatching, "dolphin/os/OSMemory.c"),
+                    Object(NonMatching, "dolphin/os/OSReboot.c"),
+                    Object(NonMatching, "dolphin/os/OSReset.c"),
+                    Object(NonMatching, "dolphin/os/OSResetSW.c"),
+                    Object(NonMatching, "dolphin/os/OSRtc.c"),
+                    Object(NonMatching, "dolphin/os/OSSync.c"),
+                    Object(NonMatching, "dolphin/os/OSThread.c"),
+                    Object(NonMatching, "dolphin/os/OSTime.c"),
+                    Object(NonMatching, "dolphin/os/__ppc_eabi_init.c"),
+                    Object(NonMatching, "dolphin/os/OSMutex.c"),
+                    Object(NonMatching, "dolphin/os/OSAlloc.c"),
+                    Object(NonMatching, "dolphin/os/OSFont.c"),
+                ],
+            ),
+            DolphinLib(
+                "exi",
+                [
+                    Object(NonMatching, "dolphin/exi/EXIBios.c"),
+                    Object(NonMatching, "dolphin/exi/EXIUart.c"),
+                ],
+            ),
+            DolphinLib(
+                "si",
+                [
+                    Object(NonMatching, "dolphin/si/SIBios.c"),
+                    Object(NonMatching, "dolphin/si/SISamplingRate.c"),
+                ],
+            ),
+            DolphinLib(
+                "db",
+                [
+                    Object(NonMatching, "dolphin/db/DB.c"),
+                ],
+            ),
+            DolphinLib(
+                "mtx",
+                [
+                    Object(NonMatching, "dolphin/mtx/mtx44.c"),
+                    Object(NonMatching, "dolphin/mtx/vec.c"),
+                    Object(NonMatching, "dolphin/mtx/mtx.c"),
+                    Object(NonMatching, "dolphin/mtx/mtxvec.c"),
+                ],
+            ),
+            DolphinLib(
+                "dvd",
+                [
+                    Object(NonMatching, "dolphin/dvd/dvdFs.c"),
+                    Object(NonMatching, "dolphin/dvd/dvd.c"),
+                    Object(NonMatching, "dolphin/dvd/dvdqueue.c"),
+                    Object(NonMatching, "dolphin/dvd/dvderror.c"),
+                    Object(NonMatching, "dolphin/dvd/dvdidutils.c"),
+                    Object(NonMatching, "dolphin/dvd/dvdFatal.c"),
+                    Object(NonMatching, "dolphin/dvd/fstload.c"),
+                    Object(NonMatching, "dolphin/dvd/dvdlow.c"),
+                ],
+            ),
+            DolphinLib(
+                "vi",
+                [
+                    Object(NonMatching, "dolphin/vi/vi.c"),
+                ],
+            ),
+            DolphinLib(
+
+                "pad",
+                [
+                    Object(NonMatching, "dolphin/pad/pad.c"),
+                ],
+            ),
+            DolphinLib(
+                "ai",
+                [
+                    Object(NonMatching, "dolphin/ai/ai.c"),
+                ],
+            ),
+            DolphinLib(
+                "amc",
+                [
+                    Object(Matching, "dolphin/amcstubs/AmcExi2Stubs.c"),
+                ],
+            ),
+            DolphinLib(
+                "ode",
+                [
+                    Object(NonMatching, "dolphin/odemustubs/odemustubs.c"),
+                ],
+            ),
+            DolphinLib(
                 "ar",
                 [
                     Object(NonMatching, "dolphin/ar/ar.c"),
+                    Object(NonMatching, "dolphin/ar/arq.c"),
+                ],
+            ),
+            DolphinLib(
+                "ax",
+                [
+                    Object(NonMatching, "dolphin/ax/ax.c"),
+                    Object(NonMatching, "dolphin/ax/AxAlloc.c"),
+                    Object(NonMatching, "dolphin/ax/AxAux.c"),
+                    Object(NonMatching, "dolphin/ax/AXCL.c"),
+                    Object(NonMatching, "dolphin/ax/AXOut.c"),
+                    Object(NonMatching, "dolphin/ax/AXSPB.c"),
+                    Object(NonMatching, "dolphin/ax/AXVPB.c"),
+                    Object(NonMatching, "dolphin/ax/AXProf.c"),
+                ],
+            ),
+            DolphinLib(
+                "axfx",
+                [
+                    Object(NonMatching, "dolphin/axfx/reverb_std.c"),
+                ],
+            ),
+            DolphinLib(
+                "mix",
+                [
+                    Object(NonMatching, "dolphin/mix/mix.c"),
+                ],
+            ),
+            DolphinLib(
+                "dsp",
+                [
+                    Object(NonMatching, "dolphin/dsp/dsp.c"),
+                    Object(NonMatching, "dolphin/dsp/dsp_debug.c"),
+                    Object(NonMatching, "dolphin/dsp/dsp_task.c"),
+                ], 
+            ),
+            DolphinLib(
+                "card",
+                [
+                    Object(NonMatching, "dolphin/card/CARDBios.c"),
+                    Object(NonMatching, "dolphin/card/CARDBlock.c"),
+                    Object(NonMatching, "dolphin/card/CARDDir.c"),
+                    Object(NonMatching, "dolphin/card/CARDCheck.c"),
+                    Object(NonMatching, "dolphin/card/CARDMount.c"),
+                    Object(NonMatching, "dolphin/card/CARDFormat.c"),
+                    Object(NonMatching, "dolphin/card/CARDOpen.c"),
+                    Object(NonMatching, "dolphin/card/CARDCreate.c"),
+                    Object(NonMatching, "dolphin/card/CARDRead.c"),
+                    Object(NonMatching, "dolphin/card/CARDWrite.c"),
+                    Object(NonMatching, "dolphin/card/CARDDelete.c"),
+                    Object(NonMatching, "dolphin/card/CARDStat.c"),
+                    Object(NonMatching, "dolphin/card/CARDUnlock.c"),
+                    Object(NonMatching, "dolphin/card/CARDRdwr.c"),
+                ],
+            ),
+            DolphinLib(
+                "gx",
+                [
+                    Object(NonMatching, "dolphin/gx/GXInit.c"),
+                    Object(NonMatching, "dolphin/gx/GXFifo.c"),
+                    Object(NonMatching, "dolphin/gx/GXAttr.c"),
+                    Object(NonMatching, "dolphin/gx/GXMisc.c"),
+                    Object(NonMatching, "dolphin/gx/GXGeometry.c"),
+                    Object(NonMatching, "dolphin/gx/GXFrameBuf.c"),
+                    Object(NonMatching, "dolphin/gx/GXLight.c"),
+                    Object(NonMatching, "dolphin/gx/GXTexture.c"),
+                    Object(NonMatching, "dolphin/gx/GXBump.c"),
+                    Object(NonMatching, "dolphin/gx/GXTev.c"),
+                    Object(NonMatching, "dolphin/gx/GXPixel.c"),
+                    Object(NonMatching, "dolphin/gx/GXDisplayList.c"),
+                    Object(NonMatching, "dolphin/gx/GXTransform.c"),
+                    Object(NonMatching, "dolphin/gx/GXPerf.c"),
+                ],
+            ),
+            DolphinLib(
+                "gd",
+                [
+                    Object(NonMatching, "dolphin/gd/GDBase.c"),
+                    Object(NonMatching, "dolphin/gd/GDGeometry.c"),
                 ],
             ),
         ]
@@ -521,6 +704,7 @@ config.progress_categories = [
     ProgressCategory("game", "Game Code"),
     ProgressCategory("engX", "EngineX code"),
     ProgressCategory("sdk", "SDK Code"),
+    ProgressCategory("dsdk", "Dolphin SDK Code"),
     ProgressCategory("libc", "STD Code"),
     ProgressCategory("libs", "Library Code"),
 ]
