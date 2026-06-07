@@ -21,4 +21,22 @@ struct EXRandClass
     float Randf(float MinVal, float MaxVal);
 };
 
+struct EXRandFastClass
+{
+    u32 m_Seed;
+
+    // EXRandFastClass& operator=();
+    EXRandFastClass();
+    void SetSeed();
+    void SetState();
+    void GetState();
+    u32 Rand32();
+    s32 Rand31();
+    s32 Rand();
+    // s32 Rand();
+    float Randf();
+    float Randf(float MaxVal);
+    // float Randf();
+};
+
 #endif // EXRAND_H

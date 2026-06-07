@@ -2,6 +2,12 @@
 
 #define NULL 0
 
+typedef unsigned int size_t;
+typedef long int ssize_t;
+
+typedef float f32;
+typedef double f64;
+
 typedef unsigned char u8;
 typedef short unsigned int u16;
 typedef unsigned int u32;

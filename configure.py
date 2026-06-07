@@ -232,7 +232,7 @@ if config.platform == Platform.GC_WII:
 
     # TODO move some of these to the game flags
     cflags_base_prodg = [
-        "-O1",
+        "-O2",
         "-gdwarf",
         # "-Wa,-L",
         # "-Wall",
@@ -271,7 +271,7 @@ if config.platform == Platform.GC_WII:
         *cflags_base_prodg,
         "-mps-nodf",
         # "-mfast-cast",
-        "-G0",
+        "-G4",
         "-ffast-math",
         # "-fno-strength-reduce",
         "-fforce-addr",
@@ -291,9 +291,9 @@ if config.platform == Platform.GC_WII:
         # "-fregmove",
         # "-fno-thread-jumps",
         # "-freduce-all-givs",
-        # # "-fcaller-saves",
-        # # "-ffloat-store",
-        # # "-funroll-all-loops",
+        # "-fcaller-saves",
+        # "-ffloat-store",
+        # "-funroll-all-loops",
         "-DLUA_NUMBER=float",
     ]
 

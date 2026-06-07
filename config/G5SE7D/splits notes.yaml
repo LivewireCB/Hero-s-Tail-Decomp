@@ -1,4 +1,4 @@
-y
+//
 
 		
 main/SETrigger_ctors.cpp:
@@ -33,3 +33,25 @@ EngineX\EXArray.cpp:
 EngineX\EXDbgfont.cpp:
 
 EngineX\EXEffectsSys.cpp:
+
+
+Made up file names:
+EngineX/GC/GCBloom.cpp
+
+
+
+AI fixed the report bug for me cus theres no "correct" way to fix it atm
+
+
+What was done:
+
+symbols.txt: Merged pButtonB_Gfx, pWin_Corner_Gfx, pWin_Border_Gfx, and pWin_Content_Gfx into a single pButtonB_Gfx with size:0x1020 (= 0x41E + 0x400 + 0x400 + 0x402, combined total that is 4-aligned). The combined range ends exactly at 0x80356938 where GC_Tex_Swizzle_4bit begins.
+Why this works: The address range is in the DOL's text segment so it must stay as .text in splits.txt. objdiff's scan_instructions_internal requires code.len() % 4 == 0 — individual sizes 0x41E and 0x402 failed this check, but 0x1020 passes. The merged symbol's bytes are treated as raw "instructions" by objdiff for the target-only view, which is harmless since GCBloom has no compiled source to compare against yet.
+
+Note: The three removed symbols (pWin_Corner_Gfx, pWin_Border_Gfx, pWin_Content_Gfx) can be restored individually when GCBloom.cpp is actually decompiled.
+
+
+Heres the fix:
+End_Icon_Banner_Default_Gfx = .text:0x80355518; // type:object size:0x400 scope:global
+pButtonB_Gfx = .text:0x80355918; // type:object size:0x1020 scope:global
+GC_Tex_Swizzle_4bit__FPUcPUcUlUl = .text:0x80356938; // type:function size:0xCC scope:global

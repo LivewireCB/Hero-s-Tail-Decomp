@@ -809,10 +809,103 @@ EngineX/EXWString.cpp:
 	.text       start:0x8030336C end:0x80304464
 	.rodata     start:0x803D6600 end:0x803D6610
 
-EngineX/GC/EngineX.cpp:
-	.text       start:0x80304464 end:0x8034B0F0
-	.ctors      start:0x803B403C end:0x803B4060
-	.rodata     start:0x803D6610 end:0x803DCFFC
+EngineX/GC/GCApp.cpp:
+	.text       start:0x80304464 end:0x80304C08
+	.ctors      start:0x803B403C end:0x803B4040
+
+EngineX/GC/GCBounds.cpp:
+	.text       start:0x80304C08 end:0x803051E4
+
+EngineX/GC/GCCamera.cpp:
+	.text       start:0x803051E4 end:0x803069BC
+	.ctors      start:0x803B4040 end:0x803B4044
+
+EngineX/GC/GCCluster.cpp:
+	.text       start:0x803069BC end:0x80306B50
+
+EngineX/GC/GCCollision.cpp:
+	.text       start:0x80306B50 end:0x80308D44
+	.ctors      start:0x803B4044 end:0x803B4048
+
+EngineX/GC/GCDisplay.cpp:
+	.text       start:0x80308D44 end:0x80309D9C
+	.ctors      start:0x803B4048 end:0x803B404C
+
+EngineX/GC/GCFastMath.cpp:
+	.text       start:0x80309D9C end:0x80309DF4
+
+EngineX/GC/GCFile.cpp:
+	.text       start:0x80309DF4 end:0x8030A2D4
+	.ctors      start:0x803B404C end:0x803B4050
+
+EngineX/GC/GCGamepad.cpp:
+	.text       start:0x8030A2D4 end:0x8030A990
+
+EngineX/GC/GCGeoAnim.cpp:
+	.text       start:0x8030A990 end:0x8030CE00
+
+EngineX/GC/GCGeoDrawInfo.cpp:
+	.text       start:0x8030CE00 end:0x8030CFE0
+
+EngineX/GC/GCGeoEntity.cpp:
+	.text       start:0x8030CFE0 end:0x80312AF0
+
+EngineX/GC/GCItemRender.cpp:
+	.text       start:0x80312AF0 end:0x803134F4
+	.ctors      start:0x803B4050 end:0x803B4054
+
+EngineX/GC/GCMalloc.cpp:
+	.text       start:0x803134F4 end:0x803136D0
+
+EngineX/GC/GCMatrix.cpp:
+	.text       start:0x803136D0 end:0x80314D30
+
+EngineX/GC/GCMemCard.cpp:
+	.text       start:0x80314D30 end:0x80315C78
+
+EngineX/GC/GCParticle.cpp:
+	.text       start:0x80315C78 end:0x80317D4C
+
+EngineX/GC/GCPhysics.cpp:
+	.text       start:0x80317D4C end:0x8031844C
+
+EngineX/GC/GCQuaternion.cpp:
+	.text       start:0x8031844C end:0x80318CAC
+
+EngineX/GC/GCRenderEnv.cpp:
+	.text       start:0x80318CAC end:0x80318D18
+
+EngineX/GC/GCResourceWnd.cpp:
+	.text       start:0x80318D18 end:0x80318D84
+
+EngineX/GC/GCSoundManager.cpp:
+	.text       start:0x80318D84 end:0x8031908C
+
+EngineX/GC/GCStats.cpp:
+	.text       start:0x8031908C end:0x80319140
+
+EngineX/GC/GCSwoosh.cpp:
+	.text       start:0x80319140 end:0x80319F78
+
+EngineX/GC/GCTexture.cpp:
+	.text       start:0x80319F78 end:0x8031AC44
+	.ctors      start:0x803B4054 end:0x803B4058
+
+EngineX/GC/GCVector.cpp:
+	.text       start:0x8031AC44 end:0x8031AF34
+
+EngineX/GC/GCWnd.cpp:
+	.text       start:0x8031AF34 end:0x8031C588
+
+EngineX/GC/GCWndPrim.cpp:
+	.text       start:0x8031C588 end:0x8031CB44
+
+EngineX/GC/GCWndSprite.cpp:
+	.text       start:0x8031CB44 end:0x8031D72C
+
+unknownFile/unknown.cpp:
+	.text       start:0x8031D72C end:0x8034B0F0
+	.ctors      start:0x803B4058 end:0x803B4060
 
 EngineX/EXGeoGrabpoint.cpp:
 	.text       start:0x8034B0F0 end:0x8034DA7C
@@ -835,9 +928,18 @@ EngineX/EXItemAnimator_Collision.cpp:
 EngineX/EXRect.cpp:
 	.text       start:0x8034E220 end:0x8034E344
 
-EngineX/GC/EngineX2.cpp:
-	.text       start:0x8034E344 end:0x80357634
+EngineX/GC/GCAudio.cpp:
+	.text       start:0x8034E344 end:0x803503DC
+
+hvqm/HVQM.cpp:
+	.text       start:0x803503DC end:0x80352124
+
+EngineX/GC/GCBloom.cpp:
+	.text       start:0x80352124 end:0x80356F68
 	.ctors      start:0x803B4060 end:0x803B4064
+
+hvqm/HVQM4.cpp:
+	.text       start:0x80356F68 end:0x80357634
 
 sn/SNSerial.c:
 	.text       start:0x80357634 end:0x80357700

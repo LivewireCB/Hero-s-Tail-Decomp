@@ -2,6 +2,80 @@
 #define EXMALLOC_H
 
 #include "types.h"
+#include <EngineX/EXMemoryManager.h>
+#include <EngineX/EXList.h>
+
+struct EXMemBlock;
+
+struct EXMemCacheEntry
+{
+    s16 m_Time;
+    u8 m_Flags;
+    s8 m_ct;
+    EXMemBlock* m_pMem;
+    EXMEMCALLBACK* m_pFunc;
+    u32 m_pad0;
+};
+
+struct EXMemCacheBlock
+{
+    int UsedCount;
+    EXMemCacheEntry* pBlock;
+};
+
+template <typename T, typename TRef> struct EXDataArray
+{
+    int m_iAlloc;
+    int m_iGrowBy;
+    int m_iSize;
+    EXMemCacheBlock* m_pData;
+
+    EXDataArray();
+    // EXDataArray();
+    EXDataArray(EXDataArray<T, TRef>*, int, void);
+    void Init();
+    int Size();
+    int AllocSize();
+    int GetUpperBound();
+    void SetSize();
+    void SetGrowBy(EXDataArray<T, TRef>*, int, void);
+    void AllocMem(EXDataArray<T, TRef>*, int, void);
+    void FreeExtra();
+    void Empty();
+    void RemoveAll();
+    void SetAt();
+    EXMemCacheBlock GetAt();
+    EXMemCacheBlock& ElementAt();
+    EXMemCacheBlock* GetData();
+    // EXMemCacheBlock* GetData();
+    void SetAtGrow();
+    int Add();
+    int Append();
+    void Copy();
+    EXMemCacheBlock& AddSpace();
+    s32 AddUnique();
+    s32 Find();
+    // EXMemCacheBlock& operator[]();
+    // EXMemCacheBlock& operator[]();
+    void InsertAt();
+    void RemoveAt();
+    // void InsertAt();
+    // EXDataArray<EXMemCacheBlock,const EXMemCacheBlock &>& operator=();
+    void GrowArray();
+};
+
+struct EXMemCacheArray
+{
+    EXDataArray<EXMemCacheBlock, const EXMemCacheBlock&> m_Blocks;
+
+    // EXMemCacheArray& operator=();
+    EXMemCacheArray();
+    // EXMemCacheArray();
+    EXMemCacheArray(EXMemCacheArray*, int, void);
+    // EXMemCacheEntry* Get();
+    void RemoveEntry();
+    void RemoveAll();
+};
 
 struct EXMemBlock
 {
@@ -13,8 +87,8 @@ struct EXMemBlock
     union
     {
         EXMemBlock* m_pNext;
-        // EXMEMCALLBACK* m_pFunc;
-        // EXMemCacheEntry* m_pCache;
+        EXMEMCALLBACK* m_pFunc;
+        EXMemCacheEntry* m_pCache;
     };
     u32 m_Size_Flags;
     u32 m_PrevSize_Align;
@@ -32,9 +106,9 @@ struct EXMemBlock
     Bool LockMem();
     char* AlignText();
     void Init(u32);
-    void Copy();
+    void Copy(EXMemBlock* pMem);
     void* Data();
-    // EXMEMCALLBACK* Func();
+    EXMEMCALLBACK* Func();
     Bool CallFunction();
     void SetAlignFlags();
     u32 AlignFlags();
@@ -50,7 +124,7 @@ struct EXMemBlock
     EXMemBlock* PrevLink();
     EXMemBlock* NextLink();
     EXMemBlock* LinkAddr();
-    EXMemBlock* Split();
+    EXMemBlock* Split(size_t size, Bool fHi);
     void Add();
     void Remove();
     void JoinNext();
@@ -62,8 +136,8 @@ struct EXMemHeap
     void* m_pMemAlloc;
     EXMemBlock* m_pStart;
     EXMemBlock* m_pEnd;
-    //EXDListItem m_FreeList[5];
-    //EXMemCacheArray m_CacheLists[3];
+    EXDListItem m_FreeList[5];
+    EXMemCacheArray m_CacheLists[3];
     s32 m_HeapId;
     u32 m_HeapSize;
     char* m_HeapName;
@@ -80,7 +154,7 @@ struct EXMemHeap
     EXMemHeap();
     // EXMemHeap();
     EXMemHeap(EXMemHeap*, int, void);
-    void Init();
+    void Init(void* pMem, size_t size, long HeapId, char* HeapName);
     void* MemAlloc();
     EXMemBlock* MemStart();
     EXMemBlock* MemEnd();
@@ -123,8 +197,8 @@ struct EXMemHeap
     EXMemBlock* _FindLargestFree();
     EXMemBlock* _FindFreeLastChance();
     EXMemBlock* _FindFreeCacheMem();
-    EXMemBlock* SplitAlignMemory();
-    EXMemBlock* SplitAlignMemory2();
+    EXMemBlock* SplitAlignMemory(EXMemBlock* pMem, size_t alignment) const;
+    EXMemBlock* SplitAlignMemory2(EXMemBlock* pMem, size_t alignment, size_t size) const;
     EXMemBlock* AllocBlock();
     EXMemBlock* AddFreeList();
     EXMemBlock* AddFreeList2();

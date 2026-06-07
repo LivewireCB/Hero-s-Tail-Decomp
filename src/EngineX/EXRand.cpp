@@ -1,5 +1,8 @@
 #include <EngineX/EXRand.h>
 
+EXRandFastClass g_EXRandFastClass;
+EXRandClass g_EXRandClass;
+
 void EXRandClass::SetSeed(u64 Seed)
 {
     m_RandShift = Seed;
@@ -15,18 +18,25 @@ void EXRandClass::GetState(EXRandClass& State) const
     State.m_RandShift = m_RandShift;
 }
 
-u32 EXRandClass::Rand32()
-{
-    u32 tmpRand;
-    u32 tmpRand2;
+// I believe that this is a Linear Congruential Generator algorithm
+#define MULTIPLIER 0x343fd // 214013
+#define INCREMENT 0x269ec3 // 2531011
 
-    tmpRand2 = m_RandShift * 0x343fd + 0x269ec3; // 214013 and 2531011
-    tmpRand = tmpRand2 * 0x343fd + 0x269ec3; // 214013 and 2531011
-    m_RandShift = tmpRand;
-    return tmpRand2 & 0xffff0000 | tmpRand >> 16;
+u32 EXRandClass::Rand32(void)
+{
+    u32 rand1;
+    u32 rand2;
+
+    rand1 = m_RandShift * MULTIPLIER + INCREMENT;
+    rand2 = rand1 * MULTIPLIER + INCREMENT;
+
+    m_RandShift = rand2;
+    return rand1 & 0xffff0000 | rand2 >> 16;
 }
 
-float EXRandClass::Randf()
+// ToDo: Not exactly correct, may correct itself when rodata sectioning is fixed.
+// Function shows as 100% but the float values in objdiff are not correct.
+f32 EXRandClass::Randf(void)
 {
-    return (float)EXRandClass::Rand32() * 16;
+    return (s32)(Rand32() >> 1) * (1.0f / 2.0f);
 }
