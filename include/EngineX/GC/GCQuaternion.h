@@ -1,0 +1,4 @@
+#ifndef GCQUATERNION_H
+#define GCQUATERNION_H
+
+#endif // GCQUATERNION_H

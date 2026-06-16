@@ -1,0 +1,4 @@
+#ifndef GCITEMRENDER_H
+#define GCITEMRENDER_H
+
+#endif // GCITEMRENDER_H

@@ -18,7 +18,7 @@ struct EXString
     // EXString();
     // EXString();
     // EXString();
-    EXString(EXString*, int, void);
+    // EXString(EXString*, int, void);
     void Empty();
     // EXString& operator=();
     // EXString& operator=();
@@ -61,12 +61,13 @@ struct EXStringArray
 
     // EXStringArray& operator=();
     EXStringArray();
-    // EXStringArray();
-    EXStringArray(EXStringArray*, int, void);
+    ~EXStringArray();
+    EXStringArray(s32, s32);
+    // EXStringArray(EXStringArray*, int, void);
     int Size();
     int GetUpperBound();
     void SetSize();
-    void SetGrowBy(EXStringArray*, int, void);
+    // void SetGrowBy(EXStringArray*, int, void);
     void FreeExtra();
     void RemoveAll();
     EXString& GetAt();

@@ -1,0 +1,4 @@
+#ifndef GCGEODRAWINFO_H
+#define GCGEODRAWINFO_H
+
+#endif // GCGEODRAWINFO_H

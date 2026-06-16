@@ -1,0 +1,4 @@
+#ifndef GCWNDSPRITE_H
+#define GCWNDSPRITE_H
+
+#endif // GCWNDSPRITE_H

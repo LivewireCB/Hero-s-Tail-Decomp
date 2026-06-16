@@ -1,0 +1,4 @@
+#ifndef GCGEOENTITY_H
+#define GCGEOENTITY_H
+
+#endif // GCGEOENTITY_H

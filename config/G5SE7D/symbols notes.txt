@@ -411,3 +411,5 @@ MOSTLY DONE ALREADY
 0x804cc868 - 0x804ccce0 // big engine x file
 0x804ccce0 - 0x804ccef4 // SDK shit again??
 0x804ccef4 to the end of the section has earlier files in it? why? I have no idea
+
+gc engine x used regular engine x

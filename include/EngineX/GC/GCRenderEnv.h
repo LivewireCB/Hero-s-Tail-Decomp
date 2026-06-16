@@ -1,0 +1,4 @@
+#ifndef GCRENDERENV_H
+#define GCRENDERENV_H
+
+#endif // GCRENDERENV_H

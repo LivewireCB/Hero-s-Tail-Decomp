@@ -1,0 +1,4 @@
+#ifndef GCCOLLISION_H
+#define GCCOLLISION_H
+
+#endif // GCCOLLISION_H

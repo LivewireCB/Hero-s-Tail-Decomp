@@ -1,0 +1,4 @@
+#ifndef GCSOUNDMANAGER_H
+#define GCSOUNDMANAGER_H
+
+#endif // GCSOUNDMANAGER_H

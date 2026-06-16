@@ -1,0 +1,4 @@
+#ifndef GCRESOURCEWND_H
+#define GCRESOURCEWND_H
+
+#endif // GCRESOURCEWND_H
