@@ -15,17 +15,16 @@ struct EXSYSFILEINFO
 
 struct MXFile
 {
-protected:
-    EXSYSFILEINFO m_SysFile[4];
-    u32 m_Length;
-    u32 m_SeekPos;
-    u32 m_FileHandle;
-    void* m_pLoadAddr;
+    /* 0x00 */ EXSYSFILEINFO m_SysFile[4];
+    /* 0x30 */ u32 m_Length;
+    /* 0x34 */ u32 m_SeekPos;
+    /* 0x38 */ u32 m_FileHandle;
+    /* 0x3c */ void* m_pLoadAddr;
 
 public:
     // MXFile& operator=();
     MXFile();
-    // MXFile();
+    MXFile(u64 Length, u64 SeekPos);
     void Initialise(u64, u64);
     u32 Length();
     void SetLength();
@@ -78,9 +77,9 @@ protected:
     void DeleteMXFile();
 
 public:
-    // EXFile();
-    // ~EXFile();
-    // EXFile();
+    // EXFile(EXFILEINFO* pFinf, u32 Length, u32 SeekPos);
+    ~EXFile();
+    EXFile(char* pFilename, u64 Length, u64 SeekPos);
     // /* vtable[2] */ virtual EXFile(EXFile*, int, void);
     void Initalise();
     // Bool OnLoad();

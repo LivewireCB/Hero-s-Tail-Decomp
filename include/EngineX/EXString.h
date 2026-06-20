@@ -30,12 +30,12 @@ struct EXString
     void ToLower();
     u16 Length() const;
     u16 Capacity() const;
-    s32 Find();
+    s32 Find(char ch, long pos) const;
     Bool IsEmpty() const;
-    char* GetBuffer();
+    char* GetBuffer(u16 MinLen);
     void ReleaseBuffer();
     s8 Compare();
-    s8 CompareNoCase();
+    s8 CompareNoCase(EXString& Str) const;
     // char* operator char *();
     char* c_str();
     char* data();
@@ -45,8 +45,8 @@ struct EXString
     int Tokenise();
     s16 Format();
 
-    void AllocMem();
-    void ReallocMem();
+    void AllocMem(u16 nLength);
+    void ReallocMem(u16 nLength);
     void DeallocMem();
     int IncRefCount();
     void SetLength(u16 aNewLength);

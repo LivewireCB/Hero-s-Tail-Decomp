@@ -6,6 +6,8 @@ EXMemHeap _SDataHeap;
 EXMemHeap _LDataHeap;
 EXMemHeap* _SystemHeapList[4];
 
+EXMemHeap* _SystemHeap;
+
 // EXFixedArray<unsigned int, 7> EXMemHeap::m_gAlignTbl;
 // EXFixedArray<const char*, 7> EXMemHeap::m_gAlignTxt;
 

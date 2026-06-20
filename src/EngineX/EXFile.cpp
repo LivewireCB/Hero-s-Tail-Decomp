@@ -5,9 +5,16 @@
 EXRuntimeClass EXFile::classEXFile;
 char* EXFileNotInit;
 
+// extern EXFileSys* EXFileSys::m_pFileSys;
+
 EXFile* EXFile::CreateObject()
 {
     // return new EXFile();
+}
+
+MXFile::MXFile(u64 Length, u64 SeekPos)
+{
+    Initialise(Length, SeekPos);
 }
 
 // EXAMPLE:
@@ -36,6 +43,20 @@ void MXFile::SetFileHandle(u64 FileHandle)
 
 EXFile::EXFile()
 {
+    Initalise();
+}
+
+// EXFile::EXFile(EXFILEINFO* pFinf, u32 Length, u32 SeekPos)
+// {
+// }
+
+EXFile::EXFile(char* pFilename, u64 Length, u64 SeekPos)
+{
+    Initalise();
+}
+
+EXFile::~EXFile()
+{
 }
 
 void EXFile::Initalise()
@@ -47,6 +68,54 @@ void EXFile::Initalise()
     m_pMemAddr = 0;
     m_Priority = 0;
     m_Status = 0;
+}
+
+void EXFile::ChangeMemOwner()
+{
+    if (m_pMXFile != NULL)
+    {
+        EXAllocSetOwner(m_pMXFile->m_pLoadAddr, &m_pMemAddr);
+    }
+
+    EXFile::DeleteMXFile();
+}
+
+void EXFile::DeleteMXFile()
+{
+    if (m_pMXFile != NULL)
+    {
+        EXFree(m_pMXFile);
+    }
+
+    m_pMXFile = NULL;
+}
+
+void EXFile::CleanUpMemory()
+{
+}
+
+// Bool EXFile::OnLoad(EXMemHeap* pHeap)
+// {
+// }
+
+Bool EXFile::OnLoad()
+{
+    // EXFile::OnLoad(_SystemHeapList);
+}
+
+Bool EXFile::OnLoaded()
+{
+    EXFile::ChangeMemOwner();
+    m_Status = 3;
+
+    return true;
+}
+
+Bool EXFile::OnKill()
+{
+    EXFile::CleanUpMemory();
+
+    return true;
 }
 
 EXRuntimeClass* EXFile::GetRuntimeClass() const

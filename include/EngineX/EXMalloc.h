@@ -187,7 +187,7 @@ struct EXMemHeap
     void* _sysAllocFnc();
     void* _sysCache();
     void* _sysCacheDel();
-    void* _sysRealloc();
+    void* _sysRealloc(void*, u32);
     EXMemBlock* _sysFree();
     void _sysSetAsCache();
     void UpdateFirstLastFree();

@@ -179,7 +179,7 @@ if config.platform == Platform.GC_WII:
 
     # Optional numeric ID for decomp.me preset
     # Can be overridden in libraries or objects
-    config.scratch_preset_id = 0
+    config.scratch_preset_id
 elif config.platform == Platform.PS2:
     config.asflags = [
         "-no-pad-sections",
@@ -269,13 +269,13 @@ if config.platform == Platform.GC_WII:
 
     cflags_game = [
         *cflags_base_prodg,
-        "-mps-nodf",
+        # "-mps-nodf",
         # "-mfast-cast",
         "-G4",
         "-ffast-math",
         "-fno-common",
         # "-fno-strength-reduce",
-        "-fforce-addr",
+        # "-fforce-addr",
         "-fcse-follow-jumps",
         "-fcse-skip-blocks",
         "-fforce-mem",
@@ -587,7 +587,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/EXGeoSpreadSheet.cpp"),
                     Object(NonMatching, "EngineX/EXGeoTexture.cpp"),
                     Object(NonMatching, "EngineX/EXGeoViewer.cpp"),
-                    Object(NonMatching, "EngineX/EXHashcode.cpp"),
+                    Object(Matching, "EngineX/EXHashcode.cpp"),
                     Object(NonMatching, "EngineX/EXIntersection.cpp"),
                     Object(NonMatching, "EngineX/EXItem.cpp"),
                     Object(NonMatching, "EngineX/EXItemAnimator_Anim.cpp"),
@@ -613,7 +613,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/EXItemRender.cpp"),
                     Object(NonMatching, "EngineX/EXLightManager.cpp"),
                     Object(NonMatching, "EngineX/EXLine.cpp"),
-                    Object(NonMatching, "EngineX/EXList.cpp"),
+                    Object(Matching, "EngineX/EXList.cpp"),
                     Object(NonMatching, "EngineX/EXMalloc.cpp"),
                     Object(NonMatching, "EngineX/EXMaths.cpp"),
                     Object(NonMatching, "EngineX/EXMatrix.cpp"),

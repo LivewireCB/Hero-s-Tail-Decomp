@@ -28,19 +28,19 @@ struct EXGeoDataSheet
 
 struct EXGeoSpreadSheet
 {
-    union
-    {
-        struct
-        {
-            u32 m_SectionCount;
-            EXGeoTextSection m_Section[1];
-        };
-        struct
-        {
-            u32 m_SheetCount;
-            // EXRelPtr<EXGeoDataSheet> m_SheetData[1];
-        };
-    };
+    // union
+    // {
+    //     struct
+    //     {
+    //         u32 m_SectionCount;
+    //         EXGeoTextSection m_Section[1];
+    //     };
+    //     struct
+    //     {
+    //         u32 m_SheetCount;
+    //         // EXRelPtr<EXGeoDataSheet> m_SheetData[1];
+    //     };
+    // };
 
     // EXGeoSpreadSheet& operator=();
     EXGeoSpreadSheet();

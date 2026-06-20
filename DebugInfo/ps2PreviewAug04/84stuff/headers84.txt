@@ -1,0 +1,15 @@
+Symbolic Header, magic = 7009, vstamp = 0:
+
+                              Offset              Size (Bytes)        Count
+                              ------              ------------        -----
+  Line Numbers                0x41a064            0x35c               891     
+  Dense Numbers               0x0                 0x0                 0       
+  Procedure Descriptors       0x41a3c0            0x128aa0            23368   
+  Local Symbols               0x542e60            0x15fc078           1921034 
+  Optimization Symbols        0x0                 -                   0       
+  Auxiliary Symbols           0x1b3eed8           0x2ded0             47028   
+  Local Strings               0x1b6cda8           0xff316c            -
+  External Strings            0x2b5ff14           0x89440             -
+  File Descriptors            0x2be9354           0x5220              292     
+  Relative File Descriptors   0x2bee574           0x490               292     
+  External Symbols            0x2beea04           0x3f8f0             16271   

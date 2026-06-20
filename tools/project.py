@@ -303,6 +303,31 @@ class ProjectConfig:
 def is_windows() -> bool:
     return os.name == "nt"
 
+# Fix for building with earlier ProDG versions
+def _parse_semver(version: str) -> Optional[Tuple[int, int, int]]:
+    parts = version.split(".")
+    if len(parts) < 2:
+        return None
+    try:
+        major = int(parts[0])
+        minor = int(parts[1])
+        patch = int(parts[2]) if len(parts) > 2 else 0
+    except ValueError:
+        return None
+    return (major, minor, patch)
+
+
+def _prodg_linker_supports_rsp(linker_version: Optional[str]) -> bool:
+    if linker_version is None:
+        return True
+    if not linker_version.startswith("ProDG/"):
+        return True
+    parsed = _parse_semver(linker_version.split("/", 1)[1])
+    if parsed is None:
+        return True
+    # Older ProDG ngcld builds do not support @response files.
+    return parsed >= (3, 9, 0)
+
 
 # On Windows, we need this to use && in commands
 CHAIN = "cmd /c " if is_windows() else ""
@@ -752,10 +777,20 @@ def generate_build_ninja(
     gnu_as_implicit = None
     ld_cmd = None
     ld_implicit = None
+    link_uses_rsp = True
     if config.platform == Platform.GC_WII:
         # NGCLD
         ngcld = compiler_path / "ngcld.exe"
-        ld_cmd = f"{wrapper_cmd}{ngcld} $ldflags -o $out @$out.rsp"
+        link_uses_rsp = _prodg_linker_supports_rsp(config.linker_version)
+        if not link_uses_rsp:
+            print(
+                "Warning: Disabling linker response files for "
+                f"{config.linker_version}; older ProDG ngcld cannot open @*.rsp"
+            )
+        if link_uses_rsp:
+            ld_cmd = f"{wrapper_cmd}{ngcld} $ldflags -o $out @$out.rsp"
+        else:
+            ld_cmd = f"{wrapper_cmd}{ngcld} $ldflags -o $out $in"
         ld_implicit: List[Optional[Path]] = [
             compilers_implicit or ngcld,
             wrapper_implicit,
@@ -818,13 +853,20 @@ def generate_build_ninja(
         ee_gcc_implicit.append(transform_dep)
 
     n.comment("Link ELF file")
-    n.rule(
-        name="link",
-        command=ld_cmd,
-        description="LINK $out",
-        rspfile="$out.rsp",
-        rspfile_content="$in_newline",
-    )
+    if link_uses_rsp:
+        n.rule(
+            name="link",
+            command=ld_cmd,
+            description="LINK $out",
+            rspfile="$out.rsp",
+            rspfile_content="$in_newline",
+        )
+    else:
+        n.rule(
+            name="link",
+            command=ld_cmd,
+            description="LINK $out",
+        )
     n.newline()
 
     if config.platform != Platform.PS2:

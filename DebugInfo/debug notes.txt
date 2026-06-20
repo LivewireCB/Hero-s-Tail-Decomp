@@ -1,0 +1,8 @@
+
+No current use for the Preview build stabs.
+
+The Artist build shows the inlines on the Engine and SE files.
+
+PS2 Release has the most accurate stabs but doesnt show inline function names.
+
+Have not done a stabs dump of PS2 OLD because it looks to contain no useful info.

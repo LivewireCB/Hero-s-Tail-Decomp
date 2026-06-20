@@ -4,7 +4,17 @@
 #include "types.h"
 
 typedef u64 EXMemFlags;
-typedef Bool EXMEMCALLBACK(/* parameters unknown */);
+
+enum EXMcmds
+{
+    MemCmd_Null = 0,
+    MemCmd_PreMemUpdate = 1,
+    MemCmd_PostMemUpdate = 2,
+    MemCmd_DebugMemBlockDump = 3,
+    MemCmd_DebugMemBlockColour = 4
+};
+
+typedef Bool EXMEMCALLBACK(void* pData, EXMcmds cmd);
 
 void* _EXAlloc(size_t size, EXMemFlags memflags);
 void* _EXAllocPure(size_t size, EXMemFlags memflags);
