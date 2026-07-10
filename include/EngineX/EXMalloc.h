@@ -4,6 +4,7 @@
 #include "types.h"
 #include <EngineX/EXMemoryManager.h>
 #include <EngineX/EXList.h>
+#include "EXDataArray.h"
 
 struct EXMemBlock;
 
@@ -23,7 +24,7 @@ struct EXMemCacheBlock
     EXMemCacheEntry* pBlock;
 };
 
-template <typename T, typename TRef> struct EXDataArray
+struct EXDataArray<EXMemCacheBlock, const EXMemCacheBlock&>
 {
     int m_iAlloc;
     int m_iGrowBy;
@@ -32,14 +33,14 @@ template <typename T, typename TRef> struct EXDataArray
 
     EXDataArray();
     // EXDataArray();
-    EXDataArray(EXDataArray<T, TRef>*, int, void);
+    EXDataArray(EXDataArray<EXMemCacheBlock, const EXMemCacheBlock&>, int, void);
     void Init();
     int Size();
     int AllocSize();
     int GetUpperBound();
     void SetSize();
-    void SetGrowBy(EXDataArray<T, TRef>*, int, void);
-    void AllocMem(EXDataArray<T, TRef>*, int, void);
+    void SetGrowBy(EXDataArray<EXMemCacheBlock, const EXMemCacheBlock&>, int, void);
+    void AllocMem(EXDataArray<EXMemCacheBlock, const EXMemCacheBlock&>*, int, void);
     void FreeExtra();
     void Empty();
     void RemoveAll();
@@ -175,7 +176,7 @@ struct EXMemHeap
     static void EnableAutoHeapCompact(/* parameters unknown */);
     static void SetCompactCallbacks(/* parameters unknown */);
     void Update();
-    static void UpdateAllHeaps(/* parameters unknown */);
+    static void UpdateAllHeaps(unsigned long, long);
     static void UpdateHeapStats(/* parameters unknown */);
     static void FlushAllCacheMem(/* parameters unknown */);
     static void RegisterMallocVars(/* parameters unknown */);

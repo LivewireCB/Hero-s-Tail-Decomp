@@ -1,6 +1,6 @@
 #include <EngineX/EXString.h>
 
-#include "include\libc\string.h"
+#include <include\libc\string.h>
 
 #include "EngineX/EXMemoryManager.h"
 

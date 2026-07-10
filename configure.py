@@ -234,6 +234,7 @@ if config.platform == Platform.GC_WII:
     cflags_base_prodg = [
         "-O2",
         "-gdwarf",
+        # "-lang=cplusplus",
         # "-Wa,-L",
         # "-Wall",
         # "-Wreturn-type", # enable at some point
@@ -274,6 +275,7 @@ if config.platform == Platform.GC_WII:
         "-G4",
         "-ffast-math",
         "-fno-common",
+        "-fvtable-thunks",
         # "-fno-strength-reduce",
         # "-fforce-addr",
         "-fcse-follow-jumps",
@@ -568,7 +570,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/EXDebugTree.cpp"),
                     Object(NonMatching, "EngineX/EXDebugTreeWnd.cpp"),
                     Object(NonMatching, "EngineX/EXDebugWnd.cpp"),
-                    Object(NonMatching, "EngineX/EXDisplay.cpp"),
+                    Object(NonMatching, "EngineX/EXDisplay.cpp", extra_cflags=["-G8"]),
                     Object(NonMatching, "EngineX/EXDistance.cpp"),
                     Object(NonMatching, "EngineX/EXFile.cpp"),
                     Object(NonMatching, "EngineX/EXFileSys.cpp"),
@@ -584,7 +586,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/EXGeoMap.cpp"),
                     Object(NonMatching, "EngineX/EXGeoParticle.cpp"),
                     Object(NonMatching, "EngineX/EXGeoScript.cpp"),
-                    Object(NonMatching, "EngineX/EXGeoSpreadSheet.cpp"),
+                    Object(Matching, "EngineX/EXGeoSpreadSheet.cpp"),
                     Object(NonMatching, "EngineX/EXGeoTexture.cpp"),
                     Object(NonMatching, "EngineX/EXGeoViewer.cpp"),
                     Object(Matching, "EngineX/EXHashcode.cpp"),

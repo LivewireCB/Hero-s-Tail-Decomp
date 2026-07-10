@@ -25,4 +25,28 @@ struct EXHT // No Dwarf info available
     static char* HashCodeNotFoundMessage;
 };
 
+struct EXBit128
+{ // 0x10
+protected:
+    /* 0x0 */ u128 m_Data;
+
+public:
+    // EXBit128& operator=();
+    EXBit128();
+    // EXBit128();
+    void Set();
+    // void Set();
+    // void Set();
+    void Clr();
+    // void Set();
+    void SetAll();
+    void ClrAll();
+    u32 IsSet();
+    // u32 IsSet();
+    u32 IsAnySet();
+    // EXBit128 operator|=();
+    // EXBit128 operator&=();
+    // EXBit128 operator^=();
+};
+
 #endif // EXHASHCODE_H

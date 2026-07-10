@@ -1,15 +1,18 @@
 #include "include/EngineX/EXFile.h"
 
+#include "include/EngineX/EXFileSys.h"
 #include "include/EngineX/EXMalloc.h"
+#include "include/EngineX/EXFileSys.h"
 
-EXRuntimeClass EXFile::classEXFile;
-char* EXFileNotInit;
+char* EXFileNotInit = "0";
+EXFileSys* EXFileSys::m_pFileSys = 0;
+Bool EXFileSys::m_DebugLoadInfo = true;
 
-// extern EXFileSys* EXFileSys::m_pFileSys;
+extern EXMemHeap* _SystemHeapList[4];
 
 EXFile* EXFile::CreateObject()
 {
-    // return new EXFile();
+    return new EXFile();
 }
 
 MXFile::MXFile(u64 Length, u64 SeekPos)
@@ -38,7 +41,8 @@ void MXFile::Initialise(u64 Length, u64 SeekPos)
 void MXFile::SetFileHandle(u64 FileHandle)
 {
     u32 ID;
-    // Requires usage of "EXFileSys::m_pFileSys". This lives in EXFileSys.cpp
+
+    EXFileSys::m_pFileSys->m_UniqueID = 0;
 }
 
 EXFile::EXFile()
@@ -46,13 +50,16 @@ EXFile::EXFile()
     Initalise();
 }
 
-// EXFile::EXFile(EXFILEINFO* pFinf, u32 Length, u32 SeekPos)
-// {
-// }
+EXFile::EXFile(EXFILEINFO* pFinf, u64 Length, u64 SeekPos)
+{
+    Initalise();
+    CreateMXFile(pFinf, Length, SeekPos);
+}
 
 EXFile::EXFile(char* pFilename, u64 Length, u64 SeekPos)
 {
     Initalise();
+    CreateMXFile(pFilename, Length, SeekPos);
 }
 
 EXFile::~EXFile()
@@ -80,6 +87,14 @@ void EXFile::ChangeMemOwner()
     EXFile::DeleteMXFile();
 }
 
+void EXFile::CreateMXFile(EXFILEINFO* pFinf, u64 Length, u64 SeekPos)
+{
+}
+
+void EXFile::CreateMXFile(char* pFilename, u64 Length, u64 SeekPos)
+{
+}
+
 void EXFile::DeleteMXFile()
 {
     if (m_pMXFile != NULL)
@@ -94,13 +109,13 @@ void EXFile::CleanUpMemory()
 {
 }
 
-// Bool EXFile::OnLoad(EXMemHeap* pHeap)
-// {
-// }
+Bool EXFile::OnLoad(EXMemHeap* pHeap)
+{
+}
 
 Bool EXFile::OnLoad()
 {
-    // EXFile::OnLoad(_SystemHeapList);
+    return OnLoad(_SystemHeapList[0]);
 }
 
 Bool EXFile::OnLoaded()
@@ -116,6 +131,11 @@ Bool EXFile::OnKill()
     EXFile::CleanUpMemory();
 
     return true;
+}
+
+Bool EXFile::GetFileLoadedStatus() const
+{
+    u32 a;
 }
 
 EXRuntimeClass* EXFile::GetRuntimeClass() const

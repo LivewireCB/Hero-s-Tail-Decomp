@@ -2,6 +2,7 @@
 #define EXGEOSPREADSHEET_H
 
 #include "types.h"
+#include "EXRelPtr.h"
 
 struct EXGeoTextSection
 {
@@ -15,32 +16,32 @@ struct EXGeoDataSheet
     unsigned int m_Elements[1];
 };
 
-// struct EXRelPtr<EXGeoDataSheet>
-// {
-// EXRELOFFSET32 m_rPtr;
+struct EXRelPtr<EXGeoDataSheet>
+{
+    EXRELOFFSET32 m_rPtr;
 
-// EXRelPtr<EXGeoDataSheet>& operator=();
-// EXRelPtr();
-// EXRelPtr();
-// EXRELOFFSET32& RelPtr();
-// EXGeoDataSheet* operator EXGeoDataSheet*();
-// };
+    // EXRelPtr<EXGeoDataSheet>& operator=();
+    EXRelPtr();
+    // EXRelPtr();
+    EXRELOFFSET32& RelPtr();
+    // EXGeoDataSheet* operator EXGeoDataSheet*();
+};
 
 struct EXGeoSpreadSheet
 {
-    // union
-    // {
-    //     struct
-    //     {
-    //         u32 m_SectionCount;
-    //         EXGeoTextSection m_Section[1];
-    //     };
-    //     struct
-    //     {
-    //         u32 m_SheetCount;
-    //         // EXRelPtr<EXGeoDataSheet> m_SheetData[1];
-    //     };
-    // };
+    union
+    {
+        struct
+        {
+            u32 m_SectionCount;
+            EXGeoTextSection m_Section[1];
+        };
+        struct
+        {
+            u32 m_SheetCount;
+            EXRelPtr<EXGeoDataSheet> m_SheetData[1];
+        };
+    };
 
     // EXGeoSpreadSheet& operator=();
     EXGeoSpreadSheet();

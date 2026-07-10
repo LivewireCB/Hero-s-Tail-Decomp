@@ -1,9 +1,10 @@
-
+// clang-format off
 // asm u32 PPCMfmsr() {
-//     nofralloc
-//     mfmsr r3
-//     blr
+    // nofralloc
+    // mfmsr r3
+    // blr
 // }
+// clang-format on
 
 // asm void PPCMtmsr(register u32 newMSR) {
 //     nofralloc

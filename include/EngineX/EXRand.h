@@ -7,8 +7,14 @@ struct EXRandClass
 {
     u32 m_RandShift;
 
+    EXRandClass()
+    {
+        m_RandShift = 0x955;
+    }
+
     // EXRandClass& operator=();
-    EXRandClass();
+    // EXRandClass();
+    // ~EXRandClass();
     void SetSeed(u64 Seed);
     void SetState(EXRandClass& State);
     void GetState(EXRandClass& State) const;
@@ -25,8 +31,14 @@ struct EXRandFastClass
 {
     u32 m_Seed;
 
+    EXRandFastClass()
+    {
+        m_Seed = 1;
+    }
+
     // EXRandFastClass& operator=();
-    EXRandFastClass();
+    // EXRandFastClass();
+    // ~EXRandFastClass();
     void SetSeed();
     void SetState();
     void GetState();

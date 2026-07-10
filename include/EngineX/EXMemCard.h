@@ -46,7 +46,7 @@ protected:
     // /* 0x0 */ EXMemCardDlgWnd* m_pWnd;
 
 public:
-    /* 0x4 */ __vtbl_ptr_type* vf24075;
+    // /* 0x4 */ __vtbl_ptr_type* vf24075;
 
     // EXMemCardDlg& operator=();
     EXMemCardDlg();
@@ -76,11 +76,11 @@ protected:
     /* 0x41 */ Bool m_bMultiCardOpFlag;
 
 public:
-    /* 0x44 */ __vtbl_ptr_type* vf24091;
+    // /* 0x44 */ __vtbl_ptr_type* vf24091;
 
     // EXBaseMemCard& operator=();
     EXBaseMemCard();
-    // EXBaseMemCard();
+    ~EXBaseMemCard();
     // /* vtable[1] */ virtual EXBaseMemCard(EXBaseMemCard*, int, void);
     /* vtable[2] */ virtual Bool Init();
     /* vtable[3] */ virtual s32 CardChanged(Bool& Changed);

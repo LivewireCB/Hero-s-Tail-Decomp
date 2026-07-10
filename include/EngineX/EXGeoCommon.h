@@ -4,11 +4,12 @@
 #include "types.h"
 
 #include "EXRuntimeClass.h"
+#include "EXBounds.h"
 
 struct EXGeoCommonObject
 { // 0x4
     static EXRuntimeClass classEXGeoCommonObject;
-    /* 0x0 */ __vtbl_ptr_type* vf4327;
+    // /* 0x0 */ __vtbl_ptr_type* vf4327;
 
     // EXGeoCommonObject& operator=();
     EXGeoCommonObject();
@@ -26,7 +27,7 @@ public:
     /* vtable[2] */ virtual void OnCreate();
     /* vtable[3] */ virtual void OnDelete();
     /* vtable[4] */ virtual void Draw();
-    // /* vtable[5] */ virtual EXBoundsBox& GetBoundsBox();
+    /* vtable[5] */ virtual EXBoundsBox& GetBoundsBox();
 };
 
 #endif // EXGEOCOMMON_H

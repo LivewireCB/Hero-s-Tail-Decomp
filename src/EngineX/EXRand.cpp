@@ -3,6 +3,9 @@
 EXRandFastClass g_EXRandFastClass;
 EXRandClass g_EXRandClass;
 
+static const double lbl_803D5948 = 4503601774854144.0;
+static const float lbl_803D5950 = 4.656613e-10f;
+
 void EXRandClass::SetSeed(u64 Seed)
 {
     m_RandShift = Seed;
@@ -38,5 +41,5 @@ u32 EXRandClass::Rand32(void)
 // Function shows as 100% but the float values in objdiff are not correct.
 f32 EXRandClass::Randf(void)
 {
-    return (s32)(Rand32() >> 1) * (1.0f / 2.0f);
+    return (s32)(Rand32() >> 1) * (4.656613e-10f);
 }

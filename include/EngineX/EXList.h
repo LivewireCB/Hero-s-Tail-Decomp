@@ -8,7 +8,6 @@ struct EXDListItem
     EXDListItem* m_pPrev;
     EXDListItem* m_pNext;
 
-    EXDListItem();
     void Add(EXDListItem* pDlistItem);
     void Insert(EXDListItem* pDlistItem);
     void Remove();
@@ -25,7 +24,6 @@ struct EXDList
     EXDListItem* m_pHead;
     EXDListItem* m_pTail;
 
-    EXDList();
     void Init();
     void AddHead(EXDListItem* pDListItem);
     void AddTail(EXDListItem* pDListItem);

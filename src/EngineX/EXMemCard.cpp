@@ -1,5 +1,13 @@
 #include <EngineX/EXMemcard.h>
 
+EXBaseMemCard::EXBaseMemCard()
+{
+}
+
+EXBaseMemCard::~EXBaseMemCard()
+{
+}
+
 // Bool EXBaseMemCard::Init(EXSaveInfo& Info)
 // {
 // }

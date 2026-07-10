@@ -4,6 +4,45 @@
 #include "types.h"
 
 #include "include/EngineX/EXString.h"
+#include "include/EngineX/EXMalloc.h"
+
+#include "EXFixedArray.h"
+
+struct EXFixedArray<signed char, 2>
+{
+    signed char m_Data[2];
+
+    // EXFixedArray<signed char, 2>& operator=();
+    // EXFixedArray();
+    // EXFixedArray();
+    size_t Size();
+    size_t GetUpperBound();
+    Bool& ElementAt();
+    Bool GetAt();
+    void SetAt();
+    Bool* GetData();
+    // Bool* GetData();
+    // Bool* operator signed char *();
+    // Bool* operator signed char *();
+};
+
+struct EXFixedArray<char, 33>
+{
+    char m_Data[33];
+
+    // EXFixedArray<char, 33>& operator=();
+    EXFixedArray();
+    // EXFixedArray();
+    size_t Size();
+    size_t GetUpperBound();
+    char& ElementAt();
+    char GetAt();
+    void SetAt();
+    char* GetData();
+    // char* GetData();
+    // char* operator char*();
+    // char* operator char*();
+};
 
 struct EXAppInfo
 {
@@ -14,7 +53,7 @@ struct EXAppInfo
     /* 0x04 */ u16 InactiveTimeout;
     /* 0x06 */ u16 GameplayTimeout;
     /* 0x08 */ float MasterVolume;
-    // /* 0x0c */ EXFixedArray<char, 33> DataRootDir;
+    /* 0x0c */ EXFixedArray<char, 33> DataRootDir;
     /* 0x30 */ u32 WideScreen;
     /* 0x34 */ u32 Pal60;
 };
@@ -93,7 +132,17 @@ struct EXBaseApp
     static float m_EngineRenderFrameRateDiv;
     static float m_EngineRenderFrameRateMul;
 
-    __vtbl_ptr_type* vf15087;
+    // __vtbl_ptr_type* vf15087;
+
+    void* operator new(size_t size)
+    {
+        return _EXAlloc(size, 0);
+    }
+
+    void operator delete(void* ptr)
+    {
+        return EXFree(ptr);
+    }
 
     // EXBaseApp& operator=();
     EXBaseApp();

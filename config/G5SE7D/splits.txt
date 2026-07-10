@@ -344,35 +344,44 @@ ppc/PPCArch.c:
 
 dolphin/os/OS.c:
 	.text       start:0x8025FED4 end:0x802609A0
+	.data       start:0x803E46DC end:0x803E4890
 	.bss        start:0x80479300 end:0x80479370
 
 dolphin/os/OSAlarm.c:
 	.text       start:0x802609A0 end:0x802610FC
+	.data       start:0x803E4890 end:0x803E4A88
 
 dolphin/os/OSArena.c:
 	.text       start:0x802610FC end:0x80261148
 
 dolphin/os/OSAudioSystem.c:
 	.text       start:0x80261148 end:0x802613DC
+	.data       start:0x803E4A88 end:0x803E4B08
 
 dolphin/os/OSCache.c:
 	.text       start:0x802613DC end:0x802619FC
+	.data       start:0x803E4B08 end:0x803E4D38
 
 dolphin/os/OSContext.c:
 	.text       start:0x802619FC end:0x8026226C
+	.data       start:0x803E4D38 end:0x803E4F10
 
 dolphin/os/OSError.c:
 	.text       start:0x8026226C end:0x80262918
+	.data       start:0x803E4F10 end:0x803E5230
 	.bss        start:0x80479370 end:0x804793C0
 
 dolphin/os/OSExec.c:
 	.text       start:0x80262918 end:0x80263278
+	.data       start:0x803E5230 end:0x803E5240
 
 dolphin/os/OSInterrupt.c:
 	.text       start:0x80263278 end:0x80263AE4
+	.data       start:0x803E5240 end:0x803E5270
 
 dolphin/os/OSLink.c:
 	.text       start:0x80263AE4 end:0x80263B08
+	.data       start:0x803E5270 end:0x803E52C0
 
 dolphin/os/OSMemory.c:
 	.text       start:0x80263B08 end:0x80263DD4
@@ -446,10 +455,10 @@ dolphin/dvd/dvdidutils.c:
 	.text       start:0x8026DDB0 end:0x8026DF28
 
 dolphin/dvd/dvdFatal.c:
-	.text       start:0x8026DF28 end:0x8026E030
+	.text       start:0x8026DF28 end:0x8026DF58
 
 dolphin/dvd/fstload.c:
-	.text       start:0x8026E030 end:0x8026E198
+	.text       start:0x8026DF58 end:0x8026E198
 
 dolphin/dvd/dvdlow.c:
 	.text       start:0x8026E198 end:0x8026F288
@@ -475,10 +484,12 @@ EngineX/EXAnimCache.cpp:
 	.ctors      start:0x803B3FDC end:0x803B3FE0
 	.rodata     start:0x803CFF70 end:0x803D016C
 	.bss        start:0x8047A470 end:0x8047A520
+	.sdata      start:0x804CBA20 end:0x804CBA28
 
 EngineX/EXApp.cpp:
 	.text       start:0x80274A88 end:0x80275488
 	.rodata     start:0x803D016C end:0x803D01B0
+	.sdata      start:0x804CBA28 end:0x804CBA74
 
 EngineX/EXBounds.cpp:
 	.text       start:0x80275488 end:0x80275EB0
@@ -513,12 +524,14 @@ EngineX/EXDebugWnd.cpp:
 EngineX/EXDebugTreeWnd.cpp:
 	.text       start:0x8027E334 end:0x8027FC58
 	.rodata     start:0x803D07E4 end:0x803D08E0
+	.sdata      start:0x804CBA74 end:0x804CBA78
 	.sbss       start:0x804CC7F8 end:0x804CC810
 
 EngineX/EXDisplay.cpp:
 	.text       start:0x8027FC58 end:0x80280C18
 	.ctors      start:0x803B3FE4 end:0x803B3FE8
 	.rodata     start:0x803D08E0 end:0x803D0AD4
+	.sdata      start:0x804CBA78 end:0x804CBA88
 	.sbss       start:0x804CC810 end:0x804CC820
 
 EngineX/EXDistance.cpp:
@@ -528,6 +541,7 @@ EngineX/EXDistance.cpp:
 EngineX/EXFile.cpp:
 	.text       start:0x80287458 end:0x80287A8C
 	.rodata     start:0x803D0B60 end:0x803D0BE0
+	.sdata      start:0x804CBA88 end:0x804CBA94
 
 EngineX/EXFileSys.cpp:
 	.text       start:0x80287A8C end:0x8028949C
@@ -538,10 +552,12 @@ EngineX/EXFileSys.cpp:
 EngineX/EXGamepad.cpp:
 	.text       start:0x8028949C end:0x80289744
 	.rodata     start:0x803D0C5C end:0x803D0C64
+	.sdata      start:0x804CBA94 end:0x804CBA98
 
 EngineX/EXGeoAnim.cpp:
 	.text       start:0x80289744 end:0x8028B370
 	.rodata     start:0x803D0C64 end:0x803D0D5C
+	.sdata      start:0x804CBA98 end:0x804CBAA4
 
 EngineX/EXGeoCommon.cpp:
 	.text       start:0x8028B370 end:0x8028C098
