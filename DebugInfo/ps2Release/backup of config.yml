@@ -1,0 +1,348 @@
+# Splat config for SLES52569 — Spyro: A Hero's Tail (PS2 PAL)
+# Place the ELF at orig/PS2/SLES_525.69 before running configure.
+name: Spyro A Hero's Tail PAL PS2
+sha1: 6202adb1bd0d1b0b6d7151b4ee42d20b1d07583b
+
+options:
+  basename: SLES_525.69
+  target_path: orig/PS2/SLES_525.69
+  base_path: ../..
+  platform: ps2
+  compiler: EEGCC
+
+  gp_value: 0x004FB9F0
+  ld_gp_expression: main_SDATA_START + 0xBF0
+
+  # Output paths (relative to base_path)
+  asm_path: build/PS2/asm
+  src_path: src/PS2
+  build_path: build/PS2/obj
+
+  # Assembly options
+  generate_asm_macros_files: True
+  named_regs_for_c_funcs: False
+  find_file_boundaries: False
+  disasm_unknown: True
+
+  # Rodata options
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 0
+  suggestion_rodata_section_start: True
+  pair_rodata_to_text: False
+  migrate_rodata_to_functions: True
+
+  # Auto-generate undefined functions and symbols
+  create_undefined_funcs_auto: True
+  undefined_funcs_auto_path: config/PS2/undefined_funcs_auto.txt
+  create_undefined_syms_auto: True
+  undefined_syms_auto_path: config/PS2/undefined_syms_auto.txt
+
+  # Manually defined symbols
+  symbol_addrs_path: config/PS2/symbols.txt
+  ld_script_path: build/PS2/ldscript.ld
+
+  o_as_suffix: True
+
+  # ELF sections
+  # section_order: [".text", ".vutext", ".noover", ".rodata", ".gcc_except_table", ".over", ".data", ".lit4", ".sdata", ".sbss", ".bss"]
+  # auto_link_sections: [".rodata", ".data", ".lit4", ".sdata", ".sbss", ".bss"]
+
+  section_order:
+    - .text
+    - .vutext
+    - .data
+    - .rodata
+    - .lit4
+    - .sdata
+    - .sbss
+    - .bss
+
+  auto_link_sections:
+    - .data
+    - .rodata
+    - .lit4
+    - .sdata
+    - .sbss
+    - .bss
+
+  # Linker script options
+  subalign: 8
+
+segments:
+  # Use `python configure.py -v PS2` after placing orig/PS2/SLES_525.69
+  # to run splat. Addresses here are file offset / vram pairs.
+  # Example subsegments based on debug info ordering — addresses are placeholders.
+  #
+  # From debug info:
+  #   _start (crt0) @ 0x00100008 → file offset ~0x1008, vram 0x100008
+  #   First game code (PreSE.cpp) @ 0x00100200
+  - name: main
+    type: code
+    start: 0x1000
+    vram: 0x100000
+    bss_size: 0x3FBD7 # should be 0x3FVB9 - Size of .bss + .sbss
+    subsegments:
+
+      # Uses File Offsets
+
+      # CRT0 startup
+      - [0x1008, asmtu, EngineX/PS2/crt0]
+      # Spyro game code — fill in exact boundaries from ELF/debug info
+      - [0x1200, asmtu, Spyro/Code/SE/PreSE.cpp]
+      - [0x1ce58, asmtu, Spyro/Code/Levels/PreLevels.cpp]
+      - [0x6ce50, asmtu, Spyro/Code/Levels/MiniGames/PreMiniGames.cpp]
+      - [0x8be88, asmtu, Spyro/Code/XSEItem/XSEItem_Default.cpp]
+      - [0x8bfa0, asmtu, Spyro/Code/XSEItemHandler/Player/PrePlayer.cpp]
+      - [0xa7d50, asmtu, Spyro/Code/XSEItemHandler/Player/Spyro/PreSpyro.cpp]
+      - [0xd17b8, asmtu, Spyro/Code/XSEItemHandler/Player/Hunter/PreHunter.cpp]
+      - [0xe0278, asmtu, Spyro/Code/XSEItemHandler/Player/Blinky/PreBlinky.cpp]
+      - [0xee6b0, asmtu, Spyro/Code/XSEItemHandler/Player/SgtBird/PreSgtBird.cpp]
+      - [0xf7b28, asmtu, Spyro/Code/XSEItemHandler/Player/Sparx/Player_Sparx.cpp]
+      - [0x100de8, asmtu, Spyro/Code/XSEItemHandler/Player/BallGadget/Player_BallGadget.cpp]
+      - [0x1093e0, asmtu, Spyro/Code/XSEItemHandler/Player/Ember/Player_Ember.cpp]
+      - [0x109600, asmtu, Spyro/Code/XSEItemHandler/Player/Flame/Player_Flame.cpp]
+      - [0x109820, asmtu, Spyro/Code/XSEItemHandler/PreSXEItemHandler.cpp]
+      - [0x155888, asmtu, Spyro/Code/XSEItemHandler/Bosses/PreBosses.cpp]
+      - [0x169430, asmtu, Spyro/Code/SETrigger/SETrigger_Default.cpp]
+      - [0x16a4b8, asmtu, Spyro/Code/SETrigger/StartPoint.cpp]
+      - [0x16ac58, asmtu, Spyro/Code/SETrigger/Trigger_Special.cpp]
+      - [0x16ca88, asmtu, Spyro/Code/SETrigger/TriggerList.cpp]
+      - [0x16cdb8, asmtu, Spyro/Code/Camera/PreCamera.cpp]
+      - [0x182ae0, asmtu, Spyro/Code/Support/PreSupport.cpp]
+      - [0x18f5e8, asmtu, Spyro/Code/Generic/PreGeneric.cpp]
+      - [0x1f9468, asmtu, Spyro/Code/Panel/PrePanel.cpp]
+      - [0x207cf8, asmtu, Spyro/Code/GUI/PreGUI.cpp]
+      - [0x21c938, asmtu, Spyro/Code/BASIC_System/BASIC_Interpret.cpp]
+      - [0x21cf40, asmtu, Spyro/Code/BASIC_System/BASIC_InterpretInterfaceLayer.cpp]
+      - [0x21cfd0, asmtu, Spyro/Code/BASIC_System/BASIC_InterpretPrivate.cpp]
+      - [0x21e580, asmtu, Spyro/Code/PreCode.cpp]
+      # EE compiler runtime
+      - [0x232b20, asmtu, gcc/libgcc2_1]
+      - [0x232b28, asmtu, gcc/fp-bit.c]
+      - [0x232e00, asmtu, gcc/libgcc2_2]
+      - [0x233d70, asmtu, gcc/dp-bit.c]
+      - [0x234a30, asmtu, gcc/frame.c]
+      - [0x2359b8, asmtu, gcc/libgcc2_3]
+      # EngineX shared code
+      - [0x235a18, asmtu, EngineX/EXApp.cpp]
+      - [0x2364a8, asmtu, EngineX/EXBounds.cpp]
+      - [0x236ce0, asmtu, EngineX/EXCamera.cpp]
+      - [0x2376d0, asmtu, EngineX/EXCollision.cpp]
+      - [0x238e28, asmtu, EngineX/EXCollisionTypes.cpp]
+      - [0x239130, asmtu, EngineX/EXDebugTree.cpp]
+      - [0x23a478, asmtu, EngineX/EXDebugTreeWnd.cpp]
+      - [0x23d9e0, asmtu, EngineX/EXDebugWnd.cpp]
+      - [0x23e670, asmtu, EngineX/EXDisplay.cpp]
+      - [0x23f648, asmtu, EngineX/EXDistance.cpp]
+      - [0x243050, asmtu, EngineX/EXDatum.cpp]
+      - [0x243b50, asmtu, EngineX/EXFile.cpp]
+      - [0x244278, asmtu, EngineX/EXFileSys.cpp]
+      - [0x246008, asmtu, EngineX/EXGamepad.cpp]
+      - [0x2464e0, asmtu, EngineX/EXGeoCommon.cpp]
+      - [0x247b88, asmtu, EngineX/EXGeoEntity.cpp]
+      - [0x249c70, asmtu, EngineX/EXGeoEntity_NavMesh.cpp]
+      - [0x24af10, asmtu, EngineX/EXGeoAnim.cpp]
+      - [0x24c5e8, asmtu, EngineX/EXGeoFace.cpp]
+      - [0x24c6b0, asmtu, EngineX/EXGeoFile.cpp]
+      - [0x24fda0, asmtu, EngineX/EXGeoMap.cpp]
+      - [0x253240, asmtu, EngineX/EXGeoParticle.cpp]
+      - [0x2532a0, asmtu, EngineX/EXGeoScript.cpp]
+      - [0x253318, asmtu, EngineX/EXGeoSpreadSheet.cpp]
+      - [0x253358, asmtu, EngineX/EXGeoViewer.cpp]
+      - [0x25a560, asmtu, EngineX/EXHashcode.cpp]
+      - [0x25a5b8, asmtu, EngineX/EXIntersection.cpp]
+      - [0x25af28, asmtu, EngineX/EXItem.cpp]
+      - [0x25d250, asmtu, EngineX/EXItemAnimator.cpp]
+      - [0x25e558, asmtu, EngineX/EXItemAnimator_Anim.cpp]
+      - [0x261ca8, asmtu, EngineX/EXItemAnimator_AnimModifier.cpp]
+      - [0x264b10, asmtu, EngineX/EXItemAnimator_DynLight.cpp]
+      - [0x264e90, asmtu, EngineX/EXItemAnimator_Entity.cpp]
+      - [0x266148, asmtu, EngineX/EXItemAnimator_Map.cpp]
+      - [0x269df8, asmtu, EngineX/EXItemAnimator_Particle.cpp]
+      - [0x26a1c0, asmtu, EngineX/EXItemAnimator_Script.cpp]
+      - [0x26d998, asmtu, EngineX/EXItemAnimator_ScriptControllers.cpp]
+      - [0x26f2b8, asmtu, EngineX/EXItemAnimator_Sound.cpp]
+      - [0x26f778, asmtu, EngineX/EXItemCtrl.cpp]
+      - [0x2708b0, asmtu, EngineX/EXItemCtrl_Anim.cpp]
+      - [0x274808, asmtu, EngineX/EXItemCtrl_AnimModifier.cpp]
+      - [0x275058, asmtu, EngineX/EXItemEnv.cpp]
+      - [0x27b140, asmtu, EngineX/EXItemHandler.cpp]
+      - [0x27b220, asmtu, EngineX/EXItemPhysics.cpp]
+      - [0x27b560, asmtu, EngineX/EXItemRender.cpp]
+      - [0x27b650, asmtu, EngineX/EXItemRender_Anim.cpp]
+      - [0x280000, asmtu, EngineX/EXItemRender_Entity.cpp]
+      - [0x280590, asmtu, EngineX/EXLightManager.cpp]
+      - [0x280e80, asmtu, EngineX/EXLine.cpp]
+      - [0x2810b8, asmtu, EngineX/EXList.cpp]
+      - [0x281578, asmtu, EngineX/EXMalloc.cpp]
+      - [0x283a70, asmtu, EngineX/EXMaths.cpp]
+      - [0x283c78, asmtu, EngineX/EXMatrix.cpp]
+      - [0x2847d0, asmtu, EngineX/EXMemCard.cpp]
+      - [0x285418, asmtu, EngineX/EXMemoryManager.cpp]
+      - [0x2856d0, asmtu, EngineX/EXMenu.cpp]
+      # - [0xTODO, asmtu, EngineX/EXMouse.cpp] In files.txt, not present in binary
+      - [0x287380, asmtu, EngineX/EXPlane.cpp]
+      - [0x2874b8, asmtu, EngineX/EXParticle.cpp]
+      - [0x28bdd0, asmtu, EngineX/EXParticleEmitter.cpp]
+      - [0x291450, asmtu, EngineX/EXRand.cpp]
+      - [0x291588, asmtu, EngineX/EXRenderEnv.cpp]
+      - [0x292570, asmtu, EngineX/EXResourceWnd.cpp]
+      - [0x295048, asmtu, EngineX/EXQuaternion.cpp]
+      - [0x295840, asmtu, EngineX/EXScratchPad.cpp]
+      - [0x295ae0, asmtu, EngineX/EXStateSaver.cpp]
+      - [0x295d00, asmtu, EngineX/EXStats.cpp]
+      - [0x296200, asmtu, EngineX/EXStdFuncs.cpp]
+      - [0x296c00, asmtu, EngineX/EXString.cpp]
+      - [0x2981e0, asmtu, EngineX/EXSoundManager.cpp]
+      - [0x29b5e0, asmtu, EngineX/EXSwoosh.cpp]
+      - [0x29cf50, asmtu, EngineX/EXTexture.cpp]
+      - [0x29d928, asmtu, EngineX/EXVector.cpp]
+      - [0x29de90, asmtu, EngineX/EXWatcher.cpp]
+      - [0x29e6f8, asmtu, EngineX/EXWnd.cpp]
+      - [0x29fa10, asmtu, EngineX/EXWndDebug.cpp]
+      - [0x2a0098, asmtu, EngineX/EXWndSprite.cpp]
+      - [0x2a0420, asmtu, EngineX/EXWndText.cpp]
+      - [0x2a0b18, asmtu, EngineX/EXWString.cpp]
+      - [0x2a1a40, asmtu, EngineX/EXPhysicsSphere.cpp]
+      - [0x2a3ac0, asmtu, EngineX/EXPhysicsSoft.cpp]
+      - [0x2a7f70, asmtu, EngineX/EXPhysics6D.cpp]
+      # PS2-specific EngineX code
+      - [0x2b1b10, asmtu, EngineX/PS2/PS2App.cpp]
+      - [0x2b2ef0, asmtu, EngineX/PS2/PS2Bounds.cpp]
+      - [0x2b37e0, asmtu, EngineX/PS2/PS2Camera.cpp]
+      - [0x2b57a0, asmtu, EngineX/PS2/PS2Cluster.cpp]
+      - [0x2b5980, asmtu, EngineX/PS2/PS2Collision.cpp]
+      - [0x2b6938, asmtu, EngineX/PS2/PS2Display.cpp]
+      - [0x2ba540, asmtu, EngineX/PS2/PS2Displayenv.cpp]
+      - [0x2ba7f0, asmtu, EngineX/PS2/PS2DMAUtils.cpp]
+      - [0x2c0538, asmtu, EngineX/PS2/PS2Drawenv.cpp]
+      - [0x2c0c30, asmtu, EngineX/PS2/PS2FastMath.cpp]
+      - [0x2c11d0, asmtu, EngineX/PS2/PS2File.cpp]
+      - [0x2c12b0, asmtu, EngineX/PS2/PS2Gamepad.cpp]
+      - [0x2c22e8, asmtu, EngineX/PS2/PS2GsMem.cpp]
+      - [0x2c2ab0, asmtu, EngineX/PS2/PS2GeoAnim.cpp]
+      - [0x2c5548, asmtu, EngineX/PS2/PS2GeoDrawInfo.cpp]
+      - [0x2c5ae8, asmtu, EngineX/PS2/PS2GeoEntity.cpp]
+      - [0x2ce2a0, asmtu, EngineX/PS2/PS2ItemRender.cpp]
+      - [0x2ce400, asmtu, EngineX/PS2/PS2Matrix.cpp]
+      - [0x2cf550, asmtu, EngineX/PS2/PS2Malloc.cpp]
+      - [0x2cf838, asmtu, EngineX/PS2/PS2MemCard.cpp]
+      - [0x2d4c70, asmtu, EngineX/PS2/PS2Movie.cpp]
+      - [0x2d6018, asmtu, EngineX/PS2/PS2MovieAudio.cpp]
+      - [0x2d68d0, asmtu, EngineX/PS2/PS2Packet.cpp]
+      - [0x2d6e18, asmtu, EngineX/PS2/PS2Particle.cpp]
+      - [0x2db4d8, asmtu, EngineX/PS2/PS2Quaternion.cpp]
+      - [0x2dbde8, asmtu, EngineX/PS2/PS2RenderEnv.cpp]
+      - [0x2dc998, asmtu, EngineX/PS2/PS2ResourceWnd.cpp]
+      - [0x2ddef0, asmtu, EngineX/PS2/PS2SoundManager.cpp]
+      - [0x2de398, asmtu, EngineX/PS2/PS2Stats.cpp]
+      - [0x2de530, asmtu, EngineX/PS2/PS2Texture.cpp]
+      - [0x2e01b0, asmtu, EngineX/PS2/PS2Vector.cpp]
+      - [0x2e04b0, asmtu, EngineX/PS2/PS2VuHandler.cpp]
+      - [0x2e0958, asmtu, EngineX/PS2/PS2Wnd.cpp]
+      - [0x2e7840, asmtu, EngineX/PS2/PS2WndDebug.cpp]
+      - [0x2e80e0, asmtu, EngineX/PS2/PS2WndDraw.cpp]
+      - [0x2e8fe0, asmtu, EngineX/PS2/PS2WndPrim.cpp]
+      - [0x2eca78, asmtu, EngineX/PS2/PS2WndSprite.cpp]
+      - [0x2ed608, asmtu, EngineX/PS2/PS2Swoosh.cpp]
+      - [0x2eefc0, asmtu, EngineX/PS2/PS2Physics.cpp]
+      - [0x2ef400, asmtu, EngineX/EXArray.cpp]
+      - [0x2ef4a0, asmtu, EngineX/EXEffectsSys.cpp]
+      - [0x2efa38, asmtu, EngineX/EXGeoGrabpoint.cpp]
+      - [0x2f1038, asmtu, EngineX/EXGeoInstance.cpp]
+      - [0x2f19a8, asmtu, EngineX/EXGeoTexture.cpp]
+      - [0x2f1a28, asmtu, EngineX/EXItemAnimator_Camera.cpp]
+      - [0x2f1c58, asmtu, EngineX/EXItemAnimator_Collision.cpp]
+      - [0x2f1f18, asmtu, EngineX/EXRect.cpp]
+      - [0x2f2000, asmtu, EngineX/PS2/PS2GeoEntity_Instance.cpp]
+      - [0x2f3280, asmtu, EngineX/PS2/PS2GeoTexture.cpp]
+      # PS2 SDK
+      - [0x2f3290, asmtu, ps2/libmc.c]
+      - [0x2f4380, asmtu, ps2/libscf.c]
+      - [0x2f4950, asmtu, ps2/vu/vu.c]
+      - [0x2f4a80, asmtu, ps2/graphdev.c] #combining all of these into one cus lazy
+      - [0x2f5310, asmtu, ps2/libdma.c]
+      - [0x2f58a8, asmtu, ps2/devvu0.c]
+      - [0x2f5978, asmtu, ps2/devvif0.c]
+      - [0x2f59b0, asmtu, ps2/libpad.c]
+      - [0x2f6aa0, asmtu, ps2/eecdvd.c] #combining all of these into one cus lazy
+      # Newlib math
+      - [0x2f8038, asmtu, math/sf_atan.c]
+      - [0x2f82e0, asmtu, math/sf_ceil.c]
+      - [0x2f83b8, asmtu, math/sf_cos.c]
+      - [0x2f84a0, asmtu, math/sf_fabs.c]
+      - [0x2f84c0, asmtu, math/sf_floor.c]
+      - [0x2f85a8, asmtu, math/sf_sin.c]
+      - [0x2f8698, asmtu, math/sf_tan.c]
+      - [0x2f8720, asmtu, math/wf_asin.c]
+      - [0x2f8820, asmtu, math/wf_atan2.c]
+      - [0x2f8948, asmtu, math/wf_fmod.c]
+      - [0x2f8a88, asmtu, math/wf_log.c]
+      - [0x2f8bd0, asmtu, math/wf_pow.c]
+      - [0x2f90d8, asmtu, math/ef_asin.c]
+      - [0x2f9478, asmtu, math/ef_atan2.c]
+      - [0x2f9760, asmtu, math/ef_fmod.c]
+      - [0x2f99b0, asmtu, math/ef_log.c]
+      - [0x2f9cd8, asmtu, math/ef_pow.c]
+      - [0x2fa568, asmtu, math/ef_rem_pio2.c]
+      - [0x2fa948, asmtu, math/ef_sqrt.c]
+      - [0x2faa80, asmtu, math/kf_cos.c]
+      - [0x2fabd8, asmtu, math/kf_rem_pio2.c]
+      - [0x2fb528, asmtu, math/kf_sin.c]
+      - [0x2fb630, asmtu, math/kf_tan.c]
+      - [0x2fb8c8, asmtu, common/s_matherr.c]
+      - [0x2fb8f0, asmtu, common/s_rint.c]
+      - [0x2fbaf0, asmtu, common/sf_finite.c]
+      - [0x2fbb18, asmtu, math/sf_isnan.c]
+      - [0x2fbb40, asmtu, common/sf_scalbn.c]
+      - [0x2fbca0, asmtu, common/sf_copysign.c]
+      - [0x2fbcd0, asmtu, mpeg.c]
+      - [0x2fccc0, asmtu, alalc.c]
+      - [0x2fcd68, asmtu, defhandler.c]
+      - [0x2fcdb8, asmtu, output.c]
+      - [0x2fd878, asmtu, csc.c]
+      - [0x2fe138, asmtu, pack.c]
+      - [0x300c88, asmtu, error.c]
+      - [0x300ea0, asmtu, mpc.c]
+      # - [0x303728, asmtu, mpeg.h] what? probably inlines from the header used in mpc???
+      - [0x303768, asmtu, mpc_1.c]
+      - [0x303b58, asmtu, mm.c]
+      - [0x304848, asmtu, mpc_2.c]
+      - [0x3048e8, asmtu, ext.c]
+      # - [0x305858, asmtu, mpeg_1.h] again, probably inlines from the header
+      - [0x305898, asmtu, ext.c]
+      - [0x305c68, asmtu, libipu.c]
+      - [0x305ff8, asmtu, ipuinit.c]
+      - [0x3062a8, asmtu, sdr_main.c]
+      - [0x3066f8, asmtu, unknown_functions.c] # reference D-SDK to get an idea of what these are.
+      - [0x3109e0, asm, klib.s]
+      - [0x311260, asmtu, glue.c]
+      - [0x311578, asmtu, cache.c]
+      - [0x3116c0, asmtu, intr.c]
+      - [0x3118b0, asmtu, thread.c]
+      - [0x311d80, asmtu, tty.c]
+      - [0x3122c8, asmtu, kprintf2.c]
+      - [0x3135a8, asmtu, sifcmd.c]
+      - [0x313d30, asmtu, sifrpc.c]
+      - [0x3147b0, asmtu, filestub.c]
+      - [0x315e18, asmtu, iopheap.c]
+      - [0x315fb8, asmtu, eeloadfile.c]
+      - [0x3163c8, asmtu, iopreset.c]
+      - [0x316680, asmtu, tlbfunc.c]
+      - [0x316ac0, asm, tlbtrap.s]
+      - [0x316ce0, asmtu, diei.c]
+      - [0x316d48, asmtu, initsys.c]
+      - [0x316fa8, asmtu, libosd.c]
+      - [0x317128, asmtu, exit.c]
+      - [0x317310, asmtu, alarm.c]
+      - [0x317450, asmtu, timer.c]
+      - [0x318028, asmtu, timeralarm.c]
+      - [0x3182f8, asmtu, iopnotify.c]
+      - [0x3183d8, asmtu, deci2.c]
+      - [0x318538, asmtu, libgcc2_4.c]
+      - [0x31a060, asmtu, unknown_functions_2.c]
+
+      # .vutext
+
+      - [0x319090, textbin, cod/vutext]

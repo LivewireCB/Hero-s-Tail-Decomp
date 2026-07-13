@@ -55,6 +55,27 @@ dolphin/os/:
 
 *ExEngine stuff*
 
+0x8031d72c - 0x8031dc00 // GC_ARAM.cpp
+0x8031dc00 - 0x8031f99c // GC_Quads ???
+0x8031f99c - 0x803204d8 // GC_DVD.cpp
+0x803204d8 - 0x803228a8 // GC_TextPrint
+0x803228a8 - 0x80324bfc // GCFIfo
+0x80324bfc - 0x8032851c // GC_GX
+0x8032851c - 0x8032af2c // GC_GXParse
+0x8032af2c - 0x8032c8e8 // GC_HVQM
+0x8032c8e8 - 0x8032f9c8 // GC_Init
+0x8032f9c8 - 0x8032fe88 // NinTexPal
+
+// stopping here for now. This shit sucks
+
+0x8032fe88 - 0x00000000 // super unknown GC_Pad???
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
+
 dolphin/os/:
 	.text       start:0x00000000 end:0x00000000
 
@@ -109,6 +130,7 @@ dolphin/os/:
 0x80372774 - 0x803737c4 // GDGeometry
 0x803737c4 - 0x80379720 // HVQM
 0x80379720 - 0x803797b8 // GPR shit
+
 
 Object(NonMatching, ""),
 
@@ -237,7 +259,9 @@ Stopping here for the rodata section
 
 .data
 
-0x803ddc40 - 0x803e1ed0 // PreSXEItemHandler
+0x00000000 - 0x00000000 //
+
+0x803ddc40 - 0x803e1ed0 // TriggerList
 0x803e1ed0 - 0x803e214c // PreBosses
 0x803e214c - 0x803e21dc // PrePlayer
 0x803e21dc - 0x803e2204 // PreSpyro
@@ -245,10 +269,9 @@ Stopping here for the rodata section
 0x803e2240 - 0x803e2528 // PreCode
 0x803e2528 - 0x803e25bc // PreGeneric
 0x803e25bc - 0x803e2eb4 // PreGUI
-0x803e2eb4 - 0x803e32cc // PreLevels
-0x803e32cc - 0x803e36a4 // PreMinigames
-0x803e36a4 - 0x803e3893 // PrePanel
-0x803e3893 - 0x803e3ce0 // PreSE
+0x803e2eb4 - 0x803e36a4 // PreLevels
+0x803e36a4 - 0x803e3994 // PrePanel
+0x803e3994 - 0x803e3ce0 // PreSE
 
 
 0x803e3ce0 - 0x803e4008 // SN UNSPLIT 
@@ -286,11 +309,28 @@ Stopping here for the rodata section
 0x803e6e54 - 0x803e6ea0 // ExGeoViewer
 0x803e6ea0 - 0x803e6edc // ExItemAnimator
 0x803e6edc - 0x803e6f14 // ExMalloc
-0x803e6f14 - 0x803e6f20 // ExSoundManager
-0x803e6f20 - 0x803e70c0 // EngineX
-0x803e70c0 - 0x803e7120 // ExGeoViewer
-0x803e7120 - 0x803fc410 // EngineX
-0x803fc410 - 0x00000000 // dunno yet
+0x803e6f14 - 0x803e6f20 // EXSoundManager
+0x803e6f20 - 0x803e6f2c // GCCamera
+0x803e6f2c - 0x803e6f90 // GCGeoEntity
+0x803e6f90 - 0x803e70c0 // GCMemCard
+0x803e70c0 - 0x803eb180 // GCTexture
+0x803eb180 - 0x803efd3c // in unknown file
+0x803efd3c - 0x803f090c // GCGeoEntity
+0x803f090c - 0x803fc340 // unknown - probably GCPad and whatever presetmodify is
+0x803fc340 - 0x803fc3a0 // GCAudio
+0x803fc3a0 - 0x803fc410 // GCBloom
+0x803fc410 - 0x803fc418 // SNSerial
+
+0x803fc418 is _ctors
+0x803fc418 - 803fc428 // ctors and dtors
+
+0x803fc428 - 0x80404400 // Dolphin SDK
+
+0x80404400 - 0x00000000 // Start of VTables. Why are they in .data? Well that's the funny part...........
+
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
+0x00000000 - 0x00000000 //
 
 TODO: complete these
 

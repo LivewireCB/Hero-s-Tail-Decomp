@@ -9,7 +9,7 @@
 struct EXGeoCommonObject
 { // 0x4
     static EXRuntimeClass classEXGeoCommonObject;
-    // /* 0x0 */ __vtbl_ptr_type* vf4327;
+    // /* 0x0 */ __vtbl_ptr_type* $vf4327;
 
     // EXGeoCommonObject& operator=();
     EXGeoCommonObject();

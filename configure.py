@@ -30,7 +30,8 @@ from tools.project import (
 # Game versions
 DEFAULT_VERSION = 0
 VERSIONS = [
-    "G5SE7D",  # 0
+    "G5SE7D",    # 0 - GameCube PAL
+    "PS2",  # 1 - PS2 PAL
 ]
 
 parser = argparse.ArgumentParser()
@@ -150,10 +151,6 @@ if version_num in [0]:
     config.dtk_tag = "v1.8.3"
     config.binutils_tag = "2.42-1"
 elif version_num in [1]:
-    config.platform = Platform.X360
-    config.dtk_tag = "v0.1.2"
-    config.binutils_tag = "2.42-1"
-elif version_num in [2]:
     config.platform = Platform.PS2
     config.binutils_tag = "2.45"
 
@@ -179,7 +176,7 @@ if config.platform == Platform.GC_WII:
 
     # Optional numeric ID for decomp.me preset
     # Can be overridden in libraries or objects
-    config.scratch_preset_id
+    config.scratch_preset_id = None
 elif config.platform == Platform.PS2:
     config.asflags = [
         "-no-pad-sections",
@@ -222,7 +219,7 @@ if config.platform == Platform.GC_WII:
         "-str reuse",
         "-i include",
         "-i include/libc",
-        "-ir src/dolphin",
+        "-ir src/Gamecube/dolphin",
         "-DGEKKO",
         "-D__GEKKO__",
         f"-i build/{config.version}/include",
@@ -273,9 +270,12 @@ if config.platform == Platform.GC_WII:
         # "-mps-nodf",
         # "-mfast-cast",
         "-G4",
+        # "-fnew-abi",
         "-ffast-math",
         "-fno-common",
         "-fvtable-thunks",
+        # "-fno-vtable-thunks",
+        # "-DWRITABLE_VTABLES",
         # "-fno-strength-reduce",
         # "-fforce-addr",
         "-fcse-follow-jumps",
@@ -321,7 +321,7 @@ if config.platform == Platform.GC_WII:
     def DolphinLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
         return {
             "lib": lib_name,
-            "src_dir": "src",
+            "src_dir": "src/Gamecube",
             "toolchain_version": "GC/1.2.5n",
             "cflags": cflags_dolphin,
             "progress_category": "dsdk",
@@ -427,6 +427,7 @@ if config.platform == Platform.GC_WII:
         [
             {
                 "lib": "libsn",
+                "src_dir": "src/Gamecube",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_base_prodg,
                 "host": False,
@@ -442,6 +443,7 @@ if config.platform == Platform.GC_WII:
             },
             {
                 "lib": "math",
+                "src_dir": "src/Gamecube",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_base_prodg,
                 "host": False,
@@ -482,6 +484,7 @@ if config.platform == Platform.GC_WII:
             },
             {
                 "lib": "gcc",
+                "src_dir": "src/Gamecube",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_base_prodg,
                 "host": False,
@@ -506,6 +509,7 @@ if config.platform == Platform.GC_WII:
             },
             {
                 "lib": "ppc",
+                "src_dir": "src/Gamecube",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_base_prodg,
                 "host": False,
@@ -516,6 +520,7 @@ if config.platform == Platform.GC_WII:
             },
             {
                 "lib": "Spyro",
+                "src_dir": "src/Gamecube",
                 "src_dir": "src",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_game,
@@ -554,7 +559,7 @@ if config.platform == Platform.GC_WII:
             },
             {
                 "lib": "EngineX",
-                "src_dir": "src",
+                "src_dir": "src/Gamecube",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_game,
                 "host": False,
@@ -680,7 +685,7 @@ if config.platform == Platform.GC_WII:
             },
             {
                 "lib": "stdlib",
-                "src_dir": "src",
+                "src_dir": "src/Gamecube",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_game,
                 "host": False,
@@ -881,6 +886,254 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "dolphin/gd/GDGeometry.c"),
                 ],
             ),
+        ]
+    )
+
+elif config.platform == Platform.PS2:
+    config.libs.extend(
+        [
+            {
+                "lib": "startup",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_libc,
+                "host": False,
+                "progress_category": "libs",
+                "objects": [
+                    Object(NonMatching, "EngineX/PS2/crt0.s"),
+                ],
+            },
+            {
+                "lib": "Spyro",
+                "src_dir": "src",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_game,
+                "host": False,
+                "progress_category": "game",
+                "objects": [
+                    Object(NonMatching, "Spyro/Code/SE/PreSE.cpp"),
+                    Object(NonMatching, "Spyro/Code/Levels/PreLevels.cpp"),
+                    Object(NonMatching, "Spyro/Code/Levels/MiniGames/PreMiniGames.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItem/XSEItem_Default.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/PrePlayer.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Spyro/PreSpyro.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Hunter/PreHunter.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Blinky/PreBlinky.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/SgtBird/PreSgtBird.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Sparx/Player_Sparx.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/BallGadget/Player_BallGadget.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Ember/Player_Ember.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Player/Flame/Player_Flame.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/PreSXEItemHandler.cpp"),
+                    Object(NonMatching, "Spyro/Code/XSEItemHandler/Bosses/PreBosses.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/SETrigger_Default.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/StartPoint.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/Trigger_Special.cpp"),
+                    Object(NonMatching, "Spyro/Code/SETrigger/TriggerList.cpp"),
+                    Object(NonMatching, "Spyro/Code/Camera/PreCamera.cpp"),
+                    Object(NonMatching, "Spyro/Code/Support/PreSupport.cpp"),
+                    Object(NonMatching, "Spyro/Code/Generic/PreGeneric.cpp"),
+                    Object(NonMatching, "Spyro/Code/Panel/PrePanel.cpp"),
+                    Object(NonMatching, "Spyro/Code/GUI/PreGUI.cpp"),
+                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_Interpret.cpp"),
+                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_InterpretInterfaceLayer.cpp"),
+                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_InterpretPrivate.cpp"),
+                    Object(NonMatching, "Spyro/Code/PreCode.cpp"),
+                ],
+            },
+            {
+                "lib": "EngineX",
+                "src_dir": "src",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_game,
+                "host": False,
+                "progress_category": "engX",
+                "objects": [
+                    Object(NonMatching, "EngineX/EXApp.cpp"),
+                    Object(NonMatching, "EngineX/EXBounds.cpp"),
+                    Object(NonMatching, "EngineX/EXCamera.cpp"),
+                    Object(NonMatching, "EngineX/EXCollision.cpp"),
+                    Object(NonMatching, "EngineX/EXCollisionTypes.cpp"),
+                    Object(NonMatching, "EngineX/EXDatum.cpp"),
+                    Object(NonMatching, "EngineX/EXDebugTree.cpp"),
+                    Object(NonMatching, "EngineX/EXDebugTreeWnd.cpp"),
+                    Object(NonMatching, "EngineX/EXDebugWnd.cpp"),
+                    Object(NonMatching, "EngineX/EXDisplay.cpp"),
+                    Object(NonMatching, "EngineX/EXDistance.cpp"),
+                    Object(NonMatching, "EngineX/EXFile.cpp"),
+                    Object(NonMatching, "EngineX/EXFileSys.cpp"),
+                    Object(NonMatching, "EngineX/EXGamepad.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoAnim.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoCommon.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoEntity.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoEntity_NavMesh.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoFace.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoFile.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoMap.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoParticle.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoScript.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoSpreadSheet.cpp"),
+                    Object(NonMatching, "EngineX/EXGeoViewer.cpp"),
+                    Object(NonMatching, "EngineX/EXHashcode.cpp"),
+                    Object(NonMatching, "EngineX/EXIntersection.cpp"),
+                    Object(NonMatching, "EngineX/EXItem.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Anim.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_AnimModifier.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Camera.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Collision.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_DynLight.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Entity.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Map.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Particle.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Script.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_ScriptControllers.cpp"),
+                    Object(NonMatching, "EngineX/EXItemAnimator_Sound.cpp"),
+                    Object(NonMatching, "EngineX/EXItemCtrl.cpp"),
+                    Object(NonMatching, "EngineX/EXItemCtrl_Anim.cpp"),
+                    Object(NonMatching, "EngineX/EXItemCtrl_AnimModifier.cpp"),
+                    Object(NonMatching, "EngineX/EXItemEnv.cpp"),
+                    Object(NonMatching, "EngineX/EXItemHandler.cpp"),
+                    Object(NonMatching, "EngineX/EXItemPhysics.cpp"),
+                    Object(NonMatching, "EngineX/EXItemRender.cpp"),
+                    Object(NonMatching, "EngineX/EXItemRender_Anim.cpp"),
+                    Object(NonMatching, "EngineX/EXItemRender_Entity.cpp"),
+                    Object(NonMatching, "EngineX/EXLightManager.cpp"),
+                    Object(NonMatching, "EngineX/EXLine.cpp"),
+                    Object(NonMatching, "EngineX/EXList.cpp"),
+                    Object(NonMatching, "EngineX/EXMalloc.cpp"),
+                    Object(NonMatching, "EngineX/EXMaths.cpp"),
+                    Object(NonMatching, "EngineX/EXMatrix.cpp"),
+                    Object(NonMatching, "EngineX/EXMemCard.cpp"),
+                    Object(NonMatching, "EngineX/EXMemoryManager.cpp"),
+                    Object(NonMatching, "EngineX/EXMenu.cpp"),
+                    Object(NonMatching, "EngineX/EXParticle.cpp"),
+                    Object(NonMatching, "EngineX/EXParticleEmitter.cpp"),
+                    Object(NonMatching, "EngineX/EXRand.cpp"),
+                    Object(NonMatching, "EngineX/EXRect.cpp"),
+                    Object(NonMatching, "EngineX/EXRenderEnv.cpp"),
+                    Object(NonMatching, "EngineX/EXResourceWnd.cpp"),
+                    Object(NonMatching, "EngineX/EXScratchPad.cpp"),
+                    Object(NonMatching, "EngineX/EXSoundManager.cpp"),
+                    Object(NonMatching, "EngineX/EXStateSaver.cpp"),
+                    Object(NonMatching, "EngineX/EXStats.cpp"),
+                    Object(NonMatching, "EngineX/EXStdFuncs.cpp"),
+                    Object(NonMatching, "EngineX/EXString.cpp"),
+                    Object(NonMatching, "EngineX/EXSwoosh.cpp"),
+                    Object(NonMatching, "EngineX/EXTemplates.cpp"),
+                    Object(NonMatching, "EngineX/EXTexture.cpp"),
+                    Object(NonMatching, "EngineX/EXVector.cpp"),
+                    Object(NonMatching, "EngineX/EXWatcher.cpp"),
+                    Object(NonMatching, "EngineX/EXWnd.cpp"),
+                    Object(NonMatching, "EngineX/EXWString.cpp"),
+                    ############################################
+                    #        PS2-Specific EngineX files        #
+                    ############################################
+                    Object(NonMatching, "EngineX/PS2/PS2App.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Bounds.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Camera.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Cluster.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Collision.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Display.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Displayenv.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2DMAUtils.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Drawenv.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2FastMath.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2File.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Gamepad.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2GsMem.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2GeoAnim.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2GeoDrawInfo.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2GeoEntity.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2ItemRender.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Matrix.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Malloc.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2MemCard.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Movie.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2MovieAudio.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Packet.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Particle.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Quaternion.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2RenderEnv.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2ResourceWnd.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2SoundManager.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Stats.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Texture.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Vector.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2VuHandler.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Wnd.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2WndDebug.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2WndDraw.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2WndPrim.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2WndSprite.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Swoosh.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2Physics.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2GeoEntity_Instance.cpp"),
+                    Object(NonMatching, "EngineX/PS2/PS2GeoTexture.cpp"),
+                ],
+            },
+            {
+                "lib": "ps2sdk",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_libc,
+                "host": False,
+                "progress_category": "libs",
+                "objects": [
+                    Object(NonMatching, "ps2/libmc.c"),
+                    Object(NonMatching, "ps2/libscf.c"),
+                    Object(NonMatching, "ps2/vu/vu.c"),
+                    Object(NonMatching, "ps2/graphdev.c"),
+                    Object(NonMatching, "ps2/libdma.c"),
+                    Object(NonMatching, "ps2/devvu0.c"),
+                    Object(NonMatching, "ps2/devvif0.c"),
+                    Object(NonMatching, "ps2/libpad.c"),
+                    Object(NonMatching, "ps2/eecdvd.c"),
+                ],
+            },
+            {
+                "lib": "libgcc",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_libc,
+                "host": False,
+                "progress_category": "libc",
+                "objects": [
+                    Object(NonMatching, "gcc/libgcc2.c"),
+                    Object(NonMatching, "gcc/fp-bit.c"),
+                    Object(NonMatching, "gcc/dp-bit.c"),
+                    Object(NonMatching, "gcc/frame.c"),
+                ],
+            },
+            {
+                "lib": "math",
+                "toolchain_version": config.linker_version,
+                "cflags": cflags_libc,
+                "host": False,
+                "progress_category": "libc",
+                "objects": [
+                    Object(NonMatching, "math/sf_atan.c"),
+                    Object(NonMatching, "math/sf_ceil.c"),
+                    Object(NonMatching, "math/sf_cos.c"),
+                    Object(NonMatching, "math/sf_fabs.c"),
+                    Object(NonMatching, "math/sf_floor.c"),
+                    Object(NonMatching, "math/sf_sin.c"),
+                    Object(NonMatching, "math/sf_tan.c"),
+                    Object(NonMatching, "math/wf_asin.c"),
+                    Object(NonMatching, "math/wf_atan2.c"),
+                    Object(NonMatching, "math/wf_fmod.c"),
+                    Object(NonMatching, "math/wf_log.c"),
+                    Object(NonMatching, "math/wf_pow.c"),
+                    Object(NonMatching, "math/ef_asin.c"),
+                    Object(NonMatching, "math/ef_atan2.c"),
+                    Object(NonMatching, "math/ef_fmod.c"),
+                    Object(NonMatching, "math/ef_log.c"),
+                    Object(NonMatching, "math/ef_pow.c"),
+                    Object(NonMatching, "math/ef_rem_pio2.c"),
+                    Object(NonMatching, "math/ef_sqrt.c"),
+                    Object(NonMatching, "math/kf_cos.c"),
+                    Object(NonMatching, "math/kf_rem_pio2.c"),
+                    Object(NonMatching, "math/kf_sin.c"),
+                    Object(NonMatching, "math/kf_tan.c"),
+                ],
+            },
         ]
     )
 
