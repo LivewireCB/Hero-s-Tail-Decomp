@@ -1,13 +1,14 @@
 Spyro: A Hero's Tail
 =============
 
-A work-in-progress decompilation of the **GameCube** version of Spyro: A Hero's Tail.
+A work-in-progress decompilation of the **GameCube**  and **PS2** versions of Spyro: A Hero's Tail.
 
 This repository does **not** contain any game assets or assembly whatsoever. An existing copy of the game is required.
 
 Supported versions:
 
 - `G5SE7D`: (NTSC)
+- `PS2`: (Pal PS2 Release)
 
 # Dependencies
 
@@ -39,29 +40,70 @@ When running under WSL, [objdiff](#diffing) is unable to get filesystem notifica
 
 # Building
 
-- Clone the repository:
-
+  - Clone the repository:
   ```sh
   git clone https://github.com/LivewireCB/Hero-s-Tail-Decomp.git
   ```
 
-- Configure:
+  ## Gamecube
+
+  - Configure:
 
   ```sh
-  python configure.py
+    python configure.py
   ```
 
-- Build:
+  - Build:
 
   ```sh
-  ninja
+    ninja
   ```
 
-- Extract `Spyro.ELF`, copy it into `orig/G5SE7D`, and convert it into a DOL using the following command:
+  - Extract `Spyro.ELF`, copy it into `orig/G5SE7D`, and convert it into a DOL using the following command:
 
   ```sh
     ./build/tools/dtk elf2dol ./orig/G5SE7D/Spyro.ELF ./orig/G5SE7D/sys/main.dol
   ```
+
+  - Build:
+
+  ```sh
+    ninja
+  ```
+
+  ## PS2
+
+  - Install Prerequisites:
+  ```sh
+    pip install -r requirements.txt
+  ```
+
+
+  - Configure:
+
+  ```sh
+    python configure.py -v PS2
+  ```
+
+
+  - Extract `SLES525.69`, and copy it into `orig/PS2`
+
+
+  - Build:
+
+  ```sh
+    ninja
+  ```
+
+# Dual Configure System
+
+The ability to switch between the GC and PS2 versions is extremely new, Any bugs have not been caught yet.
+If you were to run into a bug, most times it can be solved by running:
+  ```sh
+  ninja -t clean
+  ```
+
+Bare with me as I work out the kinks of this system.
 
 # Diffing
 
