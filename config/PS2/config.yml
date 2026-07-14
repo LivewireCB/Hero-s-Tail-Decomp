@@ -43,7 +43,7 @@ options:
   symbol_addrs_path: config/PS2/symbols.txt
   ld_script_path: build/PS2/ldscript.ld
 
-  o_as_suffix: True
+  # o_as_suffix: True
 
   # ELF sections
   # section_order: [".text", ".vutext", ".noover", ".rodata", ".gcc_except_table", ".over", ".data", ".lit4", ".sdata", ".sbss", ".bss"]

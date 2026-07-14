@@ -98,10 +98,7 @@ When running under WSL, [objdiff](#diffing) is unable to get filesystem notifica
 # Dual Configure System
 
 The ability to switch between the GC and PS2 versions is extremely new, Any bugs have not been caught yet.
-If you were to run into a bug, most times it can be solved by running:
-  ```sh
-  ninja -t clean
-  ```
+If you were to run into a bug, most times it can be solved by deleting the *build* folder and the *.splache*
 
 Bare with me as I work out the kinks of this system.
 

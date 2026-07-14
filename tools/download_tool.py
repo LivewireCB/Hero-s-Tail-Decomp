@@ -130,11 +130,15 @@ def download(url, response, output) -> None:
             for name in files:
                 os.chmod(os.path.join(root, name), 0o755)
         output.touch(mode=0o755)  # Update dir modtime
-    elif url.endswith(".tar.gz") or url.endswith(".tgz"):
+    elif url.endswith(".tar.gz") or url.endswith(".tgz") or url.endswith(".tar.xz"):
         import tarfile
         data = io.BytesIO(response.read())
         output.mkdir(parents=True, exist_ok=True)
-        with tarfile.open(fileobj=data, mode="r:gz") as tf:
+        if url.endswith(".tar.gz"):
+                mode = "r:gz"
+        elif url.endswith(".tar.xz"):
+                mode = "r:xz"
+        with tarfile.open(fileobj=data, mode=mode) as tf:
             members = tf.getmembers()
             # Strip a common leading directory (e.g. ee-gcc2.9-991111/bin/... -> bin/...)
             names = [m.name for m in members if m.name and not m.isdir()]
