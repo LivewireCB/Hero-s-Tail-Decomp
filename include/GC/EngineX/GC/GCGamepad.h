@@ -2,7 +2,7 @@
 #define GCGAMEPAD_H
 
 #include "types.h"
-#include "include/EngineX/EXGamepad.h"
+#include "EngineX/EXGamepad.h"
 
 struct EXGamePad : /* 0x000 */ EXBaseGamePad
 { // 0xbd0

@@ -166,7 +166,8 @@ if config.platform == Platform.GC_WII:
     config.asflags = [
         "-mgekko",
         "--strip-local-absolute",
-        "-I include",
+        "-I include"
+        "-I include/GC",
         f"-I build/{config.version}/include",
         f"--defsym BUILD_VERSION={version_num}",
     ]
@@ -184,6 +185,7 @@ elif config.platform == Platform.PS2:
         "-march=5900",
         "-mabi=eabi",
         "-I include",
+        "-I include/PS2",
     ]
     ldscript_path = Path("build") / config.version / "ldscript.ld"
     config.ldflags = [
@@ -217,8 +219,8 @@ if config.platform == Platform.GC_WII:
         "-RTTI off",
         "-fp_contract on",
         "-str reuse",
-        "-i include",
-        "-i include/libc",
+        "-i include/GC",
+        "-i include/GC/libc",
         "-ir src/Gamecube/dolphin",
         "-DGEKKO",
         "-D__GEKKO__",
@@ -237,9 +239,9 @@ if config.platform == Platform.GC_WII:
         # "-Wreturn-type", # enable at some point
         "-Wno-ctor-dtor-privacy",  # because of AttribSys for example
         "-Woverloaded-virtual",
-        "-I include",
+        "-I include/GC",
         "-I ./",
-        "-I include/Spyro/Code",
+        "-I include/GC/Spyro/Code",
         "-I src",
         "-DEA_PLATFORM_GAMECUBE",
         "-DEA_REGION_AMERICA",
@@ -335,6 +337,7 @@ elif config.platform == Platform.PS2:
         "-O2",
         "-g2",
         # "-Wall",
+        "-I include",
         "-I include/Spyro/Code",
         "-I src/Packages",
         "-I src",
@@ -419,6 +422,26 @@ if config.platform != Platform.PS2:
     config.warn_missing_config = True
 
 config.warn_missing_source = False
+
+# PS2: auto-download ee-gcc2.9-991111 into build/compilers/PS2/ as a pre-compile step
+if config.platform == Platform.PS2:
+    ps2_cc_path = config.build_dir / "compilers" / "PS2" / "ee-gcc2.9-991111"
+    config.custom_build_rules = [
+        {
+            "name": "download_ps2_cc",
+            "command": "$python tools/download_tool.py ps2_compilers $out --tag ee-gcc2.9-991111",
+            "description": "TOOL $out",
+        }
+    ]
+    config.custom_build_steps = {
+        "pre-compile": [
+            {
+                "outputs": str(ps2_cc_path),
+                "rule": "download_ps2_cc",
+                "implicit": "tools/download_tool.py",
+            }
+        ]
+    }
 
 config.libs = []
 
@@ -904,7 +927,7 @@ elif config.platform == Platform.PS2:
             },
             {
                 "lib": "Spyro",
-                "src_dir": "src",
+                "src_dir": "src/PS2",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_game,
                 "host": False,
@@ -942,7 +965,7 @@ elif config.platform == Platform.PS2:
             },
             {
                 "lib": "EngineX",
-                "src_dir": "src",
+                "src_dir": "src/PS2",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_game,
                 "host": False,

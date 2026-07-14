@@ -1,12 +1,12 @@
 #ifndef EXWND_H
 #define EXWND_H
 
-#include "types.h"
-#include "EXList.h"
-#include "EXRect.h"
-#include "EXVector.h"
-#include "EXFlagTemplate.h"
-#include "EXRGB.h"
+#include <types.h>
+#include <EngineX/EXList.h>
+#include <EngineX/EXRect.h>
+#include <EngineX/EXVector.h>
+#include <EngineX/EXFlagTemplate.h>
+#include <EngineX/EXRGB.h>
 
 struct EXWnd;
 

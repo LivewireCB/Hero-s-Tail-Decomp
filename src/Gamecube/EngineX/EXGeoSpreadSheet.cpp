@@ -1,4 +1,4 @@
-#include "include/EngineX/EXGeoSpreadSheet.h"
+#include "EngineX/EXGeoSpreadSheet.h"
 
 // I'm also certain that this is not correct. I believe this should be some type of operator but who knows i guess.
 // Check this function in the artist build to see the proper inline name and its contents.

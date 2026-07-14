@@ -2,7 +2,7 @@
 #define EXGAMEPAD_H
 
 #include "types.h"
-#include "include/EngineX/EXMalloc.h"
+#include "EngineX/EXMalloc.h"
 #include "EXFixedArray.h"
 
 enum AnalogChan

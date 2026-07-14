@@ -1,4 +1,4 @@
-#include <include/EngineX/EXDisplay.h>
+#include <include/GC/EngineX/EXDisplay.h>
 
 EXPoint EXBaseDisplay::ms_Offset;
 EXFlag32 EXBaseDisplay::ms_Flags;

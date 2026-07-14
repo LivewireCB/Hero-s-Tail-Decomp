@@ -175,7 +175,7 @@ segments:
       - [0x280000, asmtu, EngineX/EXItemRender_Entity]
       - [0x280590, asmtu, EngineX/EXLightManager]
       - [0x280e80, asmtu, EngineX/EXLine]
-      - [0x2810b8, asmtu, EngineX/EXList]
+      - [0x2810b8, asmtu, EngineX/EXList.cpp]
       - [0x281578, asmtu, EngineX/EXMalloc]
       - [0x283a70, asmtu, EngineX/EXMaths]
       - [0x283c78, asmtu, EngineX/EXMatrix]

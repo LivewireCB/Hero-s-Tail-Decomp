@@ -2,6 +2,8 @@
 #include <dolphin/mtx.h>
 #include "fake_tgmath.h"
 
+// clang-format off
+
 static f32 mtxUnit[] = {0.0f, 1.0f, 0.5f, 3.0f};
 
 void C_MTXFrustum(Mtx44 m, f32 t, f32 b, f32 l, f32 r, f32 n, f32 f) {

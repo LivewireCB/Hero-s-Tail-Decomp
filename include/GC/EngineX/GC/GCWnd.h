@@ -3,7 +3,7 @@
 
 #include <types.h>
 
-#include <include/EngineX/EXWnd.h>
+#include <include/GC/EngineX/EXWnd.h>
 
 // TODO: Fill out struct
 struct EXWnd : /* 0x0000 */ EXBaseWnd

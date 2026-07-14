@@ -3,8 +3,8 @@
 
 #include "types.h"
 
-#include "include/EngineX/EXString.h"
-#include "include/EngineX/EXMalloc.h"
+#include "EngineX/EXString.h"
+#include "EngineX/EXMalloc.h"
 
 #include "EXFixedArray.h"
 

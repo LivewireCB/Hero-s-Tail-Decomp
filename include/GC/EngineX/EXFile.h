@@ -4,8 +4,8 @@
 #include "types.h"
 
 #include "EXHashcode.h"
-#include "include/EngineX/EXRuntimeClass.h"
-#include "include/EngineX/EXList.h"
+#include "include/GC/EngineX/EXRuntimeClass.h"
+#include "include/GC/EngineX/EXList.h"
 #include "EXMalloc.h"
 
 struct EXSYSFILEINFO

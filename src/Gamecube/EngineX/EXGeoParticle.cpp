@@ -1,4 +1,4 @@
-#include <include/EngineX/EXGeoParticle.h>
+#include <include/GC/EngineX/EXGeoParticle.h>
 
 EXBoundsBox& EXGeoParticle::GetBoundsBox()
 {

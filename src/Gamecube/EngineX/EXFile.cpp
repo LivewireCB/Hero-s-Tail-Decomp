@@ -1,8 +1,8 @@
-#include "include/EngineX/EXFile.h"
+#include "EngineX/EXFile.h"
 
-#include "include/EngineX/EXFileSys.h"
-#include "include/EngineX/EXMalloc.h"
-#include "include/EngineX/EXFileSys.h"
+#include "EngineX/EXFileSys.h"
+#include "EngineX/EXMalloc.h"
+#include "EngineX/EXFileSys.h"
 
 char* EXFileNotInit = "0";
 EXFileSys* EXFileSys::m_pFileSys = 0;

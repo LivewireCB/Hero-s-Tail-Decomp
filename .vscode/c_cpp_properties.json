@@ -5,8 +5,11 @@
             "defines": [
             ],
             "includePath": [
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/include/Spyro/Code"
+                "${workspaceFolder}/include/GC",
+                "${workspaceFolder}/include/GC/libc",
+                "${workspaceFolder}/include/GC/Spyro/Code",
+                "${workspaceFolder}/include/PS2",
+                "${workspaceFolder}/include/PS2/Spyro/Code"
             ],
             "cStandard": "c99",
             "cppStandard": "c++98",

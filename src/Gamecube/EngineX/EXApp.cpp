@@ -1,6 +1,6 @@
-#include "include/EngineX/EXApp.h"
+#include "EngineX/EXApp.h"
 
-#include "include/EngineX/EXMalloc.h"
+#include "EngineX/EXMalloc.h"
 
 // EXAMPLE:
 // For you to be able to use {} on a EXFixedArray, its struct must have this criteria

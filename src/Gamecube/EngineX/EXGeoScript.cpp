@@ -1,4 +1,4 @@
-#include "include/EngineX/EXGeoScript.h"
+#include "EngineX/EXGeoScript.h"
 
 EXBoundsBox& EXGeoScript::GetBoundsBox()
 {

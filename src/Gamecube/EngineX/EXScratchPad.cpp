@@ -1,4 +1,4 @@
-#include "include/EngineX/EXScratchPad.h"
+#include "EngineX/EXScratchPad.h"
 
 u8* EXScratchPad::m_pStart;
 

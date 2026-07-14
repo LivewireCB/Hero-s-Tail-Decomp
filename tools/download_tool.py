@@ -48,7 +48,11 @@ def mips_binutils_url(tag):
 
     repo = "https://github.com/dbalatoni13/mips-binutils"
     return f"{repo}/releases/download/{tag}/{system}-{arch}.zip"
-    return f"{repo}/releases/download/{tag}/{system}-{arch}.zip"
+
+
+def ps2_compilers_url(tag: str) -> str:
+    # tag is unused — the URL is fixed at this release
+    return "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.9-991111.tar.gz"
 
 
 def compilers_url(tag: str) -> str:
@@ -107,6 +111,7 @@ TOOLS: Dict[str, Callable[[str], str]] = {
     "binutils": binutils_url,
     "ppc_binutils": binutils_url,
     "mips_binutils": mips_binutils_url,
+    "ps2_compilers": ps2_compilers_url,
     "compilers": compilers_url,
     "dtk": dtk_url,
     "objdiff-cli": objdiff_cli_url,
@@ -125,6 +130,26 @@ def download(url, response, output) -> None:
             for name in files:
                 os.chmod(os.path.join(root, name), 0o755)
         output.touch(mode=0o755)  # Update dir modtime
+    elif url.endswith(".tar.gz") or url.endswith(".tgz"):
+        import tarfile
+        data = io.BytesIO(response.read())
+        output.mkdir(parents=True, exist_ok=True)
+        with tarfile.open(fileobj=data, mode="r:gz") as tf:
+            members = tf.getmembers()
+            # Strip a common leading directory (e.g. ee-gcc2.9-991111/bin/... -> bin/...)
+            names = [m.name for m in members if m.name and not m.isdir()]
+            if names:
+                first_parts = {n.split("/")[0] for n in names}
+                if len(first_parts) == 1:
+                    prefix = first_parts.pop() + "/"
+                    for m in members:
+                        if m.name.startswith(prefix):
+                            m.name = m.name[len(prefix):]
+            tf.extractall(output, members=[m for m in members if m.name])
+        for root, _, files in os.walk(output):
+            for name in files:
+                os.chmod(os.path.join(root, name), 0o755)
+        output.touch(mode=0o755)
     else:
         with open(output, "wb") as f:
             shutil.copyfileobj(response, f)

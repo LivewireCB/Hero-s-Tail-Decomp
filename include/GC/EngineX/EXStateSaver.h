@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-#include "include/EngineX/EXString.h"
+#include "EngineX/EXString.h"
 
 struct EXStateSaver
 {

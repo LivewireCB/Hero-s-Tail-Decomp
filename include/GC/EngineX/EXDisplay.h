@@ -1,7 +1,7 @@
 #ifndef EXDISPLAY_H
 #define EXDISPLAY_H
 
-#include "types.h"
+#include <types.h>
 
 #include "EXFlagTemplate.h"
 #include "EXList.h"

@@ -1,7 +1,7 @@
 #include <EngineX/EXMemoryManager.h>
 
 #include <EngineX/EXMalloc.h>
-#include "include/EngineX/GC/GCMalloc.h"
+#include "EngineX/GC/GCMalloc.h"
 
 extern EXMemHeap* _SystemHeap;
 extern EXMemHeap* _SystemHeapList[4];

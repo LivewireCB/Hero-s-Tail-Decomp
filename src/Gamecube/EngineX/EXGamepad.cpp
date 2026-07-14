@@ -1,6 +1,6 @@
-#include "include/EngineX/EXGamepad.h"
+#include "EngineX/EXGamepad.h"
 
-#include "include/EngineX/GC/GCGamepad.h"
+#include "EngineX/GC/GCGamepad.h"
 
 EXBaseGamePad* EXBaseGamePad::m_pGamePad = NULL;
 
