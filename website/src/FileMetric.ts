@@ -24,14 +24,14 @@ const max = (arr: number[]) => Math.max(...arr);
 export const metricData: Record<FileMetric, FileMetricData> = {
   [FileMetric.FuzzyPercent]: {
     description: "Fuzzy Match %",
-    value: (unit) => unit.measures.fuzzy_match_percent,
+    value: (unit) => unit.measures.fuzzy_match_percent ?? 0,
     gradient: chroma.scale(["red", "lime"]),
   },
   [FileMetric.MatchedPercent]: {
     description: "Perfect Match %",
     value: (unit) =>
       unit.measures.total_code
-        ? (Number(unit.measures.matched_code) /
+        ? (Number(unit.measures.matched_code ?? 0) /
             Number(unit.measures.total_code)) *
           100
         : 100,

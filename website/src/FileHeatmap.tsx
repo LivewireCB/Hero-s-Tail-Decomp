@@ -29,15 +29,17 @@ export function FileHeatmap({
     units: FileInfo[];
   };
 
-  const fileInfos: FileInfo[] = filteredUnits.map((unit) => {
-    const value = metric.value(unit);
-    const info: FileInfo = {
-      name: unit.name,
-      value: !metric.percentage ? prettyPercent(value) : value.toString(),
-      percentage: metric.percentage ? metric.percentage(unit, allUnits) : value,
-    };
-    return info;
-  });
+  const fileInfos: FileInfo[] = filteredUnits
+    .filter((unit) => Number(unit.measures.total_code ?? 0) > 0)
+    .map((unit) => {
+      const value = metric.value(unit) ?? 0;
+      const info: FileInfo = {
+        name: unit.name,
+        value: !metric.percentage ? prettyPercent(value) : value.toString(),
+        percentage: metric.percentage ? metric.percentage(unit, allUnits) : value,
+      };
+      return info;
+    });
 
   const getColor = (percentage: number): string => {
     return metric.gradient
