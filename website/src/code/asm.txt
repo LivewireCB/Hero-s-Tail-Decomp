@@ -1,0 +1,25 @@
+.fn EXBaseApp__Init__FPCc, local
+stwu r1, -0x30(r1)
+mflr r0
+stw r31, 0x2c(r1)
+stw r30, 0x28(r1)
+stw r29, 0x24(r1)
+stw r0, 0x34(r1)
+mr r29, r3
+mr r30, r4
+bl __ct__10EXBaseAppFv
+lis r3, g_pApp@ha
+addi r31, r3, g_pApp@l
+stw r29, 0(r31)
+mr r3, r29
+mr r4, r30
+bl Init__10EXBaseAppFPCc
+lwz r3, 0(r31)
+lwz r0, 0x34(r1)
+lwz r31, 0x2c(r1)
+lwz r30, 0x28(r1)
+lwz r29, 0x24(r1)
+mtlr r0
+addi r1, r1, 0x30
+blr
+.endfn EXBaseApp__Init__FPCc

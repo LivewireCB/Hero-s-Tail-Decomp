@@ -336,6 +336,8 @@ elif config.platform == Platform.PS2:
     cflags_base_prodg = [
         "-O2",
         "-g2",
+        "-Wno-ctor-dtor-privacy",  # because of AttribSys for example
+        "-Woverloaded-virtual",
         # "-Wall",
         "-I include",
         "-I include/Spyro/Code",

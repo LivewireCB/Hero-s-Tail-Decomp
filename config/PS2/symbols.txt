@@ -1,3 +1,5 @@
 _start                                             = 0x00100008; // type:func size:0x1e0
 _exit                                              = 0x001001e8; // type:func size:0x8
 _root                                              = 0x001001f0; // type:func size:0x8
+Add__11EXDListItemP11EXDListItem                   = 0x003800b8; // type:func size:0x1c
+Insert__11EXDListItemP11EXDListItem                = 0x003800d8; // type:func

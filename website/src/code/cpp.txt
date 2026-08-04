@@ -1,0 +1,7 @@
+EXBaseApp* EXBaseApp::Init(const char* cmdLine)
+{
+    new (this) EXBaseApp();
+    g_pApp = this;
+    EXBaseApp::Init(cmdLine);
+    return g_pApp;
+}
