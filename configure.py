@@ -1205,10 +1205,16 @@ if args.mode == "configure":
         f.write("rule copy_report\n")
         f.write(f"  command = $python -c \"import shutil; shutil.copy2('{report_src_fwd}', '{website_report_fwd}')\"\n")
         f.write("  description = SYNC $out\n")
-        f.write(f"build {website_report}: copy_report {report_src}\n")
+        # '| always' makes this run on every ninja invocation
+        f.write(f"build {website_report}: copy_report {report_src} | always\n")
         f.write("\n")
-        # Add progress.json copy to the default build alongside 'progress'
-        f.write(f"default {website_report}\n")
+        # Auto-stage progress.json so it's ready to commit with the next git commit
+        f.write("rule git_add\n")
+        f.write(f"  command = git add {website_report_fwd}\n")
+        f.write("  description = GIT ADD $in\n")
+        f.write(f"build _git_add_progress: git_add {website_report} | always\n")
+        f.write(f"default _git_add_progress\n")
+        f.write("\n")
         f.write("rule npm_build\n")
         f.write("  command = $python -c \"import subprocess,sys; r=subprocess.run(['npm','install'],cwd='website',shell=True); r=subprocess.run(['npm','run','build'],cwd='website',shell=True); sys.exit(r.returncode)\"\n")
         f.write("  description = WEBSITE BUILD\n")
