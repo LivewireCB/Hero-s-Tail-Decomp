@@ -1195,15 +1195,27 @@ config.progress_each_module = args.verbose
 if args.mode == "configure":
     # Write build.ninja and objdiff.json
     generate_build(config)
-    # Append a rule to keep website/json/progress.json in sync with the report
+    # Append rules to sync progress.json and rebuild the website
     report_src = config.out_path() / "report.json"
     website_report = Path("website/json/progress.json")
     with open("build.ninja", "a") as f:
         f.write("\n")
-        f.write(f"rule copy_report\n")
-        f.write(f"  command = $python -c \"import shutil; shutil.copy2('$in', '$out')\"\n")
-        f.write(f"  description = SYNC $out\n")
+        report_src_fwd = str(report_src).replace("\\", "/")
+        website_report_fwd = str(website_report).replace("\\", "/")
+        f.write("rule copy_report\n")
+        f.write(f"  command = $python -c \"import shutil; shutil.copy2('{report_src_fwd}', '{website_report_fwd}')\"\n")
+        f.write("  description = SYNC $out\n")
         f.write(f"build {website_report}: copy_report {report_src}\n")
+        f.write("\n")
+        # Add progress.json copy to the default build alongside 'progress'
+        f.write(f"default {website_report}\n")
+        f.write("rule npm_build\n")
+        f.write("  command = $python -c \"import subprocess,sys; r=subprocess.run(['npm','install'],cwd='website',shell=True); r=subprocess.run(['npm','run','build'],cwd='website',shell=True); sys.exit(r.returncode)\"\n")
+        f.write("  description = WEBSITE BUILD\n")
+        f.write(f"build website/dist/index.html: npm_build {website_report}\n")
+        f.write("\n")
+        # 'ninja website' builds the website; not part of default to avoid slow npm on every build
+        f.write("build website: phony website/dist/index.html\n")
 elif args.mode == "progress":
     # Print progress information
     calculate_progress(config)
