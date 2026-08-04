@@ -26,11 +26,12 @@ type FunctionListProps = {
 };
 
 const FunctionInfo = (fn: FileFunction) => {
+  const matchPct = fn.fuzzy_match_percent ?? 0;
   const progress: ProgressBarProps = {
     size: 20,
     current: {
-      percentage: fn.fuzzy_match_percent,
-      label: prettyPercent(fn.fuzzy_match_percent) + " Match",
+      percentage: matchPct,
+      label: prettyPercent(matchPct) + " Match",
     },
   };
 
@@ -51,7 +52,7 @@ const FunctionInfo = (fn: FileFunction) => {
       style={{
         marginBottom: "1.5rem",
         fontFamily: "monospace",
-        ...(progress.current.percentage == 100 ? completedStyle : {}),
+        ...(matchPct === 100 ? completedStyle : {}),
       }}
     >
       <Text fw={700}>{fn.metadata?.demangled_name ?? fn.name}</Text>

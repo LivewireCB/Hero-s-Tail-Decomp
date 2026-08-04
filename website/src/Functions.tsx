@@ -38,7 +38,7 @@ const sortFunctions: Record<
   [FnSort.Address]: (a, b) =>
     Number(a.metadata?.virtual_address) - Number(b.metadata?.virtual_address),
   [FnSort.Labels]: (a, b) => (b.labels ?? 0) - (a.labels ?? 0),
-  [FnSort.Matched]: (a, b) => b.fuzzy_match_percent - a.fuzzy_match_percent,
+  [FnSort.Matched]: (a, b) => (b.fuzzy_match_percent ?? 0) - (a.fuzzy_match_percent ?? 0),
   [FnSort.Name]: (a, b) => a.name.localeCompare(b.name),
   [FnSort.Size]: (a, b) => Number(b.size) - Number(a.size),
 };
@@ -87,14 +87,14 @@ export function Functions() {
   const sum = (xs: number[]) => xs.reduce((tot, a) => tot + a, 0);
   const selectionCodeSize = sum(items.map((x) => Number(x.size)));
   const fuzzyPercent =
-    sum(items.map((x) => x.fuzzy_match_percent * Number(x.size))) /
+    sum(items.map((x) => (x.fuzzy_match_percent ?? 0) * Number(x.size))) /
     selectionCodeSize;
   const fuzzyCode = (fuzzyPercent * selectionCodeSize) / 100;
 
   const percentageOfGameCode =
     (selectionCodeSize / Number(ProgressReport.total_code)) * 100;
 
-  const matchingFns = items.filter((x) => x.fuzzy_match_percent === 100);
+  const matchingFns = items.filter((x) => (x.fuzzy_match_percent ?? 0) === 100);
   const totalFns = items.length;
 
   const stats: Stat[] = [

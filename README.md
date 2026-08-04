@@ -1,6 +1,7 @@
 Spyro: A Hero's Tail
 =============
 
+
 A work-in-progress decompilation of the **GameCube**  and **PS2** versions of Spyro: A Hero's Tail.
 
 This repository does **not** contain any game assets or assembly whatsoever. An existing copy of the game is required.
@@ -9,6 +10,11 @@ Supported versions:
 
 - `G5SE7D`: (NTSC)
 - `PS2`: (Pal PS2 Release)
+
+# Website
+
+The [website](https://livewirecb.github.io/Hero-s-Tail-Decomp/) is originally built by [mp](https://github.com/mattbruv) for the BFBB Decomp project.
+It has been adapted to work with A Hero's Tail and offers great features to aid in decomp.
 
 # Dependencies
 

@@ -16,11 +16,13 @@ export function SourceFileInfo({ unit }: SourceFileInfoProps) {
   const matched_data = num(unit.measures.matched_data);
   const total_data = num(unit.measures.total_data);
 
-  const perfectMatch = ((matched_code ?? 1) / (total_code ?? 1)) * 100;
-  const fuzzyMatch = unit.measures.fuzzy_match_percent;
+  const perfectMatch = total_code
+    ? ((matched_code ?? 0) / total_code) * 100
+    : 100;
+  const fuzzyMatch = unit.measures.fuzzy_match_percent ?? 0;
 
-  const dataMatch = unit.measures.total_data
-    ? ((matched_data ?? 1) / (total_data ?? 1)) * 100
+  const dataMatch = total_data
+    ? ((matched_data ?? 0) / total_data) * 100
     : 100;
 
   const fns = GameFunctions.filter((x) => x.path === unit.name);
