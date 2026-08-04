@@ -1195,6 +1195,15 @@ config.progress_each_module = args.verbose
 if args.mode == "configure":
     # Write build.ninja and objdiff.json
     generate_build(config)
+    # Append a rule to keep website/json/progress.json in sync with the report
+    report_src = config.out_path() / "report.json"
+    website_report = Path("website/json/progress.json")
+    with open("build.ninja", "a") as f:
+        f.write("\n")
+        f.write(f"rule copy_report\n")
+        f.write(f"  command = $python -c \"import shutil; shutil.copy2('$in', '$out')\"\n")
+        f.write(f"  description = SYNC $out\n")
+        f.write(f"build {website_report}: copy_report {report_src}\n")
 elif args.mode == "progress":
     # Print progress information
     calculate_progress(config)

@@ -33,9 +33,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Copy progress report
-        run: cp build/G5SE7D/report.json website/json/progress.json
-
       - name: Install dependencies
         working-directory: website
         run: npm install
