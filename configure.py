@@ -1195,6 +1195,9 @@ config.progress_each_module = args.verbose
 if args.mode == "configure":
     # Write build.ninja and objdiff.json
     generate_build(config)
+    # Only sync website progress for the GC build
+    if config.platform != Platform.GC_WII:
+        sys.exit(0)
     # Append rules to sync progress.json and rebuild the website
     report_src = config.out_path() / "report.json"
     website_report = Path("website/json/progress.json")
