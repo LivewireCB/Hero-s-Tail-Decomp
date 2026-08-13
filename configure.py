@@ -546,14 +546,13 @@ if config.platform == Platform.GC_WII:
             {
                 "lib": "Spyro",
                 "src_dir": "src/Gamecube",
-                "src_dir": "src",
                 "toolchain_version": config.linker_version,
                 "cflags": cflags_game,
                 "host": False,
                 "progress_category": "game",  # str | List[str]
                 "objects": [
                     Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_Interpret.cpp"),
-                    Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_InterpretInterfaceLayer.cpp"),
+                    Object(Matching, "Spyro/Code/BASIC_System/BASIC_InterpretInterfaceLayer.cpp"),
                     Object(NonMatching, "Spyro/Code/BASIC_System/BASIC_InterpretPrivate.cpp"),
                     Object(NonMatching, "Spyro/Code/SETrigger/SETrigger_Default.cpp"),
                     Object(NonMatching, "Spyro/Code/SETrigger/StartPoint.cpp"),

@@ -3,4 +3,6 @@
 
 #include "types.h"
 
+#include "Spyro/Code/XSEItemHandler/Base_BASIC.h"
+
 #endif // BASIC_INTERPRET_H

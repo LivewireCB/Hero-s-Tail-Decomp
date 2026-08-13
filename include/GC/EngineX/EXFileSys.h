@@ -133,7 +133,7 @@ struct EXFileSys
     // EXFileSys& operator=();
     EXFileSys();
     ~EXFileSys();
-    EXFileSys(EXFileSys*, int, void);
+    // EXFileSys(EXFileSys*, int, void);
     static EXFileSys* GetFileSys(/* parameters unknown */);
     static Bool Init(EXFileSys* pFileSys);
     static void Shutdown(/* parameters unknown */);

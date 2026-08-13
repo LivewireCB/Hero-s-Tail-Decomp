@@ -4,7 +4,7 @@
 #include "EngineX/EXMalloc.h"
 #include "EngineX/EXFileSys.h"
 
-char* EXFileNotInit = "0";
+char* EXFileNotInit = "\0";
 EXFileSys* EXFileSys::m_pFileSys = 0;
 Bool EXFileSys::m_DebugLoadInfo = true;
 
@@ -64,6 +64,9 @@ EXFile::EXFile(char* pFilename, u64 Length, u64 SeekPos)
 
 EXFile::~EXFile()
 {
+    EXFileSys::m_pFileSys->RemoveFile(this);
+    CleanUpMemory();
+    DeleteMXFile();
 }
 
 void EXFile::Initalise()
@@ -89,10 +92,46 @@ void EXFile::ChangeMemOwner()
 
 void EXFile::CreateMXFile(EXFILEINFO* pFinf, u64 Length, u64 SeekPos)
 {
+    if (m_pMXFile != NULL)
+    {
+        EXFree(m_pMXFile);
+        m_pMXFile = NULL;
+    }
+
+    m_pMXFile = new MXFile(Length, SeekPos);
+
+    if (m_pMXFile == NULL)
+    {
+        do
+        {
+        } while (true);
+    }
+
+    EXFileSys::m_pFileSys->GetSysFileInfo(m_pMXFile, pFinf->pFileName);
+
+    m_pFilename = pFinf->pFileName;
 }
 
 void EXFile::CreateMXFile(char* pFilename, u64 Length, u64 SeekPos)
 {
+    if (m_pMXFile != NULL)
+    {
+        EXFree(m_pMXFile);
+        m_pMXFile = NULL;
+    }
+
+    m_pMXFile = new MXFile(Length, SeekPos);
+
+    if (m_pMXFile == NULL)
+    {
+        do
+        {
+        } while (true);
+    }
+
+    EXFileSys::m_pFileSys->GetSysFileInfo(m_pMXFile, pFilename);
+
+    m_pFilename = pFilename;
 }
 
 void EXFile::DeleteMXFile()
@@ -100,13 +139,23 @@ void EXFile::DeleteMXFile()
     if (m_pMXFile != NULL)
     {
         EXFree(m_pMXFile);
+        m_pMXFile = NULL;
     }
-
-    m_pMXFile = NULL;
 }
 
 void EXFile::CleanUpMemory()
 {
+    if ((m_pMXFile != NULL) && (m_pMXFile->m_pLoadAddr != NULL))
+    {
+        EXFree(m_pMXFile->m_pLoadAddr);
+        m_pMXFile->m_pLoadAddr = NULL;
+    }
+
+    if (m_pMemAddr != NULL)
+    {
+        EXFree(m_pMemAddr);
+        m_pMemAddr = NULL;
+    }
 }
 
 Bool EXFile::OnLoad(EXMemHeap* pHeap)

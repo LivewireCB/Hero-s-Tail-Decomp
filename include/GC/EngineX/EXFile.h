@@ -23,9 +23,14 @@ struct MXFile
     /* 0x38 */ u32 m_FileHandle;
     /* 0x3c */ void* m_pLoadAddr;
 
+    void* operator new(size_t size)
+    {
+        return _EXAlloc(size, 0);
+    }
+
 public:
     // MXFile& operator=();
-    MXFile();
+    // MXFile();
     MXFile(u64 Length, u64 SeekPos);
     void Initialise(u64, u64);
     u32 Length();
