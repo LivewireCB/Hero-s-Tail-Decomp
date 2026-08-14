@@ -4,6 +4,7 @@
 #include "types.h"
 
 #include "EngineX/EXString.h"
+#include "EngineX/EXMemoryManager.h"
 
 struct EXStateSaver
 {
@@ -14,12 +15,15 @@ struct EXStateSaver
     /* 0x4 */ s32 m_SectionIndex;
     /* 0x8 */ Bool m_StateChanged;
 
-    /* 0xc */ __vtbl_ptr_type* vf20838;
+    void operator delete(void* ptr)
+    {
+        return EXFree(ptr);
+    }
 
     // EXStateSaver& operator=();
     EXStateSaver(EXString&);
-    ~EXStateSaver();
-    // /* vtable[1] */ virtual EXStateSaver(EXStateSaver*, int, void);
+    // ~EXStateSaver();
+    /* vtable[1] */ virtual ~EXStateSaver();
     static void SetStateFile(/* parameters unknown */);
     void SetSection(EXString& Section);
     void Save(EXString& Item, u64);

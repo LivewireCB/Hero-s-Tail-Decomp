@@ -659,7 +659,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/EXResourceWnd.cpp"),
                     Object(NonMatching, "EngineX/EXScratchPad.cpp"),
                     Object(NonMatching, "EngineX/EXSoundManager.cpp"),
-                    Object(NonMatching, "EngineX/EXStateSaver.cpp"),
+                    Object(NonMatching, "EngineX/EXStateSaver.cpp", extra_cflags=["-fno-common"]),
                     Object(NonMatching, "EngineX/EXStats.cpp"),
                     Object(NonMatching, "EngineX/EXStdFuncs.cpp"),
                     Object(NonMatching, "EngineX/EXString.cpp"),
