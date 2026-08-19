@@ -57,24 +57,6 @@ struct EXFixedArray<EXFixedArray<EXPadActionMap, 32>, 8>
     // EXFixedArray<EXPadActionMap, 32>* operator EXFixedArray<EXPadActionMap, 32>*();
 };
 
-struct EXFixedArray<unsigned int, 8>
-{ // 0x20
-    /* 0x00 */ unsigned int m_Data[8];
-
-    // EXFixedArray<unsigned int, 8>& operator=();
-    // EXFixedArray();
-    // EXFixedArray();
-    // size_t Size();
-    // size_t GetUpperBound();
-    // u32& ElementAt();
-    // u32 GetAt();
-    // void SetAt();
-    // u32* GetData();
-    // u32* GetData();
-    // u32* operator unsigned int*();
-    // u32* operator unsigned int*();
-};
-
 struct EXFixedArray<unsigned char, 8>
 { // 0x8
     /* 0x0 */ unsigned char m_Data[8];

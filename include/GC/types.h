@@ -26,4 +26,7 @@ typedef long long int s128;
 typedef signed char Bool;
 typedef short unsigned int wchar;
 
+typedef int _iconVu0IVECTOR[4];
+typedef float _iconVu0FVECTOR[4];
+
 #endif // TYPES_H

@@ -5,6 +5,7 @@
 #include <EngineX/EXMemoryManager.h>
 #include <EngineX/EXList.h>
 #include "EXDataArray.h"
+#include "EngineX/EXFixedArray.h"
 
 struct EXMemBlock;
 
@@ -148,8 +149,8 @@ struct EXMemHeap
     static void (*m_PostCompactCallback)(/* parameters unknown */);
     unsigned int m_DebugStats[4];
 
-    // static EXFixedArray<unsigned int, 7> m_gAlignTbl;
-    // static EXFixedArray<const char*, 7> m_gAlignTxt;
+    static EXFixedArray<unsigned int, 7> m_gAlignTbl;
+    static EXFixedArray<const char*, 7> m_gAlignTxt;
 
     // EXMemHeap& operator=();
     EXMemHeap();

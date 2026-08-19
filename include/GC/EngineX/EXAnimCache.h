@@ -2,19 +2,20 @@
 #define EXANIMCACHE_H
 
 #include "types.h"
+#include "EXMemoryManager.h"
 
 struct EXAnimCacheEntry
 {
-    u32 m_SeqHash;
-    u32 m_GeoHash;
-    u32 m_Size;
-    u32 m_SubSize;
-    u32 m_TimeStamp;
-    s32 m_StreamBlockOffset;
-    u8* m_pDataSubCache;
-    u32 m_MainCacheInd;
-    u16 m_Flags;
-    u16 m_MainRefCount;
+    /* 0x00 */ u32 m_SeqHash;
+    /* 0x04 */ u32 m_GeoHash;
+    /* 0x08 */ u32 m_Size;
+    /* 0x0c */ u32 m_SubSize;
+    /* 0x10 */ u32 m_TimeStamp;
+    /* 0x14 */ s32 m_StreamBlockOffset;
+    /* 0x18 */ u8* m_pDataSubCache;
+    /* 0x1c */ u32 m_MainCacheInd;
+    /* 0x20 */ u16 m_Flags;
+    /* 0x22 */ u16 m_MainRefCount;
 
     // EXAnimCacheEntry& operator=();
     EXAnimCacheEntry();
@@ -32,18 +33,18 @@ struct EXAnimCacheEntry
 
 struct EXAnimCache
 {
-    EXAnimCacheEntry* m_pMainEntries;
-    s32 m_NumMainEntries;
-    s32 m_MaxMainEntries;
-    u32 m_MaxEntriesMask;
-    u8* m_pMainCache;
-    u32 m_MainSize;
-    u32 m_MainNext;
-    u8* m_pSubCache;
-    u32 m_SubSize;
-    u32 m_SubNext;
-    u32 m_SubAutoDeleteAge;
-    Bool m_bDiscardSeqFlag;
+    /* 0x00 */ EXAnimCacheEntry* m_pMainEntries;
+    /* 0x04 */ s32 m_NumMainEntries;
+    /* 0x08 */ s32 m_MaxMainEntries;
+    /* 0x0c */ u32 m_MaxEntriesMask;
+    /* 0x10 */ u8* m_pMainCache;
+    /* 0x14 */ u32 m_MainSize;
+    /* 0x18 */ u32 m_MainNext;
+    /* 0x1c */ u8* m_pSubCache;
+    /* 0x20 */ u32 m_SubSize;
+    /* 0x24 */ u32 m_SubNext;
+    /* 0x28 */ u32 m_SubAutoDeleteAge;
+    /* 0x2c */ Bool m_bDiscardSeqFlag;
 
     // EXAnimCache& operator=();
     EXAnimCache();

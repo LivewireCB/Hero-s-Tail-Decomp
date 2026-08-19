@@ -1,28 +1,31 @@
 #include "libc/stddef.h"
 #include <EngineX/EXMalloc.h>
-// #include <EngineX/EXMemoryManager.h>
+#include <EngineX/EXMemoryManager.h>
+
+#include "EngineX/EXFixedArray.h"
 
 EXMemHeap _SDataHeap;
 EXMemHeap _LDataHeap;
 EXMemHeap* _SystemHeapList[4];
 
-EXMemHeap* _SystemHeap;
-
-// EXFixedArray<unsigned int, 7> EXMemHeap::m_gAlignTbl;
-// EXFixedArray<const char*, 7> EXMemHeap::m_gAlignTxt;
+EXFixedArray<unsigned int, 7> EXMemHeap::m_gAlignTbl = { 0, 32, 64, 128, 1024, 2048, 8192 };
+EXFixedArray<const char*, 7> EXMemHeap::m_gAlignTxt = { "<default>", "Align32",   "Align64",
+                                                        "Align128",  "Align1024", "Align2048",
+                                                        "Align8192" };
 
 void EXMemBlock::Init(size_t size)
 {
     m_pNext = 0;
     m_Size_Flags = size | 1;
-    m_PrevSize_Align = m_PrevSize_Align & ~0xFU;
+    m_PrevSize_Align &= ~0xFU;
     m_pOwner = 0;
 }
 
+// Bit of a guess on the final if statement. I have no clue sometimes
 void EXMemBlock::Copy(EXMemBlock* pMem)
 {
-    m_PrevSize_Align = (m_PrevSize_Align & ~0xFU) | (pMem->m_PrevSize_Align & 0xFU);
-    m_Size_Flags = (m_Size_Flags & ~0xFU) | (pMem->m_Size_Flags & 0xFU);
+    m_PrevSize_Align = (m_PrevSize_Align & ~0xF) | (pMem->m_PrevSize_Align & 0xF);
+    m_Size_Flags = (m_Size_Flags & ~0xF) | (pMem->m_Size_Flags & 0xF);
 
     EXMEMCALLBACK* p = pMem->m_pFunc;
 
@@ -43,6 +46,7 @@ void EXMemBlock::Copy(EXMemBlock* pMem)
     }
 }
 
+// TODO: FIX THIS FUNCTION. IT LOOKS FUCKING HORRIBLE
 EXMemBlock* EXMemBlock::Split(size_t size, Bool fHi)
 {
     size_t memsize;
