@@ -18,13 +18,18 @@ typedef short unsigned int u16;
 typedef unsigned int u32;
 typedef long unsigned int u64;
 typedef long long unsigned int u128;
+
 typedef signed char s8;
 typedef short int s16;
 typedef int s32;
 typedef long int s64;
 typedef long long int s128;
+
 typedef signed char Bool;
 typedef short unsigned int wchar;
+
+// typedef char* __gnuc_va_list;
+// typedef __gnuc_va_list va_list;
 
 typedef int _iconVu0IVECTOR[4];
 typedef float _iconVu0FVECTOR[4];

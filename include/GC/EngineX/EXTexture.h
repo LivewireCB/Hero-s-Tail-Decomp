@@ -3,13 +3,14 @@
 
 #include "types.h"
 #include "EXHashcode.h"
+#include "EXGeoTexture.h"
+#include "EXMalloc.h"
 
-// TODO: FIX STRUCT
 struct EXBaseTexture
 { // 0x24
 protected:
-    // /* 0x00 */ EXGeoTextureHeader* m_pTextureHeader;
-    // /* 0x04 */ EXGeoTexture* m_pTextureData;
+    /* 0x00 */ EXGeoTextureHeader* m_pTextureHeader;
+    /* 0x04 */ EXGeoTexture* m_pTextureData;
     /* 0x08 */ EXHashCode m_HashCode;
     /* 0x0c */ u8 m_Frame;
     /* 0x0d */ u8 m_FrameTick;
@@ -33,12 +34,17 @@ protected:
     /* 0x1c */ float m_VOffset;
 
 public:
+    void operator delete(void* ptr)
+    {
+        return EXFree(ptr);
+    }
+
     // /* 0x20 */ __vtbl_ptr_type* $vf10545;
 
     // EXBaseTexture& operator=();
     EXBaseTexture();
     // EXBaseTexture();
-    // /* vtable[1] */ virtual EXBaseTexture(EXBaseTexture*, int, void);
+    /* vtable[1] */ virtual ~EXBaseTexture();
     void SetHashCode();
     EXHashCode HashCode();
     // EXGeoTextureHeader* GeoTextureHeader();
@@ -73,14 +79,15 @@ public:
     float UOffset();
     float VOffset();
     Bool HasSetScrollRate();
-    void UpdatePtrs();
+    void UpdatePtrs(EXGeoTextureHeader* pTextureHeader);
     // void UpdatePtrs();
 
 private:
     /* vtable[8] */ virtual void Update();
 };
 
-// TODO: FIX STRUCT
+// TODO: FIX STRUCT. The "sce" prefixes stand for Sony Computer Entertainment and are specific to the PS2.
+// Gamecube version of will most likely be radically different.
 struct EXTexture : /* 0x00 */ EXBaseTexture
 { // 0xf0
 protected:
