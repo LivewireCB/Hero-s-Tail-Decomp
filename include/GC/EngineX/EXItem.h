@@ -3,11 +3,16 @@
 
 #include "types.h"
 
+#include "EXBounds.h"
 #include "EXFlagTemplate.h"
 #include "EXList.h"
+#include "EXRenderEnv.h"
 #include "EXRuntimeClass.h"
 #include "EXMatrix.h"
 #include "EXVector.h"
+#include "EXGeoFile.h"
+
+struct EXItemPhysics;
 
 struct EXBaseItem : /* 0x00 */ EXDListItem
 { // 0x1c
@@ -22,7 +27,7 @@ struct EXBaseItem : /* 0x00 */ EXDListItem
     // EXBaseItem& operator=();
     EXBaseItem();
     // EXBaseItem();
-    // /* vtable[1] */ virtual EXBaseItem(EXBaseItem*, int, void);
+    /* vtable[1] */ virtual ~EXBaseItem();
     EXDList& Nodes();
     void SetOwner();
     EXBaseItem* GetOwner();
@@ -34,9 +39,9 @@ struct EXPlacementItem : /* 0x00 */ EXBaseItem
     static EXRuntimeClass classEXPlacementItem;
 
 protected:
-    // /* 0x1c */ EXGeoComplexRefObject m_GeoRefObject;
-    // /* 0x30 */ EXBoundsBox m_BoundsBox;
-    // /* 0x50 */ EXRenderInfo m_RenderInfo;
+    /* 0x1c */ EXGeoComplexRefObject m_GeoRefObject;
+    /* 0x30 */ EXBoundsBox m_BoundsBox;
+    /* 0x50 */ EXRenderInfo m_RenderInfo;
     /* 0x80 */ EXFlag8 m_RenderFlags;
     /* 0x81 */ EXFlag8 m_RenderInfoFlags;
     /* 0x82 */ Bool m_ValidMtx;
@@ -44,11 +49,11 @@ protected:
     /* 0x83:1 */ u8 m_ValidBounds : 1;
     /* 0x83:2 */ u8 m_HasMtx : 1;
     /* 0x83:3 */ u8 m_bitpad : 5;
-    // /* 0x84 */ EXRotOrder m_RotOrder;
+    /* 0x84 */ EXRotOrder m_RotOrder;
     /* 0x88 */ EXMatrix* m_pmtx;
-    /* 0x90 */ EXMatrix m_mtx; // ExMatrix
+    /* 0x90 */ EXMatrix m_mtx;
     /* 0xd0 */ EXVector m_Position;
-    /* 0xe0 */ EXVector m_Rotation; // ExVector
+    /* 0xe0 */ EXVector m_Rotation;
     /* 0xf0 */ EXVector m_Scale;
 
 public:
@@ -67,7 +72,7 @@ public:
     /* vtable[4] */ virtual int Size();
     static EXPlacementItem* NewItem(/* parameters unknown */);
     // EXPlacementItem();
-    // /* vtable[1] */ virtual EXPlacementItem(EXPlacementItem*, int, void);
+    /* vtable[1] */ virtual ~EXPlacementItem();
     void Invalidate();
     // void Invalidate();
     Bool ValidMtx();
@@ -131,7 +136,7 @@ protected:
     /* 0x140 */ EXODListItem* m_UserItemGroups;
     /* 0x144 */ EXDList m_Animator;
     // /* 0x14c */ EXItemHandler* m_pItemHandler;
-    // /* 0x150 */ EXItemPhysics* m_pItemPhysics;
+    /* 0x150 */ EXItemPhysics* m_pItemPhysics;
     // /* 0x154 */ EXBaseTrigger* m_pTrigger;
     /* 0x158 */ EXItem* m_pXItemOwner;
     // /* 0x15c */ EXMapOn m_MapOn;
@@ -156,8 +161,7 @@ public:
     /* vtable[3] */ virtual char* TypeName();
     /* vtable[4] */ virtual int Size();
     static EXItem* NewItem(/* parameters unknown */);
-    // EXItem();
-    // /* vtable[1] */ virtual EXItem(EXItem*, int, void);
+    /* vtable[1] */ virtual ~EXItem();
     EXODListItem& ItemGroup();
     void UpdateGroups();
     void UpdateGroupsTail();
@@ -204,10 +208,10 @@ public:
     /* vtable[8] */ virtual void DoItemUpdate();
     /* vtable[9] */ virtual void DoItemPhysics();
     /* vtable[10] */ virtual u32 DoItemRender();
-    /* vtable[11] */ virtual void DoItemCollisionScoop();
-    // /* vtable[12] */ virtual void DoItemCollisionScoop();
+    /* vtable[11] */ virtual void DoItemCollisionScoop(s64 /* grab from release functions */);
+    /* vtable[12] */ virtual void DoItemCollisionScoop();
     /* vtable[13] */ virtual void DoItemGrabPoint();
-    // /* vtable[14] */ virtual void DoItemGrabPoint();
+    /* vtable[14] */ virtual void DoItemGrabPoint(s64 /* grab from release functions */);
     /* vtable[15] */ virtual void DoItemRayCast();
     /* vtable[16] */ virtual void DoItemShadowCast();
 };

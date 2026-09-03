@@ -83,7 +83,7 @@ protected:
     static EXRuntimeClass* _GetBaseClass(/* parameters unknown */);
 
 public:
-    /* vtable[3] */ virtual EXRuntimeClass* GetRuntimeClass();
+    /* vtable[3] */ virtual EXRuntimeClass* GetRuntimeClass() const;
     Bool IsKindOf();
     char* ClassName();
     static EXItemPhysicsExt* CreateObject();

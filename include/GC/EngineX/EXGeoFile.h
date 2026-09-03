@@ -281,4 +281,77 @@ private:
     static EXGeoFile* _GetGeoFile(/* parameters unknown */);
 };
 
+struct EXGeoBaseRefObject
+{ // 0x8
+protected:
+    /* 0x0 */ EXGeoFile* m_pGeoFile;
+    /* 0x4 */ EXHashCode m_HashRef;
+
+public:
+    // EXGeoBaseRefObject& operator=();
+    EXGeoBaseRefObject();
+    // EXGeoBaseRefObject();
+    EXGeoFile* GeoFile();
+    EXHashCode HashRef();
+    char* DebugGeoName();
+    char* DebugRefName();
+};
+
+struct EXGeoComplexRefObject : /* 0x0 */ EXGeoBaseRefObject
+{ // 0x10
+protected:
+    /* 0x8 */ u32 m_CheckCode;
+    /* 0xc */ void* m_pAddress;
+
+public:
+    // EXGeoComplexRefObject& operator=();
+    EXGeoComplexRefObject();
+
+protected:
+    void Invalidate();
+
+public:
+    // EXGeoComplexRefObject();
+    // EXGeoObjectHeader* GeoObjectHeader();
+    // EXGeoObjectHeader* GeoObjectHeader();
+    // EXGeoObjectHeader* GeoObjectHeader();
+    // EXGeoObject* GeoObject();
+    // EXGeoObject* GeoObject();
+    // EXGeoAnimHeader* GeoAnimHeader();
+    // EXGeoAnimHeader* GeoAnimHeader();
+    // EXGeoAnimHeader* GeoAnimHeader();
+    // EXGeoAnim* GeoAnim();
+    // EXGeoAnim* GeoAnim();
+    // EXGeoAnimSkinHeader* GeoAnimSkinHeader();
+    // EXGeoAnimSkinHeader* GeoAnimSkinHeader();
+    // EXGeoAnimSkinHeader* GeoAnimSkinHeader();
+    // EXGeoAnimSkin* GeoAnimSkin();
+    // EXGeoAnimSkin* GeoAnimSkin();
+    // EXGeoEntityHeader* GeoEntityHeader();
+    // EXGeoEntityHeader* GeoEntityHeader();
+    // EXGeoEntityHeader* GeoEntityHeader();
+    // EXGeoEntity* GeoEntity();
+    // EXGeoEntity* GeoEntity();
+    // EXGeoScriptHeader* GeoScriptHeader();
+    // EXGeoScriptHeader* GeoScriptHeader();
+    // EXGeoScriptHeader* GeoScriptHeader();
+    // EXGeoScript* GeoScript();
+    // EXGeoScript* GeoScript();
+    // EXGeoSwooshHeader* GeoSwooshHeader();
+    // EXGeoSwooshHeader* GeoSwooshHeader();
+    // EXGeoSwooshHeader* GeoSwooshHeader();
+    // EXGeoSwoosh* GeoSwoosh();
+    // EXGeoSwoosh* GeoSwoosh();
+    // EXGeoParticleHeader* GeoParticleHeader();
+    // EXGeoParticleHeader* GeoParticleHeader();
+    // EXGeoParticleHeader* GeoParticleHeader();
+    // EXGeoParticle* GeoParticle();
+    // EXGeoParticle* GeoParticle();
+    // void Set();
+    // void Set();
+    // void Set();
+    void SetGeoFile();
+    void SetHashRef();
+};
+
 #endif // EXGEOFILE_H

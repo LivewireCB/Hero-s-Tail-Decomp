@@ -14,17 +14,17 @@ struct EXString
 {
     char* m_pData;
 
-    // EXString();
-    // EXString();
+    EXString(char* pString);
+    EXString();
     // EXString();
     // EXString();
     // EXString(EXString*, int, void);
     void Empty();
-    // EXString& operator=();
-    // EXString& operator=();
-    // EXString& operator+=();
-    // EXString& operator+=();
-    // EXString& operator+=();
+    EXString& operator=(char* pString);
+    EXString& operator=(EXString& Str);
+    EXString& operator+=(EXString& Str);
+    EXString& operator+=(char* pStr);
+    EXString& operator+=(char ch);
     void MakeUnique();
     void ToUpper();
     void ToLower();

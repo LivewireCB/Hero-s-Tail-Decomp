@@ -233,7 +233,7 @@ if config.platform == Platform.GC_WII:
     cflags_base_prodg = [
         "-O2",
         "-gdwarf",
-        # "-lang=cplusplus",
+        "-lang=cplusplus",
         # "-Wa,-L",
         # "-Wall",
         # "-Wreturn-type", # enable at some point
