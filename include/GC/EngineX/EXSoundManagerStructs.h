@@ -1,0 +1,6 @@
+#ifndef EXSOUNDMANAGERSTRUCTS_H
+#define EXSOUNDMANAGERSTRUCTS_H
+
+#include "types.h"
+
+#endif // EXSOUNDMANAGERSTRUCTS_H

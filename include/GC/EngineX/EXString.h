@@ -2,6 +2,7 @@
 #define EXSTRING_H
 
 #include "types.h"
+#include "EXMalloc.h"
 
 struct EXStringData
 {
@@ -10,13 +11,15 @@ struct EXStringData
     u16 Alloc;
 };
 
+struct EXStringArray;
+
 struct EXString
 {
     char* m_pData;
 
     EXString(char* pString);
+    EXString(char* pString, u16 len);
     EXString();
-    // EXString();
     // EXString();
     // EXString(EXString*, int, void);
     void Empty();
@@ -40,10 +43,10 @@ struct EXString
     char* c_str();
     char* data();
     // char* data();
-    EXString Token();
+    EXString Token(int nTok, char chSep, Bool fNullTokensOK) const;
     // EXString Token();
-    int Tokenise();
-    s16 Format();
+    int Tokenise(EXStringArray& Tokens, EXString& Sep, Bool fNullTokensOK) const;
+    s16 Format(char* FmtString, ...);
 
     void AllocMem(u16 nLength);
     void ReallocMem(u16 nLength);
@@ -59,14 +62,19 @@ struct EXStringArray
     int m_iSize;
     EXString* m_pData;
 
+    void operator delete(void* ptr)
+    {
+        return EXFree(ptr);
+    }
+
     // EXStringArray& operator=();
     EXStringArray();
     ~EXStringArray();
-    EXStringArray(s32, s32);
-    // EXStringArray(EXStringArray*, int, void);
+    EXStringArray(int nSize, int iGrowBy);
+    // ~EXStringArray();
     int Size();
     int GetUpperBound();
-    void SetSize();
+    void SetSize(int nNewSize, int nGrowBy);
     // void SetGrowBy(EXStringArray*, int, void);
     void FreeExtra();
     void RemoveAll();
@@ -74,14 +82,14 @@ struct EXStringArray
     void SetAt();
     EXString* GetData();
     // EXString* GetData();
-    void SetAtGrow();
-    int Add();
+    void SetAtGrow(int nIndex, EXString& newElement);
+    int Add(EXString& newElement);
     int Append();
     void Copy();
     // EXString& operator[]();
     // EXString& operator[]();
     void InsertAt();
-    void RemoveAt();
+    void RemoveAt(int nIndex, int nCount);
     // void InsertAt();
 };
 

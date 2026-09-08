@@ -4,32 +4,45 @@
 #include "types.h"
 
 struct EXDListItem
-{
-    EXDListItem* m_pPrev;
-    EXDListItem* m_pNext;
+{ // 0x8
+protected:
+    /* 0x0 */ EXDListItem* m_pPrev;
+    /* 0x4 */ EXDListItem* m_pNext;
 
-    void Add(EXDListItem* pDlistItem);
-    void Insert(EXDListItem* pDlistItem);
+public:
+    // EXDListItem& operator=();
+    EXDListItem();
+    // EXDListItem();
+    void Init();
+    void Add();
+    void Insert();
     void Remove();
     EXDListItem* Next();
     EXDListItem* Prev();
     void SetNext();
     void SetPrev();
-    Bool Apply(void* func, void* parm1);
+    Bool Apply();
     Bool ApplyBack();
 };
 
 struct EXDList
-{
-    EXDListItem* m_pHead;
-    EXDListItem* m_pTail;
+{ // 0x8
+protected:
+    /* 0x0 */ EXDListItem* m_pHead;
+    /* 0x4 */ EXDListItem* m_pTail;
 
+public:
+    // EXDList& operator=();
+    EXDList();
+    // EXDList();
     void Init();
-    void AddHead(EXDListItem* pDListItem);
-    void AddTail(EXDListItem* pDListItem);
-    void Remove(EXDListItem* pDListItem);
-    void Insert(EXDListItem* pItemAt, EXDListItem* pDListItem);
+    void AddHead();
+    void AddTail();
     void Remove();
+    void Insert();
+    // void AddHead();
+    // void AddTail();
+    // void Remove();
     EXDListItem* RemoveHead();
     EXDListItem* RemoveTail();
     EXDListItem* Head();
@@ -38,8 +51,8 @@ struct EXDList
     void SetTail();
     Bool Apply();
     Bool ApplyBack();
-    Bool IsMember(EXDListItem* pDListItem) const;
-    u32 Count() const;
+    Bool IsMember();
+    u32 Count();
 };
 
 struct EXLDListItem;
@@ -51,11 +64,15 @@ struct EXLDList : EXDList
     void AddTail();
 };
 
-struct EXLDListItem : EXDListItem
-{
-    EXLDList* m_pList;
+struct EXLDListItem : /* 0x0 */ EXDListItem
+{ // 0xc
+protected:
+    /* 0x8 */ EXLDList* m_pList;
 
+public:
+    // EXLDListItem& operator=();
     EXLDListItem();
+    // EXLDListItem();
     void Init();
     void Remove();
     void Add();
