@@ -122,6 +122,7 @@ void EXString::DeallocMem()
     if (m_pData != 0)
     {
         pSData = (EXStringData*)m_pData - 1;
+
         if (--pSData->Refs == 0)
         {
             EXFree(pSData);
