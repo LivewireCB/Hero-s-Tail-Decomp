@@ -12,9 +12,9 @@ struct EXScratchPad
     /* 0x8 */ u32 m_Seq;
 
     // EXScratchPad& operator=();
+    EXScratchPad();
     // EXScratchPad();
-    // EXScratchPad();
-    // EXScratchPad(EXScratchPad*, int, void);
+    ~EXScratchPad();
     u32 FreeBytes();
     void* Claim(unsigned long);
     void* Cache();

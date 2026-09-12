@@ -5,7 +5,6 @@
 
 struct EXDListItem
 { // 0x8
-protected:
     /* 0x0 */ EXDListItem* m_pPrev;
     /* 0x4 */ EXDListItem* m_pNext;
 
@@ -14,20 +13,20 @@ public:
     EXDListItem();
     // EXDListItem();
     void Init();
-    void Add();
-    void Insert();
+    void Add(EXDListItem* pDlistItem);
+    void Insert(EXDListItem* pDlistItem);
     void Remove();
     EXDListItem* Next();
     EXDListItem* Prev();
     void SetNext();
     void SetPrev();
-    Bool Apply();
+    Bool Apply(void* func, void* parm1);
     Bool ApplyBack();
 };
 
 struct EXDList
 { // 0x8
-protected:
+
     /* 0x0 */ EXDListItem* m_pHead;
     /* 0x4 */ EXDListItem* m_pTail;
 
@@ -36,10 +35,10 @@ public:
     EXDList();
     // EXDList();
     void Init();
-    void AddHead();
-    void AddTail();
-    void Remove();
-    void Insert();
+    void AddHead(EXDListItem* pDListItem);
+    void AddTail(EXDListItem* pDListItem);
+    void Remove(EXDListItem* pDListItem);
+    void Insert(EXDListItem* pItemAt, EXDListItem* pDListItem);
     // void AddHead();
     // void AddTail();
     // void Remove();
@@ -51,8 +50,8 @@ public:
     void SetTail();
     Bool Apply();
     Bool ApplyBack();
-    Bool IsMember();
-    u32 Count();
+    Bool IsMember(EXDListItem* pDListItem) const;
+    u32 Count() const;
 };
 
 struct EXLDListItem;
@@ -66,7 +65,6 @@ struct EXLDList : EXDList
 
 struct EXLDListItem : /* 0x0 */ EXDListItem
 { // 0xc
-protected:
     /* 0x8 */ EXLDList* m_pList;
 
 public:

@@ -19,9 +19,9 @@ struct EXString
 
     EXString(char* pString);
     EXString(char* pString, u16 len);
+    // EXString(EXString&);
     EXString();
-    // EXString();
-    // EXString(EXString*, int, void);
+    // ~EXString();
     void Empty();
     EXString& operator=(char* pString);
     EXString& operator=(EXString& Str);
@@ -54,6 +54,8 @@ struct EXString
     int IncRefCount();
     void SetLength(u16 aNewLength);
 };
+
+Bool operator==(EXString& Str1, EXString& Str2);
 
 struct EXStringArray
 {

@@ -33,6 +33,28 @@ EXStateSaver::~EXStateSaver()
 
 void EXStateSaver::SetSection(EXString& Section)
 {
+    char* pSection = Section.m_pData;
+
+    // s32 l;  unused? probably bad code on my end
+    int nIndex;
+
+    if (pSection == NULL)
+    {
+        pSection = "";
+    }
+
+    // making this a char* based on arg, but literal and char* produce same code gen
+    m_Section.Format((char*)"%s", pSection);
+    m_SectionIndex = -1;
+
+    for (int nIndex = 0; nIndex < m_Data.m_iSize; nIndex++)
+    {
+        if (m_Data.m_pData[nIndex] == m_Section)
+        {
+            m_SectionIndex = nIndex;
+            break;
+        }
+    }
 }
 
 void EXStateSaver::Save(EXString& Item, u64)

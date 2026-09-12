@@ -271,7 +271,7 @@ if config.platform == Platform.GC_WII:
         *cflags_base_prodg,
         # "-mps-nodf",
         # "-mfast-cast",
-        "-G4",
+        "-G8",
         # "-fnew-abi",
         "-ffast-math",
         "-fno-common",
