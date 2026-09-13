@@ -42,9 +42,7 @@ public:
     EXSYSFILEINFO& SysFile();
     u32 FileHandle();
     void SetFileHandle(u64 FileHandle);
-
-protected:
-    u32 GetLength();
+    u32 GetLength() const;
 };
 
 struct EXFILEINFO;
@@ -53,7 +51,7 @@ struct EXFile : EXDListItem
 {
     static EXRuntimeClass classEXFile;
 
-protected:
+    // protected:
     /* 0x08 */ MXFile* m_pMXFile;
     /* 0x0c */ char* m_pFilename;
     /* 0x10 */ void* m_pMemAddr;
@@ -147,7 +145,7 @@ struct EXFILELIST_BIN
     /* 0x08 */ s32 NumFiles;
     /* 0x0c */ u16 BuildType;
     /* 0x0e */ u16 NumFileLists;
-    // /* 0x10 */ EXRelPtr<ex::EXRELOFFSET32> FileNameListOffset;
+    /* 0x10 */ s32 FileNameListOffset; // should be EXRelPtr<ex::EXRELOFFSET32>
     /* 0x14 */ EXFILEINFO_BIN FileInfo;
 };
 
@@ -163,8 +161,8 @@ struct EXFILEINFO
     /* 0x38 */ u32 Version;
 
     // EXFILEINFO& operator=();
-    EXFILEINFO();
-    ~EXFILEINFO();
+    // EXFILEINFO();
+    // ~EXFILEINFO();
     void Set();
 };
 

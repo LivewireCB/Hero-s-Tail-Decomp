@@ -8,11 +8,12 @@ extern u8 g_Stats[];
 EXAnimCache g_AnimCache;
 u32 lbl_804CBA20[2] = { 0, 0 };
 
-void GC_ARAM_Read_From(void*, void*, unsigned long) asm("GC_ARAM_Read_From__FPvPvUl");
+// Forward decs to make this fucking compiler happy
+void GC_ARAM_Read_From(void*, void*, unsigned long);
 void GC_ARAM_Write_To(unsigned long, void*, unsigned long);
 void GC_Die(char*);
-int sprintf(char*, const char*, ...) asm("sprintf");
-void* memcpy(void*, const void*, size_t) asm("memcpy");
+int sprintf(char*, const char*, ...);
+void* memcpy(void*, const void*, size_t);
 
 void EXAnimCache::ReloadSeqToMainCache(EXAnimCacheEntry* cache, u8* data)
 {

@@ -9,6 +9,20 @@
 #include <EngineX/EXRGB.h>
 
 struct EXWnd;
+struct EXTexture;
+
+struct EXSprite2D
+{
+    /* 0x00 */ XRGBA Col;
+    /* 0x04 */ s16 x;
+    /* 0x06 */ s16 y;
+    /* 0x08 */ u16 w;
+    /* 0x0a */ u16 h;
+    /* 0x0c */ float u1;
+    /* 0x10 */ float v1;
+    /* 0x14 */ float u2;
+    /* 0x18 */ float v2;
+};
 
 // TODO: Fill out struct
 struct EXBaseWnd : /* 0x000 */ EXDListItem
@@ -187,9 +201,10 @@ public:
     /* vtable[36] */ virtual void SetTriStripZMode();
     /* vtable[37] */ virtual void SelectTriStripTexture();
     /* vtable[38] */ virtual void DrawTriStrip();
-    /* vtable[39] */ virtual void _SetSprite2DBlendMode();
+    /* vtable[39] */ virtual void _SetSprite2DBlendMode(u32 BlendMode);
     void SetSprite2DBlendMode();
-    /* vtable[40] */ virtual void _SelectSprite2DTexture();
+    /* vtable[40] */ virtual void _SelectSprite2DTexture(EXTexture* pTexture, s8 MinFilter,
+                                                         s8 MagFilter);
     void SelectSprite2DTexture();
     // void SelectSprite2DTexture();
     /* vtable[41] */ virtual void _SetSprite2DClipRect();
@@ -197,7 +212,7 @@ public:
     // void SetSprite2DClipRect();
     void ResetSprite2DClipRect();
     EXRect Sprite2DClipRect();
-    /* vtable[42] */ virtual void _DrawSprite2D();
+    /* vtable[42] */ virtual void _DrawSprite2D(EXSprite2D& Sprite);
     void DrawSprite2D();
     // void DrawSprite2D();
     // void DrawSprite2D();

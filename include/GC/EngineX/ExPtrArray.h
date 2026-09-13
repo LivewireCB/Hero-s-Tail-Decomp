@@ -3,10 +3,12 @@
 
 #include "types.h"
 
-// This should probably be empty. Look at ExRelPtr.h
 template <typename T> struct EXPtrArray
 {
-    T* pData;
+    int m_iAlloc;
+    int m_iGrowBy;
+    int m_iSize;
+    T** m_pData;
 };
 
 #endif

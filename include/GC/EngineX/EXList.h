@@ -10,7 +10,6 @@ struct EXDListItem
 
 public:
     // EXDListItem& operator=();
-    EXDListItem();
     // EXDListItem();
     void Init();
     void Add(EXDListItem* pDlistItem);
@@ -32,7 +31,6 @@ struct EXDList
 
 public:
     // EXDList& operator=();
-    EXDList();
     // EXDList();
     void Init();
     void AddHead(EXDListItem* pDListItem);

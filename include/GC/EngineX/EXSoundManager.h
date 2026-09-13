@@ -81,6 +81,16 @@ struct EXSoundFileEntry
     /* 0x4 */ EXFileList* pFileList;
 };
 
+// TODO: move this struct to its proper location
+struct XFileHandle
+{ // 0x1a0
+    /* 0x000 */ u32 DiskStartSector[4];
+    /* 0x010 */ u32 FileStart[4];
+    /* 0x020 */ u32 FileLength;
+    /* 0x024 */ char FileName[4][94];
+    /* 0x19c */ u16 IsBigFileFile;
+};
+
 struct EXDataArray<EXSoundFileEntry, const EXSoundFileEntry&>
 { // 0x10
 protected:
@@ -245,7 +255,7 @@ public:
 
 struct EXBaseSoundManager
 { // 0xf38
-protected:
+    // protected:
     static EXBaseSoundManager* m_pSoundManager;
     static EXPtrArray<EXSoundDetailsFile> m_SoundDetailsFileArray;
     static EXSoundDetails DefaultSFXOutputData;
@@ -321,7 +331,7 @@ public:
     void PreCache();
     void BuildSoundFileList();
     s32 GetXFileFromHash();
-    u32 GetFileStatus();
+    u32 GetFileStatus(int FileHandle) const;
     Bool IsSoundBankLoaded();
     void RegisterWatcherVars();
     void LoadSoundBank();
@@ -342,15 +352,16 @@ public:
     // void FadeMusicUp(EXBaseSoundManager*, int, void);
     s32 GetSFXFadeStatus();
     s32 GetMusicFadeStatus();
-    /* vtable[3] */ virtual void AsyncReadFile();
+    /* vtable[3] */ virtual void AsyncReadFile(XFileHandle* pFile, char* pDestBuffer, u32 Priority,
+                                               u32 FileIndex);
     void AsyncReadFile_();
-    void AsyncStopFileRead();
-    void GetDriveActivity();
+    void AsyncStopFileRead(u32 FileHandle);
+    u32 GetDriveActivity() const;
     /* vtable[4] */ virtual void Initialise();
     /* vtable[5] */ virtual void Exit();
 
-protected:
-    void CommandUpdate();
+    // protected:
+    void CommandUpdate(u32 Command);
     void KillSoundPlaying();
     EXSoundHandle* AllocateHandle();
     void RemoveHandle();

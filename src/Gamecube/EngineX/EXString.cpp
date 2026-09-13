@@ -4,6 +4,7 @@
 
 #include "EngineX/EXMemoryManager.h"
 
+// TODO: decompile lib functions and get headers for them
 // goofy shit to make the compiler happy
 #define __MWERKS__
 #include "include/GC/libc/stdarg.h"

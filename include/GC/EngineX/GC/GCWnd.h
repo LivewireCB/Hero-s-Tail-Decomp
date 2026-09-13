@@ -77,10 +77,11 @@ public:
     /* vtable[37] */ virtual void SelectTriStripTexture();
     /* vtable[38] */ virtual void DrawTriStrip();
     void UseNextDrawTriStripStream();
-    /* vtable[40] */ virtual void _SelectSprite2DTexture();
-    /* vtable[39] */ virtual void _SetSprite2DBlendMode();
+    /* vtable[40] */ virtual void _SelectSprite2DTexture(EXTexture* pTexture, s8 MinFilter,
+                                                         s8 MagFilter);
+    /* vtable[39] */ virtual void _SetSprite2DBlendMode(u32 BlendMode);
     /* vtable[41] */ virtual void _SetSprite2DClipRect();
-    /* vtable[42] */ virtual void _DrawSprite2D();
+    /* vtable[42] */ virtual void _DrawSprite2D(EXSprite2D& Sprite);
     // /* vtable[43] */ virtual void _DrawSprite2D();
     // /* vtable[44] */ virtual void _DrawSprite2D();
     void UseNextDrawSpriteStream();

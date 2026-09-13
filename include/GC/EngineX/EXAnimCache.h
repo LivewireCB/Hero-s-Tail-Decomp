@@ -8,7 +8,7 @@ struct EXAnimStreamInfo;
 
 // honestly i hate this. but it made code gen correct.
 // why was so much inlined here? Who knows.
-// Im beginning to understand that the devs compiled files without different Optimization levels
+// Im beginning to understand that the devs compiled files with different Optimization levels
 struct EXAnimCacheEntry
 {
     /* 0x00 */ u32 m_SeqHash;

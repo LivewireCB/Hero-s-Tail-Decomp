@@ -9,6 +9,20 @@
 #include "EXString.h"
 #include "EXDataArray.h"
 
+struct EXWnd;
+
+struct EXDataArray<void*, void*>
+{
+    /* 0x0 */ int m_iAlloc;
+    /* 0x4 */ int m_iGrowBy;
+    /* 0x8 */ int m_iSize;
+    /* 0xc */ void** m_pData;
+
+    void Init(int iSize, int iGrowBy);
+    void SetSize(int iSize, int iGrowBy);
+    int Add(void* pData, int iGrowBy);
+};
+
 struct EXDataArray<EXFILEINFO, const EXFILEINFO&>
 {
     /* 0x0 */ int m_iAlloc;
@@ -16,14 +30,11 @@ struct EXDataArray<EXFILEINFO, const EXFILEINFO&>
     /* 0x8 */ int m_iSize;
     /* 0xc */ EXFILEINFO* m_pData;
 
-    EXDataArray();
-    ~EXDataArray();
-    EXDataArray(EXDataArray<EXFILEINFO, const EXFILEINFO&>*, int, void);
-    void Init();
-    int Size();
+    void Init(int iSize, int iGrowBy);
+    int Size() const;
     int AllocSize();
     int GetUpperBound();
-    void SetSize();
+    void SetSize(int iSize, int nGrowBy);
     void SetGrowBy(EXDataArray<EXFILEINFO, const EXFILEINFO&>*, int, void);
     void AllocMem(EXDataArray<EXFILEINFO, const EXFILEINFO&>*, int, void);
     void FreeExtra();
@@ -31,7 +42,7 @@ struct EXDataArray<EXFILEINFO, const EXFILEINFO&>
     void RemoveAll();
     void SetAt();
     EXFILEINFO GetAt();
-    EXFILEINFO& ElementAt();
+    EXFILEINFO& ElementAt(int i);
     EXFILEINFO* GetData();
     // EXFILEINFO* GetData();
     void SetAtGrow();
@@ -54,8 +65,7 @@ struct EXDataArray<EXFILEINFO, const EXFILEINFO&>
 struct EXFileInfoArray : EXDataArray<EXFILEINFO, const EXFILEINFO&>
 {
     // EXFileInfoArray& operator=();
-    EXFileInfoArray();
-    ~EXFileInfoArray();
+    // EXFileInfoArray();
     // EXFileInfoArray(EXFileInfoArray*, int, void);
 
     static int QSortFn_SortByName(void* arg1, void* arg2);
@@ -73,6 +83,16 @@ struct EXFileList
     /* 0x2c */ char* m_FileNameBuf;
     /* 0x30 */ u32 m_BinaryFileLength;
     /* 0x34 */ u32 m_NumFileLists;
+
+    void* operator new(size_t size)
+    {
+        return _EXAlloc(size, 0);
+    }
+
+    void operator delete(void* ptr)
+    {
+        return EXFree(ptr);
+    }
 
     // EXFileList& operator=();
     EXFileList(EXFILE& FileList);
@@ -97,9 +117,7 @@ struct EXPtrArray<EXFileList> : EXDataArray<void*, void*>
     // stabs says 0x10, but theres nothing here.
 
     // EXPtrArray<EXFileList>& operator=();
-    EXPtrArray();
     // EXPtrArray();
-    EXPtrArray(EXPtrArray<EXFileList>*, int, void);
     EXFileList* GetAt();
     void SetAt();
     EXFileList*& ElementAt();
@@ -129,6 +147,16 @@ struct EXFileSys
     /* 0x64 */ u32 m_NumActiveFiles;
     /* 0x68 */ u32 m_UniqueID;
     /* 0x6c */ u32 m_ScanPos;
+
+    void* operator new(size_t size)
+    {
+        return _EXAlloc(size, 0);
+    }
+
+    void operator delete(void* ptr)
+    {
+        return EXFree(ptr);
+    }
 
     // EXFileSys& operator=();
     EXFileSys();
@@ -204,7 +232,7 @@ struct EXFileLoadActivity
     u8* pAlpha();
     u8* pSize();
     void SetActivityFlag();
-    // void Update(EXWnd* pWnd);
+    void Update(EXWnd* pWnd);
 };
 
 #endif // EXFILESYS_H

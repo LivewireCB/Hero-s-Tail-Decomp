@@ -2,9 +2,9 @@
 
 #include "EngineX/EXFileSys.h"
 #include "EngineX/EXMalloc.h"
-#include "EngineX/EXFileSys.h"
+#include "EngineX/EXSoundManager.h"
 
-char* EXFileNotInit = "\0";
+char* EXFileNotInit = "EXFile Not initialised";
 EXFileSys* EXFileSys::m_pFileSys = 0;
 Bool EXFileSys::m_DebugLoadInfo = true;
 
@@ -40,9 +40,11 @@ void MXFile::Initialise(u64 Length, u64 SeekPos)
 
 void MXFile::SetFileHandle(u64 FileHandle)
 {
-    u32 ID;
+    u32 ID = EXFileSys::m_pFileSys->m_UniqueID;
 
-    EXFileSys::m_pFileSys->m_UniqueID = 0;
+    EXFileSys::m_pFileSys->m_UniqueID = (ID + 1) & 0xffffff;
+    FileHandle |= ID << 8;
+    m_FileHandle = FileHandle;
 }
 
 EXFile::EXFile()
@@ -160,6 +162,47 @@ void EXFile::CleanUpMemory()
 
 Bool EXFile::OnLoad(EXMemHeap* pHeap)
 {
+    if (m_pMXFile == NULL)
+    {
+        do
+        {
+        } while (true);
+    }
+
+    if ((m_pMemAddr != NULL) || ((m_pMXFile != NULL) && (m_pMXFile->m_pLoadAddr != NULL)))
+    {
+        EXFile::OnKill();
+    }
+
+    u32 nLength = m_pMXFile->m_Length;
+    if (nLength == 0)
+    {
+        EXFILEINFO* pFInf = EXFileSys::m_pFileSys->GetFileInfo(m_pFilename);
+        if (pFInf != NULL)
+        {
+            nLength = pFInf->Length;
+        }
+
+        if (nLength == 0)
+        {
+            nLength = m_pMXFile->GetLength();
+            if (nLength == 0)
+            {
+                m_Status = 6;
+                return false;
+            }
+        }
+    }
+
+    m_pMXFile->m_Length = (nLength + 0x1f) & ~0x1f;
+    m_pMXFile->m_pLoadAddr = pHeap->_EXAlloc(m_pMXFile->m_Length, 9);
+
+    if (m_pMXFile->m_pLoadAddr == NULL)
+    {
+        return false;
+    }
+
+    return EXFileSys::AsyncReadFile(m_pMXFile, m_Priority);
 }
 
 Bool EXFile::OnLoad()
@@ -184,7 +227,18 @@ Bool EXFile::OnKill()
 
 Bool EXFile::GetFileLoadedStatus() const
 {
-    u32 a;
+    if (m_pMXFile != NULL)
+    {
+        u32 FileHandle = m_pMXFile->m_FileHandle;
+        u32 FileStatus = EXBaseSoundManager::m_pSoundManager->GetFileStatus(FileHandle & 0xff);
+
+        if (((FileStatus >> 8) == (FileHandle >> 8)) && ((FileStatus & 0xff) == 0x83))
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 EXRuntimeClass* EXFile::GetRuntimeClass() const
