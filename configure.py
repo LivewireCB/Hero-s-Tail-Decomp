@@ -678,7 +678,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/GC/GCBloom.cpp"),
                     Object(NonMatching, "EngineX/GC/GCBounds.cpp"),
                     Object(NonMatching, "EngineX/GC/GCCamera.cpp"),
-                    Object(NonMatching, "EngineX/GC/GCCluster.cpp"),
+                    Object(Matching, "EngineX/GC/GCCluster.cpp"),
                     Object(NonMatching, "EngineX/GC/GCCollision.cpp"),
                     Object(NonMatching, "EngineX/GC/GCDisplay.cpp"),
                     Object(NonMatching, "EngineX/GC/GCFastMath.cpp"),
