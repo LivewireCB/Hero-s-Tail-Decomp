@@ -12207,11 +12207,11 @@ DecompressData__13EXGeoBaseAnimCFPUcllRQ2_2ex8EXBit128RQ2_2ex8EXBit128PQ2_7EXMat
 DecompressData__13EXGeoBaseAnimCFPUclfRQ2_2ex8EXBit128RQ2_2ex8EXBit128PQ2_7EXMaths8vec_xyzwPQ2_7EXMaths8vec_xyzwR16EXAnimStreamInfoSc = .text:0x8030B584; // type:function size:0x1300 scope:global
 DecompressMorphData__13EXGeoBaseAnimCFPUcllRQ2_2ex8EXBit128PfR16EXAnimStreamInfoSc = .text:0x8030C884; // type:function size:0x570 scope:global
 GetRuntimeClass__9EXGeoAnimCFv = .text:0x8030CDF4; // type:function size:0xC scope:global
-Release__9EXGDiDataFv = .text:0x8030CE00; // type:function size:0x98 scope:global
-__dt__14EXGDiDataArrayFv = .text:0x8030CE98; // type:function size:0x40 scope:global
-Init__14EXGDiDataArrayFi = .text:0x8030CED8; // type:function size:0x58 scope:global
-RemoveAll__14EXGDiDataArrayFv = .text:0x8030CF30; // type:function size:0x88 scope:global
-__dt__17EXGDiInstanceDataFv = .text:0x8030CFB8; // type:function size:0x28 scope:global
+Release__9EXGDiData = .text:0x8030CE00; // type:function size:0x98 scope:global
+_._14EXGDiDataArray = .text:0x8030CE98; // type:function size:0x40 scope:global
+Init__14EXGDiDataArrayi = .text:0x8030CED8; // type:function size:0x58 scope:global
+RemoveAll__14EXGDiDataArray = .text:0x8030CF30; // type:function size:0x88 scope:global
+_._17EXGDiInstanceData = .text:0x8030CFB8; // type:function size:0x28 scope:global
 Geo_Get_SFlags__FR20EXGeoEntity_TriStripPc = .text:0x8030CFE0; // type:function size:0xA0 scope:global
 Display_Strip_Info__15cl_strips_countFv = .text:0x8030D080; // type:function size:0x188 scope:global
 GC_App_Start_Frame_GeoE__Fv = .text:0x8030D208; // type:function size:0x30 scope:global

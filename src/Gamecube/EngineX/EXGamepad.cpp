@@ -6,8 +6,6 @@ EXBaseGamePad* EXBaseGamePad::m_pGamePad = NULL;
 
 EXBaseGamePad::EXBaseGamePad()
 {
-    unsigned char* pDeadZoneMode = &m_DeadZoneMode.data[0].data[0];
-
     for (int p = 0; p < 8; p++)
     {
         m_ButtonState.m_Data[p] = 0;
@@ -19,6 +17,8 @@ EXBaseGamePad::EXBaseGamePad()
         {
             m_AnalogChan.data[p].data[c] = 0.0f;
         }
+
+        unsigned char* pDeadZoneMode = &m_DeadZoneMode.data[0].data[0];
 
         pDeadZoneMode[p * 2] = 0;
         pDeadZoneMode[p * 2 + 1] = 0;
