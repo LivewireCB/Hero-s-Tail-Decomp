@@ -190,8 +190,8 @@ struct EXMemHeap
     void* _sysCache();
     void* _sysCacheDel();
     void* _sysRealloc(void*, u32);
-    EXMemBlock* _sysFree();
-    void _sysSetAsCache();
+    EXMemBlock* _sysFree(EXMemBlock* pMem);
+    void _sysSetAsCache(void* pData, s16 time, void** pOwner, Bool fDelete);
     void UpdateFirstLastFree();
     EXMemBlock* _FindFirstFree();
     EXMemBlock* _FindLastFree();

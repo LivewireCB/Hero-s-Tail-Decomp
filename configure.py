@@ -649,7 +649,7 @@ if config.platform == Platform.GC_WII:
                     Object(NonMatching, "EngineX/EXMaths.cpp"),
                     Object(NonMatching, "EngineX/EXMatrix.cpp"),
                     Object(NonMatching, "EngineX/EXMemCard.cpp"),
-                    Object(NonMatching, "EngineX/EXMemoryManager.cpp"),
+                    Object(Matching, "EngineX/EXMemoryManager.cpp"),
                     Object(NonMatching, "EngineX/EXMenu.cpp"),
                     Object(NonMatching, "EngineX/EXParticle.cpp"),
                     Object(NonMatching, "EngineX/EXParticleEmitter.cpp"),
