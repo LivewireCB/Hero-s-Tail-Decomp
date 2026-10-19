@@ -4,6 +4,8 @@
 
 #include "EngineX/EXMemoryManager.h"
 
+extern "C" void* EXStringMemcpy(void* dest, const void* src, size_t num) asm("memcpy");
+
 // TODO: decompile lib functions and get headers for them
 // goofy shit to make the compiler happy
 #define __MWERKS__
@@ -67,49 +69,51 @@ void EXString::ReallocMem(u16 nLength)
 {
     EXStringData* pSData;
     EXStringData* pNewSData;
-    u16 nAlloc;
+    int nAlloc;
     char* pNewData;
 
     if (m_pData != NULL)
     {
         pSData = (EXStringData*)m_pData - 1;
 
-        if (pSData->Refs <= 1 && nLength < pSData->Alloc)
+        if (pSData->Refs > 1 || nLength >= pSData->Alloc)
+        {
+            nAlloc = (u16)(nLength + 1);
+            if (nAlloc < 0x39)
+            {
+                nAlloc = 0x38;
+            }
+            else if (nAlloc < 0x19)
+            {
+                nAlloc = 0x18;
+            }
+            else if (nAlloc < 0x79)
+            {
+                nAlloc = 0x78;
+            }
+            else if (nAlloc < 0xf9)
+            {
+                nAlloc = 0xf8;
+            }
+            else if (nAlloc < 0x1f9)
+            {
+                nAlloc = 0x1f8;
+            }
+
+            pNewSData = (EXStringData*)_EXAlloc(nAlloc + 8, 0);
+            pNewData = (char*)(pNewSData + 1);
+            EXStringMemcpy(pNewData, m_pData, pSData->Len + 1);
+            pNewSData->Refs = 1;
+            pNewSData->Len = nLength;
+            pNewSData->Alloc = nAlloc;
+            DeallocMem();
+
+            m_pData = pNewData;
+        }
+        else
         {
             pSData->Len = nLength;
         }
-
-        nAlloc = (nLength + 1) & 0xffff;
-        if (nAlloc <= 0x37)
-        {
-            nAlloc = 0x38;
-        }
-        else if (nAlloc <= 0x17)
-        {
-            nAlloc = 0x18;
-        }
-        else if (nAlloc <= 0x77)
-        {
-            nAlloc = 0x78;
-        }
-        else if (nAlloc <= 0xf7)
-        {
-            nAlloc = 0xf8;
-        }
-        else if (nAlloc <= 0x1f7)
-        {
-            nAlloc = 0x1f8;
-        }
-
-        pNewSData = (EXStringData*)_EXAlloc(nAlloc + 8, 0);
-        pNewData = (char*)(pNewSData + 1);
-        memcpy(pNewData, m_pData, pSData->Len + 1);
-        pNewSData->Refs = 1;
-        pNewSData->Len = nLength;
-        pNewSData->Alloc = nAlloc;
-        DeallocMem();
-
-        m_pData = pNewData;
     }
     else
     {
@@ -193,9 +197,8 @@ EXString::EXString(char* pString, u16 len)
     m_pData = NULL;
     if (pString != NULL && *pString != NULL)
     {
-        pLength = &len;
-        nLength = strlen(pString);
         pLength = &nLength;
+        nLength = strlen(pString);
         if (len <= nLength)
         {
             pLength = &len;
@@ -236,16 +239,15 @@ Bool EXString::IsEmpty() const
 
 char* EXString::GetBuffer(u16 MinLen)
 {
-    u16 Len = MinLen;
-
     if (m_pData != 0)
     {
-        if (MinLen < ((EXStringData*)m_pData - 1)->Len)
+        u16 nLen = ((EXStringData*)m_pData - 1)->Len;
+        if (MinLen < nLen)
         {
-            Len = ((EXStringData*)m_pData - 1)->Len;
+            MinLen = nLen;
         }
     }
-    ReallocMem(Len);
+    ReallocMem(MinLen);
     return m_pData;
 }
 
@@ -315,8 +317,11 @@ s8 EXString::CompareNoCase(EXString& Str) const
 
     for (c = 0; c < nNumChars; c++)
     {
-        left = m_pData[c];
-        right = Str.m_pData[c];
+        char* pData = m_pData;
+        char* pStrData = Str.m_pData;
+
+        left = pData[c];
+        right = pStrData[c];
         if (left >= 'A' && left <= 'Z')
         {
             left += 'a' - 'A';
@@ -385,7 +390,7 @@ EXString& EXString::operator+=(char* pStr)
     {
         nStringLength = strlen(pString);
         nLength = Length();
-        nStringLength += nLength;
+        nStringLength = nLength + nStringLength;
         ReallocMem(nStringLength);
         strcpy(m_pData + nLength, pString);
     }
@@ -450,10 +455,123 @@ void EXString::ToUpper()
 
 EXString EXString::Token(int nTok, char chSep, Bool fNullTokensOK) const
 {
+    EXString Result;
+
+    if (m_pData != 0)
+    {
+        char* pCur = m_pData;
+        char* pEnd = m_pData + Length();
+        int nCurTok = -1;
+
+        while (nCurTok < nTok && pCur < pEnd)
+        {
+            if (!fNullTokensOK)
+            {
+                if (*pCur == chSep)
+                {
+                    do
+                    {
+                        pCur++;
+                    } while (pCur < pEnd && *pCur == chSep);
+                }
+            }
+            else
+            {
+                if (*pCur == chSep && pCur < pEnd)
+                {
+                    pCur++;
+                }
+            }
+
+            if (pCur >= pEnd)
+            {
+                break;
+            }
+
+            char* pTokStart = pCur;
+            nCurTok++;
+
+            if (*pCur != chSep)
+            {
+                do
+                {
+                    pCur++;
+                } while (pCur < pEnd && *pCur != chSep);
+            }
+
+            if (nCurTok == nTok)
+            {
+                EXString Piece(pTokStart, (u16)(pCur - pTokStart));
+                Result = Piece;
+            }
+        }
+    }
+
+    return Result;
 }
 
 int EXString::Tokenise(EXStringArray& Tokens, EXString& Sep, Bool fNullTokensOK) const
 {
+    int nAdded = 0;
+
+    if (m_pData != 0)
+    {
+        char* pCur = m_pData;
+        char* pEnd = m_pData + Length();
+        int nStartSize = Tokens.m_iSize;
+
+        while (pCur < pEnd)
+        {
+            if (!fNullTokensOK)
+            {
+                while (Sep.Find(*pCur, 0) >= 0 && pCur < pEnd)
+                {
+                    pCur++;
+                }
+            }
+            else
+            {
+                if (Sep.Find(*pCur, 0) >= 0)
+                {
+                    if (pCur >= pEnd)
+                    {
+                        break;
+                    }
+                    pCur++;
+                }
+            }
+
+            if (pCur >= pEnd)
+            {
+                break;
+            }
+
+            char* pTokStart = pCur;
+
+            while (pCur < pEnd && Sep.Find(*pCur, 0) < 0)
+            {
+                pCur++;
+            }
+
+            {
+                char Buffer[256];
+                u16 nLen = (u16)(pCur - pTokStart);
+                if (nLen > 0xff)
+                {
+                    nLen = 0xff;
+                }
+                memcpy(Buffer, pTokStart, nLen);
+                Buffer[nLen] = 0;
+
+                EXString Token(Buffer);
+                Tokens.Add(Token);
+            }
+        }
+
+        nAdded = Tokens.m_iSize - nStartSize;
+    }
+
+    return nAdded;
 }
 
 s16 EXString::Format(char* FmtString, ...)

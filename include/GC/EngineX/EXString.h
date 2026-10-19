@@ -19,7 +19,7 @@ struct EXString
 
     EXString(char* pString);
     EXString(char* pString, u16 len);
-    // EXString(EXString&);
+    EXString(EXString& Str);
     EXString();
     // ~EXString();
     void Empty();
