@@ -5,10 +5,13 @@
 
 #include "EXBounds.h"
 #include "EXFlagTemplate.h"
+#include "EXItemAnimator_Map.h"
+#include "EXItemHandler.h"
 #include "EXList.h"
 #include "EXRenderEnv.h"
 #include "EXRuntimeClass.h"
 #include "EXMatrix.h"
+#include "EXTrigger.h"
 #include "EXVector.h"
 #include "EXGeoFile.h"
 
@@ -135,11 +138,11 @@ protected:
     /* 0x104 */ EXODListItem m_ItemGroups[5];
     /* 0x140 */ EXODListItem* m_UserItemGroups;
     /* 0x144 */ EXDList m_Animator;
-    // /* 0x14c */ EXItemHandler* m_pItemHandler;
+    /* 0x14c */ EXItemHandler* m_pItemHandler;
     /* 0x150 */ EXItemPhysics* m_pItemPhysics;
-    // /* 0x154 */ EXBaseTrigger* m_pTrigger;
+    /* 0x154 */ EXBaseTrigger* m_pTrigger;
     /* 0x158 */ EXItem* m_pXItemOwner;
-    // /* 0x15c */ EXMapOn m_MapOn;
+    /* 0x15c */ EXMapOn m_MapOn;
     /* 0x15e */ u16 m_PortalOn;
     /* 0x160 */ u8 m_ClipType;
     /* 0x161 */ u8 m_ClipFlags;

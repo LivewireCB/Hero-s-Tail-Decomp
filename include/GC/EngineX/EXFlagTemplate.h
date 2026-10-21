@@ -5,7 +5,6 @@
 
 template <typename T> struct EXFlag
 {
-    T data;
 };
 
 template <> struct EXFlag<unsigned int>
@@ -32,7 +31,7 @@ public:
 
 template <> struct EXFlag<short unsigned int>
 { // 0x2
-protected:
+    // protected:
     /* 0x0 */ u16 m_Flags;
 
 public:

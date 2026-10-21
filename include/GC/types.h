@@ -28,6 +28,12 @@ typedef long long int s128;
 typedef signed char Bool;
 typedef short unsigned int wchar;
 
+typedef int __int32_t;
+typedef unsigned int __uint32_t;
+typedef unsigned int size_t;
+typedef long unsigned int clock_t;
+typedef long int time_t;
+
 // typedef char* __gnuc_va_list;
 // typedef __gnuc_va_list va_list;
 

@@ -103,7 +103,7 @@ struct EXODList
     EXODListItem* m_pHead;
     EXODListItem* m_pTail;
 
-    EXODList();
+    // EXODList(); unused
     void Init();
     void AddHead(EXODListItem* pDlistItem, void* pObject);
     void AddTail(EXODListItem* pDlistItem, void* pObject);

@@ -4,12 +4,12 @@
 #include <types.h>
 #include <EngineX/EXList.h>
 #include <EngineX/EXRect.h>
-#include <EngineX/EXVector.h>
 #include <EngineX/EXFlagTemplate.h>
 #include <EngineX/EXRGB.h>
+#include <EngineX/EXTexture.h>
+#include <EngineX/EXVector.h>
 
 struct EXWnd;
-struct EXTexture;
 
 struct EXSprite2D
 {
@@ -47,15 +47,15 @@ protected:
     /* 0x089 */ Bool m_DoneInitUpdate;
     /* 0x08a */ Bool m_HasMovieFinished;
     /* 0x08b */ Bool m_TexCapRequested;
-    // /* 0x08c */ EXTexture* m_pTexCapTexture;
+    /* 0x08c */ EXTexture* m_pTexCapTexture;
     /* 0x090 */ u16* m_pDbgText;
     /* 0x094 */ u16 m_DbgColor;
     /* 0x096 */ u16 m_DbgWidth;
     /* 0x098 */ u16 m_DbgHeight;
     /* 0x09c */ EXPoint m_DbgPos;
     // /* 0x0a4 */ EXGeoFont* m_pFont;
-    // /* 0x0a8 */ EXTexture* m_pFontTexture;
-    // /* 0x0ac */ EXTexture* m_pSprite2DTexture;
+    /* 0x0a8 */ EXTexture* m_pFontTexture;
+    /* 0x0ac */ EXTexture* m_pSprite2DTexture;
     // /* 0x0b0 */ EXPtrArray<unsigned char> m_DebugItems;
     // /* 0x0c0 */ EXPtrArray<unsigned char> m_Sprite2DData;
     // /* 0x0d0 */ EXParticleSysMgr* m_pParticleSysMgr;
@@ -71,7 +71,7 @@ protected:
     /* 0x0f8 */ float m_InverseColorFactor;
     /* 0x0fc */ EXRectf m_MotionBlurSampleRect;
     /* 0x10c */ EXRectf m_MotionBlurDrawRect;
-    // /* 0x11c */ EXTexture* m_pMotionBlurTex;
+    /* 0x11c */ EXTexture* m_pMotionBlurTex;
     /* 0x120 */ float m_NoiseIntensity;
     /* 0x124 */ float m_fNoiseTextureSampleWidth;
     /* 0x128 */ float m_fNoiseTextureSampleHeight;

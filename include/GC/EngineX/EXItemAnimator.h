@@ -29,12 +29,12 @@ protected:
     static EXRuntimeClass* _GetBaseClass(/* parameters unknown */);
 
 public:
-    /* vtable[2] */ virtual EXRuntimeClass* GetRuntimeClass();
+    /* vtable[2] */ virtual EXRuntimeClass* GetRuntimeClass() const;
     Bool IsKindOf();
     char* ClassName();
     static EXItemAnimator* CreateObject(/* parameters unknown */);
     /* vtable[3] */ virtual char* TypeName();
-    /* vtable[4] */ virtual int Size();
+    /* vtable[4] */ virtual int Size() const;
     static EXItemAnimator* NewItem(/* parameters unknown */);
     // EXItemAnimator();
     /* vtable[1] */ virtual ~EXItemAnimator();
@@ -45,21 +45,21 @@ public:
     static Bool SetCreateFrom(/* parameters unknown */);
     static EXRuntimeClass* RuntimeClassFrom(/* parameters unknown */);
     // static AnimatorCF GetAnimatorCF(/* parameters unknown */);
-    /* vtable[7] */ virtual Bool Initialise();
+    /* vtable[7] */ virtual Bool Initialise(EXGeoFile* pGeoFile, EXHashCode RefHash);
     void SetFrameRateMult();
     float FrameRateMult();
-    void SetFrameRate60();
+    void SetFrameRate60(float f);
     float FrameRate60();
     /* vtable[8] */ virtual float ObjectTime();
-    /* vtable[9] */ virtual void SetObjectTime();
-    /* vtable[10] */ virtual void UpdateObjectTime();
+    /* vtable[9] */ virtual void SetObjectTime(float rObjectTime);
+    /* vtable[10] */ virtual void UpdateObjectTime(float rObjectTime);
     EXItemAnimator* GetAnimator();
     // EXItemAnimator* GetAnimator();
     // EXItemAnimator* GetAnimator();
-    void AddAnimator();
+    void AddAnimator(EXItemAnimator* p);
     void RemoveAnimator();
     void DeleteAnimator();
-    /* vtable[11] */ virtual void EnableParticleSystems();
+    /* vtable[11] */ virtual void EnableParticleSystems(Bool Enable) const;
     /* vtable[12] */ virtual void* GetDatum();
     /* vtable[13] */ virtual void GetDatum(s64 /* grab correct params from release_functions */);
     /* vtable[14] */ virtual void* GetNearestDatum();
@@ -77,9 +77,9 @@ public:
     void DoEntityScoop_ChildLink();
     Bool GetBoundsBox();
     void UpdateBoundsBox();
-    /* vtable[20] */ virtual void SetRenderState();
-    /* vtable[21] */ virtual void SetLodMin();
-    /* vtable[22] */ virtual void SetLodMax();
+    /* vtable[20] */ virtual void SetRenderState(EXHashCode HashRef, Bool State);
+    /* vtable[21] */ virtual void SetLodMin(u64 nMinLod);
+    /* vtable[22] */ virtual void SetLodMax(u64 nMaxLod);
     /* vtable[23] */ virtual void ApplyFunction();
     /* vtable[24] */ virtual void BuildEntityInfoArray();
     /* vtable[6] */ virtual u32 DoRender();

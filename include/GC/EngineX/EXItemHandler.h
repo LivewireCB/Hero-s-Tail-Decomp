@@ -4,8 +4,11 @@
 #include "types.h"
 
 #include "EXRuntimeClass.h"
-#include "EXItem.h"
+// Creates a cyclic dependency if EXItem is included. Using forward dec instead.
+// #include "EXItem.h"
 #include "EXMalloc.h"
+
+struct EXItem;
 
 struct EXItemHandler
 { // 0x8

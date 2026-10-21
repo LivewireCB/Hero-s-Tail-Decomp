@@ -283,7 +283,7 @@ private:
 
 struct EXGeoBaseRefObject
 { // 0x8
-protected:
+    // protected:
     /* 0x0 */ EXGeoFile* m_pGeoFile;
     /* 0x4 */ EXHashCode m_HashRef;
 
@@ -299,7 +299,7 @@ public:
 
 struct EXGeoComplexRefObject : /* 0x0 */ EXGeoBaseRefObject
 { // 0x10
-protected:
+    // protected:
     /* 0x8 */ u32 m_CheckCode;
     /* 0xc */ void* m_pAddress;
 

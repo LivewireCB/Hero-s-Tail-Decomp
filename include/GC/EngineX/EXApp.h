@@ -144,10 +144,12 @@ struct EXBaseApp
         return EXFree(ptr);
     }
 
+    // Based on ExitInstance() the vtable here is 100% correct.
+    // Unless its somehow out of order
+
     // EXBaseApp& operator=();
     EXBaseApp();
-    ~EXBaseApp();
-    // /* vtable[1] */ virtual EXBaseApp(EXBaseApp*, int, void);
+    /* vtable[1] */ virtual ~EXBaseApp();
     static EXBaseApp* GetApp(/* parameters unknown */);
     void SetAppName();
     // EXString& AppName();
