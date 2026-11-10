@@ -11,8 +11,14 @@ struct EXPOINT
 
 struct EXPoint : EXPOINT
 {
-    EXPoint();
-    // EXPoint();
+    EXPoint()
+    {
+    }
+    EXPoint(EXPoint& pt)
+    {
+        x = pt.x;
+        y = pt.y;
+    }
     // EXPoint();
     // EXPoint();
     void Set();

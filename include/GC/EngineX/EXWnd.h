@@ -8,8 +8,15 @@
 #include <EngineX/EXRGB.h>
 #include <EngineX/EXTexture.h>
 #include <EngineX/EXVector.h>
+#include <EngineX/ExPtrArray.h>
 
 struct EXWnd;
+struct EXGeoFont;
+struct EXParticleSysMgr;
+struct EXSwooshSysMgr;
+struct EXMenu;
+struct EXInstanceManager;
+struct EXItemEnvView;
 
 struct EXSprite2D
 {
@@ -22,6 +29,22 @@ struct EXSprite2D
     /* 0x10 */ float v1;
     /* 0x14 */ float u2;
     /* 0x18 */ float v2;
+};
+
+struct EXPrimVert
+{ // 0x20
+    /* 0x00 */ MXVector Vtx;
+    /* 0x10 */ union
+    { // 0x10
+        /* 0x10 */ MXVector VtxColUV;
+        /* 0x10 */ struct
+        { // 0x10
+            /* 0x10 */ float u;
+            /* 0x14 */ float v;
+            /* 0x18 */ u32 Pad;
+            /* 0x1c */ XRGBA Col;
+        };
+    };
 };
 
 // TODO: Fill out struct
@@ -53,15 +76,15 @@ protected:
     /* 0x096 */ u16 m_DbgWidth;
     /* 0x098 */ u16 m_DbgHeight;
     /* 0x09c */ EXPoint m_DbgPos;
-    // /* 0x0a4 */ EXGeoFont* m_pFont;
+    /* 0x0a4 */ EXGeoFont* m_pFont;
     /* 0x0a8 */ EXTexture* m_pFontTexture;
     /* 0x0ac */ EXTexture* m_pSprite2DTexture;
-    // /* 0x0b0 */ EXPtrArray<unsigned char> m_DebugItems;
-    // /* 0x0c0 */ EXPtrArray<unsigned char> m_Sprite2DData;
-    // /* 0x0d0 */ EXParticleSysMgr* m_pParticleSysMgr;
-    // /* 0x0d4 */ EXSwooshSysMgr* m_pSwooshSysMgr;
-    // /* 0x0d8 */ EXMenu* m_pMenu;
-    // /* 0x0dc */ EXInstanceManager* m_pInstanceManager;
+    /* 0x0b0 */ EXPtrArray<unsigned char> m_DebugItems;
+    /* 0x0c0 */ EXPtrArray<unsigned char> m_Sprite2DData;
+    /* 0x0d0 */ EXParticleSysMgr* m_pParticleSysMgr;
+    /* 0x0d4 */ EXSwooshSysMgr* m_pSwooshSysMgr;
+    /* 0x0d8 */ EXMenu* m_pMenu;
+    /* 0x0dc */ EXInstanceManager* m_pInstanceManager;
     /* 0x0e0 */ u32 m_FocusBlurFactor;
     /* 0x0e4 */ u32 m_GlowColorMask;
     /* 0x0e8 */ u32 m_InverseColorMask;
@@ -78,7 +101,7 @@ protected:
     /* 0x12c */ RGBA m_BloomColor;
 
 private:
-    // /* 0x130 */ EXItemEnvView* m_pItemEnvView;
+    /* 0x130 */ EXItemEnvView* m_pItemEnvView;
 
 public:
     // /* 0x134 */ __vtbl_ptr_type* $vf2768;
@@ -86,7 +109,7 @@ public:
     // EXBaseWnd& operator=();
     EXBaseWnd();
     // EXBaseWnd();
-    // /* vtable[1] */ virtual EXBaseWnd(EXBaseWnd*, int, void);
+    /* vtable[1] */ virtual ~EXBaseWnd();
     void FlushMem();
     void DeleteMem();
     void SetRect();
@@ -117,12 +140,12 @@ public:
     EXWnd* LastChild();
     EXWnd* ContainsPrimPoint();
     EXWnd* ContainsDispPoint();
-    /* vtable[2] */ virtual EXVector WndToPrim();
-    // /* vtable[3] */ virtual EXVector2 WndToPrim();
-    // /* vtable[4] */ virtual EXPoint WndToPrim();
-    /* vtable[5] */ virtual EXVector PrimToWnd();
-    // /* vtable[6] */ virtual EXVector2 PrimToWnd();
-    // /* vtable[7] */ virtual EXPoint PrimToWnd();
+    /* vtable[2] */ virtual EXVector WndToPrim(EXVector& Pos);
+    /* vtable[3] */ virtual EXVector2 WndToPrim(EXVector2& Pos);
+    /* vtable[4] */ virtual EXPoint WndToPrim(EXPoint& Pos);
+    /* vtable[5] */ virtual EXVector PrimToWnd(EXVector& Pos);
+    /* vtable[6] */ virtual EXVector2 PrimToWnd(EXVector2& Pos);
+    /* vtable[7] */ virtual EXPoint PrimToWnd(EXPoint& Pos);
     void SetFocusBlurFactor();
     void SetFocusBlurDistance();
     u32 GetFocusBlurFactor();
@@ -190,17 +213,18 @@ public:
     /* vtable[25] */ virtual void KeyUp();
     /* vtable[26] */ virtual void Char();
     /* vtable[27] */ virtual Bool MenuSelect();
-    /* vtable[28] */ virtual void DrawLine();
-    /* vtable[29] */ virtual void DrawLines();
-    // /* vtable[30] */ virtual void DrawLines();
-    /* vtable[31] */ virtual void SetTriFanBlendMode();
-    /* vtable[32] */ virtual void SetTriFanZMode();
-    /* vtable[33] */ virtual void SelectTriFanTexture();
-    /* vtable[34] */ virtual void DrawTriFan();
-    /* vtable[35] */ virtual void SetTriStripBlendMode();
-    /* vtable[36] */ virtual void SetTriStripZMode();
-    /* vtable[37] */ virtual void SelectTriStripTexture();
-    /* vtable[38] */ virtual void DrawTriStrip();
+    /* vtable[28] */ virtual void DrawLine(EXPrimVert& v0, EXPrimVert& v1);
+    /* vtable[29] */ virtual void DrawLines(u32 Count, EXPrimVert* pVerts);
+    /* vtable[30] */ virtual void DrawLines(u32 Count, EXVector* pVerts, u32 Col, u32 Flags,
+                                            float Width);
+    /* vtable[31] */ virtual void SetTriFanBlendMode(u32 BlendMode);
+    /* vtable[32] */ virtual void SetTriFanZMode(s8 ZRead, s8 ZWrite);
+    /* vtable[33] */ virtual void SelectTriFanTexture(EXTexture* pTexture);
+    /* vtable[34] */ virtual void DrawTriFan(u32 Count, EXPrimVert* pVerts);
+    /* vtable[35] */ virtual void SetTriStripBlendMode(u32 BlendMode);
+    /* vtable[36] */ virtual void SetTriStripZMode(s8 ZRead, s8 ZWrite);
+    /* vtable[37] */ virtual void SelectTriStripTexture(EXTexture* pTexture);
+    /* vtable[38] */ virtual void DrawTriStrip(u32 Count, EXPrimVert* pVerts);
     /* vtable[39] */ virtual void _SetSprite2DBlendMode(u32 BlendMode);
     void SetSprite2DBlendMode();
     /* vtable[40] */ virtual void _SelectSprite2DTexture(EXTexture* pTexture, s8 MinFilter,

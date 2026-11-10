@@ -16,6 +16,8 @@ template <typename T> struct EXGeoDebug
 {
 };
 
+struct EXGDiData;
+
 struct EXGeoCommonObject
 { // 0x4
     static EXRuntimeClass classEXGeoCommonObject;
@@ -28,7 +30,7 @@ protected:
     static EXRuntimeClass* _GetBaseClass(/* parameters unknown */);
 
 public:
-    /* vtable[1] */ virtual EXRuntimeClass* GetRuntimeClass();
+    /* vtable[1] */ virtual EXRuntimeClass* GetRuntimeClass() const;
     Bool IsKindOf();
     char* ClassName();
     void Create();
@@ -36,7 +38,7 @@ public:
     // EXGeoCommonObject();
     /* vtable[2] */ virtual void OnCreate();
     /* vtable[3] */ virtual void OnDelete();
-    /* vtable[4] */ virtual void Draw();
+    /* vtable[4] */ virtual void Draw(EXGDiData* pGDiData, unsigned long Flags);
     /* vtable[5] */ virtual EXBoundsBox& GetBoundsBox();
 };
 
@@ -63,7 +65,10 @@ public:
     // EXGeoDebug();
     EXGeoBaseDebug* Get();
     // u32 operator unsigned int();
-    // void operator=();
+    void operator=(u16 DebugIndex)
+    {
+        m_DebugIndex = DebugIndex;
+    }
 };
 
 #endif // EXGEOCOMMON_H

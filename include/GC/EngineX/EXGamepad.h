@@ -49,6 +49,10 @@ struct EXFixedArray<EXFixedArray<EXPadActionMap, 32>, 8>
     // size_t Size();
     // size_t GetUpperBound();
     // EXFixedArray<EXPadActionMap, 32>& ElementAt();
+    EXFixedArray<EXPadActionMap, 32>& ElementAt(int iPos)
+    {
+        return m_Data[iPos];
+    }
     // EXFixedArray<EXPadActionMap, 32> GetAt();
     // void SetAt();
     // EXFixedArray<EXPadActionMap, 32>* GetData();
@@ -67,8 +71,14 @@ struct EXFixedArray<unsigned char, 8>
     // size_t Size();
     // size_t GetUpperBound();
     // EXRotOrder& ElementAt();
-    // EXRotOrder GetAt();
-    // void SetAt();
+    u8 GetAt(int iPos)
+    {
+        return m_Data[iPos];
+    }
+    void SetAt(int iPos, u8 newElement)
+    {
+        m_Data[iPos] = newElement;
+    }
     // EXRotOrder* GetData();
     // EXRotOrder* GetData();
     // EXRotOrder* operator unsigned char*();

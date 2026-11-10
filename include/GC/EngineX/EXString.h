@@ -20,7 +20,10 @@ struct EXString
     EXString(char* pString);
     EXString(char* pString, u16 len);
     EXString(EXString& Str);
-    EXString();
+    EXString()
+    {
+        m_pData = NULL;
+    }
     // ~EXString();
     void Empty();
     EXString& operator=(char* pString);
@@ -70,9 +73,8 @@ struct EXStringArray
     }
 
     // EXStringArray& operator=();
-    EXStringArray();
+    EXStringArray(int nSize = 0, int iGrowBy = -1);
     ~EXStringArray();
-    EXStringArray(int nSize, int iGrowBy);
     // ~EXStringArray();
     int Size();
     int GetUpperBound();

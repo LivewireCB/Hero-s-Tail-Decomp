@@ -3,4 +3,6 @@
 
 #include "types.h"
 
+float GCSqrtf(float x);
+
 #endif // GCFASTMATH_H

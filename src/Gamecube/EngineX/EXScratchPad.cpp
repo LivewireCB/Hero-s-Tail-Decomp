@@ -1,33 +1,37 @@
 #include "EngineX/EXScratchPad.h"
 
-// forcing data section here
-u8* EXScratchPad::m_pStart __attribute__((section(".sbss")));
-
 extern u8 EXScratchPadMem[]; // idk tbh
 
-// i LOVE register problemss
-void* EXScratchPad::Claim(u64 SizeBytes)
+static inline u32 ScratchPadStart()
+{
+    u32 Start;
+
+    Start = (u32)EXScratchPadMem;
+    Start += 0xf;
+    Start &= ~0xf;
+    return Start;
+}
+
+u8* EXScratchPad::m_pStart = (u8*)ScratchPadStart();
+
+void* EXScratchPad::Claim(unsigned long SizeBytes)
 {
     u32 QuadWords;
     void* pAlloc;
+    s32 FreeQuadWords;
 
-    QuadWords = (u32)EXScratchPadMem;
-    QuadWords = QuadWords + 0xf;
-    QuadWords = QuadWords & ~0xf;
-    QuadWords = (u32)m_pStart - QuadWords;
-    QuadWords = (u32)((s32)QuadWords >> 4);
-    QuadWords = 0x400 - QuadWords;
+    QuadWords = (SizeBytes + 0xf) >> 4;
     pAlloc = 0;
 
-    if ((s32)QuadWords > (s32)((SizeBytes + 0xf) >> 4))
+    FreeQuadWords = 0x400 - (((s32)m_pStart - (s32)ScratchPadStart()) >> 4);
+
+    if (FreeQuadWords > (s32)QuadWords)
     {
-        QuadWords = (SizeBytes + 0xf) >> 4;
-        QuadWords <<= 4;
         pAlloc = m_pStart;
         m_pAlloc = pAlloc;
-        m_AllocSize = QuadWords;
+        m_AllocSize = QuadWords << 4;
 
-        m_pStart = (u8*)pAlloc + QuadWords;
+        m_pStart = (u8*)pAlloc + (QuadWords << 4);
     }
 
     return pAlloc;

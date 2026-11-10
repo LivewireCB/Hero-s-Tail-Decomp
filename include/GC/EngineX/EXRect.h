@@ -23,12 +23,17 @@ struct EXRECTF
 
 struct EXRect : /* 0x0 */ EXRECT
 { // 0x10
-    EXRect();
-    // EXRect();
+    EXRect()
+    {
+    }
+    EXRect(EXRect& rct)
+    {
+        *this = rct;
+    }
     // EXRect();
     // EXRect();
     // EXRect(EXRect*, int, void);
-    // EXRect& operator=();
+    EXRect& operator=(EXRect& rct);
     // EXRect& operator=();
     void Set();
     // void Set();

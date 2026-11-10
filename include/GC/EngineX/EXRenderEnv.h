@@ -7,6 +7,7 @@
 #include "EXFlagTemplate.h"
 #include "EXGeoFile.h"
 #include "EXHashcode.h"
+#include "EXRGB.h"
 #include "EXTexture.h"
 #include "EXVector.h"
 
@@ -177,6 +178,85 @@ public:
     float FastAmbientCol();
     void SetShadowType();
     u8 ShadowType();
+};
+
+struct EXLightManager;
+struct EXDynLightData;
+
+struct EXRenderFogInfo
+{ // 0x18
+    /* 0x00 */ RGBA m_FogColor;
+    /* 0x04 */ float m_FogNear;
+    /* 0x08 */ float m_FogFar;
+    /* 0x0c */ float m_FogMin;
+    /* 0x10 */ float m_FogMax;
+    /* 0x14 */ Bool m_EnableFog;
+
+    // EXRenderFogInfo& operator=();
+    EXRenderFogInfo();
+    // EXRenderFogInfo();
+    void SetFogDistance();
+    void SetFogMinMax();
+    void SetFogColor();
+    void SetFogEnabled();
+    float FogNear();
+    float FogFar();
+    float FogMin();
+    float FogMax();
+    RGBA FogColor();
+    Bool FogEnabled();
+};
+
+struct EXBaseRenderEnv
+{ // 0x4
+protected:
+    static EXRenderInfo ms_RenderInfo;
+    static EXRenderInfo ms_GRenderInfo;
+    static EXRenderFogInfo ms_RenderFogInfo;
+    static Bool ms_WideScreen;
+    static u32 ms_ContrastModifier;
+    static Bool ms_DistanceFade;
+    static float ms_DistanceFadeStart;
+    static float ms_DistanceFadeEnd;
+    static Bool ms_ShadowRender;
+    static Bool ms_ReflectionRender;
+    static float ms_ReflectionHeight;
+    static u16 ms_RefractTexWidth;
+    static u16 ms_RefractTexHeight;
+    static u32 ms_RenderState;
+    static EXLightManager* ms_pLightManager;
+    static EXDynLightData* ms_DynLights[4];
+    static u32 ms_DynLightCount;
+    static Bool ms_RenderPortals;
+    static Bool ms_RenderLights;
+    static Bool ms_RenderSounds;
+    static Bool ms_RenderBspGrid;
+    static Bool ms_RenderGrabPoints;
+    static Bool ms_RenderMapZones;
+    static Bool ms_RenderEntityBounds;
+    static Bool ms_RenderScoopCollision;
+    static Bool ms_RenderPaths;
+    static Bool ms_RenderAnimBones;
+    static Bool ms_RenderDynLights;
+    static Bool ms_RenderCameras;
+    static Bool ms_RenderClipBounds;
+    static u32 ms_RenderFlashingBackground;
+    static Bool ms_RenderNavMesh;
+    static Bool ms_RenderNavConnections;
+    static Bool ms_RenderNavPaths;
+    static u32 ms_RenderItemDir;
+    static u32 ms_RenderDrawType;
+    static EXRenderFogInfo ms_OverrideFogInfo;
+
+public:
+    /* 0x0 */ // __vtbl_ptr_type* $vf8154;
+
+    // EXBaseRenderEnv& operator=();
+    EXBaseRenderEnv();
+    // EXBaseRenderEnv();
+    /* vtable[1] */ virtual ~EXBaseRenderEnv();
+    /* vtable[2] */ virtual void CalcFogCoefficients();
+    /* vtable[3] */ virtual void RegisterWatcherVars();
 };
 
 #endif // EXRENDERENV_H

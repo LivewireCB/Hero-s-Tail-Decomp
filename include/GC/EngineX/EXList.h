@@ -15,10 +15,22 @@ public:
     void Add(EXDListItem* pDlistItem);
     void Insert(EXDListItem* pDlistItem);
     void Remove();
-    EXDListItem* Next();
-    EXDListItem* Prev();
-    void SetNext();
-    void SetPrev();
+    EXDListItem* Next()
+    {
+        return m_pNext;
+    }
+    EXDListItem* Prev()
+    {
+        return m_pPrev;
+    }
+    void SetNext(EXDListItem* m)
+    {
+        m_pNext = m;
+    }
+    void SetPrev(EXDListItem* m)
+    {
+        m_pPrev = m;
+    }
     Bool Apply(void* func, void* parm1);
     Bool ApplyBack();
 };
@@ -42,10 +54,22 @@ public:
     // void Remove();
     EXDListItem* RemoveHead();
     EXDListItem* RemoveTail();
-    EXDListItem* Head();
-    EXDListItem* Tail();
-    void SetHead();
-    void SetTail();
+    EXDListItem* Head()
+    {
+        return m_pHead;
+    }
+    EXDListItem* Tail()
+    {
+        return m_pTail;
+    }
+    void SetHead(EXDListItem* m)
+    {
+        m_pHead = m;
+    }
+    void SetTail(EXDListItem* m)
+    {
+        m_pTail = m;
+    }
     Bool Apply();
     Bool ApplyBack();
     Bool IsMember(EXDListItem* pDListItem) const;

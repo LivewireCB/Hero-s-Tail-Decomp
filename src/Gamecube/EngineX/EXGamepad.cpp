@@ -8,10 +8,10 @@ EXBaseGamePad::EXBaseGamePad()
 {
     for (int p = 0; p < 8; p++)
     {
-        m_ButtonState.m_Data[p] = 0;
-        m_LastButtonState.m_Data[p] = 0;
-        m_ButtonEdgeDown.m_Data[p] = 0;
-        m_ButtonEdgeUp.m_Data[p] = 0;
+        m_ButtonState.SetAt(p, 0);
+        m_LastButtonState.SetAt(p, 0);
+        m_ButtonEdgeDown.SetAt(p, 0);
+        m_ButtonEdgeUp.SetAt(p, 0);
 
         for (int c = 0; c < 16; c++)
         {
@@ -22,15 +22,15 @@ EXBaseGamePad::EXBaseGamePad()
 
         pDeadZoneMode[p * 2] = 0;
         pDeadZoneMode[p * 2 + 1] = 0;
-        m_ActionState.m_Data[p] = 0;
-        m_LastActionState.m_Data[p] = 0;
-        m_ActionEdgeDown.m_Data[p] = 0;
-        m_ActionEdgeUp.m_Data[p] = 0;
-        m_ActionMapCount.m_Data[p] = 0;
-        m_RumbleTimeHi.m_Data[p] = 0;
-        m_RumbleTimeLo.m_Data[p] = 0;
-        m_RumbleStrengthHi.m_Data[p] = 0;
-        m_RumbleStrengthLo.m_Data[p] = 0;
+        m_ActionState.SetAt(p, 0);
+        m_LastActionState.SetAt(p, 0);
+        m_ActionEdgeDown.SetAt(p, 0);
+        m_ActionEdgeUp.SetAt(p, 0);
+        m_ActionMapCount.SetAt(p, 0);
+        m_RumbleTimeHi.SetAt(p, 0);
+        m_RumbleTimeLo.SetAt(p, 0);
+        m_RumbleStrengthHi.SetAt(p, 0);
+        m_RumbleStrengthLo.SetAt(p, 0);
         m_Inserted.data[p] = 0;
         m_EnableRumble.data[p] = 0;
     }
@@ -53,19 +53,16 @@ void EXBaseGamePad::Shutdown()
 
 void EXBaseGamePad::UpdateActions()
 {
-    EXPadActionMap* pActionMap = &m_ActionMap.m_Data[0].data[0];
-
     for (int p = 0; p < 8; p++)
     {
-        if (m_ActionMapCount.m_Data[p] != 0)
+        if (m_ActionMapCount.GetAt(p) != 0)
         {
-            m_LastActionState.m_Data[p] = m_ActionState.m_Data[p];
+            m_LastActionState.SetAt(p, m_ActionState.GetAt(p));
 
             u32 ActionState = 0;
-            u32 State = m_ButtonState.m_Data[p];
-            EXPadActionMap* pActions = &pActionMap[p * 32];
-            EXPadActionMap* pAction = pActions;
-            for (int a = 0; a < m_ActionMapCount.m_Data[p]; a++)
+            u32 State = m_ButtonState.GetAt(p);
+            EXPadActionMap* pAction = m_ActionMap.ElementAt(p).data;
+            for (int a = 0; a < m_ActionMapCount.GetAt(p); a++)
             {
                 if ((State & pAction->ButtonBits) != 0)
                 {
@@ -75,16 +72,16 @@ void EXBaseGamePad::UpdateActions()
                 pAction++;
             }
 
-            m_ActionState.m_Data[p] = ActionState;
-            m_ActionEdgeDown.m_Data[p] = ActionState & ~m_LastActionState.m_Data[p];
-            m_ActionEdgeUp.m_Data[p] = m_LastActionState.m_Data[p] & ~m_ActionState.m_Data[p];
+            m_ActionState.SetAt(p, ActionState);
+            m_ActionEdgeDown.SetAt(p, ActionState & ~m_LastActionState.GetAt(p));
+            m_ActionEdgeUp.SetAt(p, m_LastActionState.GetAt(p) & ~m_ActionState.GetAt(p));
         }
         else
         {
-            m_ActionState.m_Data[p] = 0;
-            m_LastActionState.m_Data[p] = 0;
-            m_ActionEdgeDown.m_Data[p] = 0;
-            m_ActionEdgeUp.m_Data[p] = 0;
+            m_ActionState.SetAt(p, 0);
+            m_LastActionState.SetAt(p, 0);
+            m_ActionEdgeDown.SetAt(p, 0);
+            m_ActionEdgeUp.SetAt(p, 0);
         }
     }
 }

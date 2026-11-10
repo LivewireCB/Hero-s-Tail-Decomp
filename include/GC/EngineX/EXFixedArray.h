@@ -18,8 +18,14 @@ struct EXFixedArray<unsigned int, 8>
     // size_t Size();
     // size_t GetUpperBound();
     // u32& ElementAt();
-    // u32 GetAt();
-    // void SetAt();
+    u32 GetAt(int iPos)
+    {
+        return m_Data[iPos];
+    }
+    void SetAt(int iPos, u32 newElement)
+    {
+        m_Data[iPos] = newElement;
+    }
     // u32* GetData();
     // u32* GetData();
     // u32* operator unsigned int*();
@@ -42,6 +48,20 @@ struct EXFixedArray<const char*, 4>
     // char** GetData();
     // char** operator char**();
     // char** operator char**();
+};
+
+struct EXFixedArray<char, 15>
+{ // 0xf
+    /* 0x00 */ char m_Data[15];
+
+    char& ElementAt(int iPos)
+    {
+        return m_Data[iPos];
+    }
+    operator char*()
+    {
+        return m_Data;
+    }
 };
 
 struct EXFixedArray<char, 32>

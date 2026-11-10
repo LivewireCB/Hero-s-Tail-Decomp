@@ -64,18 +64,18 @@ public:
     // MXMatrix44& ShadowViewToScreen();
     /* vtable[16] */ virtual void BeginDraw();
     /* vtable[18] */ virtual void EndDraw();
-    /* vtable[28] */ virtual void DrawLine();
-    /* vtable[29] */ virtual void DrawLines();
+    /* vtable[28] */ virtual void DrawLine(EXPrimVert& v0, EXPrimVert& v1);
+    /* vtable[29] */ virtual void DrawLines(u32 Count, EXPrimVert* pVerts);
     // /* vtable[30] */ virtual void DrawLines();
-    /* vtable[31] */ virtual void SetTriFanBlendMode();
-    /* vtable[32] */ virtual void SetTriFanZMode();
-    /* vtable[33] */ virtual void SelectTriFanTexture();
-    /* vtable[34] */ virtual void DrawTriFan();
+    /* vtable[31] */ virtual void SetTriFanBlendMode(u32 BlendMode);
+    /* vtable[32] */ virtual void SetTriFanZMode(s8 ZRead, s8 ZWrite);
+    /* vtable[33] */ virtual void SelectTriFanTexture(EXTexture* pTexture);
+    /* vtable[34] */ virtual void DrawTriFan(u32 Count, EXPrimVert* pVerts);
     void UseNextDrawTriFanStream();
-    /* vtable[35] */ virtual void SetTriStripBlendMode();
-    /* vtable[36] */ virtual void SetTriStripZMode();
-    /* vtable[37] */ virtual void SelectTriStripTexture();
-    /* vtable[38] */ virtual void DrawTriStrip();
+    /* vtable[35] */ virtual void SetTriStripBlendMode(u32 BlendMode);
+    /* vtable[36] */ virtual void SetTriStripZMode(s8 ZRead, s8 ZWrite);
+    /* vtable[37] */ virtual void SelectTriStripTexture(EXTexture* pTexture);
+    /* vtable[38] */ virtual void DrawTriStrip(u32 Count, EXPrimVert* pVerts);
     void UseNextDrawTriStripStream();
     /* vtable[40] */ virtual void _SelectSprite2DTexture(EXTexture* pTexture, s8 MinFilter,
                                                          s8 MagFilter);

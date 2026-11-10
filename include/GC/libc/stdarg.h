@@ -27,10 +27,51 @@ void* __va_arg(va_list v_list, unsigned char type);
 #define va_end(ap) (void)0
 
 #else
-typedef __builtin_va_list va_list;
-#define va_start(v, l) __builtin_va_start(v, l)
-#define va_end(v) __builtin_va_end(v)
-#define va_arg(v, l) __builtin_va_arg(v, l)
+// ProDG (gcc 2.95) SysV PowerPC varargs
+typedef struct __va_list_tag
+{
+    char gpr;
+    char fpr;
+    unsigned short reserved;
+    char* overflow_arg_area;
+    char* reg_save_area;
+} va_list[1];
+
+#define va_start(AP, LASTARG) (__builtin_next_arg(LASTARG), AP[0] = *(__va_list_tag*)__builtin_saveregs())
+#define va_arg(AP, TYPE)                                                                                              \
+    (*({                                                                                                              \
+        TYPE* __ptr;                                                                                                  \
+        if (__builtin_classify_type((TYPE)0) == 8)                                                                    \
+        {                                                                                                             \
+            if ((AP)->fpr <= 7)                                                                                       \
+            {                                                                                                         \
+                __ptr = (TYPE*)((AP)->reg_save_area + 32 + (AP)->fpr * 8);                                            \
+                (AP)->fpr++;                                                                                          \
+            }                                                                                                         \
+            else                                                                                                      \
+            {                                                                                                         \
+                __ptr = (TYPE*)(AP)->overflow_arg_area;                                                               \
+                (AP)->overflow_arg_area += 8;                                                                         \
+            }                                                                                                         \
+        }                                                                                                             \
+        else                                                                                                          \
+        {                                                                                                             \
+            if ((unsigned)((AP)->gpr + 1) <= 8)                                                                       \
+            {                                                                                                         \
+                __ptr = (TYPE*)((AP)->reg_save_area + (AP)->gpr * 4);                                                 \
+                (AP)->gpr++;                                                                                          \
+            }                                                                                                         \
+            else                                                                                                      \
+            {                                                                                                         \
+                if ((AP)->gpr <= 7)                                                                                   \
+                    (AP)->gpr = 8;                                                                                    \
+                __ptr = (TYPE*)(AP)->overflow_arg_area;                                                               \
+                (AP)->overflow_arg_area += 4;                                                                         \
+            }                                                                                                         \
+        }                                                                                                             \
+        __ptr;                                                                                                        \
+    }))
+#define va_end(v) (void)0
 #endif
 
 #ifdef __cplusplus

@@ -31,4 +31,14 @@ void EXAllocSetFunc(void* pData, EXMEMCALLBACK* pFunc);
 void EXAllocSetCache(void* pData, s16 time, void** pOwner);
 void EXAllocSetCacheDel(void* pData, s16 time, void** pOwner);
 
+inline void* operator new(size_t size)
+{
+    return _EXAlloc(size, 0);
+}
+
+inline void operator delete(void* ptr)
+{
+    EXFree(ptr);
+}
+
 #endif // EXMEMORYMANAGER_H

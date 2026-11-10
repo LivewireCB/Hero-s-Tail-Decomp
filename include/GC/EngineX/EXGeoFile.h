@@ -6,6 +6,8 @@
 #include "EXRuntimeClass.h"
 #include "EXFile.h"
 
+struct EXTexture;
+
 // template <> struct EXRelPtr<EXGeoTextureHeader>
 // { // 0x4
 // protected:
@@ -155,7 +157,7 @@ public:
     // EXGeoForceFeedback* GeoForceFeedback();
     u32 NumTextures();
     // EXTextureArray& TextureArray();
-    // EXTexture* Texture();
+    EXTexture* Texture(unsigned long HashCode) const;
     void InitialiseTextureArray();
     void DeloadTextureArray();
     void UpdateTextureArray();

@@ -157,7 +157,8 @@ public:
     // EXGeoTextureHeader();
 
 protected:
-    void SetRuntimeValues();
+    void SetRuntimeValues(EXGeoTexture* pTexture, u16 Width, u16 Height, unsigned long GameFlags,
+                          unsigned long Flags);
 
 public:
     u16 Width();

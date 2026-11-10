@@ -120,9 +120,15 @@ public:
     /* vtable[7] */ virtual void SetDefaultRenderState();
     /* vtable[8] */ virtual void UpdateRenderState();
     static void SetGeoHeader(/* parameters unknown */);
-    // static EXGeoHeader* GeoHeader(/* parameters unknown */);
+    static EXGeoHeader* GeoHeader()
+    {
+        return ms_pGeoHeader;
+    }
     static void SetActiveWnd(/* parameters unknown */);
-    // static EXWnd* ActiveWnd(/* parameters unknown */);
+    static EXWnd* ActiveWnd()
+    {
+        return ms_pActiveWnd;
+    }
     static void SetObjectToWorld(/* parameters unknown */);
     static void SetReflectMatrix(/* parameters unknown */);
     static void SetWorldToView(/* parameters unknown */);
