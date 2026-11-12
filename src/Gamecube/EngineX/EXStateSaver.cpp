@@ -28,7 +28,6 @@ EXStateSaver::~EXStateSaver()
     {
         SaveFile();
     }
-    m_Section.DeallocMem();
 }
 
 void EXStateSaver::SetSection(EXString& Section)

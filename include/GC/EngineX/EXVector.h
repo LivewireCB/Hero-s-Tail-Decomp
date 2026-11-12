@@ -15,8 +15,6 @@ struct VEC_XYZW
     /* 0xc */ float w;
 };
 
-typedef long long unsigned int vec128_t;
-
 struct x_base
 {
     static unsigned int broadcast_field;
@@ -257,12 +255,33 @@ struct EXVector
         MXVector xyzw;
     };
 
-    EXVector();
-    // EXVector();
-    // EXVector();
-    // EXVector();
-    // EXVector();
-    // EXVector& operator=();
+    EXVector() {}
+    EXVector(float fx, float fy, float fz, float fw)
+    {
+        x = fx;
+        y = fy;
+        z = fz;
+        w = fw;
+    }
+    EXVector& operator=(const EXVector& v)
+    {
+        float fx = v.x;
+        float fy = v.y;
+        float fz = v.z;
+        float fw = v.w;
+        x = fx;
+        y = fy;
+        z = fz;
+        w = fw;
+        return *this;
+    }
+    EXVector(MXVector& v)
+    {
+        x = v.vec128.x;
+        y = v.vec128.y;
+        z = v.vec128.z;
+        w = v.vec128.w;
+    }
     // MXVector operator EXMaths::vec_xyzw();
     // EXVector& operator+=();
     // EXVector& operator-=();
@@ -283,10 +302,21 @@ struct EXVector
     void set_z();
     void set_w();
     void set_w_no_float_check();
-    void Set();
+    void Set(float fx, float fy, float fz, float fw)
+    {
+        x = fx;
+        y = fy;
+        z = fz;
+        w = fw;
+    }
+    void SetZero()
+    {
+        w = 0.0f;
+        z = 0.0f;
+        y = 0.0f;
+        x = 0.0f;
+    }
     // void Set();
-    void SetZero();
-    float get_x();
     float get_y();
     float get_z();
     float get_w();

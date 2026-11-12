@@ -42,6 +42,26 @@ public:
     /* vtable[5] */ virtual EXBoundsBox& GetBoundsBox();
 };
 
+struct EXGeoCommonArrayElement<EXGeoCommonObject>
+{ // 0x10
+protected:
+    /* 0x0 */ EXHashCode m_HashCode;
+    /* 0x4 */ u16 m_Section;
+    /* 0x6 */ u16 m_Debug;
+    /* 0x8 */ u32 m_DataOffset;
+    /* 0xc */ EXGeoCommonObject* m_pObject;
+
+public:
+    EXGeoCommonObject* Object()
+    {
+        return m_pObject;
+    }
+};
+
+struct EXGeoObjectHeader : /* 0x0 */ EXGeoCommonArrayElement<EXGeoCommonObject>
+{ // 0x10
+};
+
 struct EXGeoBaseDebug
 { // 0x4
 protected:

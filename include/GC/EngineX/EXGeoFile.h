@@ -5,6 +5,7 @@
 
 #include "EXRuntimeClass.h"
 #include "EXFile.h"
+#include "EXGeoCommon.h"
 
 struct EXTexture;
 
@@ -250,9 +251,15 @@ public:
     /* vtable[5] */ virtual Bool OnKill();
     u32 CheckCode();
     void UpdateCheckCode();
-    Bool IsLoaded();
+    Bool IsLoaded()
+    {
+        return m_pGeoHeader != 0;
+    }
     void SetGeoHeader();
-    EXGeoHeader* GeoHeader();
+    EXGeoHeader* GeoHeader()
+    {
+        return this ? m_pGeoHeader : 0;
+    }
     static EXGeoFile* GetGeoFile(/* parameters unknown */);
     static EXGeoFile* LoadGeoFile(/* parameters unknown */);
     // static EXGeoFile* LoadGeoFile(/* parameters unknown */);
@@ -291,10 +298,24 @@ struct EXGeoBaseRefObject
 
 public:
     // EXGeoBaseRefObject& operator=();
-    EXGeoBaseRefObject();
-    // EXGeoBaseRefObject();
-    EXGeoFile* GeoFile();
-    EXHashCode HashRef();
+    EXGeoBaseRefObject()
+    {
+        m_pGeoFile = 0;
+        m_HashRef = 0;
+    }
+    EXGeoBaseRefObject(EXGeoFile* pGeoFile, EXHashCode h)
+    {
+        m_pGeoFile = pGeoFile;
+        m_HashRef = h;
+    }
+    EXGeoFile* GeoFile()
+    {
+        return m_pGeoFile;
+    }
+    EXHashCode HashRef()
+    {
+        return m_HashRef;
+    }
     char* DebugGeoName();
     char* DebugRefName();
 };
@@ -310,11 +331,26 @@ public:
     EXGeoComplexRefObject();
 
 protected:
-    void Invalidate();
+    void Invalidate()
+    {
+        m_CheckCode = -1;
+    }
 
 public:
+    void Set(EXGeoFile* pGeoFile, EXHashCode h)
+    {
+        m_pGeoFile = pGeoFile;
+        m_HashRef = h;
+        Invalidate();
+    }
+    void Set(EXGeoBaseRefObject& r)
+    {
+        m_pGeoFile = r.m_pGeoFile;
+        m_HashRef = r.m_HashRef;
+        Invalidate();
+    }
     // EXGeoComplexRefObject();
-    // EXGeoObjectHeader* GeoObjectHeader();
+    EXGeoObjectHeader* GeoObjectHeader() const;
     // EXGeoObjectHeader* GeoObjectHeader();
     // EXGeoObjectHeader* GeoObjectHeader();
     // EXGeoObject* GeoObject();

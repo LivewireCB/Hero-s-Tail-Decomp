@@ -24,6 +24,17 @@ struct GEOSCRIPT_CMD : /* 0x0 */ GEOSCRIPT_BASECMD
     /* 0xb */ u8 ParentThread;
 };
 
+struct GEOSCRIPT_REFCMD : /* 0x0 */ GEOSCRIPT_CMD
+{ // 0x10
+    /* 0xc */ EXHashCode Reference;
+};
+
+struct GEOSCRIPT_COLLISION : /* 0x00 */ GEOSCRIPT_REFCMD
+{ // 0x20
+    /* 0x10 */ u32 Type;
+    /* 0x14 */ float Extents[3];
+};
+
 struct EXGeoScript : /* 0x00 */ EXGeoCommonObject
 { // 0x70
     static EXRuntimeClass classEXGeoScript;

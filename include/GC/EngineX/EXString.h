@@ -24,7 +24,10 @@ struct EXString
     {
         m_pData = NULL;
     }
-    // ~EXString();
+    ~EXString()
+    {
+        DeallocMem();
+    }
     void Empty();
     EXString& operator=(char* pString);
     EXString& operator=(EXString& Str);
@@ -57,6 +60,9 @@ struct EXString
     int IncRefCount();
     void SetLength(u16 aNewLength);
 };
+
+EXString operator+(char* apStr1, EXString& aStr2);
+EXString operator+(EXString& aLStr, char* apRStr);
 
 Bool operator==(EXString& Str1, EXString& Str2);
 

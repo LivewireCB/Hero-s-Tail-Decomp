@@ -33,7 +33,10 @@ struct EXBaseItem : /* 0x00 */ EXDListItem
     /* vtable[1] */ virtual ~EXBaseItem();
     EXDList& Nodes();
     void SetOwner();
-    EXBaseItem* GetOwner();
+    EXBaseItem* GetOwner() const
+    {
+        return m_pOwner;
+    }
     EXBaseItem* GetBaseOwner() const;
 };
 
@@ -67,12 +70,27 @@ protected:
     static EXRuntimeClass* _GetBaseClass(/* parameters unknown */);
 
 public:
-    /* vtable[2] */ virtual EXRuntimeClass* GetRuntimeClass();
-    Bool IsKindOf();
+    /* vtable[2] */ virtual EXRuntimeClass* GetRuntimeClass() const;
+    Bool IsKindOf(const EXRuntimeClass* pClass) const
+    {
+        EXRuntimeClass* pClassThis = GetRuntimeClass();
+
+        do
+        {
+            if (pClassThis == pClass)
+            {
+                return true;
+            }
+
+            pClassThis = pClassThis->m_pBaseClass;
+        } while (pClassThis != 0);
+
+        return false;
+    }
     char* ClassName();
     static EXPlacementItem* CreateObject(/* parameters unknown */);
-    /* vtable[3] */ virtual char* TypeName();
-    /* vtable[4] */ virtual int Size();
+    /* vtable[3] */ virtual char* TypeName() const;
+    /* vtable[4] */ virtual int Size() const;
     static EXPlacementItem* NewItem(/* parameters unknown */);
     // EXPlacementItem();
     /* vtable[1] */ virtual ~EXPlacementItem();
@@ -111,17 +129,35 @@ public:
     // EXRenderInfo& RenderInfo();
     // EXExtRenderInfo* GetExtRenderInfo();
     // EXTexSwapInfo* SetTexSwapInfo();
-    void CalcMatrix();
-    // EXMatrix& CalcMatrix_InPlace();
-    // EXMatrix& CalcMatrix_InPlaceParent();
-    void UpdateNodes();
-    u32 RenderNodes();
+    void CalcMatrix(EXMatrix& mtxOut) const;
+    EXMatrix& CalcMatrix_InPlace(EXMatrix& mtxIn, u64& CtrlFlags);
+    EXMatrix& CalcMatrix_InPlaceParent();
+    void UpdateNodes()
+    {
+        EXPlacementItem* pItem = (EXPlacementItem*)m_Nodes.Head();
+
+        if (pItem)
+        {
+            _UpdateNodes(pItem);
+        }
+    }
+    u32 RenderNodes(EXMatrix& mtx, EXRenderInfo& InRenderInfo, u64 CtrlFlags)
+    {
+        EXPlacementItem* pItem = (EXPlacementItem*)m_Nodes.Head();
+
+        if (pItem)
+        {
+            return _RenderNodes(mtx, InRenderInfo, CtrlFlags, pItem);
+        }
+
+        return 0;
+    }
     /* vtable[5] */ virtual void DoUpdate();
-    /* vtable[6] */ virtual u32 DoRender();
+    /* vtable[6] */ virtual u32 DoRender(EXMatrix& mtxIn, EXRenderInfo& InRenderInfo, u64 CtrlFlags);
 
 protected:
-    void _UpdateNodes();
-    static u32 _RenderNodes(/* parameters unknown */);
+    void _UpdateNodes(EXPlacementItem* pItem);
+    static u32 _RenderNodes(EXMatrix& mtxIn, EXRenderInfo& InRenderInfo, u64 CtrlFlags, EXPlacementItem* pItem);
     void CalcMatrix_Vap();
 
 private:
@@ -157,12 +193,27 @@ protected:
     static EXRuntimeClass* _GetBaseClass(/* parameters unknown */);
 
 public:
-    /* vtable[2] */ virtual EXRuntimeClass* GetRuntimeClass();
-    Bool IsKindOf();
+    /* vtable[2] */ virtual EXRuntimeClass* GetRuntimeClass() const;
+    Bool IsKindOf(const EXRuntimeClass* pClass) const
+    {
+        EXRuntimeClass* pClassThis = GetRuntimeClass();
+
+        do
+        {
+            if (pClassThis == pClass)
+            {
+                return true;
+            }
+
+            pClassThis = pClassThis->m_pBaseClass;
+        } while (pClassThis != 0);
+
+        return false;
+    }
     char* ClassName();
     static EXItem* CreateObject(/* parameters unknown */);
-    /* vtable[3] */ virtual char* TypeName();
-    /* vtable[4] */ virtual int Size();
+    /* vtable[3] */ virtual char* TypeName() const;
+    /* vtable[4] */ virtual int Size() const;
     static EXItem* NewItem(/* parameters unknown */);
     /* vtable[1] */ virtual ~EXItem();
     EXODListItem& ItemGroup();
@@ -177,7 +228,10 @@ public:
     void RemoveAnimator();
     void DeleteAnimator();
     void SetItemHandler();
-    // EXItemHandler* ItemHandler();
+    EXItemHandler* ItemHandler() const
+    {
+        return m_pItemHandler;
+    }
     void SetItemPhysics();
     // EXItemPhysics* ItemPhysics();
     void SetTrigger();

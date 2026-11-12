@@ -36,6 +36,11 @@ inline void* operator new(size_t size)
     return _EXAlloc(size, 0);
 }
 
+inline void* operator new(size_t, void* ptr)
+{
+    return ptr;
+}
+
 inline void operator delete(void* ptr)
 {
     EXFree(ptr);

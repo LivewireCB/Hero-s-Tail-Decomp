@@ -15,11 +15,11 @@ public:
     void Add(EXDListItem* pDlistItem);
     void Insert(EXDListItem* pDlistItem);
     void Remove();
-    EXDListItem* Next()
+    EXDListItem* Next() const
     {
         return m_pNext;
     }
-    EXDListItem* Prev()
+    EXDListItem* Prev() const
     {
         return m_pPrev;
     }
@@ -54,11 +54,11 @@ public:
     // void Remove();
     EXDListItem* RemoveHead();
     EXDListItem* RemoveTail();
-    EXDListItem* Head()
+    EXDListItem* Head() const
     {
         return m_pHead;
     }
-    EXDListItem* Tail()
+    EXDListItem* Tail() const
     {
         return m_pTail;
     }
@@ -80,7 +80,11 @@ struct EXLDListItem;
 
 struct EXLDList : EXDList
 {
-    EXLDList();
+    EXLDList()
+    {
+        m_pHead = 0;
+        m_pTail = 0;
+    }
     void AddHead(EXLDListItem* pDListItem);
     void AddTail();
 };

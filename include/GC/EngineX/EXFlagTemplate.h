@@ -36,15 +36,27 @@ template <> struct EXFlag<short unsigned int>
 
 public:
     // EXFlag<short unsigned int>& operator=();
-    EXFlag();
+    EXFlag()
+    {
+        m_Flags = 0;
+    }
     // EXFlag();
     // u16 operator=();
     void Set();
-    void BitSet();
-    void BitClr();
+    void BitSet(u32 bit)
+    {
+        m_Flags |= bit;
+    }
+    void BitClr(u32 bit)
+    {
+        m_Flags &= ~bit;
+    }
     void BitXor();
     void BitModify();
-    u16 BitTest();
+    u16 BitTest(u32 bit)
+    {
+        return m_Flags & bit;
+    }
     Bool BitTestBool();
     void SetBits();
     u16 GetBits();
@@ -63,7 +75,10 @@ public:
     // u8 operator=();
     void Set();
     void BitSet();
-    void BitClr();
+    void BitClr(u32 bit)
+    {
+        m_Flags &= ~bit;
+    }
     void BitXor();
     void BitModify();
     u8 BitTest();

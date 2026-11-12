@@ -11,19 +11,28 @@ typedef long int ssize_t;
 typedef float f32;
 typedef double f64;
 
-typedef long long unsigned int vec128_t;
+typedef struct vec128_t
+{
+    float x, y, z, w;
+} vec128_t __attribute__((aligned(8)));
 
 typedef unsigned char u8;
 typedef short unsigned int u16;
 typedef unsigned int u32;
 typedef long unsigned int u64;
-typedef long long unsigned int u128;
+typedef struct u128
+{
+    u32 w[4];
+} u128 __attribute__((aligned(8)));
 
 typedef signed char s8;
 typedef short int s16;
 typedef int s32;
 typedef long int s64;
-typedef long long int s128;
+typedef struct s128
+{
+    s32 w[4];
+} s128 __attribute__((aligned(16)));
 
 typedef signed char Bool;
 typedef short unsigned int wchar;

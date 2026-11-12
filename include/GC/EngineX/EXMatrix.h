@@ -5,7 +5,7 @@
 
 #include "EXVector.h"
 
-struct mat_44
+struct EXMaths::mat_44
 { // 0x40
     /* 0x00 */ vec_xyzw row0;
     /* 0x10 */ vec_xyzw row1;
@@ -64,6 +64,7 @@ struct mat_44
     void Trace();
 };
 
+typedef EXMaths::mat_44 mat_44;
 typedef mat_44 MXMatrix44;
 
 struct EXMatrix
@@ -75,14 +76,22 @@ struct EXMatrix
         /* 0x00 */ float f[4][4];
     };
 
-    EXMatrix();
+    EXMatrix()
+    {
+    }
     // EXMatrix();
     // EXMatrix();
     // EXMatrix();
     void Set();
-    // MXMatrix44& operator EXMaths::mat_44&();
+    operator EXMaths::mat_44&()
+    {
+        return m;
+    }
     void SetTranslation();
-    EXVector GetTranslation();
+    EXVector GetTranslation()
+    {
+        return EXVector(r[3]);
+    }
     float& operator()();
     // float operator()();
     // EXMatrix& operator=();

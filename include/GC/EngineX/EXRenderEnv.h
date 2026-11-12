@@ -113,11 +113,11 @@ protected:
 
 public:
     // EXRenderInfo& operator=();
-    EXRenderInfo();
-    // EXRenderInfo();
-    // EXRenderInfo();
+    EXRenderInfo()
+    {
+    }
     void SetDefault();
-    static EXRenderInfo& Merge(/* parameters unknown */);
+    static EXRenderInfo& Merge(EXRenderInfo& Out, EXRenderInfo& Child, EXRenderInfo& Parent);
     void SetRenderMode();
     void EnableWireFrame();
     void EnableRGBMult();
@@ -257,6 +257,14 @@ public:
     /* vtable[1] */ virtual ~EXBaseRenderEnv();
     /* vtable[2] */ virtual void CalcFogCoefficients();
     /* vtable[3] */ virtual void RegisterWatcherVars();
+    static Bool ShadowRender()
+    {
+        return ms_ShadowRender;
+    }
+    static u32 RenderState()
+    {
+        return ms_RenderState;
+    }
 };
 
 #endif // EXRENDERENV_H

@@ -12,11 +12,13 @@ protected:
 
 public:
     // MXBoundsBox& operator=();
-    MXBoundsBox();
+    MXBoundsBox()
+    {
+    }
     // MXBoundsBox();
     MXVector vctMin();
     MXVector vctMax();
-    void _ApplyXForm();
+    void _ApplyXForm(EXMaths::mat_44& mtx);
     Bool _Intersect();
     // Bool _Intersect();
     // Bool _Intersect();
@@ -44,18 +46,28 @@ public:
 struct EXBoundsBox : /* 0x00 */ MXBoundsBox
 { // 0x20
     // EXBoundsBox& operator=();
-    EXBoundsBox();
+    EXBoundsBox()
+    {
+    }
     // EXBoundsBox();
     // float* operator float*();
-    void Set();
+    void Set(EXBoundsBox& a)
+    {
+        m_vct[0] = a.m_vct[0];
+        m_vct[1] = a.m_vct[1];
+    }
     // void Set();
     // void Set();
     // void Set();
     void SetMin();
     void SetMax();
-    void SetZero();
+    void SetZero()
+    {
+        m_vct[0].vec128.x = m_vct[0].vec128.y = m_vct[0].vec128.z = m_vct[0].vec128.w = 0.0f;
+        m_vct[1].vec128.x = m_vct[1].vec128.z = m_vct[1].vec128.w = m_vct[1].vec128.y = 0.0f;
+    }
     void SetMaxRange();
-    void Accumulate();
+    void Accumulate(EXBoundsBox& Bounds);
     void ApplyXForm();
     Bool Intersect();
     // Bool Intersect();

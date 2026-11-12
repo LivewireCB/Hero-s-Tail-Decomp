@@ -45,6 +45,8 @@ struct EXMaths
         static unsigned int valid_fields;
         /* 0x0 */ vec128_t vec128;
     };
+
+    struct mat_44;
 };
 
 #endif // EXMATHS_H

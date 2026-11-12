@@ -140,19 +140,25 @@ struct EXSoundFileListArray : /* 0x0 */ EXDataArray<EXSoundFileEntry, const EXSo
 { // 0x10
 };
 
+struct EXSoundHandle;
+
 struct EXSoundTag : /* 0x0 */ EXLDList
 { // 0x8
     // EXSoundTag& operator=();
-    EXSoundTag();
-    // EXSoundTag();
-    ~EXSoundTag();
+    EXSoundTag()
+    {
+    }
+    ~EXSoundTag()
+    {
+        RemoveAll(false);
+    }
     void Remove();
-    void RemoveAll();
+    void RemoveAll(Bool fStop) const;
+    EXSoundHandle* StartSound(EXHashCode SoundHash, EXVector& vPos, EXVector& vVel, float InnerRadius, float OuterRadius, s64 Volume, s64 Flags);
     // EXSoundHandle* StartSound();
     // EXSoundHandle* StartSound();
-    // EXSoundHandle* StartSound();
-    // EXSoundHandle* AddTrackingSound();
-    void UpdatePositionAndVelocity();
+    EXSoundHandle* AddTrackingSound(EXHashCode SoundHash, EXVector& vPos, EXVector& vVel, float InnerRadius, float OuterRadius);
+    void UpdatePositionAndVelocity(EXVector& vPos, EXVector& vVel) const;
     void SetVolume(EXHashCode SoundHash, u64 Volume) const;
     void SetPitch(u64 Pitch) const;
     Bool IsPlaying();
@@ -196,7 +202,10 @@ public:
     void Initialise();
     void* HandleAddr();
     u32 Handle();
-    void SetHandle();
+    void SetHandle(u32 Handle)
+    {
+        m_Handle = Handle;
+    }
     void SetHashCode();
     EXHashCode HashCode();
     void SetTrackingSound();
@@ -314,19 +323,19 @@ public:
     static Bool DeleteSoundDetailsTable(/* parameters unknown */);
     static Bool RemoveSoundDetailsTable(/* parameters unknown */);
     static Bool IsSoundDetailsTableLoaded(/* parameters unknown */);
-    EXSoundDetails& SoundDetails();
+    EXSoundDetails& SoundDetails(EXHashCode SoundHash) const;
     void Update();
     s32 SfxVolume();
     s32 MusicVolume();
     // void SetSfxVolume(EXBaseSoundManager*, int, void); // same params as destructor?
     // void SetMusicVolume(EXBaseSoundManager*, int, void); // same params as destructor?
-    Bool SfxIsValidRange();
+    Bool SfxIsValidRange(EXVector& vPos, float OuterRadius);
     Bool StartSound();
     // Bool StartSound();
     // Bool StartSound();
     void SfxSetEnvironment();
     s32 SfxNumberOfListeners();
-    // void SfxSetReverbDepth(EXBaseSoundManager*, int, void);
+    void SfxSetReverbDepth(s64 Depth);
     s32 SfxEnvReverbDepth();
     void PreCache();
     void BuildSoundFileList();

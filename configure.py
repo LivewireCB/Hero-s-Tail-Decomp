@@ -276,6 +276,7 @@ if config.platform == Platform.GC_WII:
         "-ffast-math",
         "-fno-common",
         "-fvtable-thunks",
+        "-fpermissive",
         # "-fno-vtable-thunks",
         # "-DWRITABLE_VTABLES",
         # "-fno-strength-reduce",
